@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/07/17 21:29:41 by migarrid         ###   ########.fr        #
+#    Updated: 2025/08/08 17:03:44 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,10 @@ NAME				= minishell
 #                            Compiler and Flags                                #
 # **************************************************************************** #
 CC					= cc
-CFLAGS				= -Wall -Wextra -Werror -g #-fsanitize=address,undefined -O0
+WFLAGS				= -Wall -Wextra -Werror
+DFLAGS				= -g
+OFLAGS				= -O2 -march=native -flto
+SFLAGS				= -fsanitize=address
 
 # **************************************************************************** #
 #                               Shell Comands                                  #
@@ -115,7 +118,7 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c $(DEPS) | $(OBJ_DIR)
 $(OBJ_BONUS_DIR)/%.o: $(SRC_BONUS_DIR)/%.c $(DEPS) | $(OBJ_BONUS_DIR)
 	@$(eval BONUS_COUNT = $(shell expr $(BONUS_COUNT) + 1))
 	@$(PRINT) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(MAGENTA)$<$(DEFAULT)...\n" "" $(BONUS_COUNT) $(BONUS_COUNT_TOT) $(BONUS_PCT)
-	@$(CC) $(CFLAGS) -I. -c -o $@ $<
+	@$(CC) $(WFLAGS) $(DFLAGS) $(SFLAGS) $(OFLAGS) -I. -c -o $@ $<
 
 # **************************************************************************** #
 #                              Targets                                         #
@@ -125,7 +128,7 @@ all: $(LIBFT_A) $(NAME)
 
 # Build executable
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) -I$(INC_DIR) -o $(NAME)
+	@$(CC) $(WFLAGS) $(DFLAGS) $(SFLAGS) $(OFLAGS) $(OBJS) $(LIBFT_A) -I$(INC_DIR) -o $(NAME)
 	@$(PRINT) "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}${NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 
 # Rebuild libft.a
