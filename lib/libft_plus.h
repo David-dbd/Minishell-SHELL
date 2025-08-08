@@ -1,0 +1,148 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft_plus.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/28 16:10:39 by migarrid          #+#    #+#             */
+/*   Updated: 2025/06/28 17:33:56 by migarrid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef LIBFT_PLUS_H
+# define LIBFT_PLUS_H
+
+# include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdarg.h>
+# include <stdint.h>
+# include <fcntl.h>
+# include <stdbool.h>
+# include <limits.h>
+
+// LIBFT
+
+// ----------- Obligatorios (Prototipos) ------------
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int		ft_issign(int c);
+int		ft_isspace(int c);
+int		ft_ishex(int c);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
+int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
+bool	ft_atoi_range(const char *nptr);
+long	ft_strtol(const char *nptr, int base);
+float	ft_strtof(const char *nptr);
+float	ft_square(float x);
+int		ft_max(int a, int b);
+int		ft_strcmp(const char *s1, const char *s2);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
+size_t	ft_strlcat(char *dst, const char *src, size_t cat_size);
+size_t	ft_strlcpy(char *dst, const char *src, size_t cpy_size);
+size_t	ft_strlen(const char *s);
+void	ft_bzero(void *s, size_t n);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	*ft_memset(void *s, int c, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
+void	*ft_memchr(const void *s, int c, size_t n);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	*ft_memmove(void *dest, const void *src, size_t n);
+void	ft_free_str_array(char **array);
+void	ft_free_int_matrix(int **matrix, int rows);
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+char	*ft_itoa(int n);
+char	*ft_strdup(const char *s);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strrchr(const char *s, int c);
+char	**ft_split(const char *s, char c);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strtrim(const char *s1, const char *s2);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
+
+// ------------ Bonus (Listas enlazadas) ------------
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
+int		ft_lstsize(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstnew(void *content);
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// PRINTF
+
+// ------------ Bonus (estructura flags) ------------
+typedef struct s_format
+{
+	int		width;			// Flags '0' y '-' Ancho mínimo (ej: %-10s)
+	int		precision;		// Flag '.' Precisión (ej: %.5d)
+	int		zero_pad;		// Flag '0' (ej: %05d)
+	int		left_align;		// Flag '-' (ej: %-10s)
+	int		hash;			// Flag '#' (ej: %#x)
+	int		space;			// Flag ' ' (ej: % d)
+	int		plus;			// Flag '+' (ej: %+d)
+	char	specifier;		// Carácter de conversión (c, s, d, etc.)
+}	t_format;
+
+// ------------- Funtion (Principal) ----------------
+int		ft_printf_fd(int fd, char const *str, ...);
+
+// ----------- Aux. Funtion (flags bonus) ------------
+void	ft_apply_flags(char **str, t_format *fmt);
+void	ft_apply_hash(char **str, t_format *fmt);
+void	ft_apply_left_align(char **str, t_format *fmt);
+void	ft_apply_plus(char **str, t_format *fmt);
+void	ft_apply_precision(char **str, t_format *fmt);
+void	ft_apply_space(char **str, t_format *fmt);
+void	ft_apply_zero_pad(char **str, t_format *fmt);
+void	ft_apply_min_width(char **str, t_format *fmt);
+
+// ------------ Print Funtion (Utils) ----------------
+int		ft_print_char_fd(char c, t_format *fmt, int fd);
+int		ft_print_str_fd(char *str, t_format *fmt, int fd);
+int		ft_print_ptr_fd(void *ptr, t_format *fmt, int fd);
+int		ft_print_num_fd(int n, t_format *fmt, int fd);
+int		ft_print_unsigned_fd(unsigned int n, t_format *fmt, int fd);
+int		ft_print_hex_fd(unsigned int n, t_format *fmt, int uppercase, int fd);
+int		ft_print_float_fd(double f, t_format *fmt, int fd);
+
+// ------------ Aux. Funtion (Utils) --------------
+char	*ft_itoa_base(long n, char *base);
+char	*ft_utoa_base(unsigned long n);
+
+// ------------ Aux. Funtion float (Utils) --------------
+long	ft_power_10(int exp);
+int		ft_is_special(double f, char **result);
+void	ft_add_zeros(char *result, int *pos, int count);
+
+// GET_NEXT_LINE
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
+
+// ------------- Funtion (Principal) --------------
+char	*get_next_line(int fd);
+
+#endif

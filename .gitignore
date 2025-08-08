@@ -1,3 +1,14 @@
+# Ignora
+*.txt
+*.out
+*.exe
+*.o
+*.a
+*.py
+*.swp
+./obj
+.editorconfig
+
 # Prerequisites
 *.d
 
