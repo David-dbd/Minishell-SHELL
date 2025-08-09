@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:02 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/09 16:26:13 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/09 16:30:56 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 /* ************************************************************************** */
 # include "../lib/libft_plus/libft_plus.h"
 # include "../lib/minilibx-linux/mlx.h"
-# include <math.h>
 # include <errno.h>
 # include "fdf_structs.h"
 # include "fdf_macros.h"
