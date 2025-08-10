@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/08/10 23:22:04 by migarrid         ###   ########.fr        #
+#    Updated: 2025/08/11 00:01:56 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,14 +48,14 @@ DEPS				= $(HEADER) $(MAKEFILE) $(LIBFT_H) $(LIBFT_MAKEFILE)
 # **************************************************************************** #
 #                      File Paths and Dependencies                             #
 # **************************************************************************** #
-MAKEFILE				= Makefile
-HEADER					= $(INC_DIR)/minishell.h \
-						  $(INC_DIR)/minishell_macros.h \
-						  $(INC_DIR)/minishell_structs.h
-LIBFT_A					= $(LIBFT_DIR)/libft_plus.a
-LIBFT_H					= $(LIBFT_DIR)/libft_plus.h
-LIBFT_MAKEFILE			= $(LIBFT_DIR)/Makefile
-LDLIBS					= -lreadline
+MAKEFILE			= Makefile
+HEADER				= $(INC_DIR)/minishell.h \
+					  $(INC_DIR)/minishell_macros.h \
+					  $(INC_DIR)/minishell_structs.h
+LIBFT_A				= $(LIBFT_DIR)/libft_plus.a
+LIBFT_H				= $(LIBFT_DIR)/libft_plus.h
+LIBFT_MAKEFILE		= $(LIBFT_DIR)/Makefile
+LDLIBS				= -lreadline
 
 # **************************************************************************** #
 #                                   Colors                                     #
