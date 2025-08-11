@@ -230,24 +230,33 @@ parseando(t_shell data, t_prompt *prompt)
 
 get_tokens
 {
-	while(input)
+	while(input[i] != )
 	{
-		is_parentesis
+		is_parentesis(token)
 		is_comilla
 		is_doble_comilla
 		is_pipe
-		is_semicolon
+		is_semicolon if (cahr == ';')
 		is_point
 		is_wildcar
 		is_and
 		is_or
 		is_heredoc
 		is_redir
+		is_word(token, &str[i] + i);
 		is_finished
 		i++
 	}
 }
-parse_tokens
+
+hola |
+is-word(char *word)
+j = 0;
+while (str[j] != ' ')
+j++;
+
+iswordcomadn(tokens, word, j );
+is_word_or_command
 {
 	while(tokens[i])
 	{
