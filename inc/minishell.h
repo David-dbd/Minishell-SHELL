@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:02 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/10 23:27:32 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/11 16:19:19 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		signal_handler(int sig, siginfo_t *info, void *context);
 /* ************************************************************************** */
 /*                                 Exits                                      */
 /* ************************************************************************** */
-void		exit_error(t_shell *data, char *error, int exit_code);
+int			exit_error(t_shell *data, char *error, int exit_code);
 
 /* ************************************************************************** */
 /*                                 Clean                                      */

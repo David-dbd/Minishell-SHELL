@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/10 23:36:44 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/11 16:30:17 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ int	main(int argc, char **argv)
 	char	*input;
 
 	init_signals();									//inicializamos sa
-	// init_data(&data);							//inicializamos data
-	// while (recieve_input(&input, &data) != NULL)	//llamamos a readline
-	// {
-	// 	if (*input)									//por si el usuario presiona solo ENTER "\0"
-	// 		add_history(input);
-	// 	if (!steps_manager(&data, input))			//Empezamos el proceso. La razon por la que se pasa input es porque no se quiere anadir input a data. Queda feo.
-	// 		return (exit_error(&data));
-	// }
+	init_data(&data, &input);						//inicializamos data
+	while (recieve_input(&input, &data) != NULL)	//llamamos a readline
+	{
+		if (*input)									//por si el usuario presiona solo ENTER "\0"
+			add_history(input);
+		if (!steps_manager(&data, input))			//Empezamos el proceso. La razon por la que se pasa input es porque no se quiere anadir input a data. Queda feo.
+			return (exit_error(&data, NULL, EXIT_FAILURE));
+	}
 	ft_printf_fd(STDOUT, "Exit\n");
 	return (0);
 }

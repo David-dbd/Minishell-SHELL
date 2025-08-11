@@ -177,12 +177,10 @@ parseando(t_shell data, t_prompt *prompt)
 	{
 		if ( str[i] == '(')
 		{
-			prompt->n_parentesis++;
 			ft_add_token(str[i]);
 		}
 		else if (str[i] != unitarios && != espacio)
 		{
-			prompt->n_cmds++;
 			start = str[i];
 			while (str[i] != unitarios && != espacio)
 			{
@@ -191,10 +189,79 @@ parseando(t_shell data, t_prompt *prompt)
 			ft_add_token(start + end);
 		}
 	}
-	if (!ft_validate(data) || !ft_validate_tokens)
+	ft_add_token(t_tokens *tokens ,char *token)
 	{
-
+		static int i;
+		tokens[i]->value = token;
+		i++;
+		if (falg)
+			ft_parsing2(tokens);
 	}
+
+	ft_parsing2()
+	{
+		char **arr1 = {"(", ")", "\"", "\'", "||"...NULL}
+		char ** arr2 = PARENTESIS, PARENTESIS CERRADO, COMILLA, ETC...NULL.};
+
+		int i;
+		while (tokens->value[i])
+		{
+			j = 0;
+			if (ft_isalpha(tokens[i]->value) || ft_isdigit(tokens[i]->value))
+			{
+				tokens[i]->type = ft_check_if_word_or_cmd(tokens[i]->value);
+			}
+			else
+			{
+				while (arr1[j] != NULL)
+				{
+					if (tokens->value[i] == arr1[j])
+					{
+						if (token->value != $)
+							tokens->exppand = 0;
+						tokens->type = arr2[j];
+					}
+					j++;
+				}
+				i++;
+			}
+		}
+	}
+
+get_tokens
+{
+	while(input)
+	{
+		is_parentesis
+		is_comilla
+		is_doble_comilla
+		is_pipe
+		is_semicolon
+		is_point
+		is_wildcar
+		is_and
+		is_or
+		is_heredoc
+		is_redir
+		is_finished
+		i++
+	}
+}
+parse_tokens
+{
+	while(tokens[i])
+	{
+		is_command_is_word(tokens[i])
+		is_quoted(tokens)
+		is_expand(tokens)
+		i++
+	}
+}
+valid_tokens
+{
+	verify_sintaxis(tokens)
+}
+
 
 
 }

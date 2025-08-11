@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/11 00:00:17 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/11 17:42:46 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ typedef enum e_type
 	HEREDOC,
 	COMMAND,
 	SEMICOLON,
-	LPAREN,
-	RPAREN,
+	PAREN_OPEN,
+	PAREN_CLOSE,
+	WILDCAR,
+	ASSIGNMENT,
 	AND,
 	OR
 }	t_type;
@@ -43,7 +45,6 @@ struct s_token
 	bool		quoted;
 	bool		expand;
 	t_exp		*expansion;
-	t_token		*next;
 };
 
 typedef struct s_prompt
