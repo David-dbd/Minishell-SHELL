@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:02 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/11 16:19:19 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/11 21:34:34 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,16 @@ extern volatile sig_atomic_t	g_signal_event;
 /* ************************************************************************** */
 /*                             Initialization                                 */
 /* ************************************************************************** */
+void	init_data(t_shell *data, char **input);
+void	allocate_tokens(t_shell *data, t_prompt *prompt, char *input);
 
 /* ************************************************************************** */
 /*                               Tokenizer                                    */
 /* ************************************************************************** */
+int		tokenizer(t_shell *data, t_prompt *prompt, char *input);
+void 	get_tokens(t_shell *data, t_token *tokens, char *input);
+void	is_word_or_cmd(t_shell *d, t_prompt *p, t_token *t, char *s);
+void	add_token(t_token *tokens, char *value, int type);
 
 /* ************************************************************************** */
 /*                                  AST                                       */
@@ -65,21 +71,33 @@ extern volatile sig_atomic_t	g_signal_event;
 /* ************************************************************************** */
 /*                                Signals                                     */
 /* ************************************************************************** */
-int			init_signals(void);
-void		signal_handler(int sig, siginfo_t *info, void *context);
+int		init_signals(void);
+void	signal_handler(int sig, siginfo_t *info, void *context);
 
 /* ************************************************************************** */
 /*                                 Exits                                      */
 /* ************************************************************************** */
-int			exit_error(t_shell *data, char *error, int exit_code);
+int		exit_error(t_shell *data, char *error, int exit_code);
 
 /* ************************************************************************** */
 /*                                 Clean                                      */
 /* ************************************************************************** */
-void		clean_all(t_shell *data);
+void	clean_all(t_shell *data);
 
 /* ************************************************************************** */
 /*                                 utils                                      */
 /* ************************************************************************** */
+void	is_word(t_shell *data, t_token *tokens, const char *str, int *i);
+void	is_dolar(t_shell *data, t_token *tokens, const char *str, int *i);
+void	is_quote(t_token *tokens, char c);
+void	is_pipe(t_token *tokens, char c);
+void	is_parenten(t_token *tokens, char c);
+void	is_semicolon(t_token *tokensmm, char c);
+void	is_wildcar(t_token *tokens, char c);
+void	is_or(t_token *tokens, const char *str, int *i);
+void	is_and(t_token *tokens, const char *str, int *i);
+void	is_redir(t_token *tokens, const char *str, int *i);
+void	is_heredoc(t_token *tokens, const char *str, int *i);
+void	is_finished(t_token *tokens, char c);
 
 #endif

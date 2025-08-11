@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 19:51:37 by migarrid          #+#    #+#              #
-#    Updated: 2025/06/28 17:36:37 by migarrid         ###   ########.fr        #
+#    Updated: 2025/08/11 20:39:57 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS =	libft/ft_isalpha.c \
 		libft/ft_isprint.c \
 		libft/ft_issign.c \
 		libft/ft_isspace.c \
+		libft/ft_isspecial.c \
 		libft/ft_ishex.c \
 		libft/ft_strlen.c \
 		libft/ft_memset.c \

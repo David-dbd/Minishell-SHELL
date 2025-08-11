@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   is_quote.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 23:17:43 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/11 20:18:46 by migarrid         ###   ########.fr       */
+/*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
+/*   Updated: 2025/08/11 19:45:13 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../../../inc/minishell.h"
 
-void	init_data(t_shell *data, char **input)
+void	is_quote(t_token *tokens, char c)
 {
-	*input = NULL;
-	*data = (t_shell){0};
-	*data->prompt.tokens = (t_token){0};
-	*data->ast_root = (t_node){0};
-	*data->env.vars = (t_var){0};
+	if (c == '\'')
+		add_token(tokens, "\'", SINGLE_QUOTE);
+	else if (c == '\"')
+		add_token(tokens, "\"", DOUBLE_QUOTE);
+	else if (c == '`')
+		add_token(tokens, "`", CMD_SUBSTITUTION);
 }

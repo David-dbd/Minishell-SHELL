@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/11 18:28:58 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/11 21:19:05 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,21 @@ typedef enum e_type
 	WORD,
 	GROUP,
 	PIPE,
-	REDIR_IN,
-	REDIR_OUT,
-	REDIR_APD,
-	HEREDOC,
+	REDIR_INPUT,
+	REDIR_OUTPUT,
+	REDIR_APPEND,
+	REDIR_HEREDOC,
 	COMMAND,
+	SCAPE,
+	BUILT_IN,
 	SEMICOLON,
+	SINGLE_QUOTE,
+	DOUBLE_QUOTE,
+	CMD_SUBSTITUTION,
 	PAREN_OPEN,
 	PAREN_CLOSE,
 	WILDCAR,
-	ASSIGNMENT,
+	EXPANSION,
 	AND,
 	OR
 }	t_type;
@@ -42,7 +47,8 @@ struct s_token
 {
 	t_type		type;
 	char		*value;
-	bool		quoted;
+	bool		single_quoted;
+	bool		double_quoted;
 	bool		expand;
 	t_exp		*expansion;
 };

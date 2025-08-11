@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:10:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/06/28 17:33:56 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/11 20:43:00 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_issign(int c);
 int		ft_isspace(int c);
+int		ft_isspecial(int c);
 int		ft_ishex(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
