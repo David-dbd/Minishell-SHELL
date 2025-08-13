@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/08/12 17:50:32 by migarrid         ###   ########.fr        #
+#    Updated: 2025/08/13 15:02:50 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CC					= cc
 #WFLAGS				= -Wall -Wextra -Werror
 DFLAGS				= -g
 OFLAGS				= -O2 -march=native -flto
-#SLAGS				= -fsanitize=address
+SLAGS				= -fsanitize=address
 
 # **************************************************************************** #
 #                               Shell Comands                                  #
@@ -95,7 +95,7 @@ SRCS =				main/main.c \
 					steps/tokenizer/utils/is_wildcar.c \
 					steps/tokenizer/utils/is_word.c \
 					steps/tokenizer/utils/is_not_token.c \
-					steps/tokenizer/utils/is_space.c \
+					steps/tokenizer/utils/is_hash.c \
 					signals/init_signals.c \
 					signals/signal_handler.c \
 					exit/exit.c \

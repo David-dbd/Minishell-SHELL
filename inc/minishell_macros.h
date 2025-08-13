@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:23:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/12 17:15:12 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/13 14:07:29 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@
 /* ************************************************************************** */
 /*                              Success Messages                              */
 /* ************************************************************************** */
-# define MSG_WELCOME		"Welcome to minishell!\n"
+# define MSG_WELCOME		"Welcome!\n"
 # define MSG_GOODBYE		"Goodbye!\n"
 
 #endif

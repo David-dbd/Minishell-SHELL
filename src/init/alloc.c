@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 16:50:56 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/12 15:58:01 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/13 13:50:36 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	allocate_tokens(t_shell *data, t_prompt *prompt, char *input)
 
 	prompt->prompt = input;
 	n_alloc_tokens = ft_strlen(input) + 1;
+	prompt->n_tokens = n_alloc_tokens;
 	prompt->tokens = ft_calloc(n_alloc_tokens, sizeof(t_token));
 	if (!prompt->tokens)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);

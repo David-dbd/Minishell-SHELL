@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/12 21:24:34 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/13 15:18:33 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	is_word(t_shell *data, t_token *tokens, const char *str, int *i)
 		word = ft_substr(str, start, len);
 		if (!word)
 			exit_error(data, ERR_MALLOC, EXIT_FAILURE);
-		printf("Token palabra creado: '%s'\n", word); // DEBUG
 		add_token(tokens, word, WORD);
 		// is_word_or_cmd(data, &data->prompt, tokens, word);
 	}

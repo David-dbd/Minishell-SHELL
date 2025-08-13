@@ -6,11 +6,34 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:37:27 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/12 21:21:11 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/13 15:10:34 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+char	*g_type_names[] = {
+	"WORD",
+	"GROUP",
+	"PIPE",
+	"REDIR_INPUT",
+	"REDIR_OUTPUT",
+	"REDIR_APPEND",
+	"REDIR_HEREDOC",
+	"COMMAND",
+	"SCAPE",
+	"BUILT_IN",
+	"SEMICOLON",
+	"SINGLE_QUOTE",
+	"DOUBLE_QUOTE",
+	"CMD_SUBSTITUTION",
+	"PAREN_OPEN",
+	"PAREN_CLOSE",
+	"WILDCAR",
+	"EXPANSION",
+	"AND",
+	"OR"
+};
 
 /*
 	Añade un nuevo token al array `tokens` con el valor y tipo dados.
@@ -48,6 +71,8 @@ void	get_tokens(t_shell *data, t_token *tokens, char *input)
 	{
 		is_not_token(input, &i);
 		is_heredoc(tokens, input, &i);
+		is_dolar(data, tokens, input, &i);
+		is_word(data, tokens, input, &i);
 		is_and(tokens, input, &i);
 		is_or(tokens, input, &i);
 		is_redir(tokens, input, &i);
@@ -57,15 +82,24 @@ void	get_tokens(t_shell *data, t_token *tokens, char *input)
 		is_semicolon(tokens, input, &i);
 		is_wildcar(tokens, input, &i);
 		is_scape(tokens, input, &i);
-		is_dolar(data, tokens, input, &i);
-		is_word(data, tokens, input, &i);
+		is_hash(input, &i);
 	}
 }
 
 int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 {
+	int	i;
+
+	i = 0;
 	allocate_tokens(data, prompt, input);
 	get_tokens(data, prompt->tokens, input);
 	// valid_tokens(prompt->tokens);
+	while (i < prompt->n_tokens)
+	{
+		if (prompt->tokens[i].value)
+			printf("Token [%d]: '%s' (type: %s)\n", i, prompt->tokens[i].value,
+				g_type_names[prompt->tokens[i].type]);
+		i++;
+	}
 	return (SUCCESS);
 }
