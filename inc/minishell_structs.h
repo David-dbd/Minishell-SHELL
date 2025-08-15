@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/11 21:19:05 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/15 18:05:24 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef enum e_type
 
 struct s_token
 {
+	int			id;
 	t_type		type;
 	char		*value;
 	bool		single_quoted;
