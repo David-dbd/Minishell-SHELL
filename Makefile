@@ -96,6 +96,9 @@ SRCS =				main/main.c \
 					steps/tokenizer/utils/is_word.c \
 					steps/tokenizer/utils/is_not_token.c \
 					steps/tokenizer/utils/is_hash.c \
+					steps/tokenizer/utils/is_word_or_cmd.c \
+					steps/tokenizer/utils/valid_tokens.c \
+					steps/tokenizer/utils/valid_numbers.c \
 					signals/init_signals.c \
 					signals/signal_handler.c \
 					exit/exit.c \
