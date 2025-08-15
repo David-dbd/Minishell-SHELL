@@ -55,7 +55,8 @@ void	allocate_tokens(t_shell *data, t_prompt *prompt, char *input);
 /* ************************************************************************** */
 int		tokenizer(t_shell *data, t_prompt *prompt, char *input);
 void	get_tokens(t_shell *data, t_token *tokens, char *input);
-void	is_word_or_cmd(t_shell *d, t_prompt *p, t_token *t, char *s);
+int     is_word_or_cmd(t_shell *d, t_prompt *p, t_token *t, char *s);
+int     valid_numbers(t_shell *data, t_prompt *prompt);
 void	add_token(t_token *tokens, char *value, int type);
 
 /* ************************************************************************** */

@@ -79,7 +79,7 @@ static int compare_built_ins(t_prompt *prompt, t_token *tokens, char *str)
     {
         if (ft_strcmp(built_in[i], str) == 0)
         {
-            tokens.type = COMMAND;
+            tokens->type = COMMAND;
             prompt->n_cmds++;
             return (1);
         }
@@ -105,7 +105,7 @@ int is_word_or_cmd(t_shell *data, t_prompt *prompt, t_token *tokens, char *str)
     validate = find_binary(path_arr, path_slash, path, str);
     if (validate == 1)
     {
-        tokens.type = COMMAND;
+        tokens->type = COMMAND;
         prompt->n_cmds++;
         return (0);
     }
