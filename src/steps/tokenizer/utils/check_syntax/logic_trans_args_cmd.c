@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 17:04:19 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/16 17:35:09 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/16 23:48:47 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,4 @@ void	logic_trans_args_cmd(t_shell *data, t_token *tokens)
 		}
 		i++;
 	}
-	i++;
 }

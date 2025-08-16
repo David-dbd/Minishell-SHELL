@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:37:27 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/16 21:59:09 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/16 23:50:37 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int	valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 		check_pipe(data, prompt, tokens, i);
 		check_or_and(data, prompt, tokens, i);
 		check_redir_input(data, prompt, tokens, i);
+		check_redir_output(data, prompt, tokens, i);
 		i++;
 	}
 	valid_pair_operands(data, prompt);
@@ -124,9 +125,18 @@ void	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	while (i < prompt->n_tokens)
 	{
 		if (prompt->tokens[i].value)
-			printf("Token [%d]: '%s' (type: %s)\n", i, prompt->tokens[i].value,
+			printf("Before Token [%d]: '%s' (type: %s)\n", i, prompt->tokens[i].value,
 				g_type_names[prompt->tokens[i].type]);
 		i++;
 	}
 	valid_tokens(data, prompt, prompt->tokens);
+	printf("------------------------------------------------\n");
+	i = 0;
+	while (i < prompt->n_tokens)
+	{
+		if (prompt->tokens[i].value)
+			printf("After Token [%d]: '%s' (type: %s)\n", i, prompt->tokens[i].value,
+				g_type_names[prompt->tokens[i].type]);
+		i++;
+	}
 }
