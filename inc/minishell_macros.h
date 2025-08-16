@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:23:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/15 21:46:57 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/16 21:59:28 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define CONTINUE					0
 # define CLEAN						1
 # define RESET						-1
+# define VIRGIN						0
 
 /* ************************************************************************** */
 /*                               Exit Codes                                   */
@@ -150,9 +151,9 @@
 # define ERR_BAD_SUBST		"minishell: %s: bad substitution\n"
 
 //Redirection Errors
-# define ERR_AMBIGUOUS_REDIR	"minishell: %s: ambiguous redirect\n"
-# define ERR_NO_INPUT_FILE	"minishell: %s: No such file or directory\n"
-# define ERR_REDIR_DENIED	"minishell: %s: Permission denied\n"
+# define ERR_AMBIGUOUS_REDIR	"minishell: ambiguous redirect\n"
+# define ERR_NO_INPUT_FILE	"minishell: No such file or directory\n"
+# define ERR_REDIR_DENIED	"minishell: Permission denied\n"
 
 /* ************************************************************************** */
 /*                              Success Messages                              */

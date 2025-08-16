@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/16 16:06:44 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/16 21:56:26 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_token	t_node;
 
 typedef enum e_type
 {
+	START,
 	WORD,
 	GROUP,
 	PIPE,
@@ -64,6 +65,9 @@ typedef struct s_prompt
 	int			n_pipes;
 	int			n_cmds;
 	int			n_tokens;
+	int			n_redir_input;
+	int			n_redir_output;
+	bool		error;
 	char		*prompt;
 	t_token		*tokens;
 }	t_prompt;
@@ -117,6 +121,7 @@ typedef struct s_shell
 	t_node		*ast_root;
 	t_exec		executor;
 	t_env		env;
+	int			last_exit_code;
 }	t_shell;
 
 #endif

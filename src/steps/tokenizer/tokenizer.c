@@ -6,13 +6,14 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:37:27 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/16 17:00:47 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/16 21:59:09 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
 
 char	*g_type_names[] = {
+	"START",
 	"WORD",
 	"GROUP",
 	"PIPE",
@@ -99,12 +100,13 @@ int	valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 	int	i;
 
 	i = 0;
-	while (tokens[i].type)
+	while (tokens[i].type && prompt->error == VIRGIN)
 	{
 		check_open_parent(data, prompt, tokens, i);
 		check_close_parent(data, prompt, tokens, i);
 		check_pipe(data, prompt, tokens, i);
 		check_or_and(data, prompt, tokens, i);
+		check_redir_input(data, prompt, tokens, i);
 		i++;
 	}
 	valid_pair_operands(data, prompt);
@@ -119,7 +121,6 @@ void	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	i = 0;
 	allocate_tokens(data, prompt, input);
 	get_tokens(data, prompt->tokens, input);
-	valid_tokens(data, prompt, prompt->tokens);
 	while (i < prompt->n_tokens)
 	{
 		if (prompt->tokens[i].value)
@@ -127,4 +128,5 @@ void	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 				g_type_names[prompt->tokens[i].type]);
 		i++;
 	}
+	valid_tokens(data, prompt, prompt->tokens);
 }
