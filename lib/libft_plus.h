@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:10:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/11 20:43:00 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 17:45:46 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct s_format
 
 // ------------- Funtion (Principal) ----------------
 int		ft_printf_fd(int fd, char const *str, ...);
+int		ft_var_printf_fd(int fd, char const *str, va_list args);
 
 // ----------- Aux. Funtion (flags bonus) ------------
 void	ft_apply_flags(char **str, t_format *fmt);

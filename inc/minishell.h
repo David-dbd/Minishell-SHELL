@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:02 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 17:20:40 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 18:17:23 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ void	signal_handler(int sig, siginfo_t *info, void *context);
 /* ************************************************************************** */
 /*                                 Exits                                      */
 /* ************************************************************************** */
-int		exit_error(t_shell *data, char *error, int exit_code);
+int		exit_error(t_shell *data, const char *error, int exit_code, ...);
 int		exit_succes(t_shell *data, char *msg, int exit_code);
-int		syntax_error(t_shell *data, char *error, int exit_code);
+int		syntax_error(t_shell *data, const char *error, int exit_code, ...);
 
 /* ************************************************************************** */
 /*                                 Clean                                      */
@@ -116,10 +116,10 @@ void	reset_tokens(void);
 //VALID TOKENS
 int		check_open_parent(t_shell *d, t_prompt *p, t_token *t, int i);
 int		check_close_parent(t_shell *d, t_prompt *p, t_token *t, int i);
-void	check_redir_input(t_shell *d, t_prompt *p, t_token *t, int i);
-void	check_redir_output(t_shell *d, t_prompt *p, t_token *t, int i);
-void	check_semicolon(t_shell *d, t_prompt *p, t_token *t, int i);
-void	check_background(t_shell *d, t_prompt *p, t_token *t, int i);
+int		check_redir_input(t_shell *d, t_prompt *p, t_token *t, int i);
+int		check_redir_output(t_shell *d, t_prompt *p, t_token *t, int i);
+int		check_semicolon(t_shell *d, t_prompt *p, t_token *t, int i);
+int		check_background(t_shell *d, t_prompt *p, t_token *t, int i);
 int		check_pipe(t_shell *data, t_prompt *prompt, t_token *tokens, int i);
 int		check_or_and(t_shell *data, t_prompt *prompt, t_token *tokens, int i);
 int		valid_pair_operands(t_shell *data, t_prompt *prompt);

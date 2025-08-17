@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:23:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 16:48:26 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 18:08:14 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 /* ************************************************************************** */
 # define EXIT_SUCCESS				0
 # define EXIT_FAILURE				1
-# define EXIT_MISUSE				2
+# define EXIT_USE				2
 # define EXIT_CMD_NOT_FOUND			127
 # define EXIT_CMD_NOT_EXECUTABLE	126
 # define EXIT_FATAL_SIGNAL			128
@@ -141,7 +141,8 @@
 # define ERR_ENV_NO_ARGS	"minishell: env: invalid option\n"
 
 //Syntax Errors
-# define ERR_SYNTAX			"minishell: syntax error near unexpected token\n"
+# define ERR_SYNTAX			"minishell: syntax error near unexpected token `%s'\n"
+// # define ERR_SYNTAX			"minishell: syntax error near unexpected token\n"
 # define ERR_SYNTAX_EOF		"minishell: syntax error: unexpected end of file\n"
 # define ERR_SYNTAX_NEWLINE	"minishell: syntax error near unexpected token `newline'\n"
 # define ERR_UNCLOSED_QUOTE	"minishell: unexpected EOF while looking for matching `%c'\n"

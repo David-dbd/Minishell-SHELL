@@ -6,13 +6,13 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 18:39:51 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 16:15:19 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 18:36:35 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
-// void	check_redir_output(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
+// void	check_redir_output(t_shell *data, t_prompt *p, t_token *t, int i)
 // {
 // 	if (tokens[i].type == REDIR_OUTPUT || tokens[i].type == REDIR_APPEND)
 // 	{
@@ -23,7 +23,7 @@
 // 				|| (tokens[i + 1].type == DOUBLE_QUOTE
 // 					&& tokens[i + 2].type == DOUBLE_QUOTE))
 // 			{
-// 				return ((void)syntax_error(data, ERR_SYNTAX, EXIT_MISUSE));
+// 				return ((void)syntax_error(data, ERR_SYNTAX, EXIT_USE));
 // 			}
 // 			// // if (tokens[i + 1].type == COMMAND
 // 			// // 	|| tokens[i + 1].type == WORD
@@ -32,28 +32,36 @@
 // 			// if (access(tokens[i + 1].value, F_OK) == 0)
 // 			// {
 // 			// 	if (is_directory(tokens[i + 1].value))
-// 			// 		return ((void)syntax_error(data, ERR_IS_DIR, EXIT_FAILURE));
+// 			// 		return ((void)syntax_error(data, ERR_IS_DIR, 1));
 // 			// 	if (access(tokens[i + 1].value, W_OK) != 0)
-// 			// 		return ((void)syntax_error(data, ERR_PERM_DENIED, EXIT_FAILURE));
+// 			// 		return ((void)syntax_error(data, ERR_PERM_DENIED, 1));
 // 			// }
 // 			else if (tokens[i + 1].value[0] == '*')
-// 				return ((void)syntax_error(data, ERR_AMBIGUOUS_REDIR, EXIT_FAILURE));
+// 				return ((void)syntax_error(data, ERR_AMBIGUOUS_REDIR, 1));
 // 			return ;
 // 		}
-// 		syntax_error(data, ERR_SYNTAX, EXIT_MISUSE);
+// 		syntax_error(data, ERR_SYNTAX, EXIT_USE);
 // 	}
 // }
 
-void	check_redir_output(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
+int	check_redir_output(t_shell *data, t_prompt *p, t_token *tokens, int i)
 {
 	if (tokens[i].type == REDIR_OUTPUT || tokens[i].type == REDIR_APPEND)
 	{
 		if (!tokens[i + 1].type)
-			return ((void)syntax_error(data, ERR_SYNTAX, EXIT_MISUSE));
+		{
+			syntax_error(data, ERR_SYNTAX, EXIT_USE, "newline");
+			return (SYNTAX_ERROR);
+		}
 		if (!(tokens[i + 1].type == COMMAND
 				|| tokens[i + 1].type == WORD
 				|| tokens[i + 1].type == BUILT_IN
+				|| tokens[i + 1].type == EXPANSION
 				|| tokens[i + 1].type == WILDCAR))
-			return ((void)syntax_error(data, ERR_SYNTAX, EXIT_MISUSE));
+			{
+				syntax_error(data, ERR_SYNTAX, EXIT_USE, tokens[i + 1].value);
+				return (SYNTAX_ERROR);
+			}
 	}
+	return (SUCCESS);
 }

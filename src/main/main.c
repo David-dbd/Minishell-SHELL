@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 16:19:20 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 17:40:04 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	while (recieve_input(&input, &data) != NULL)
 	{
 		if (!tokenizer(&data, &data.prompt, input))
-			continue;
+			continue ;
 		expansion(&data, data.prompt.tokens, &data.env);
 		ast_built(&data, data.prompt.tokens);
 		execute_recursive(&data, data.ast_root, &data.executor);

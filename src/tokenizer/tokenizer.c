@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:37:27 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 17:19:34 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 18:21:22 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,10 @@ int	valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 	i = 0;
 	while (tokens[i].type)
 	{
-		check_open_parent(data, prompt, tokens, i);
-		check_close_parent(data, prompt, tokens, i);
-		check_pipe(data, prompt, tokens, i);
-		check_or_and(data, prompt, tokens, i);
+		// check_open_parent(data, prompt, tokens, i);
+		// check_close_parent(data, prompt, tokens, i);
+		// check_pipe(data, prompt, tokens, i);
+		// check_or_and(data, prompt, tokens, i);
 		check_redir_input(data, prompt, tokens, i);
 		check_redir_output(data, prompt, tokens, i);
 		check_background(data, prompt, tokens, i);

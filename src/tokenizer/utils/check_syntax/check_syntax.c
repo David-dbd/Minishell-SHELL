@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:06:35 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 16:15:29 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 18:09:24 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	check_open_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 			}
 			i++;
 		}
-		exit_error(data, ERR_SYNTAX, EXIT_MISUSE);
+		exit_error(data, ERR_SYNTAX, EXIT_USE);
 	}
 	return (0);
 }
@@ -66,7 +66,7 @@ int	check_close_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 			}
 			i--;
 		}
-		exit_error(data, ERR_SYNTAX, EXIT_MISUSE);
+		exit_error(data, ERR_SYNTAX, EXIT_USE);
 	}
 	return (0);
 }
@@ -91,7 +91,7 @@ int	check_pipe(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 			prompt->n_pipes++;
 			return (0);
 		}
-		exit_error(data, ERR_SYNTAX, EXIT_MISUSE);
+		exit_error(data, ERR_SYNTAX, EXIT_USE);
 	}
 	return (0);
 }
@@ -115,7 +115,7 @@ int	check_or_and(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 		{
 			return (0);
 		}
-		exit_error(data, ERR_SYNTAX, EXIT_MISUSE);
+		exit_error(data, ERR_SYNTAX, EXIT_USE);
 	}
 	return (0);
 }
@@ -130,17 +130,17 @@ int	valid_pair_operands(t_shell *data, t_prompt *prompt)
 	if (prompt->n_parentesis > 0)
 	{
 		if (prompt->n_parentesis % 2 != 0)
-			exit_error(data, ERR_SYNTAX, EXIT_MISUSE);
+			exit_error(data, ERR_SYNTAX, EXIT_USE);
 	}
 	if (prompt->n_double_quotes > 0)
 	{
 		if (prompt->n_single_quotes % 2 != 0)
-			exit_error(data, ERR_SYNTAX, EXIT_MISUSE);
+			exit_error(data, ERR_SYNTAX, EXIT_USE);
 	}
 	if (prompt->n_escape > 0)
 	{
 		if (prompt->n_escape % 2 != 0)
-			exit_error(data, ERR_SYNTAX, EXIT_MISUSE);
+			exit_error(data, ERR_SYNTAX, EXIT_USE);
 	}
 	return (0);
 }

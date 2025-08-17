@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 19:51:37 by migarrid          #+#    #+#              #
-#    Updated: 2025/08/11 20:39:57 by migarrid         ###   ########.fr        #
+#    Updated: 2025/08/17 17:46:30 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,7 @@ SRCS =	libft/ft_isalpha.c \
 		libft/ft_lstiter_bonus.c \
 		libft/ft_lstmap_bonus.c \
 		ft_printf_fd/ft_printf_fd_bonus.c \
+		ft_printf_fd/ft_var_printf_fd_bonus.c \
 		ft_printf_fd/ft_apply_flags_bonus.c \
 		ft_printf_fd/ft_apply_hash_bonus.c \
 		ft_printf_fd/ft_apply_left_align_bonus.c \
