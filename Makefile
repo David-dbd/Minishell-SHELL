@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/08/17 03:54:36 by migarrid         ###   ########.fr        #
+#    Updated: 2025/08/17 17:21:12 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,37 +80,37 @@ SRCS =				main/main.c \
 					main/recieve_input.c \
 					init/init.c \
 					init/alloc.c \
-					steps/steps_manager.c \
-					steps/tokenizer/tokenizer.c \
-					steps/tokenizer/utils/is_tokens/is_and.c \
-					steps/tokenizer/utils/is_tokens/is_dolar.c \
-					steps/tokenizer/utils/is_tokens/is_heredoc.c \
-					steps/tokenizer/utils/is_tokens/is_or.c \
-					steps/tokenizer/utils/is_tokens/is_parenten.c \
-					steps/tokenizer/utils/is_tokens/is_pipe.c \
-					steps/tokenizer/utils/is_tokens/is_quote.c \
-					steps/tokenizer/utils/is_tokens/is_redir.c \
-					steps/tokenizer/utils/is_tokens/is_scape.c \
-					steps/tokenizer/utils/is_tokens/is_semicolon.c \
-					steps/tokenizer/utils/is_tokens/is_wildcar.c \
-					steps/tokenizer/utils/is_tokens/is_word.c \
-					steps/tokenizer/utils/is_tokens/is_not_token.c \
-					steps/tokenizer/utils/is_tokens/is_hash.c \
-					steps/tokenizer/utils/is_tokens/is_cmd.c \
-					steps/tokenizer/utils/check_syntax/check_syntax.c \
-					steps/tokenizer/utils/check_syntax/check_redir_input.c \
-					steps/tokenizer/utils/check_syntax/check_redir_output.c \
-					steps/tokenizer/utils/check_syntax/check_background.c \
-					steps/tokenizer/utils/check_syntax/check_semicolon.c \
-					steps/tokenizer/utils/check_syntax/logic_trans_args_cmd.c \
-					steps/expansion/expansion.c \
-					steps/ast/ast_builder.c \
-					steps/executor/executor.c \
+					tokenizer/tokenizer.c \
+					tokenizer/utils/is_tokens/is_and.c \
+					tokenizer/utils/is_tokens/is_dolar.c \
+					tokenizer/utils/is_tokens/is_heredoc.c \
+					tokenizer/utils/is_tokens/is_or.c \
+					tokenizer/utils/is_tokens/is_parenten.c \
+					tokenizer/utils/is_tokens/is_pipe.c \
+					tokenizer/utils/is_tokens/is_quote.c \
+					tokenizer/utils/is_tokens/is_redir.c \
+					tokenizer/utils/is_tokens/is_scape.c \
+					tokenizer/utils/is_tokens/is_semicolon.c \
+					tokenizer/utils/is_tokens/is_wildcar.c \
+					tokenizer/utils/is_tokens/is_word.c \
+					tokenizer/utils/is_tokens/is_not_token.c \
+					tokenizer/utils/is_tokens/is_hash.c \
+					tokenizer/utils/is_tokens/is_cmd.c \
+					tokenizer/utils/is_tokens/reset_tokens.c \
+					tokenizer/utils/check_syntax/check_syntax.c \
+					tokenizer/utils/check_syntax/check_redir_input.c \
+					tokenizer/utils/check_syntax/check_redir_output.c \
+					tokenizer/utils/check_syntax/check_background.c \
+					tokenizer/utils/check_syntax/check_semicolon.c \
+					tokenizer/utils/check_syntax/logic_trans_args_cmd.c \
+					expansion/expansion.c \
+					ast/ast_builder.c \
+					executor/executor.c \
 					signals/init_signals.c \
 					signals/signal_handler.c \
-					exit/exit.c \
-					exit/error.c \
-					exit/clean.c
+					error/exit.c \
+					error/error.c \
+					error/clean.c
 
 # **************************************************************************** #
 #                              Progress Bars                                   #

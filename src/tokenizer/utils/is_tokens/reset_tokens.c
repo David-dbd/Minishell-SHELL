@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspecial.c                                     :+:      :+:    :+:   */
+/*   reset_tokens.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 20:37:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 17:22:10 by migarrid         ###   ########.fr       */
+/*   Created: 2025/08/17 17:20:11 by migarrid          #+#    #+#             */
+/*   Updated: 2025/08/17 17:20:20 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft_plus.h"
+#include "../../../../inc/minishell.h"
 
-int	ft_isspecial(int c)
+void	reset_tokens()
 {
-	if (c == '<' || c == '>' || c == '&' || c == '|' || c == '\'' \
-		|| c == '\"' || c == '(' || c == ')' || c == '#' \
-		|| c == '*' || c == '$' || c == '\\' || c == '`')
-		return (1);
-	return (0);
+	add_token(NULL, NULL, RESET);
 }

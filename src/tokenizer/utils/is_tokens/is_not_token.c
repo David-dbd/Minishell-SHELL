@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspecial.c                                     :+:      :+:    :+:   */
+/*   is_not_token.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 20:37:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 17:22:10 by migarrid         ###   ########.fr       */
+/*   Created: 2025/08/12 17:41:47 by migarrid          #+#    #+#             */
+/*   Updated: 2025/08/17 17:04:06 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft_plus.h"
+#include "../../../../inc/minishell.h"
 
-int	ft_isspecial(int c)
+void	is_not_token(const char *str, int *i)
 {
-	if (c == '<' || c == '>' || c == '&' || c == '|' || c == '\'' \
-		|| c == '\"' || c == '(' || c == ')' || c == '#' \
-		|| c == '*' || c == '$' || c == '\\' || c == '`')
-		return (1);
-	return (0);
+	char	c;
+
+	c = str[*i];
+	if (ft_isspace(c))
+		(*i)++;
 }

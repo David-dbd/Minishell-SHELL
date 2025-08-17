@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:02 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 04:13:28 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 17:20:40 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	is_redir(t_token *tokens, const char *str, int *i);
 void	is_heredoc(t_token *tokens, const char *str, int *i);
 void	is_not_token(const char *str, int *i);
 void	is_hash(const char *str, int *i);
+void	reset_tokens(void);
 
 //VALID TOKENS
 int		check_open_parent(t_shell *d, t_prompt *p, t_token *t, int i);

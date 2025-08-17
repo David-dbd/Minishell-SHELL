@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspecial.c                                     :+:      :+:    :+:   */
+/*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 20:37:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 17:22:10 by migarrid         ###   ########.fr       */
+/*   Created: 2025/08/09 16:36:57 by migarrid          #+#    #+#             */
+/*   Updated: 2025/08/17 16:14:47 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft_plus.h"
+#include "../../inc/minishell.h"
 
-int	ft_isspecial(int c)
+void	execute_recursive(t_shell *data, t_node *ast_root, t_exec *executor)
 {
-	if (c == '<' || c == '>' || c == '&' || c == '|' || c == '\'' \
-		|| c == '\"' || c == '(' || c == ')' || c == '#' \
-		|| c == '*' || c == '$' || c == '\\' || c == '`')
-		return (1);
-	return (0);
 }

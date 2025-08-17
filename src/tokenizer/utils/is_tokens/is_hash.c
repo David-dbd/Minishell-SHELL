@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspecial.c                                     :+:      :+:    :+:   */
+/*   is_hash.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 20:37:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 17:22:10 by migarrid         ###   ########.fr       */
+/*   Created: 2025/08/12 17:48:47 by migarrid          #+#    #+#             */
+/*   Updated: 2025/08/17 16:16:01 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft_plus.h"
+#include "../../../../inc/minishell.h"
 
-int	ft_isspecial(int c)
+/*
+	Detecta el carácter '#' que inicia un comentario.
+	Ignora todo el resto de la línea desde el '#' hasta el final.
+	Avanza el índice hasta el final del string para terminar el parsing.
+*/
+
+void	is_hash(const char *str, int *i)
 {
-	if (c == '<' || c == '>' || c == '&' || c == '|' || c == '\'' \
-		|| c == '\"' || c == '(' || c == ')' || c == '#' \
-		|| c == '*' || c == '$' || c == '\\' || c == '`')
-		return (1);
-	return (0);
+	if (str[*i] == '#')
+	{
+		while (str[*i] != '\0')
+			(*i)++;
+	}
 }

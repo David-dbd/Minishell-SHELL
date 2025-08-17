@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:42:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 03:27:22 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 16:26:05 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@
 
 char	*recieve_input(char **input, t_shell *data)
 {
-	*input = readline("Minishell>>  ");
+	*input = readline("\033[1;34mminishell>\033[0m ");
 	if (*input == NULL)
 		clean_all(data);
+	else if (*input && input)
+		add_history(*input);
 	return (*input);
 }

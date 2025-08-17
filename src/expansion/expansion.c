@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspecial.c                                     :+:      :+:    :+:   */
+/*   expansion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 20:37:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 17:22:10 by migarrid         ###   ########.fr       */
+/*   Created: 2025/08/09 16:37:06 by migarrid          #+#    #+#             */
+/*   Updated: 2025/08/17 16:14:54 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft_plus.h"
+#include "../../inc/minishell.h"
 
-int	ft_isspecial(int c)
+void	expansion(t_shell *data, t_token *tokens, t_env *env)
 {
-	if (c == '<' || c == '>' || c == '&' || c == '|' || c == '\'' \
-		|| c == '\"' || c == '(' || c == ')' || c == '#' \
-		|| c == '*' || c == '$' || c == '\\' || c == '`')
-		return (1);
-	return (0);
 }

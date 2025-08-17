@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspecial.c                                     :+:      :+:    :+:   */
+/*   logic_trans_args_cmd.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 20:37:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 17:22:10 by migarrid         ###   ########.fr       */
+/*   Created: 2025/08/16 17:04:19 by migarrid          #+#    #+#             */
+/*   Updated: 2025/08/17 16:15:33 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft_plus.h"
+#include "../../../../inc/minishell.h"
 
-int	ft_isspecial(int c)
+void	logic_trans_args_cmd(t_shell *data, t_token *tokens)
 {
-	if (c == '<' || c == '>' || c == '&' || c == '|' || c == '\'' \
-		|| c == '\"' || c == '(' || c == ')' || c == '#' \
-		|| c == '*' || c == '$' || c == '\\' || c == '`')
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (tokens[i].type)
+	{
+		if (i > 0 && (tokens[i - 1].type == COMMAND
+				|| tokens[i - 1].type == BUILT_IN))
+		{
+			if (tokens[i].type == COMMAND || tokens[i].type == BUILT_IN)
+				tokens[i].type = WORD;
+		}
+		i++;
+	}
 }

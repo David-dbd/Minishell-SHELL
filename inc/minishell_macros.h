@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:23:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 03:33:33 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 16:48:26 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,9 +157,10 @@
 # define ERR_REDIR_DENIED	"minishell: Permission denied\n"
 
 /* ************************************************************************** */
-/*                              Success Messages                              */
+/*                          Prompt & Success Messages                         */
 /* ************************************************************************** */
-# define MSG_WELCOME		"Welcome!\n"
-# define MSG_GOODBYE		"Goodbye!\n"
+# define MSG_WELCOME		"\033[1m\033[1;32m────────── Welcome! ──────────\033[0m\n"
+# define MSG_GOODBYE		"\033[1m\033[1m\033[38;5;99m────────── Goodbye! ──────────\033[0m\n"
+# define MINISHELL			"\033[1;34mminishell>\033[0m "
 
 #endif
