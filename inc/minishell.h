@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:02 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 18:17:23 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 19:22:31 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,8 @@ int		check_semicolon(t_shell *d, t_prompt *p, t_token *t, int i);
 int		check_background(t_shell *d, t_prompt *p, t_token *t, int i);
 int		check_pipe(t_shell *data, t_prompt *prompt, t_token *tokens, int i);
 int		check_or_and(t_shell *data, t_prompt *prompt, t_token *tokens, int i);
-int		valid_pair_operands(t_shell *data, t_prompt *prompt);
+int		check_quotes(t_shell *data, t_prompt *prompt, t_token *tokens, int i);
+int		valid_pair_operands(t_shell *data, t_prompt *prompt, t_token *tokens);
 void	logic_trans_args_cmd(t_shell *data, t_token *tokens);
 
 #endif

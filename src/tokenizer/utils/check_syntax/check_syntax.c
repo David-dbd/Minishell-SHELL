@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:06:35 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 18:09:24 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 20:59:32 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,38 @@ int	check_open_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 {
 	int	content_flag;
 
-	content_flag = FALSE;
+	content_flag = 0;
 	if (tokens[i].type == PAREN_OPEN)
 	{
-		while (tokens[i].type)
+		//prompt->n_parentesis++;
+		//printf("entra en open\n");
+		if (i > 0 && tokens[i - 1].type && tokens[i - 1].type == PAREN_CLOSE)
 		{
-			if (tokens[i].type == COMMAND)
-				content_flag = TRUE;
-			if (tokens[i].type == PAREN_CLOSE && i > 1 && content_flag == TRUE)
+			//printf("fallo en open\n");
+			syntax_error(data, ERR_SYNTAX, EXIT_USE, "(");
+			return (SYNTAX_ERROR);
+		}
+		while (i < prompt->n_tokens)
+		{
+			//printf("entra en loop\n");
+			if (tokens[i].type != PAREN_OPEN && tokens[i].type != PAREN_CLOSE)
 			{
+				//printf("content flag en open\n");
+				content_flag++;
+			}
+			if (tokens[i].type == PAREN_CLOSE && i > 1 && content_flag >= 1)
+			{
+				//printf("Tot be con open\n");
 				prompt->n_parentesis++;
-				return (0);
+				return (SUCCESS);
 			}
 			i++;
 		}
-		exit_error(data, ERR_SYNTAX, EXIT_USE);
+		// printf("fallo en open\n");
+		syntax_error(data, ERR_SYNTAX, EXIT_USE, "(");
+		return (SYNTAX_ERROR);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 /*
@@ -48,27 +63,52 @@ int	check_open_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 int	check_close_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 {
 	int	content_flag;
+	int	error_flag;
 	int	j;
 
-	content_flag = FALSE;
+	content_flag = 0;
+	error_flag = FALSE;
 	j = i;
 	if (tokens[i].type == PAREN_CLOSE)
 	{
-		prompt->n_parentesis++;
-		while (tokens[i].type && i >= 1)
+		//prompt->n_parentesis++;
+		if (tokens[i - 1].type && (tokens[i - 1].type == PIPE || tokens[i - 1].type == OR || tokens[i - 1].type == AND) && content_flag == 0)
 		{
-			if (tokens[i].type == COMMAND)
-				content_flag = TRUE;
-			if (tokens[i].type == PAREN_OPEN && i < j && content_flag == TRUE)
+			//printf("error_flag activated\n");
+			error_flag = TRUE;
+		}
+		while (i >= 0)
+		{
+			if (tokens[i].type != PAREN_OPEN && tokens[i].type != PAREN_CLOSE)
+				content_flag++;
+			if (tokens[i].type == PAREN_OPEN && i < j && content_flag == 1 && error_flag == TRUE) //Si es un comando que tiene "|" justo antes de ")" y nada mas: (|)
 			{
+				// printf("Tot be con close\n");
+				//printf("content flag: %d \n", content_flag);
 				prompt->n_parentesis++;
-				return (0);
+				return (SUCCESS);
+			}
+			else if (tokens[i].type == PAREN_OPEN && i < j && content_flag >= 1 && error_flag == FALSE) //Si es un comando que no tiene un "|" justo antes del ")": (ls)
+			{
+				// printf("Tot be con close\n");
+				//printf("content flag: %d \n", content_flag);
+				prompt->n_parentesis++;
+				return (SUCCESS);
+			}
+			else if (tokens[i].type == PAREN_OPEN && i < j && content_flag > 1 && error_flag == TRUE) //Si lo que esta antes de ")" es un "|" y hay mas contenido: (ls |)
+			{
+				// printf("fallo en  close\n");
+				//printf("content flag: %d \n", content_flag);
+				syntax_error(data, ERR_SYNTAX, EXIT_USE, ")");
+				return (SYNTAX_ERROR);
 			}
 			i--;
 		}
-		exit_error(data, ERR_SYNTAX, EXIT_USE);
+		// printf("fallo en ')' \n");
+		syntax_error(data, ERR_SYNTAX, EXIT_USE, ")");
+		return (SYNTAX_ERROR);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 /*
@@ -78,9 +118,13 @@ int	check_close_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 
 int	check_pipe(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 {
+	// heardoc:    cmd | nothing if (tokens[i - 1].type && !tokens[i - 1].type)
+	// command not found: cmd | cmd success;      cmd | word fails;   word | cmd fails and success;  word | word fails;
+	// syntax error near unexpected token `|':    nothing | nothing fails;   nothing | cmd fails;
 	if (tokens[i].type == PIPE)
 	{
-		if (i > 0 && tokens[i + 1].type && tokens[i - 1].type
+		if ((i > 0 && i < prompt->n_tokens)
+			&& tokens[i + 1].type && tokens[i - 1].type
 			&& ((tokens[i + 1].type == COMMAND
 					|| tokens[i + 1].type == WORD
 					|| tokens[i + 1].type == BUILT_IN)
@@ -89,11 +133,20 @@ int	check_pipe(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 					|| tokens[i - 1].type == BUILT_IN)))
 		{
 			prompt->n_pipes++;
-			return (0);
+			return (SUCCESS);
 		}
-		exit_error(data, ERR_SYNTAX, EXIT_USE);
+		//printf("entra en PIPE\n");
+		//if ((i > 0 && i < prompt->n_tokens) && (tokens[i + 1].type && tokens[i - 1].type))
+		//{
+		//	if ()
+		//	prompt->n_pipes++;
+		//	return (0);
+		//}
+		// printf("error PIPE\n");
+		syntax_error(data, ERR_SYNTAX, EXIT_USE, tokens[i].value);
+		return (SYNTAX_ERROR);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 /*
@@ -103,21 +156,25 @@ int	check_pipe(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 
 int	check_or_and(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 {
+	// heardoc:    cmd && nothing if (tokens[i - 1].type && !tokens[i - 1].type)
+	// command not found: cmd && cmd success;      cmd && word fails;   word && cmd fails and success;  word && word fails;
+	// syntax error near unexpected token `&&':    nothing && nothing fails;   nothing && cmd fails;
 	if (tokens[i].type == OR || tokens[i].type == AND)
 	{
-		if (i > 0 && tokens[i + 1].type && tokens[i - 1].type
-			&& ((tokens[i + 1].type == COMMAND
-					|| tokens[i + 1].type == WORD
-					|| tokens[i + 1].type == BUILT_IN)
-				&& (tokens[i - 1].type == COMMAND
-					|| tokens[i - 1].type == WORD
-					|| tokens[i - 1].type == BUILT_IN)))
+		//printf("entra a && ||\n");
+		if ((i > 0 && i < prompt->n_tokens) && (tokens[i + 1].type && tokens[i - 1].type))
 		{
-			return (0);
+			if (tokens[i].type == AND)
+				prompt->n_and++;
+			else if (tokens[i].type == OR)
+				prompt->n_or++;
+			return (SUCCESS);
 		}
-		exit_error(data, ERR_SYNTAX, EXIT_USE);
+		// printf("error && ||\n");
+		syntax_error(data, ERR_SYNTAX, EXIT_USE, tokens[i].value);
+		return (SYNTAX_ERROR);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 /*
@@ -125,22 +182,106 @@ int	check_or_and(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 	par y correctamente emparejados.
 */
 
-int	valid_pair_operands(t_shell *data, t_prompt *prompt)
+int	check_quotes(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 {
-	if (prompt->n_parentesis > 0)
+	if (tokens[i].type == DOUBLE_QUOTE)
 	{
-		if (prompt->n_parentesis % 2 != 0)
-			exit_error(data, ERR_SYNTAX, EXIT_USE);
+		while (i < prompt->n_tokens)
+		{
+			if (tokens[i].type == DOUBLE_QUOTE && i >= 1)
+			{	//printf("Tot be con double quote\n");
+				prompt->n_double_quotes++;
+				return (SUCCESS);
+			}
+			i++;
+		}
+		// printf("Falla en doublequote\n");
+		syntax_error(data, ERR_SYNTAX, EXIT_USE, "\"");
+		return (SYNTAX_ERROR);
 	}
-	if (prompt->n_double_quotes > 0)
+	else if (tokens[i].type == SINGLE_QUOTE)
 	{
-		if (prompt->n_single_quotes % 2 != 0)
-			exit_error(data, ERR_SYNTAX, EXIT_USE);
+		while (i < prompt->n_tokens)
+		{
+			if (tokens[i].type == SINGLE_QUOTE && i >= 1)
+			{	//printf("Tot be con single quote\n");
+				prompt->n_single_quotes++;
+				return (SUCCESS);
+			}
+			i++;
+		}
+		// printf("Falla en single\n");
+		syntax_error(data, ERR_SYNTAX, EXIT_USE, "\'");//HEARDOC
+		return (SYNTAX_ERROR);
 	}
-	if (prompt->n_escape > 0)
+	return (SUCCESS);
+}
+int	valid_pair_operands(t_shell *data, t_prompt *prompt, t_token *tokens)
+{
+	int i;
+	int j;
+	int k;
+	int balance;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	balance = 0;
+	while (i < prompt->n_tokens)
 	{
-		if (prompt->n_escape % 2 != 0)
-			exit_error(data, ERR_SYNTAX, EXIT_USE);
+		if (tokens[i].type == PAREN_OPEN)
+			balance++;
+		else if (tokens[i].type == PAREN_CLOSE)
+			balance--;
+		if (balance < 0)
+		{
+			syntax_error(data, ERR_SYNTAX, EXIT_USE, ")");// cierre sin apertura
+			return (SYNTAX_ERROR);
+		}
+		i++;
 	}
-	return (0);
+	if (balance > 0)
+	{
+		syntax_error(data, ERR_SYNTAX, EXIT_USE, "(");// apertura sin cierre
+		return (SYNTAX_ERROR);
+	}
+	balance = 0;
+	while (j < prompt->n_tokens)
+	{
+		if (tokens[j].type == DOUBLE_QUOTE)
+			balance++;
+		else if (tokens[j].type == DOUBLE_QUOTE)
+			balance--;
+		if (balance < 0)
+		{
+			syntax_error(data, ERR_SYNTAX, EXIT_USE, "\"");// cierre sin apertura
+			return (SYNTAX_ERROR);
+		}
+		j++;
+	}
+	if (balance > 0)
+	{
+		syntax_error(data, ERR_SYNTAX, EXIT_USE, "\"");// apertura sin cierre
+		return (SYNTAX_ERROR);
+	}
+	balance = 0;
+	while (k < prompt->n_tokens)
+	{
+		if (tokens[k].type == SINGLE_QUOTE)
+			balance++;
+		else if (tokens[k].type == SINGLE_QUOTE)
+			balance--;
+		if (balance < 0)
+		{
+			syntax_error(data, ERR_SYNTAX, EXIT_USE, "\'");// cierre sin apertura
+			return (SYNTAX_ERROR);
+		}
+		k++;
+	}
+	if (balance > 0)
+	{
+		syntax_error(data, ERR_SYNTAX, EXIT_USE, "\'");// apertura sin cierre
+		return (SYNTAX_ERROR);
+	}
+	return (SUCCESS);
 }

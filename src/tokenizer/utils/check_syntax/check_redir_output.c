@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 18:39:51 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 18:36:35 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 20:55:44 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int	check_redir_output(t_shell *data, t_prompt *p, t_token *tokens, int i)
 				|| tokens[i + 1].type == BUILT_IN
 				|| tokens[i + 1].type == EXPANSION
 				|| tokens[i + 1].type == WILDCAR))
-			{
-				syntax_error(data, ERR_SYNTAX, EXIT_USE, tokens[i + 1].value);
-				return (SYNTAX_ERROR);
-			}
+		{
+			syntax_error(data, ERR_SYNTAX, EXIT_USE, tokens[i + 1].value);
+			return (SYNTAX_ERROR);
+		}
 	}
 	return (SUCCESS);
 }

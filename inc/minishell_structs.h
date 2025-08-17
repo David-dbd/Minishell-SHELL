@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/16 23:30:06 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 20:52:44 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ typedef struct s_prompt
 	int			n_escape;
 	int			n_pipes;
 	int			n_cmds;
+	int			n_or;
+	int			n_and;
 	int			n_tokens;
+	int			n_alloc_tokens;
 	int			n_redir_input;
 	int			n_redir_output;
 	bool		error;

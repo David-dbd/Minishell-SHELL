@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 03:26:20 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 18:11:14 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/17 20:52:00 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	syntax_error(t_shell *data, const char *error, int exit_code, ...)
 {
-	va_list args;
+	va_list	args;
 
 	if (data->prompt.tokens)
 		clean_prompt(&data->prompt);

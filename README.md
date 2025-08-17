@@ -310,3 +310,64 @@ validate()
 	}
 }
 
+ERRORES SYNTACTICOS TOTAL:
+
+# Paréntesis desbalanceados
+( ls -l
+ls -l )
+echo ( ls )
+
+# Comillas desbalanceadas
+echo "hola
+echo 'hola
+
+# Pipes y redirecciones mal usados
+| ls
+ls |
+ls | | grep txt
+ls > | grep txt
+ls >> | grep txt
+
+# Operadores lógicos mal posicionados
+&& ls
+ls &&
+ls || ||
+ls && || echo hola
+
+# Redirecciones sin operandos
+ls >
+ls <
+
+# Combinaciones de operadores
+ls && | grep txt
+ls || > archivo
+ls | && echo hola
+
+# Heredoc mal formado
+cat <<
+cat << EOF
+
+# Comillas y paréntesis mezclados
+echo " ( hola )
+echo ' ) hola ( '
+
+# Wildcards y operadores
+ls * &&
+ls * |
+
+ERRORES SYNTACTICOS POR RESOLVER:
+echo 'hola
+echo "hola
+echo " ( hola )
+ls && || echo hola
+echo ' ) hola ( '
+revisar error(ls | && echo hola)
+
+
+TAREAS:
+
+* PARENTESIS - QUOTES - NORMA
+* VARIABLE NUEVA - C_TOKENS
+* 
+*
+
