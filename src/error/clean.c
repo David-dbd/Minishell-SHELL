@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:47:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 17:19:58 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/19 18:21:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	clean_tokens(t_prompt *prompt)
 	int	i;
 
 	i = 0;
-	while (i < prompt->n_tokens)
+	while (i < prompt->n_alloc_tokens)
 	{
 		if (prompt->tokens[i].value
 			&& (prompt->tokens[i].type == WORD

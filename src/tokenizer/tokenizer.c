@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:37:27 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 20:36:35 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/19 18:29:31 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	print_tokens_debug(t_prompt *prompt)
 	int	i;
 
 	i = 0;
-	while (i < prompt->n_tokens)
+	while (i < prompt->n_alloc_tokens)
 	{
 		if (prompt->tokens[i].value)
 			printf("Token [%d]: '%s' (type: %s)\n", i, prompt->tokens[i].value,
@@ -102,6 +102,9 @@ void	get_tokens(t_shell *data, t_token *tokens, char *input)
 		is_word(data, tokens, input, &i);
 		is_hash(input, &i);
 	}
+	calculate_tokens(&data->prompt, tokens);
+	printf("Alloc Tokens: %d\n", data->prompt.n_alloc_tokens);
+	printf("Syntax Tokens: %d\n", data->prompt.n_tokens);
 }
 
 /*
@@ -138,7 +141,7 @@ int	valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 	}
 	valid_pair_operands(data, prompt, tokens);
 	logic_trans_args_cmd(data, tokens);
-	return (SUCCESS); //y ademas es mas ineficiente
+	return (SUCCESS);
 }
 
 int	tokenizer(t_shell *data, t_prompt *prompt, char *input)

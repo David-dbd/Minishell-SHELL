@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:02 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 19:22:31 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/19 18:23:18 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	is_redir(t_token *tokens, const char *str, int *i);
 void	is_heredoc(t_token *tokens, const char *str, int *i);
 void	is_not_token(const char *str, int *i);
 void	is_hash(const char *str, int *i);
+void	calculate_tokens(t_prompt *prompt, t_token *tokens);
 void	reset_tokens(void);
 
 //VALID TOKENS

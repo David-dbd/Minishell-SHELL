@@ -366,8 +366,30 @@ revisar error(ls | && echo hola)
 
 TAREAS:
 
-* PARENTESIS - QUOTES - NORMA
+* PARENTESIS - QUOTES - NORMA \
 * VARIABLE NUEVA - C_TOKENS
-* 
-*
+
+
+NOS SALVO LA VIDA:
+
+# 1. Asegúrate de estar en la rama test y copia el hash del commit
+git checkout test
+git log --oneline   # copia el primer hash (el último commit)
+
+# 2. Para cada rama que quieres que sea igual a test:
+git checkout main
+git reset --hard <hash_test>
+git push -f origin main
+
+git checkout ramaX
+git reset --hard <hash_test>
+git push -f origin ramaX
+
+git checkout ramaY
+git reset --hard <hash_test>
+git push -f origin ramaY
+
+# 3. Cuando todas estén ya iguales a test → elimina la rama test
+git branch -D test
+git push origin --delete test
 
