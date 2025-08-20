@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 17:40:04 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/20 02:07:35 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	main(int argc, char **argv)
 {
 	t_shell	data;
 	char	*input;
-
+	time_t session_start;
+	
+	session_start = time(NULL);
+	print_session_start(session_start);
 	init_signals();
 	init_data(&data, &input);
 	while (recieve_input(&input, &data) != NULL)
@@ -37,6 +40,7 @@ int	main(int argc, char **argv)
 		execute_recursive(&data, data.ast_root, &data.executor);
 		clean_prompt(&data.prompt);
 	}
+	print_session_end(session_start);
 	exit_succes(&data, MSG_GOODBYE, EXIT_SUCCESS);
 	return (0);
 }

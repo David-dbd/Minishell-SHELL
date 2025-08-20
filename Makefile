@@ -6,7 +6,7 @@
 #    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/08/19 21:23:56 by davdiaz-         ###   ########.fr        #
+#    Updated: 2025/08/20 01:41:51 by davdiaz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,9 @@ CLEAR 				= \r\033[K
 # **************************************************************************** #
 SRCS =				main/main.c \
 					main/recieve_input.c \
+					main/print_session_start.c \
+					main/print_session_end.c \
+					main/print_time_of_day.c \
 					init/init.c \
 					init/alloc.c \
 					tokenizer/tokenizer.c \

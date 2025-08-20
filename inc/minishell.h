@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:02 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/19 22:02:36 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/08/20 02:10:12 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # include <signal.h>
 # include <errno.h>
 # include <term.h>
+# include <time.h>
 
 /* ************************************************************************** */
 /*                                 Globales                                   */
@@ -127,5 +128,13 @@ int		check_parent_balance(t_shell *data, t_prompt *prompt, t_token *tokens);
 int		check_double_balance(t_shell *data, t_prompt *prompt, t_token *tokens, int i);
 int     check_single_balance(t_shell *data, t_prompt *prompt, t_token *tokens, int i);
 void	logic_trans_args_cmd(t_shell *data, t_token *tokens);
+
+/* ************************************************************************** */
+/*                               extras - time                                */
+/* ************************************************************************** */
+void    print_session_start(time_t start);
+void    print_session_end(time_t start);
+void    print_time_of_day(time_t start);
+
 
 #endif
