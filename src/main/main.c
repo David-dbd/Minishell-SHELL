@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/20 17:09:53 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/20 20:46:40 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 	con `steps_manager`.
 */
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
 	t_shell	data;
 	char	*input;
@@ -35,7 +35,6 @@ int	main(int argc, char **argv)
 	{
 		if (!tokenizer(&data, &data.prompt, input))
 			continue ;
-		expansion(&data, data.prompt.tokens, &data.env);
 		ast_built(&data, data.prompt.tokens);
 		execute_recursive(&data, data.ast_root, &data.executor);
 		clean_prompt(&data.prompt);

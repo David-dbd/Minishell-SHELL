@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_open_parent.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 22:40:41 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/08/19 22:40:44 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/08/20 20:25:07 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_open_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 	content_flag = 0;
 	if (tokens[i].type == PAREN_OPEN)
 	{
-		if (i > 0 && tokens[i - 1].type && (tokens[i - 1].type == PAREN_CLOSE || tokens[i - 1].type == COMMAND || tokens[i - 1].type == WORD || tokens[i - 1].type == BUILT_IN))
+		if (i > 0 && tokens[i - 1].type && (tokens[i - 1].type == PAREN_CLOSE || tokens[i - 1].type == COMMAND || tokens[i - 1].type == WORD || tokens[i - 1].type == BUILT_IN || tokens[i - 1].type == EXPANSION))
 		{
 			syntax_error(data, ERR_SYNTAX, EXIT_USE, "(");
 			return (SYNTAX_ERROR);

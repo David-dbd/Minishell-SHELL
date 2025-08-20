@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_structs.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/20 01:18:31 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/08/20 21:33:00 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "minishell.h"
 
-typedef struct s_exp	t_exp;
+typedef struct s_var	t_var;
+typedef struct s_env	t_env;
 typedef struct s_token	t_token;
 typedef struct s_token	t_node;
 
@@ -42,7 +43,9 @@ typedef enum e_type
 	EXPANSION,
 	BACKGROUND,
 	AND,
-	OR
+	OR,
+	EXPAN_VALUE,
+	EXPAN_CMD
 }	t_type;
 
 struct s_token
@@ -53,7 +56,7 @@ struct s_token
 	bool		single_quoted;
 	bool		double_quoted;
 	bool		expand;
-	t_exp		*expansion;
+	t_env		*env;
 };
 
 typedef struct s_prompt
@@ -75,25 +78,19 @@ typedef struct s_prompt
 	t_token		*tokens;
 }	t_prompt;
 
-typedef struct s_var
+struct s_var
 {
-	char		*key;
-	char		*value;
-}	t_var;
+	char	*key;
+	char	*value;
+	t_var	*next;
+};
 
 typedef struct s_env
 {
-	t_var		*vars;
-	int			size;
+	char	**og_env;
+	t_var	*vars;
+	int		size;
 }	t_env;
-
-struct s_exp
-{
-	bool		asterisk;
-	bool		dolar;
-	char		*input;
-	t_env		*env;
-};
 
 typedef struct s_exec
 {

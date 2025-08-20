@@ -17,10 +17,10 @@
 	Luego procesa el resto como palabra con is_word.
 */
 
-static int	ft_is_expan(int c)
+static int	ft_no_expan(int c)
 {
-	if (ft_isalnum(c) || c == '_' || c == '?' || c == '$' || c == '!'
-		|| c == '#' || c == '*' || c == '@')
+	if (c == '|' || c == '<' || c == '>' || c == '&' || c == '(' || c == ')'
+		|| c == '\'' || c == '\"')
 		return (1);
 	return (0);
 }
@@ -35,7 +35,12 @@ void	is_dolar(t_shell *data, t_token *tokens, const char *str, int *i)
 	{
 		start = *i;
 		(*i)++;
-		while (str[*i] != '\0' && !ft_isspace(str[*i]) && ft_is_expan(str[*i]))
+		if (ft_isdigit(str[*i]))
+		{
+			(*i)++;
+			return ;
+		}
+		while (str[*i] != '\0' && !ft_isspace(str[*i]) && !ft_no_expan(str[*i]))
 			(*i)++;
 		len = *i - start;
 		if (len > 0)

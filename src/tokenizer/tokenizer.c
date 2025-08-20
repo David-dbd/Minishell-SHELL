@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:37:27 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/20 17:04:26 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/20 21:43:02 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ int	valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 	int	i;
 
 	i = 0;
+
 	logic_trans_args_cmd(data, tokens);
 	while (tokens[i].type)
 	{

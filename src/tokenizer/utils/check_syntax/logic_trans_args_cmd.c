@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   logic_trans_args_cmd.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 17:04:19 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/19 20:21:06 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/08/20 19:58:46 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
