@@ -6,11 +6,25 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 17:04:19 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/21 22:07:43 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/22 00:27:31 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
+
+static int	is_cmd_type(int type)
+{
+	if (type == COMMAND  || type == BUILT_IN || type == WORD)
+		return (1);
+	return (0);
+}
+
+static int	is_quote_type(int type)
+{
+	if (type == DOUBLE_QUOTE || type == SINGLE_QUOTE)
+		return (1);
+	return (0);
+}
 
 void	logic_trans_args_cmd(t_shell *data, t_token *tokens)
 {
@@ -19,18 +33,16 @@ void	logic_trans_args_cmd(t_shell *data, t_token *tokens)
 	i = 0;
 	while (tokens[i].type)
 	{
-		if (i > 0 && (tokens[i - 1].type == COMMAND
-				|| tokens[i - 1].type == BUILT_IN
-				|| tokens[i - 1].type == WORD))
+		if ((i > 0 && is_cmd_type(tokens[i - 1].type))
+			|| (i > 1 && is_quote_type(tokens[i - 1].type))
+			&& is_cmd_type(tokens[i - 2].type))
 		{
-			if (tokens[i].type == DOUBLE_QUOTE
-				|| tokens[i].type == SINGLE_QUOTE)
+			if (is_quote_type(tokens[i].type))
 			{
-				if (tokens[i + 1].type == COMMAND
-					|| tokens[i + 1].type == BUILT_IN)
+				if (is_cmd_type(tokens[i + 1].type))
 					tokens[i + 1].type = WORD;
 			}
-			else if (tokens[i].type == COMMAND || tokens[i].type == BUILT_IN)
+			else if (is_cmd_type(tokens[i].type))
 				tokens[i].type = WORD;
 		}
 		i++;

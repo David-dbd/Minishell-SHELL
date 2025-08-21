@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:37:27 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/21 21:31:57 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/21 23:48:43 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ void	get_tokens(t_shell *data, t_token *tokens, char *input)
 		is_hash(input, &i);
 	}
 	calculate_tokens(&data->prompt, tokens);
-	printf("Alloc Tokens: %d\n", data->prompt.n_alloc_tokens);
-	printf("Syntax Tokens: %d\n", data->prompt.n_tokens);
+	// printf("Alloc Tokens: %d\n", data->prompt.n_alloc_tokens);
+	// printf("Syntax Tokens: %d\n", data->prompt.n_tokens);
 }
 
 /*
@@ -145,10 +145,10 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	reset_tokens();
 	allocate_tokens(data, prompt, input);
 	get_tokens(data, prompt->tokens, input);
-	print_tokens_debug(prompt);
+	// print_tokens_debug(prompt);
 	if (!valid_tokens(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
-	printf("------------------------------------------------\n");
+	// printf("------------------------------------------------\n");
 	print_tokens_debug(prompt);
 	return (SUCCESS);
 }
