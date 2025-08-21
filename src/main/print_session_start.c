@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 02:13:28 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/08/20 17:39:31 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/21 21:57:51 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_session_start(time_t start)
 	struct tm	*local;
 
 	local = localtime(&start);
-	ft_printf_fd(STDOUT, MSG_TITLE_2);
+	ft_printf_fd(STDOUT, MSG_TITLE_4);
 	print_time_of_day(start);
 	printf(MSG_TIME_START,
 		local->tm_hour, local->tm_min, local->tm_sec,
