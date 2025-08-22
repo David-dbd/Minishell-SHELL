@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/08/22 03:04:14 by migarrid         ###   ########.fr        #
+#    Updated: 2025/08/22 03:32:37 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ NAME				= minishell
 CC					= cc
 #WFLAGS				= -Wall -Wextra -Werror
 DFLAGS				= -g
-OFLAGS				= -O2 -march=native -flto
+#OFLAGS				= -O2 -march=native -flto
 SLAGS				= -fsanitize=address
 
 # **************************************************************************** #
