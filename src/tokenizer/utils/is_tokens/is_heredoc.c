@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:58 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/22 02:14:18 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/22 03:08:02 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 void	is_heredoc(t_shell *data, t_token *tokens, const char *str, int *i)
 {
-	char *heredoc;
+	char	*heredoc;
 
 	if (ft_isdigit(str[*i]) && str[*i + 1] == '<' && str[*i + 2] == '<')
 	{

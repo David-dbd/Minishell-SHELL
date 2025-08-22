@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:37:27 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/22 02:32:43 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/22 03:09:47 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,14 @@ void	get_tokens(t_shell *data, t_token *tokens, char *input)
 		is_redir(data, tokens, input, &i);
 		is_scape(data, tokens, input, &i);
 		is_quote(data, tokens, input, &i);
-		is_wildcar(data,tokens, input, &i);
+		is_wildcar(data, tokens, input, &i);
 		is_dolar(data, tokens, input, &i);
 		is_word(data, tokens, input, &i);
 		is_hash(input, &i);
 	}
 	calculate_tokens(&data->prompt, tokens);
-	// printf("Alloc Tokens: %d\n", data->prompt.n_alloc_tokens);
-	// printf("Syntax Tokens: %d\n", data->prompt.n_tokens);
+	printf("Alloc Tokens: %d\n", data->prompt.n_alloc_tokens);
+	printf("Syntax Tokens: %d\n", data->prompt.n_tokens);
 }
 
 /*
@@ -117,7 +117,6 @@ int	valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 	int	i;
 
 	i = 0;
-
 	logic_trans_args_cmd(data, tokens);
 	while (tokens[i].type)
 	{

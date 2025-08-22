@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:45 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/22 02:28:40 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/22 03:08:37 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 void	is_redir_append(t_shell *data, t_token *tokens, const char *str, int *i)
 {
-	char *append;
+	char	*append;
 
 	if (ft_isdigit(str[*i]) && str[*i + 1] == '>' && str[*i + 2] == '>')
 	{
@@ -41,9 +41,9 @@ void	is_redir_append(t_shell *data, t_token *tokens, const char *str, int *i)
 
 void	is_redir_output(t_shell *data, t_token *tokens, const char *str, int *i)
 {
-	char *output;
+	char	*output;
 
-	if (ft_isdigit(str[*i]) && str[*i + 1] == '>' &&  str[*i + 2] != '>')
+	if (ft_isdigit(str[*i]) && str[*i + 1] == '>' && str[*i + 2] != '>')
 	{
 		output = ft_substr(str, *i, 2);
 		if (!output)
@@ -63,9 +63,9 @@ void	is_redir_output(t_shell *data, t_token *tokens, const char *str, int *i)
 
 void	is_redir_input(t_shell *data, t_token *tokens, const char *str, int *i)
 {
-	char *input;
+	char	*input;
 
-	if (ft_isdigit(str[*i]) && str[*i + 1] == '<' &&  str[*i + 2] != '<')
+	if (ft_isdigit(str[*i]) && str[*i + 1] == '<' && str[*i + 2] != '<')
 	{
 		input = ft_substr(str, *i, 2);
 		if (!input)
