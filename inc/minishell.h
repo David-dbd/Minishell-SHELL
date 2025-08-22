@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:02 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/21 21:33:54 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/22 01:24:28 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,13 @@ void	is_dolar(t_shell *data, t_token *tokens, const char *str, int *i);
 void	is_quote(t_shell *data, t_token *tokens, const char *str, int *i);
 void	is_wildcar(t_shell *data, t_token *tokens, const char *str, int *i);
 void	is_scape(t_shell *data, t_token *tokens, const char *str, int *i);
-void	is_pipe(t_token *tokens, const char *str, int *i);
-void	is_parenten(t_token *tokens, const char *str, int *i);
+void	is_redir(t_shell *data, t_token *tokens, const char *str, int *i);
+void	is_heredoc(t_shell *data, t_token *tokens, const char *str, int *i);
 void	is_semicolon(t_token *tokensmm, const char *str, int *i);
+void	is_pipe(t_token *tokens, const char *str, int *i);
 void	is_or(t_token *tokens, const char *str, int *i);
 void	is_and(t_token *tokens, const char *str, int *i);
-void	is_redir(t_token *tokens, const char *str, int *i);
-void	is_heredoc(t_token *tokens, const char *str, int *i);
+void	is_parenten(t_token *tokens, const char *str, int *i);
 void	is_not_token(const char *str, int *i);
 void	is_hash(const char *str, int *i);
 void	calculate_tokens(t_prompt *prompt, t_token *tokens);

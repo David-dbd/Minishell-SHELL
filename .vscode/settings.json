@@ -1,0 +1,23 @@
+{
+	"editor.acceptSuggestionOnEnter": "on",
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"editor.renderWhitespace": "boundary",
+	"files.trimTrailingWhitespace": true,
+	"files.insertFinalNewline": true,
+	"files.associations": {
+		"*.h": "c",
+		"*.inc": "c",
+		"minishell.h": "c"
+	},
+	"C_Cpp.default.cStandard": "c99",
+	"C_Cpp.default.compilerPath": "/usr/bin/clang",
+	"C_Cpp.errorSquiggles": "enabled",
+	"C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
+	"C_Cpp.inlayHints.parameterNames.enabled": false,
+	"C_Cpp.default.intelliSenseMode": "linux-clang-x64",
+	"cmake.ignoreCMakeListsMissing": true,
+	"editor.rulers": [81],
+	"editor.wordWrap": "off"
+}

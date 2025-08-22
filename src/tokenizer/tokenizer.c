@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:37:27 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/21 23:48:43 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/22 02:32:43 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,13 @@ void	get_tokens(t_shell *data, t_token *tokens, char *input)
 	while (input[i] != '\0')
 	{
 		is_not_token(input, &i);
-		is_heredoc(tokens, input, &i);
 		is_and(tokens, input, &i);
 		is_or(tokens, input, &i);
-		is_redir(tokens, input, &i);
 		is_pipe(tokens, input, &i);
 		is_parenten(tokens, input, &i);
 		is_semicolon(tokens, input, &i);
+		is_heredoc(data, tokens, input, &i);
+		is_redir(data, tokens, input, &i);
 		is_scape(data, tokens, input, &i);
 		is_quote(data, tokens, input, &i);
 		is_wildcar(data,tokens, input, &i);

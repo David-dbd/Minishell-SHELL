@@ -1,0 +1,23 @@
+{
+	"configurations": [
+		{
+			"name": "Linux",
+			"includePath": [
+				"${workspaceFolder}/**",
+				"${workspaceFolder}/inc",
+				"${workspaceFolder}/lib/"
+			],
+			"defines": [],
+			"compilerPath": "/usr/bin/clang",
+			"cStandard": "c99",
+			"cppStandard": "c++17",
+			"intelliSenseMode": "linux-clang-x64",
+			"compilerArgs": [
+				"-Wall",
+				"-Wextra",
+				"-Werror"
+			]
+		}
+	],
+	"version": 4
+}

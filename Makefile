@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/08/20 16:35:11 by migarrid         ###   ########.fr        #
+#    Updated: 2025/08/22 03:04:14 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -153,7 +153,7 @@ OBJS		= $(SRCS:%.c=$(OBJ_DIR)/%.o)
 OBJS_BONUS 	= $(SRC_BONUS:%.c=$(OBJ_BONUS_DIR)/%.o)
 
 # Rule to compile archive .c to ,o with progress bars
-${OBJ_DIR}/%.o: ${SRC_DIR}/%.c $(DEPS) | $(OBJ_DIR)
+${OBJ_DIR}/%.o: ${SRC_DIR}/%.c $(DEPS) $(LIBFT_A) | $(OBJ_DIR)
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
 	@$(PRINT) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)...\n" "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
 	@$(MKDIR) $(dir $@)
@@ -178,7 +178,7 @@ $(NAME): $(OBJS)
 	@$(PRINT) "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}${NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 
 # Rebuild libft.a
-$(LIBFT_A): $(LIBFT_MAKEFILE) $(LIBFT_H)
+$(LIBFT_A): FORCE $(LIBFT_MAKEFILE) $(LIBFT_H)
 	@$(MAKE) -s -C $(LIBFT_DIR)
 
 # Rule to compile bonus
@@ -208,6 +208,9 @@ re: fclean all
 
 # Rebuild everything including bonus
 rebonus: fclean all bonus
+
+# Force verification every build
+FORCE:
 
 # Phony targets
 .PHONY: all bonus clean fclean re rebonus
