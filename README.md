@@ -4,10 +4,12 @@ Minishell - Bash
 TO DO LIST:
 -implementar .d files para dependencias
 -gestionar git a traves de ramas para features del proyecto en vez de por personas
--bash + argumento deberia abrir ese archivo (solo el primero) y tratar de ejecutar los que haya dentro como inpu
+-bash + argumento deberia abrir ese archivo (solo el primero) y tratar de ejecutar los que haya dentro como input;
 -resolver el caso de ejecutables con rutas relativas como ./minishell o cualquier otro binario.
 
 - << lim > outfile cat > outfile2 -e etiqueta "cat" como word deberia ser command culpa del logic
+
+el syntax checker no funciona para casos con comillas como "ls" | "ls"
 
 Tener en cuenta:
 -expansion:echo "My home is $HOME" -> My home is /home/mikel (Comillas dobles) | echo 'My home is $HOME'-> My home is $HOME (comillas simples)
