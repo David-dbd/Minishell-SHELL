@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/24 00:45:51 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/26 13:53:54 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,12 @@ char	*cleanner_word(t_shell *data, char *word, int len, char quote)
 	return (word);
 }
 
-int	ft_is_dead_space(const char *str, int *i, char quote)
+int	ft_is_dead_space(t_token *tokens, const char *str, int *i, char quote)
 {
 	if ((str[*i] == quote && str[*i + 1] != quote))
 		return (1);
 	else if (str[*i] == quote && str[*i + 1] == quote)
-	{
 		(*i)++;
-		(*i)++;
-	}
 	return (0);
 }
 
@@ -70,17 +67,20 @@ int	is_special_word(t_shell *data, t_token *tokens, const char *str, int *i)
 	if (*i + 1 < ft_strlen(str) && ft_strchr(str + *i + 1, quote))
 	{
 		start = *i;
-		while (str[*i] != '\0' && !ft_is_dead_space(str, i, quote))
+		while (str[*i] != '\0' && !ft_is_dead_space(tokens, str, i, quote))
 			(*i)++;
 		len = *i - start;
-		if (len > 0)
+		if (len > 1)
 		{
 			word = ft_substr(str, start, len);
 			if (!word)
 				exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 			word = cleanner_word(data, word, len, quote);
-			token_id = add_token(tokens, word, WORD);
-			is_cmd(data, &data->prompt, &tokens[token_id], word);
+			if (ft_strlen(word))
+			{
+				token_id = add_token(tokens, word, WORD);
+				is_cmd(data, &data->prompt, &tokens[token_id], word);
+			}
 		}
 		return (TRUE);
 	}
