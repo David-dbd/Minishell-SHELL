@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_closed_parent.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 22:40:47 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/08/20 17:03:05 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/26 18:50:56 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 	Si no encuentra un paréntesis abierto válido, lanza error de sintaxis.
 */
 
-static void	is_only_symbol(int i, t_token *tokens, int content_flag, int *error)
+/*static void	is_only_symbol(int i, t_token *tokens, int content_flag, int *error)
 {
 	if (i >= 1 && tokens[i - 1].type
 		&& (tokens[i - 1].type == PIPE
@@ -60,5 +60,29 @@ int	check_close_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 		syntax_error(data, ERR_SYNTAX, EXIT_USE, ")");
 		return (SYNTAX_ERROR);
 	}
+	return (SUCCESS);
+}*/
+
+int	check_close_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
+{
+	int	content_flag;
+	int	j;
+
+	content_flag = 0;
+	j = i;
+	if (tokens[i].type != PAREN_CLOSE)
+		return (SUCCESS);
+	prompt->n_parentesis++;
+	while (i >= 0 && tokens[i].type != PAREN_OPEN)
+	{
+		if (tokens[i].type != PAREN_CLOSE)
+			content_flag++;
+		if (tokens[i].type == PIPE || tokens[i].type == OR || tokens[i].type == AND)
+			if (content_flag == 1)
+				return (syntax_error(data, ERR_SYNTAX, EXIT_USE, ")"), SYNTAX_ERROR);
+		i--;
+	}
+	if (i < 0 || content_flag == 0)
+		return (syntax_error(data, ERR_SYNTAX, EXIT_USE, ")"), SYNTAX_ERROR);
 	return (SUCCESS);
 }

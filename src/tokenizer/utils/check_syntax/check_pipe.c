@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_pipe.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 22:40:33 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/08/20 16:59:03 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/26 19:00:41 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,15 @@ int	check_pipe(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 			&& ((tokens[i + 1].type == COMMAND
 					|| tokens[i + 1].type == WORD
 					|| tokens[i + 1].type == BUILT_IN
-					|| tokens[i + 1].type == PAREN_OPEN)
+					|| tokens[i + 1].type == PAREN_OPEN
+					|| tokens[i + 1].type == DOUBLE_QUOTE
+					|| tokens[i + 1].type == SINGLE_QUOTE)
 				&& (tokens[i - 1].type == COMMAND
 					|| tokens[i - 1].type == WORD
 					|| tokens[i - 1].type == BUILT_IN
-					|| tokens[i - 1].type == PAREN_CLOSE)))
+					|| tokens[i - 1].type == PAREN_CLOSE
+					|| tokens[i - 1].type == DOUBLE_QUOTE
+					|| tokens[i - 1].type == SINGLE_QUOTE)))
 		{
 			prompt->n_pipes++;
 			return (SUCCESS);

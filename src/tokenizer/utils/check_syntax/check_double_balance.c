@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_double_balance.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 22:40:25 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/08/21 21:30:56 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/26 18:00:45 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // 	Si hay más cierres que aperturas o viceversa, lanza error de sintaxis.
 // */
 
-// static int	check_the_balance(t_shell *data, int balance, char *quote_type)
+// static int	check_balance(t_shell *data, int balance, char *quote_type, int)
 // {
 // 	if (balance < 0) // cierre sin apertura
 // 	{
