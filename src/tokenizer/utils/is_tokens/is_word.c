@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/21 20:54:15 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/26 18:42:34 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,32 +56,39 @@ static char	*cleanner_slash(t_shell *data, char *word, int len, char slash)
 	return (word);
 }
 
-static int	ft_special_w(const char *str, int *i)
+static int	ft_bash_w(const char *str, int *i, int *flag)
 {
 	char	c;
 
 	c = str[*i];
-	if (c == '<' || c == '>' || c == '&' || c == '|' || c == '\''
-		|| c == '\"' || c == '(' || c == ')' || c == '#'
-		|| c == '*' || c == '`')
+	if (c == '<' || c == '>' || c == '&' || c == '|'
+		|| c == '(' || c == ')' || c == '#'
+		|| c == '*' || c == '`' || c == ';')
 		return (1);
 	if (str[*i] == '\\' && str[*i + 1] != '\0')
 	{
 		(*i)++;
 		(*i)++;
 	}
+	if (c == '\'' || c == '\"' )
+	{
+		*flag = TRUE;
+		return (1);
+	}
 	return (0);
 }
 
 void	is_word(t_shell *data, t_token *tokens, const char *str, int *i)
 {
+	int		flag;
 	int		len;
 	int		start;
 	char	*word;
 	int		token_id;
 
+	flag = FALSE;
 	start = *i;
-	while (str[*i] != '\0' && !ft_isspace(str[*i]) && !ft_special_w(str, i))
+	while (str[*i] != '\0' && !ft_isspace(str[*i]) && !ft_bash_w(str, i, &flag))
 		(*i)++;
 	len = *i - start;
 	if (len > 0)
@@ -92,5 +99,7 @@ void	is_word(t_shell *data, t_token *tokens, const char *str, int *i)
 		word = cleanner_slash(data, word, len, '\\');
 		token_id = add_token(tokens, word, WORD);
 		is_cmd(data, &data->prompt, &tokens[token_id], word);
+		if (flag == TRUE)
+			add_token(tokens, "", NO_SPACE);
 	}
 }

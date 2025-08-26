@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/26 13:53:54 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/26 18:37:39 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	is_special_word(t_shell *data, t_token *tokens, const char *str, int *i)
 		while (str[*i] != '\0' && !ft_is_dead_space(tokens, str, i, quote))
 			(*i)++;
 		len = *i - start;
-		if (len > 1)
+		if (len >= 1)
 		{
 			word = ft_substr(str, start, len);
 			if (!word)
