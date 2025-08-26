@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/26 21:40:15 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/27 01:05:46 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*cleanner_word(t_shell *data, char *word, int len, char quote)
 	k = 0;
 	if (ft_strchr(word, quote))
 	{
-		clean_word = ft_calloc(len + 1, sizeof(char *));
+		clean_word = ft_calloc(len + 1, sizeof(char));
 		if (!clean_word)
 		{
 			free(word);
@@ -66,7 +66,7 @@ int	ft_is_dead_s(const char *s, int *i, char quote, int *flag)
 {
 	if ((s[*i] == quote && s[*i + 1] != quote))
 	{
-		if (ft_isalpha(s[*i + 1]))
+		if (ft_isalpha(s[*i + 1]) || s[*i + 1] == '\\')
 			*flag = TRUE;
 		return (1);
 	}

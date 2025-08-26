@@ -27,7 +27,7 @@ char	*cleanner_exp(t_shell *data, char *expansion, int len, char trash)
 	k = 0;
 	if (ft_strchr(expansion, trash))
 	{
-		clean_expansion = ft_calloc(len + 1, sizeof(char *));
+		clean_expansion = ft_calloc(len + 1, sizeof(char));
 		if (!clean_expansion)
 		{
 			free(expansion);
@@ -58,7 +58,7 @@ static int	isn_exp(const char *str, int *i, int *flag)
 		(*i)++;
 		return (1);
 	}
-	else if (c == '.' || c == '\'' || c == '\"')
+	else if (c == '.' || c == '\'' || c == '\"' || c == '\\')
 	{
 		*flag = TRUE;
 		return (1);
@@ -83,6 +83,8 @@ static void	make_expan_token(t_shell *data, const char *str, int start, int *i)
 		if (!expansion)
 			exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 		expansion = cleanner_exp(data, expansion, len, ';');
+		expansion = cleanner_exp(data, expansion, len, '{');
+		expansion = cleanner_exp(data, expansion, len, '}');
 		add_token(data->prompt.tokens, expansion, EXPANSION);
 	}
 }

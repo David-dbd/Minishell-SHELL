@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/27 00:05:52 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/27 01:03:36 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ void	make_word_d(t_shell *data, t_token *tokens, const char *s, int range[2])
 	word = cleanner_slash(data, word, range[1] - range[0], '\\');
 	if (ft_strcmp(word, ""))
 	{
-		token_id = add_token(tokens, word, WORD);
+		if (ft_strchr (word, '$'))
+			token_id = add_token(tokens, word, EXPANSION);
+		else
+			token_id = add_token(tokens, word, WORD);
 		is_cmd(data, &data->prompt, &tokens[token_id], word);
 	}
 }
@@ -67,7 +70,7 @@ int	ft_is_dead_d(const char *s, int *i, char quote, int *flag)
 {
 	if ((s[*i] == quote && s[*i + 1] != quote))
 	{
-		if (ft_isalpha(s[*i + 1]))
+		if (ft_isalpha(s[*i + 1]) || s[*i + 1] == '\\')
 			*flag = TRUE;
 		return (1);
 	}

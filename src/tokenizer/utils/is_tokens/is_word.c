@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/27 00:05:03 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/27 00:53:50 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*cleanner_slash(t_shell *data, char *word, int len, char slash)
 	k = 0;
 	if (ft_strchr(word, slash))
 	{
-		clean_word = ft_calloc(len + 1, sizeof(char *));
+		clean_word = ft_calloc(len + 1, sizeof(char));
 		if (!clean_word)
 		{
 			free(word);
