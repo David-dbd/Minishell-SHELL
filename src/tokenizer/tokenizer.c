@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:37:27 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/27 15:15:19 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/08/27 15:50:25 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	reset_tokens();
 	allocate_tokens(data, prompt, input);
 	get_tokens(data, prompt->tokens, input);
-	print_tokens_debug(prompt);
+	// print_tokens_debug(prompt);
 	if (!valid_tokens(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
 	printf("------------------------------------------------\n");
