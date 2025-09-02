@@ -19,7 +19,8 @@ TO DO LIST:
 -Cuando el usuario pone VAR="HOla" ->VAriable local. Tenerla lista para funncionamiento. <br>
 -Busqueda del valor de la clave en la lista enlazada. Reorono dinamico. <br>
 </div>
-
+<br>
+<br>
 ERRORES
 - (echo) hi -> deberia dar error syntax
 - (echo hi && ((echo hi && (echo hi) && echo hi))) -> deberia dar error syntax
