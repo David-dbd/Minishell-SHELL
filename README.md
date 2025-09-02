@@ -422,9 +422,8 @@ git push origin --delete test
 
 OPCION PARA FLUJO DE TRABAJO:
 
-1. Si no hay token de expansion -> se junta.
-2. Si hay token de expansion -> Se inteta expandir. Si no se puede, no importa, se ignora y no se innercambia por ningun \n.
-3. enotonces se aplica una funcion de juntar (esto en caso de que haya algun NO SPACE token, si noy hay este token, no se junta nada).
-4. Armamos el arbol
-6. Antes de ejecutar si hay token de expansion -> Se intenta expandir (Ahora si de verdad, con \n y todo el rollo) y juntar obligatoriamente (si hay algo que juntar).
-7. ejecutamos
+1. Si hay token de expansion -> Se inteta expandir. Si no se puede, no importa, se ignora y no se innercambia por ningun \n.
+2. enotonces se aplica una funcion de juntar (esto en caso de que haya algun NO SPACE token, si noy hay este token, no se junta nada).
+3. Armamos el arbol
+4. Antes de ejecutar si hay token de expansion -> Se intenta expandir (Ahora si de verdad, con \n y todo el rollo) y juntar obligatoriamente (si hay algo que juntar).
+5. ejecutamos
