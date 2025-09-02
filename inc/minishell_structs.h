@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/22 23:25:46 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/02 19:28:43 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef enum e_type
 	EXPAN_VALUE,
 	EXPAN_CMD,
 	NO_SPACE,
+	LOCAL,
+	ENV,
 }	t_type;
 
 struct s_token
@@ -82,6 +84,7 @@ struct s_var
 {
 	char	*key;
 	char	*value;
+	t_type	type;
 	t_var	*next;
 };
 
