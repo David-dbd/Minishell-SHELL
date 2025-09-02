@@ -2,22 +2,22 @@
 Minishell - Bash
 
 TO DO LIST:
--implementar .d files para dependencias
+-implementar .d files para dependencias 
 -gestionar git a traves de ramas para features del proyecto en vez de por personas
 -bash + argumento deberia abrir ese archivo (solo el primero) y tratar de ejecutar los que haya dentro como input;
 -resolver el caso de ejecutables con rutas relativas como ./minishell o cualquier otro binario.
 <h2>MIKEL:</h2>
 <div>
--INIT de los nodos y copia del envp
--Limpieza de los nodos cuando el programa termina
--COmetarios
--Quitar recursion
+-INIT de los nodos y copia del envp <br>
+-Limpieza de los nodos cuando el programa termina <br>
+-COmetarios <br>
+-Quitar recursion <br>
 </div>
 
 <h2>DAVID:</h2>
 <div>
--Cuando el usuario pone VAR="HOla" ->VAriable local. Tenerla lista para funncionamiento.
--Busqueda del valor de la clave en la lista enlazada. Reorono dinamico.
+-Cuando el usuario pone VAR="HOla" ->VAriable local. Tenerla lista para funncionamiento. <br>
+-Busqueda del valor de la clave en la lista enlazada. Reorono dinamico. <br>
 </div>
 
 ERRORES
