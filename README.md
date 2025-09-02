@@ -6,6 +6,19 @@ TO DO LIST:
 -gestionar git a traves de ramas para features del proyecto en vez de por personas
 -bash + argumento deberia abrir ese archivo (solo el primero) y tratar de ejecutar los que haya dentro como input;
 -resolver el caso de ejecutables con rutas relativas como ./minishell o cualquier otro binario.
+<h2>MIKEL:</h2>
+<div>
+-INIT de los nodos y copia del envp
+-Limpieza de los nodos cuando el programa termina
+-COmetarios
+-Quitar recursion
+</div>
+
+<h2>DAVID:</h2>
+<div>
+-Cuando el usuario pone VAR="HOla" ->VAriable local. Tenerla lista para funncionamiento.
+-Busqueda del valor de la clave en la lista enlazada. Reorono dinamico.
+</div>
 
 ERRORES
 - (echo) hi -> deberia dar error syntax
@@ -406,50 +419,11 @@ git push -f origin ramaY
 git branch -D test
 git push origin --delete test
 
-BANNERS(VIEJOS)
+OPCION PARA FLUJO DE TRABAJO:
 
-# define MSG_TITLE_1 "                                                                                         \n" \
-"\033[1;31m/$$      /$$ /$$$$$$ /$$   /$$ /$$$$$$  /$$$$$$  /$$   /$$ /$$$$$$$$ /$$      /$$                  \n" \
-"\033[1;31m| $$$    /$$$|_  $$_/| $$$ | $$|_  $$_/ /$$__  $$| $$  | $$| $$_____/| $$      | $$                  \n" \
-"\033[1;32m| $$$$  /$$$$  | $$  | $$$$| $$  | $$  | $$  \\__/| $$  | $$| $$      | $$      | $$                  \n" \
-"\033[1;36m| $$ $$/$$ $$  | $$  | $$ $$ $$  | $$  |  $$$$$$ | $$$$$$$$| $$$$$   | $$      | $$                  \n" \
-"\033[1;34m| $$  $$$| $$  | $$  | $$  $$$$  | $$   \\____  $$| $$__  $$| $$__/   | $$      | $$                  \n" \
-"\033[1;35m| $$\\  $ | $$  | $$  | $$\\  $$$  | $$   /$$  \\ $$| $$  | $$| $$      | $$      | $$                  \n" \
-"\033[1;31m| $$ \\/  | $$ /$$$$$$| $$ \\  $$ /$$$$$$|  $$$$$$/| $$  | $$| $$$$$$$$| $$$$$$$$| $$$$$$$$ /$$ /$$ /$$\n" \
-"\033[1;33m|__/     |__/|______/|__/  \\__/|______/ \\______/ |__/  |__/|________/|________/|________/|__/|__/|__/\n\n\n" \
-
-#define MSG_TITLE_2 \
-"\033[0;34m" \
-"\n\n ██████   ██████ █████ ██████   █████  █████████  █████   █████ ██████████ █████       █████\n" \
-"░░██████ ██████ ░░███ ░░██████ ░███  ███░░░░░███░░███   ░░███ ░░███░░░░░█░░███       ░░███\n" \
-" ░███░█████░███  ░███  ░███░███ ░███ ░███    ░░░  ░███    ░███  ░███  █ ░  ░███        ░███\n" \
-" ░███░░███ ░███  ░███  ░███░░███░███ ░░█████████  ░███████████  ░██████    ░███        ░███\n" \
-" ░███ ░░░  ░███  ░███  ░███ ░░██████  ░░░░░░░░███ ░███░░░░░███  ░███░░█    ░███        ░███\n" \
-" ░███      ░███  ░███  ░███  ░░█████  ███    ░███ ░███    ░███  ░███ ░   █ ░███      █ ░███      █\n" \
-" █████     █████ █████ █████  ░░█████░░█████████  █████   █████ ██████████ ███████████ ███████████\n" \
-"░░░░░     ░░░░░ ░░░░░ ░░░░░    ░░░░░  ░░░░░░░░░  ░░░░░   ░░░░░ ░░░░░░░░░░ ░░░░░░░░░░░ ░░░░░░░░░░░\n\n\n" \
-
-
-#define MSG_TITLE_3 \
-"\033[0;31m" \
-"\n\n███▄ ▄███▓ ██▓ ███▄    █   ██████  ██░ ██ ▓█████  ██▓     ██▓    \n" \
-"▓██▒▀█▀ ██▒▓██▒ ██ ▀█   █ ▒██    ▒ ▓██░ ██▒▓█   ▀ ▓██▒    ▓██▒    \n" \
-"▓██    ▓██░▒██▒▓██  ▀█ ██▒░ ▓██▄   ▒██▀▀██░▒███   ▒██░    ▒██░    \n" \
-"▒██    ▒██ ░██░▓██▒  ▐▌██▒  ▒   ██▒░▓█ ░██ ▒▓█  ▄ ▒██░    ▒██░    \n" \
-"▒██▒   ░██▒░██░▒██░   ▓██░▒██████▒▒░▓█▒░██▓░▒████▒░██████▒░██████▒\n" \
-"░ ▒░   ░  ░░▓  ░ ▒░   ▒ ▒ ▒ ▒▓▒ ▒ ░ ▒ ░░▒░▒░░ ▒░ ░░ ▒░▓  ░░ ▒░▓  ░\n" \
-"░  ░      ░ ▒ ░░ ░░   ░ ▒░░ ░▒  ░ ░ ▒ ░▒░ ░ ░ ░  ░░ ░ ▒  ░░ ░ ▒  ░\n" \
-"░      ░    ▒ ░   ░   ░ ░ ░  ░  ░   ░  ░░ ░   ░     ░ ░     ░ ░   \n" \
-"       ░    ░           ░       ░   ░  ░  ░   ░  ░    ░  ░    ░  ░\n" \
-"\033[0m\n\n"
-
-#define MSG_TITLE_5 \
-"\033[0;34m" \
-"\n::::    ::::  ::::::::::: ::::    ::: ::::::::::: ::::::::  :::    ::: :::::::::: :::        :::\n" \
-"+:+:+: :+:+:+     :+:     :+:+:   :+:     :+:    :+:    :+: :+:    :+: :+:        :+:        :+:\n" \
-"+:+ +:+:+ +:+     +:+     :+:+:+  +:+     +:+    +:+        +:+    +:+ +:+        +:+        :+:\n" \
-"+#+  +:+  +#+     +#+     +#+ +:+ +#+     +#+    +#++:++#++ +#++:++#++ +#++:++#   +#+        +#+\n" \
-"+#+       +#+     +#+     +#+  +#+#+#     +#+           +#+ +#+    +#+ +#+        +#+        +#+\n" \
-"#+#       #+#     #+#     #+#   #+#+#     #+#    #+#    #+# #+#    #+# #+#        #+#        #+#\n" \
-"###       ### ########### ###    #### ########### ########  ###    ### ########## ########## ##########\n\n" \
-"\033[0m"
+1. Si no hay token de expansion -> se junta.
+2. Si hay token de expansion -> Se inteta expandir. Si no se puede, no importa, se ignora y no se innercambia por ningun \n.
+3. enotonces se aplica una funcion de juntar (esto en caso de que haya algun NO SPACE token, si noy hay este token, no se junta nada).
+4. Armamos el arbol
+6. Antes de ejecutar si hay token de expansion -> Se intenta expandir (Ahora si de verdad, con \n y todo el rollo) y juntar obligatoriamente (si hay algo que juntar).
+7. ejecutamos
