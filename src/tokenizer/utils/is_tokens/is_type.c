@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:48:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/02 20:48:43 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/02 20:52:52 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	is_redir_type(int type)
 	return (0);
 }
 
-int is_delimiter_type(int type)
+int	is_delimiter_type(int type)
 {
 	if (type == PIPE || type == SEMICOLON || type == AND || type == OR)
 		return (1);
