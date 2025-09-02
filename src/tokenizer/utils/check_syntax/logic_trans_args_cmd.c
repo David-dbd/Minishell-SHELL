@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 17:04:19 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/26 21:46:53 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/02 19:34:05 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,14 @@ void	logic_trans_args_cmd(t_shell *data, t_token *tokens)
 					tokens[i + 1].type = WORD;
 			}
 			else if (is_cmd_type(tokens[i].type))
+				tokens[i].type = WORD;
+		}
+		else if ((i > 0 && tokens[i - 1].type == NO_SPACE)
+			|| (i > 1 && tokens[i - 2].type == NO_SPACE)
+			|| (i > 2 && tokens[i - 3].type == NO_SPACE)
+			|| (i > 3 && tokens[i - 4].type == NO_SPACE))
+		{
+			if (is_cmd_type(tokens[i].type))
 				tokens[i].type = WORD;
 		}
 		i++;

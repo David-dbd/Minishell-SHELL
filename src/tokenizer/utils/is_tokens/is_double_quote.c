@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/27 22:52:16 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/02 20:00:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,12 @@ int	ft_is_dead_d(const char *s, int *i, char quote, int *flag)
 			*flag = TRUE;
 		return (1);
 	}
-	if (s[*i] == '\\' && s[*i + 1] != '\0')
+	if (s[*i + 1] && s[*i] == '\\' && s[*i + 1] != '\0')
 	{
 		(*i)++;
 		return (0);
 	}
-	else if (s[*i] == quote && s[*i + 1] == quote)
+	else if (s[*i + 1] && s[*i] == quote && s[*i + 1] == quote)
 	{
 		if (ft_strchr(s + *i + 2, quote))
 			(*i)++;

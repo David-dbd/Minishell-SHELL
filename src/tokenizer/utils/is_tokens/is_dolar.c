@@ -109,9 +109,6 @@ void	is_dolar(t_shell *data, t_token *tokens, const char *str, int *i)
 			(*i)++;
 		make_expan_token(data, str, start, i);
 		if (flag == TRUE)
-		{
 			add_token(tokens, "", NO_SPACE);
-			is_dolar(data, tokens, str, i);
-		}
 	}
 }
