@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:29:21 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 16:09:07 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/03 18:41:43 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_realloc(void *old_ptr, size_t old_size, size_t new_size)
 	size_t	copy_size;
 
 	if (!old_ptr)
-		return ft_calloc(1, new_size);
+		return (ft_calloc(1, new_size));
 	if (new_size == 0)
 	{
 		free(old_ptr);

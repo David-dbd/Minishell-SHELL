@@ -32,7 +32,7 @@
 	"C_Cpp.enhancedColorization": "enabled",
 
 	// Editor general
-	"editor.rulers": [81],
+	"editor.rulers": [80],
 	"editor.wordWrap": "off",
 	"editor.bracketPairColorization.enabled": true,
 	"editor.guides.bracketPairs": false,

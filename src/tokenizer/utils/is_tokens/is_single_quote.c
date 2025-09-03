@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 17:31:33 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/03 18:38:10 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*cleanner_word(t_shell *data, char *word, int len, char quote)
 	return (word);
 }
 
-void	make_word_s(t_shell *data, t_prompt *prompt, const char *s, int range[2])
+void	make_word_s(t_shell *data, t_prompt *p, const char *s, int range[2])
 {
 	char	*word;
 	int		token_id;
@@ -57,8 +57,8 @@ void	make_word_s(t_shell *data, t_prompt *prompt, const char *s, int range[2])
 	word = cleanner_word(data, word, range[1] - range[0], '\'');
 	if (ft_strcmp(word, ""))
 	{
-		token_id = add_token(data, prompt, word, WORD);
-		is_cmd(data, &data->prompt, &prompt->tokens[token_id], word);
+		token_id = add_token(data, p, word, WORD);
+		is_cmd(data, &data->prompt, &p->tokens[token_id], word);
 	}
 	else
 		free(word);
@@ -104,21 +104,21 @@ int	is_special_word_s(t_shell *data, t_prompt *prompt, const char *str, int *i)
 	return (FALSE);
 }
 
-void	is_single_quote(t_shell *data, t_prompt *prompt, const char *str, int *i)
+void	is_single_quote(t_shell *data, t_prompt *p, const char *str, int *i)
 {
 	int	status;
 
 	if (str[*i] == '\'')
 	{
-		add_token(data, prompt, "\'", SINGLE_QUOTE);
+		add_token(data, p, "\'", SINGLE_QUOTE);
 		(*i)++;
-		status = is_special_word_s(data, prompt, str, i);
+		status = is_special_word_s(data, p, str, i);
 		if (status == TRUE || status == NO_SPACE)
 		{
-			add_token(data, prompt, "\'", SINGLE_QUOTE);
+			add_token(data, p, "\'", SINGLE_QUOTE);
 			(*i)++;
 			if (status == NO_SPACE)
-				add_token(data, prompt, "", NO_SPACE);
+				add_token(data, p, "", NO_SPACE);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:05:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 01:08:34 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/03 18:35:57 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	add_var(t_shell *data, char *key, char *value, int type)
 
 	new_var = ft_calloc(1, sizeof(t_var));
 	if (!new_var)
-		return(free(key), free(value), (void)exit_error(data, ERR_MALLOC, 1));
+		return (free(key), free(value), (void)exit_error(data, ERR_MALLOC, 1));
 	new_var->key = key;
 	new_var->value = value;
 	new_var->type = type;

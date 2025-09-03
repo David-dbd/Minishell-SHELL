@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:07:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 17:16:49 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/03 18:35:41 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 void	check_buffer(t_shell *d, t_prompt *p)
 {
-	size_t new_capacity;
-	t_token *new_tokens;
+	size_t	new_capacity;
+	t_token	*new_tokens;
 
 	if (p->n_tokens >= p->n_alloc_tokens)
 	{
@@ -29,8 +29,8 @@ void	check_buffer(t_shell *d, t_prompt *p)
 		if (new_capacity > INT_MAX)
 			exit_error(d, ERR_MAX_TOKENS, EXIT_FAILURE);
 		new_tokens = ft_realloc(p->tokens,
-			p->n_alloc_tokens * sizeof(t_token),
-			new_capacity * sizeof(t_token));
+				p->n_alloc_tokens * sizeof(t_token),
+				new_capacity * sizeof(t_token));
 		if (!new_tokens)
 			exit_error(d, ERR_MALLOC, EXIT_FAILURE);
 		p->tokens = new_tokens;
@@ -40,8 +40,8 @@ void	check_buffer(t_shell *d, t_prompt *p)
 
 int	add_token(t_shell *data, t_prompt *prompt, char *value, int type)
 {
-	int	i;
-	t_token *tokens;
+	int		i;
+	t_token	*tokens;
 
 	i = prompt->n_tokens;
 	check_buffer(data, prompt);

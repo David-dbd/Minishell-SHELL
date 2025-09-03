@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 17:30:33 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/03 18:44:42 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*cleanner_word(t_shell *data, char *word, int len, char quote)
 	return (word);
 }
 
-void	make_word_d(t_shell *data, t_prompt *prompt, const char *s, int range[2])
+void	make_word_d(t_shell *data, t_prompt *promp, const char *s, int range[2])
 {
 	char	*ptr;
 	char	*word;
@@ -61,10 +61,10 @@ void	make_word_d(t_shell *data, t_prompt *prompt, const char *s, int range[2])
 	{
 		ptr = ft_strchr(word, '$');
 		if (ptr && *(ptr + 1) && !ft_isspace(*(ptr + 1)) && *(ptr + 1) != '\"')
-			token_id = add_token(data, prompt, word, EXPANSION);
+			token_id = add_token(data, promp, word, EXPANSION);
 		else
-			token_id = add_token(data, prompt, word, WORD);
-		is_cmd(data, &data->prompt, &prompt->tokens[token_id], word);
+			token_id = add_token(data, promp, word, WORD);
+		is_cmd(data, &data->prompt, &promp->tokens[token_id], word);
 	}
 	else
 		free(word);
@@ -115,21 +115,21 @@ int	is_special_word_d(t_shell *data, t_prompt *prompt, const char *str, int *i)
 	return (FALSE);
 }
 
-void	is_double_quote(t_shell *data, t_prompt *prompt, const char *str, int *i)
+void	is_double_quote(t_shell *data, t_prompt *promp, const char *str, int *i)
 {
 	int	status;
 
 	if (str[*i] == '\"')
 	{
-		add_token(data, prompt, "\"", DOUBLE_QUOTE);
+		add_token(data, promp, "\"", DOUBLE_QUOTE);
 		(*i)++;
-		status = is_special_word_d(data, prompt, str, i);
+		status = is_special_word_d(data, promp, str, i);
 		if (status == TRUE || status == NO_SPACE)
 		{
-			add_token(data, prompt, "\"", DOUBLE_QUOTE);
+			add_token(data, promp, "\"", DOUBLE_QUOTE);
 			(*i)++;
 			if (status == NO_SPACE)
-				add_token(data, prompt, "", NO_SPACE);
+				add_token(data, promp, "", NO_SPACE);
 		}
 	}
 }

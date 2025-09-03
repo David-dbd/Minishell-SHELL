@@ -6,15 +6,15 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:23:24 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 02:03:18 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/03 18:41:10 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-static void handle_n_flag(char **args, int *new_line, int *i)
+static void	handle_n_flag(char **args, int *new_line, int *i)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (args[*i] && args[*i][0] == '-' && args[*i][1] == 'n')
@@ -34,13 +34,13 @@ static void handle_n_flag(char **args, int *new_line, int *i)
 
 void	shell_echo(char **args)
 {
-	int i;
-	int new_line;
+	int	i;
+	int	new_line;
 
 	i = 1;
 	new_line = TRUE;
 	handle_n_flag(args[i], &new_line, &i);
-	while(args[i])
+	while (args[i])
 	{
 		printf("%s", args[i]);
 		if (args[i + 1])
