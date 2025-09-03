@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:10:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/21 17:10:59 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:36:53 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
+void	*ft_realloc(void *old_ptr, size_t old_size, size_t new_size);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
