@@ -6,11 +6,11 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 02:11:39 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/08/20 17:10:42 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/03 22:04:32 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../../../inc/minishell.h"
 
 /*
 	Calcula y muestra la duración de la sesión del usuario en el minishell.

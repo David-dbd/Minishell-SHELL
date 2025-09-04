@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:02:53 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 21:48:02 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/03 22:07:27 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static void	init_no_env(t_shell *data)
 static void	init_env(t_shell *data, char **envp)
 {
 	int		i;
-	int 	j;
+	int		j;
 	int		k;
-	char 	*key;
+	char	*key;
 	char	*value;
 
 	i = 0;
@@ -49,6 +49,8 @@ static void	init_env(t_shell *data, char **envp)
 			k++;
 		key = ft_substr(envp[i], 0, j);
 		value = ft_substr(envp[i], j + 1, k);
+		if (!key || !value)
+			exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 		add_var(data, key, value, ENV);
 		i++;
 	}

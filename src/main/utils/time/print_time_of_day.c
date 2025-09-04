@@ -6,11 +6,11 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 02:12:51 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/08/20 17:07:02 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/03 22:04:38 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../../../inc/minishell.h"
 
 /*
 	Muestra un mensaje de bienvenida personalizado según la hora del día en que

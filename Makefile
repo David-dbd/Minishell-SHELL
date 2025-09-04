@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/09/03 21:46:31 by migarrid         ###   ########.fr        #
+#    Updated: 2025/09/03 22:06:04 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,13 +77,13 @@ CLEAR 				= \r\033[K
 #                               Source File                                    #
 # **************************************************************************** #
 SRCS =				main/main.c \
-					main/recieve_input.c \
-					main/print_session_start.c \
-					main/print_session_end.c \
-					main/print_time_of_day.c \
-					init/alloc.c \
+					main/utils/recieve_input.c \
+					main/utils/time/print_session_start.c \
+					main/utils/time/print_session_end.c \
+					main/utils/time/print_time_of_day.c \
 					init/init_data.c \
 					init/init_env.c \
+					init/utils/alloc_tokens.c \
 					init/utils/add_token.c \
 					init/utils/add_var.c \
 					tokenizer/tokenizer.c \
