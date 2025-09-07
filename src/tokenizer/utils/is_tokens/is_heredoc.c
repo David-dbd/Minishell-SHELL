@@ -6,15 +6,17 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:58 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 17:03:46 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:22:39 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
 /*
-	Detecta el operador de redirección heredoc '<<' y añade token.
-	Avanza el índice para saltar el token.
+	Detecta un operador de heredoc '<<' en el input.
+	- Si hay un número antes (ej. '3<<'), considera el descriptor, toma 3 chars.
+	- Si no hay número, detecta solo '<<'.
+	- Crea token REDIR_HEREDOC y avanza el índice según la longitud del token.
 */
 
 void	is_heredoc(t_shell *data, t_prompt *prompt, const char *str, int *i)

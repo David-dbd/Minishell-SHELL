@@ -6,16 +6,17 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 17:11:20 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:33:35 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
 /*
-	Extrae texto hasta espacio o carácter especial y lo guarda como
-	token WORD. Luego pasa el texto a is_word_or_cmd para decidir si
-	es palabra normal o comando.
+	Procesa un carácter '\' dentro de una palabra.
+	- Doble '\\' se convierte en uno solo.
+	- Carácter normal se copia tal cual.
+	- Un solo '\' al final se omite.
 */
 
 static void	process_slash_char(char *word, char *clean_word, int *j, int *k)
@@ -30,6 +31,12 @@ static void	process_slash_char(char *word, char *clean_word, int *j, int *k)
 	else
 		(*j)++;
 }
+
+/*
+	Elimina '\' innecesarios de una palabra.
+	- Reserva una nueva cadena limpia, copia los caracteres válidos,
+	  libera la original y devuelve la nueva.
+*/
 
 char	*cleanner_slash(t_shell *data, char *word, int len, char slash)
 {
@@ -56,6 +63,13 @@ char	*cleanner_slash(t_shell *data, char *word, int len, char slash)
 	return (word);
 }
 
+/*
+	Comprueba si el carácter termina una palabra o marca flag.
+	- Devuelve 1 si es operador o símbolo especial.
+	- Avanza índice si '\' escapa un carácter.
+	- Marca flag si encuentra comillas o '$' para manejar NO_SPACE.
+*/
+
 static int	ft_bash_w(const char *str, int *i, int *flag)
 {
 	char	c;
@@ -78,6 +92,12 @@ static int	ft_bash_w(const char *str, int *i, int *flag)
 	return (0);
 }
 
+/*
+	Procesa una palabra completa del input.
+	- Recorre hasta espacio o símbolo que termina la palabra.
+	- Limpia '\' con cleanner_slash.
+	- Crea token WORD y detecta si requiere NO_SPACE antes del siguiente token.
+*/
 void	is_word(t_shell *data, t_prompt *prompt, const char *str, int *i)
 {
 	int		flag;

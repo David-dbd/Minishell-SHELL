@@ -6,11 +6,21 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 17:04:19 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 17:24:05 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:49:03 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
+
+/*
+	Decide si un token de tipo comando debe transformarse en WORD,
+	para que los argumentos pegados a comandos se interpreten correctamente.
+	Esto ocurre cuando:
+	- El comando está al inicio (i == 1) y el anterior es un comando válido.
+	- El token anterior es comando y no está precedido por redirección.
+	- El token anterior es una comilla y antes había un comando.
+	- Casos más complejos con comillas dobles/NO_SPACE antes de un comando.
+*/
 
 static int	should_tranform_token(t_token *tokens, int i)
 {
@@ -27,6 +37,11 @@ static int	should_tranform_token(t_token *tokens, int i)
 	return (0);
 }
 
+/*
+	Verifica si algún token cercano antes de este es NO_SPACE.
+	Si es así, el token actual puede ser un argumento pegado al comando.
+*/
+
 static int	should_handle_no_space(t_token *tokens, int i)
 {
 	if ((i > 0 && tokens[i - 1].type == NO_SPACE)
@@ -36,6 +51,13 @@ static int	should_handle_no_space(t_token *tokens, int i)
 		return (1);
 	return (0);
 }
+
+/*
+	Revisa todos los tokens del prompt y ajusta tipos:
+	- Si cumple condiciones de transformación, convierte COMMAND en WORD.
+	- Si hay NO_SPACE cerca, también convierte el token en WORD.
+	Esto asegura que los argumentos de comandos se tokenicen correctamente.
+*/
 
 void	logic_trans_args_cmd(t_shell *data, t_token *tokens)
 {

@@ -6,11 +6,16 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 21:35:11 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 00:55:36 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:42:09 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
+
+/*
+	Liberar memoria de manera centralizada para path_arr, path_slash y path.
+	- Evita fugas de memoria en find_bin.
+*/
 
 static void	set_free(char **path_arr, char **path_slash, char **path)
 {
@@ -22,6 +27,12 @@ static void	set_free(char **path_arr, char **path_slash, char **path)
 		free (*path);
 	*path = NULL;
 }
+
+/*
+	Comprueba si el path existe en el sistema.
+	- Si existe, libera memoria y devuelve TRUE.
+	- Si no, devuelve FALSE para seguir buscando.
+*/
 
 static int	check_access(char **path_arr, char *path_slash, char *path)
 {
@@ -35,6 +46,16 @@ static int	check_access(char **path_arr, char *path_slash, char *path)
 	}
 	return (FALSE);
 }
+
+/*
+	Busca un ejecutable en cada directorio del PATH.
+	- path_arr: lista de directorios del PATH.
+	- path_slash: directorio + "/" temporal.
+	- path: directorio + "/" + palabra (posible comando).
+	- word: nombre del comando a buscar.
+	- Retorna SUCCESS si lo encuentra, NOT_FOUND si no, ERROR si falla malloc.
+	- Usa check_access para validar existencia y set_free para limpiar.
+*/
 
 static int	find_bin(char **path_arr, char *path_slash, char *path, char *word)
 {
@@ -63,6 +84,13 @@ static int	find_bin(char **path_arr, char *path_slash, char *path, char *word)
 	return (NOT_FOUND);
 }
 
+/*
+	Comprueba si la palabra es un built-in conocido.
+	- built_in: lista de comandos internos.
+	- Si coincide, marca token->type = BUILT_IN y aumenta prompt->n_cmds.
+	- Devuelve YES si es built-in, NO si no lo es.
+*/
+
 static int	is_built_in(t_prompt *prompt, t_token *token, char *str)
 {
 	char	*built_in[8];
@@ -90,6 +118,15 @@ static int	is_built_in(t_prompt *prompt, t_token *token, char *str)
 	return (NO);
 }
 
+/*
+	Determina si un token es un comando ejecutable o built-in.
+	- Primero revisa built-ins con is_built_in.
+	- Luego busca en PATH si no es built-in.
+	- Si PATH no existe por no env, crea un PATH por defecto.
+	- Actualiza token->type = COMMAND y prompt->n_cmds si lo encuentra.
+	- Maneja errores de memoria con set_free y exit_error.
+*/
+
 void	is_cmd(t_shell *data, t_prompt *prompt, t_token *token, char *str)
 {
 	char	**path_arr;
@@ -102,21 +139,13 @@ void	is_cmd(t_shell *data, t_prompt *prompt, t_token *token, char *str)
 	if (is_built_in(prompt, token, str) == YES)
 		return ;
 	if (!path)
-	{
-		path = strdup("/usr/bin:/bin:/usr/local/bin");
-		if (!path)
-			exit_error(data, ERR_MALLOC, EXIT_FAILURE);
-	}
+		path_null_no_env(data, &path);
 	path_arr = ft_split(path, ':');
 	if (!path_arr)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 	validate = find_bin(path_arr, path_slash, path, str);
 	if (validate == SUCCESS)
-	{
-		token->type = COMMAND;
-		prompt->n_cmds++;
-		return ;
-	}
+		return (token->type = COMMAND, prompt->n_cmds++, (void)OK);
 	else if (validate == ERROR)
 	{
 		set_free(path_arr, &path_slash, &path);

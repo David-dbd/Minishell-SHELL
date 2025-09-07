@@ -6,16 +6,14 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:07:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 18:35:41 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 20:56:04 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
 
 /*
-	Añade un nuevo token al array `tokens` con el valor y tipo dados.
-	Si es de tipo EXPANSION, marca su flag `expand` como TRUE.
-	Usa un índice estático para añadir en la posición correcta.
+	Verifica si hay espacio en el array de tokens y lo duplica usando realloc.
 */
 
 void	check_buffer(t_shell *d, t_prompt *p)
@@ -37,6 +35,11 @@ void	check_buffer(t_shell *d, t_prompt *p)
 		p->n_alloc_tokens = new_capacity;
 	}
 }
+
+/*
+	Añade un token al prompt: asigna valor, tipo y marca comillas o expansión,
+	luego incrementa el contador y devuelve el ID del token añadido.
+*/
 
 int	add_token(t_shell *data, t_prompt *prompt, char *value, int type)
 {

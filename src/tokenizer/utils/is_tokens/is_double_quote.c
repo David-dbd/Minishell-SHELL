@@ -6,15 +6,16 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/07 06:15:47 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:37:46 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
 /*
-	Detecta comillas simples o dobles y añade el token correspondiente.
-	El último caso sería para sustitución de comandos (pendiente).
+	Elimina todas las comillas especificadas ('quote') de la palabra.
+	Reserva una nueva cadena limpia, copia solo los caracteres válidos,
+	libera la original y devuelve la nueva.
 */
 
 static char	*cleanner_word(t_shell *data, char *word, int len, char quote)
@@ -46,6 +47,14 @@ static char	*cleanner_word(t_shell *data, char *word, int len, char quote)
 	return (word);
 }
 
+/*
+	Crea un token WORD o EXPANSION dentro de comillas dobles.
+	- Limpia las comillas.
+	- Si contiene '$' que puede expandirse, crea token EXPANSION.
+	- Registra como comando si corresponde.
+	- Ignora palabras vacías con ft_strcmp.
+*/
+
 void	make_word_d(t_shell *data, t_prompt *promp, const char *s, int range[2])
 {
 	char	*ptr;
@@ -69,6 +78,15 @@ void	make_word_d(t_shell *data, t_prompt *promp, const char *s, int range[2])
 		free(word);
 }
 
+/*
+	Comprueba si la comilla actual termina la palabra.
+	- Si siguiente carácter es especial ('$','\','/','\'', letra)
+	  marca flag para NO_SPACE para crear token.
+	- Maneja escapes '\' y comillas dobles consecutivas
+	  para incorporarlas al token.
+	- Devuelve 1 si la comilla actual cierra la palabra, 0 si no.
+*/
+
 int	ft_is_dead_d(const char *s, int *i, char quote, int *flag)
 {
 	if ((s[*i] == quote && s[*i + 1] != quote))
@@ -91,6 +109,14 @@ int	ft_is_dead_d(const char *s, int *i, char quote, int *flag)
 	return (0);
 }
 
+/*
+	Procesa una palabra dentro de comillas dobles.
+	- Recorre hasta la comilla de cierre usando ft_is_dead_d.
+	- Llama a make_word_d para crear token.
+	- Retorna NO_SPACE si la palabra termina pegada a un carácter especial.
+	- Retorna TRUE si se procesó normalmente.
+*/
+
 int	is_special_word_d(t_shell *data, t_prompt *prompt, const char *str, int *i)
 {
 	int		flag;
@@ -98,7 +124,7 @@ int	is_special_word_d(t_shell *data, t_prompt *prompt, const char *str, int *i)
 	int		start_end[2];
 
 	flag = FALSE;
-	if (*i + 1 < ft_strlen(str) && ft_strchr(str + *i + 1, '\"'))
+	if (*i + 1 < ft_strlen(str) && ft_strchr(str + *i, '\"'))
 	{
 		start_end[0] = *i;
 		while (str[*i] != '\0' && !ft_is_dead_d(str, i, '\"', &flag))
@@ -113,6 +139,14 @@ int	is_special_word_d(t_shell *data, t_prompt *prompt, const char *str, int *i)
 	}
 	return (FALSE);
 }
+
+/*
+	Procesa un token de comillas dobles en el input.
+	- Añade token de apertura '"'.
+	- Extrae y tokeniza la palabra dentro de las comillas.
+	- Añade token de cierre '"'.
+	- Añade token NO_SPACE si la palabra termina pegada a un símbolo.
+*/
 
 void	is_double_quote(t_shell *data, t_prompt *promp, const char *str, int *i)
 {

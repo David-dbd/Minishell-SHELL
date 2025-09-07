@@ -6,11 +6,17 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 03:26:20 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/22 22:54:21 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 20:47:30 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+/*
+	Se llama al detectar un error de sintaxis: limpia el 'prompt' si tiene
+	tokens, muestra el mensaje de error y guarda el código en
+	'last_exit_code' sin terminar el programa.
+*/
 
 int	syntax_error(t_shell *data, const char *error, int exit_code, ...)
 {

@@ -6,11 +6,15 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:05:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 18:35:57 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 20:52:52 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+/*
+	Devuelve el último nodo de la lista de variables o NULL si está vacía.
+*/
 
 t_var	*lstlast_var(t_var *lst)
 {
@@ -20,6 +24,11 @@ t_var	*lstlast_var(t_var *lst)
 		lst = lst->next;
 	return (lst);
 }
+
+/*
+	Crea una nueva variable de entorno con 'key' y 'value' y la añade
+	al final de la lista de variables del shell.
+*/
 
 void	add_var(t_shell *data, char *key, char *value, int type)
 {

@@ -6,34 +6,22 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 18:39:51 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/05 18:33:42 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:46:00 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
-// void	check_redir_input(t_shell *data, t_prompt *p, t_token *t, int i)
-// {
-// 	if (tokens[i].type == REDIR_INPUT)
-// 	{
-// 		if (tokens[i + 1].type)
-// 		{
-// 			if (tokens[i + 1].type == COMMAND
-// 				|| tokens[i + 1].type == WORD
-// 				|| tokens[i + 1].type == BUILT_IN)
-// 			{
-// 				if (access(tokens[i + 1].value, F_OK) != 0)
-// 					return ((void)syntax_error(data, ERR_NO_INPUT_FILE, 1));
-// 				if (access(tokens[i + 1].value, R_OK) != 0)
-// 					return ((void)syntax_error(data, ERR_NO_INPUT_FILE, 1));
-// 				return ;
-// 			}
-// 			else if (tokens[i + 1].value[0] == '*')
-// 				return ((void)syntax_error(data, ERR_AMBIGUOUS_REDIR, 1));
-// 		}
-// 		syntax_error(data, ERR_SYNTAX, EXIT_USE);
-// 	}
-// }
+/*
+	Valida un operador de redirección de entrada '<' o heredoc '<<'.
+
+	- Comprueba que haya un token después del operador.
+	  Si no, devuelve error de sintaxis indicando "newline".
+	- Verifica que el siguiente token sea algo que pueda recibir la redirección:
+	  COMMAND, WORD, BUILT_IN, EXPANSION, WILDCAR, SINGLE_QUOTE o DOUBLE_QUOTE.
+	- Si no es válido, lanza error de sintaxis con el símbolo correspondiente.
+	- Devuelve SUCCESS si todo es correcto.
+*/
 
 int	check_redir_input(t_shell *data, t_prompt *p, t_token *tokens, int i)
 {

@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/09/07 00:18:44 by migarrid         ###   ########.fr        #
+#    Updated: 2025/09/07 22:06:01 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,14 +131,15 @@ SRCS =				main/main.c \
 					expansion/expansion.c \
 					expansion/utils/simplify_tokens/simplify_tokens.c \
 					expansion/utils/simplify_tokens/reorganize_tokens.c \
+					expansion/utils/simplify_tokens/adjust_range_tokens.c \
 					ast/ast_builder.c \
 					executor/executor.c \
 					signals/init_signals.c \
 					signals/signal_handler.c \
 					builtin/env.c \
-					error/exit.c \
-					error/error.c \
-					error/clean.c
+					exit/exit.c \
+					exit/error.c \
+					exit/clean.c
 
 # **************************************************************************** #
 #                              Progress Bars                                   #
@@ -198,9 +199,9 @@ $(READLINE_DIR)/config.h:
 
 # Test the norminette in my .c files
 norm:
-	@$(NORM) $(SRC_DIR)
-	@$(NORM) $(INC_DIR)
-	@$(NORM) $(LIBFT_DIR)
+	-@$(NORM) $(LIBFT_DIR)
+	-@$(NORM) $(INC_DIR)
+	-@$(NORM) $(SRC_DIR)
 
 # Clean object files
 clean:

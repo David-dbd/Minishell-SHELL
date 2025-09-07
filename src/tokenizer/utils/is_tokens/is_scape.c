@@ -6,14 +6,16 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:43 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 17:06:03 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:25:11 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
 /*
-	Detecta carácter de escape '\' y añade un token de tipo SCAPE.
+	Procesa el carácter de escape '\'.
+	- Si está al final del input, crea un token SCAPE.
+	- Si sigue otro carácter, lo procesa como parte de una palabra.
 */
 
 void	is_scape(t_shell *data, t_prompt *prompt, const char *str, int *i)

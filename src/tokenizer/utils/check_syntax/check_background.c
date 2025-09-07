@@ -6,11 +6,21 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 03:51:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/27 00:27:33 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:43:17 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
+
+/*
+	Valida la posición de un token '&' (BACKGROUND) en la línea de comandos.
+
+	- Si '&' está al inicio, devuelve error de sintaxis,
+	- Si el token anterior no es un comando, palabra, built-in,
+	  expansión o wildcard, devuelve error de sintaxis,
+	  porque '&' solo puede seguir a algo ejecutable.
+	- Devuelve SUCCESS si el '&' está en una posición válida.
+*/
 
 int	check_background(t_shell *data, t_prompt *p, t_token *tokens, int i)
 {

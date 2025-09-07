@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:23:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/06 21:45:59 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 20:15:21 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,26 +127,26 @@
 //Command Errors
 # define ERR_CMD_NOT_FOUND	"minishell: %s: command not found\n"
 # define ERR_CMD_NOT_EXEC	"minishell: %s: cannot execute binary file\n"
-# define ERR_EXEC_FORMAT "minishell: %s: cannot execute binary file: Exec format error\n"
+# define ERR_EXEC_FORMAT	"minishell: %s: cannot execute binary file: \
+Exec format error\n"
 
 //Built-in Errors
 # define ERR_CD_TOO_MANY	"minishell: cd: too many arguments\n"
 # define ERR_CD_NO_HOME		"minishell: cd: HOME not set\n"
 # define ERR_CD_OLDPWD		"minishell: cd: OLDPWD not set\n"
-# define ERR_EXPORT_INVALID	"minishell: export: `%s': not a valid identifier\n"
-# define ERR_UNSET_INVALID	"minishell: unset: `%s': not a valid identifier\n"
+# define ERR_EXPORT			"minishell: export: `%s': not a valid identifier\n"
+# define ERR_UNSET			"minishell: unset: `%s': not a valid identifier\n"
 # define ERR_EXIT_NUMERIC	"minishell: exit: %s: numeric argument required\n"
 # define ERR_EXIT_TOO_MANY	"minishell: exit: too many arguments\n"
-# define ERR_PWD_ERROR		"minishell: pwd: error retrieving current directory\n"
-# define ERR_ENV_NO_ARGS	"minishell: env: invalid option\n"
+# define ERR_ENV		"minishell: env: invalid option\n"
+# define ERR_PWD		"minishell: pwd: error retrieving current directory\n"
 
 //Syntax Errors
-# define ERR_SYNTAX			"minishell: syntax error near unexpected token `%s'\n"
-# define ERR_COMPLETE		"minishell: syntax error near command completion\n"
+# define ERR_SYNTAX		"minishell: syntax error near unexpected token `%s'\n"
+# define ERR_COMPLETE	"minishell: syntax error near command completion\n"
 # define ERR_SYNTAX_EOF		"minishell: syntax error: unexpected end of file\n"
-# define ERR_SYNTAX_NEWLINE	"minishell: syntax error near unexpected token `newline'\n"
-# define ERR_UNCLOSED_QUOTE	"minishell: unexpected EOF while looking for matching `%c'\n"
-# define ERR_HEREDOC_EOF	"minishell: warning: here-document at line %d delimited by end-of-file (wanted `%s')\n"
+# define ERR_HEREDOC_EOF	"minishell: warning: here-document at line %d \
+delimited by end-of-file (wanted `%s')\n"
 
 //Variable Errors
 # define ERR_VAR_NOT_SET	"minishell: %s: parameter null or not set\n"
@@ -160,20 +160,30 @@
 /* ************************************************************************** */
 /*                          Time messsage                                     */
 /* ************************************************************************** */
-# define MSG_TIME_START "\033[0;36m Session started at: %02d:%02d:%02d on %02d/%02d/%04d\033[0m\n\n"
-# define MSG_TIME_END "\n\033[0;36m Session ended. Duration: %d minutes and %d seconds ⏳\033[0m\n\n"
+# define MSG_TIME_START "\
+\033[0;36m Session started at: %02d:%02d:%02d on %02d/%02d/%04d\033[0m\n\n"
+# define MSG_TIME_END "\
+\n\033[0;36m Session ended. Duration: %d minutes and %d seconds ⏳\033[0m\n\n"
 
 /* ************************************************************************** */
 /*                          Prompt & Success Messages                         */
 /* ************************************************************************** */
-# define MSG_WELCOME			"\033[1m\033[1;32m────────── Welcome! ──────────\033[0m\n"
-# define MSG_WELCOME_EARLY		"\033[1;32m ────────── You're up early! 🌅 ──────────\033[0m\n\n"
-# define MSG_WELCOME_MORNING	"\033[1;32m ────────── Good morning, Commander! ☀️ ──────────\033[0m\n\n"
-# define MSG_WELCOME_AFTER		"\033[1;32m ────────── Good afternoon, Explorer! 🌤️ ──────────\033[0m\n\n"
-# define MSG_WELCOME_NIGHT		"\033[1;32m ────────── Good evening, Night Owl! 🌙 ──────────\033[0m\n\n"
-# define MSG_WELCOME_MIDNIGHT	"\033[1;32m ────────── Burning the midnight oil? 🔥 ──────────\033[0m\n\n"
-# define MSG_GOODBYE			"\033[1m\033[1m\033[38;5;99m────────── Goodbye! ──────────\033[0m\n"
-# define MINISHELL				"\033[1;34mminishell>\033[0m "
+# define MSG_WELCOME			"\
+\033[1m\033[1;32m────────── Welcome! ──────────\033[0m\n"
+# define MSG_WELCOME_EARLY		"\
+\033[1;32m ────────── You're up early! 🌅 ──────────\033[0m\n\n"
+# define MSG_WELCOME_MORNING	"\
+\033[1;32m ────────── Good morning, Commander! ☀️ ──────────\033[0m\n\n"
+# define MSG_WELCOME_AFTER		"\
+\033[1;32m ────────── Good afternoon, Explorer! 🌤️ ──────────\033[0m\n\n"
+# define MSG_WELCOME_NIGHT		"\
+\033[1;32m ────────── Good evening, Night Owl! 🌙 ──────────\033[0m\n\n"
+# define MSG_WELCOME_MIDNIGHT	"\
+\033[1;32m ────────── Burning the midnight oil? 🔥 ──────────\033[0m\n\n"
+# define MSG_GOODBYE			"\
+\033[1m\033[1m\033[38;5;99m────────── Goodbye! ──────────\033[0m\n"
+# define MINISHELL				"\
+\033[1;34mminishell>\033[0m "
 
 /* ************************************************************************** */
 /*                          Entry Message                                     */

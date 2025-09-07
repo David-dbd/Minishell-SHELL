@@ -13,8 +13,10 @@
 #include "../../../../inc/minishell.h"
 
 /*
-	Si el carácter es '$', añade un token de tipo EXPANSION.
-	Luego procesa el resto como palabra con is_word.
+	Elimina todos los caracteres 'trash' de la cadena 'expansion'.
+	Reserva una nueva cadena limpia, copia solo los caracteres válidos,
+	libera la original y devuelve la nueva.
+	Se usa para quitar '{', '}' de las expansiones de variables.
 */
 
 char	*cleanner_exp(t_shell *data, char *expansion, int len, char trash)
@@ -46,18 +48,26 @@ char	*cleanner_exp(t_shell *data, char *expansion, int len, char trash)
 	return (expansion);
 }
 
+/*
+	Comprueba si el carácter actual termina una expansión o es un símbolo
+	especial que debe separarse en otro token.
+
+	- Devuelve 1 si es un operador o símbolo: '|', '<', '>', '&', '(', ')'.
+	- Si es un carácter que interrumpe la expansión
+	  ('.', comilla, '\', o '$' que inicia otra expansión),
+	  marca 'flag = TRUE' para añadir un token NO_SPACE después
+	  y retorna 1 para delimitar el token actual.
+	- Devuelve 0 si el carácter puede seguir formando parte de la variable.
+*/
+
 static int	isn_exp(const char *str, int *i, int *flag)
 {
 	char	c;
 
 	c = str[*i];
-	if (c == '|' || c == '<' || c == '>' || c == '&' || c == '(' || c == ')')
+	if (c == '|' || c == '<' || c == '>' || c == '&' || c == '(' || c == ')'
+		|| c == ';')
 		return (1);
-	else if (c == ';')
-	{
-		(*i)++;
-		return (1);
-	}
 	else if (c == '.' || c == '\'' || c == '\"' || c == '\\')
 	{
 		*flag = TRUE;
@@ -71,6 +81,12 @@ static int	isn_exp(const char *str, int *i, int *flag)
 	return (0);
 }
 
+/*
+	Crea un token de tipo EXPANSION desde la str.
+	Limpia '{' y '}' dentro de la expansión.
+	Finalmente añade el token al prompt.
+*/
+
 static void	make_expan_token(t_shell *data, const char *str, int start, int *i)
 {
 	int		len;
@@ -82,12 +98,20 @@ static void	make_expan_token(t_shell *data, const char *str, int start, int *i)
 		expansion = ft_substr(str, start, len);
 		if (!expansion)
 			exit_error(data, ERR_MALLOC, EXIT_FAILURE);
-		expansion = cleanner_exp(data, expansion, len, ';');
 		expansion = cleanner_exp(data, expansion, len, '{');
 		expansion = cleanner_exp(data, expansion, len, '}');
 		add_token(data, &data->prompt, expansion, EXPANSION);
 	}
 }
+
+/*
+	Procesa un token que comienza con '$':
+	- Salta si está seguido de un dígito ($1), que no se expande.
+	- Recorre hasta espacio, símbolo especial o fin de cadena.
+	- Crea un token EXPANSION con make_expan_token.
+	- Añade un token NO_SPACE si el carácter que sigue no forma parte
+	  de la variable que debe expandir
+*/
 
 void	is_dolar(t_shell *data, t_prompt *prompt, const char *str, int *i)
 {

@@ -6,11 +6,16 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:47:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/04 22:58:46 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 20:44:55 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+/*
+	Libera los valores de los tokens allocados y luego libera
+	la memoria del array de tokens.
+*/
 
 void	clean_tokens(t_prompt *prompt)
 {
@@ -39,6 +44,11 @@ void	clean_tokens(t_prompt *prompt)
 	prompt->tokens = NULL;
 }
 
+/*
+	Libera la cadena 'prompt' del input, los tokens y reinicia la
+	estructura de 'prompt' a cero.
+*/
+
 void	clean_prompt(t_prompt *prompt)
 {
 	if (prompt->prompt)
@@ -46,6 +56,11 @@ void	clean_prompt(t_prompt *prompt)
 	clean_tokens(prompt);
 	*prompt = (t_prompt){0};
 }
+
+/*
+	Libera la lista enlazada de variables de entorno, incluyendo
+	'key' y 'value' de cada nodo.
+*/
 
 void	clean_env(t_var *vars)
 {
@@ -64,6 +79,11 @@ void	clean_env(t_var *vars)
 		var = next;
 	}
 }
+
+/*
+	Limpia todos los recursos del shell: historial, prompt y
+	variables de entorno asociadas a 'data'.
+*/
 
 void	clean_all(t_shell *data)
 {

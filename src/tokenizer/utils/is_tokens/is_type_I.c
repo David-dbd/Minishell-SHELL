@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_type.c                                          :+:      :+:    :+:   */
+/*   is_type_I.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:48:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/06 22:41:02 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:27:25 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
+
+/*
+	Devuelve 1 si el tipo es un comando, built-in o palabra.
+*/
 
 int	is_cmd_type(int type)
 {
@@ -19,12 +23,20 @@ int	is_cmd_type(int type)
 	return (0);
 }
 
+/*
+	Devuelve 1 si el tipo es comilla simple o doble.
+*/
+
 int	is_quote_type(int type)
 {
 	if (type == DOUBLE_QUOTE || type == SINGLE_QUOTE)
 		return (1);
 	return (0);
 }
+
+/*
+	Devuelve 1 si el tipo es redirección de salida o append.
+*/
 
 int	is_redir_type(int type)
 {
@@ -33,6 +45,10 @@ int	is_redir_type(int type)
 	return (0);
 }
 
+/*
+	Devuelve 1 si el tipo es un delimitador de comandos (pipe, ;, &&, ||).
+*/
+
 int	is_delimiter_type(int type)
 {
 	if (type == PIPE || type == SEMICOLON || type == AND || type == OR)
@@ -40,12 +56,16 @@ int	is_delimiter_type(int type)
 	return (0);
 }
 
-int is_alloc_type(int type)
+/*
+	Devuelve 1 si el tipo ocupa memoria y requiere liberación al limpiar tokens.
+*/
+
+int	is_alloc_type(int type)
 {
 	if (type == WORD || type == BUILT_IN || type == COMMAND || type == WILDCAR
-			|| type == REDIR_APPEND || type == REDIR_HEREDOC
-			|| type == REDIR_INPUT || type == REDIR_OUTPUT
-			|| type == EXPANSION)
+		|| type == REDIR_APPEND || type == REDIR_HEREDOC
+		|| type == REDIR_INPUT || type == REDIR_OUTPUT
+		|| type == EXPANSION)
 		return (1);
-	return(0);
+	return (0);
 }

@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   check_pipe.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 22:40:33 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/02 19:54:41 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:45:04 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
 /*
-	Comprueba que el token '|' tenga un comando válido a izquierda y derecha.
-	En caso contrario, lanza un error de sintaxis.
-*/
+	Valida un pipe '|' en la línea de comandos.
 
-/* heardoc: cmd | nothing if (tokens[i - 1].type && !tokens[i - 1].type)
-	command not found: cmd | cmd success; cmd | word fails;
-	word | cmd fails and success;  word | word fails;
-	 syntax error near unexpected token `|': nothing | nothing fails;
-	nothing | cmd fails; */
+	- Comprueba que haya un token válido antes y después del pipe.
+	  Tokens válidos antes: COMMAND, WORD, BUILT_IN, PAREN_CLOSE, DOUBLE_QUOTE,
+	  SINGLE_QUOTE, EXPANSION.
+	  Tokens válidos después: COMMAND, WORD, BUILT_IN, PAREN_OPEN, DOUBLE_QUOTE,
+	  SINGLE_QUOTE, EXPANSION.
+	- Si ambos lados son válidos, incrementa el contador y devuelve SUCCESS.
+	- Si no, lanza error de sintaxis.
+*/
 
 int	check_pipe(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 {

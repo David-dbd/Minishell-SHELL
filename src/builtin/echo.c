@@ -6,11 +6,17 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:23:24 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 18:41:10 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 20:49:21 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+/*
+	Procesa los argumentos de 'echo' y detecta todas las opciones '-n'
+	consecutivas o -nnnnn..., para evitar imprimir la nueva línea final y
+	avanzar al primer argumento real.
+*/
 
 static void	handle_n_flag(char **args, int *new_line, int *i)
 {
@@ -31,6 +37,11 @@ static void	handle_n_flag(char **args, int *new_line, int *i)
 			break ;
 	}
 }
+
+/*
+	Implementa el comando 'echo': imprime los argumentos y añade
+	una nueva línea a menos que se use '-n'.
+*/
 
 void	shell_echo(char **args)
 {

@@ -6,15 +6,16 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:45 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 18:40:03 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:59:53 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
 /*
-	Detecta redirecciones de salida '>', '>>' o entrada '<'.
-	Añade el token correspondiente y ajusta el índice si es doble.
+	Detecta redirección de append '>>'.
+	- Soporta descriptor antes (ej. '2>>').
+	- Crea token REDIR_APPEND y avanza el índice.
 */
 
 void	is_redir_append(t_shell *data, t_prompt *promp, const char *str, int *i)
@@ -39,6 +40,12 @@ void	is_redir_append(t_shell *data, t_prompt *promp, const char *str, int *i)
 	}
 }
 
+/*
+	Detecta redirección de salida '>'.
+	- Soporta descriptor antes (ej. '2>').
+	- Crea token REDIR_OUTPUT y avanza el índice.
+*/
+
 void	is_redir_output(t_shell *data, t_prompt *promp, const char *str, int *i)
 {
 	char	*output;
@@ -60,6 +67,12 @@ void	is_redir_output(t_shell *data, t_prompt *promp, const char *str, int *i)
 		(*i)++;
 	}
 }
+
+/*
+	Detecta redirección noclobber '>|'.
+	- Soporta descriptor antes (ej. '2>|').
+	- Crea token REDIR_OUTPUT y avanza el índice.
+*/
 
 void	is_redir_noclobber(t_shell *d, t_prompt *promp, const char *str, int *i)
 {
@@ -83,6 +96,12 @@ void	is_redir_noclobber(t_shell *d, t_prompt *promp, const char *str, int *i)
 	}
 }
 
+/*
+	Detecta redirección de entrada '<'.
+	- Soporta descriptor antes (ej. '2<').
+	- Crea token REDIR_INPUT y avanza el índice.
+*/
+
 void	is_redir_input(t_shell *data, t_prompt *promp, const char *str, int *i)
 {
 	char	*input;
@@ -104,6 +123,11 @@ void	is_redir_input(t_shell *data, t_prompt *promp, const char *str, int *i)
 		(*i)++;
 	}
 }
+
+/*
+	Llama a todas las funciones de redirección para procesar
+	cualquier tipo de operador '<', '>', '>>' o '>|'.
+*/
 
 void	is_redir(t_shell *data, t_prompt *prompt, const char *str, int *i)
 {

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 17:07:02 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/07 04:56:04 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 20:37:30 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,13 +143,18 @@ int		is_cmd_type(int type);
 int		is_quote_type(int type);
 int		is_redir_type(int type);
 int		is_delimiter_type(int type);
-int 	is_alloc_type(int type);
+int		is_alloc_type(int type);
 int		is_between_quotes_type(int type);
 int		is_simplify_type(int type);
 
 //SIMPLIFY TOKENS
 void	simplify_tokens(t_shell *data, t_prompt *prompt, t_token *tokens);
 void	reorganize_tokens(t_prompt *p, t_token *tokens, int *range, char *res);
+int		find_range_start(t_token *tokens, int no_space_position);
+int		find_range_end(t_token *tokens, int no_space_position);
+
+//ENV
+void	path_null_no_env(t_shell *data, char **path);
 
 //UTILS
 char	*cleanner_slash(t_shell *data, char *word, int len, char slash);

@@ -6,15 +6,17 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:44:05 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 17:01:16 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/07 21:00:25 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
 /*
-	Detecta el operador lógico '&&' y añade un token de tipo AND.
-	Avanza el índice para no volver a procesar el token.
+	Procesa el carácter '&' en el input: si está seguido de otro '&',
+	crea un token de tipo AND; si va seguido de un dígito, crea un
+	token WORD con el descriptor; si no, crea un token de tipo BACKGROUND.
+	Actualiza el índice para saltar los caracteres ya procesados.
 */
 
 void	is_and(t_shell *data, t_prompt *prompt, const char *str, int *i)
