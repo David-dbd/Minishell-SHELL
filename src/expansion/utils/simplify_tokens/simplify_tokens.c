@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 20:37:22 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/08 02:07:56 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/08 02:46:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ int	get_no_space_range(t_token *tokens, int *range, int start_i)
 
 void	remove_quotes_tokens(t_prompt *prompt, t_token *tokens)
 {
-	int read_index;
+	int	read_index;
 	int	write_index;
-	int quotes_removed;
+	int	quotes_removed;
 
 	read_index = 0;
 	write_index = 0;
 	quotes_removed = 0;
-	while(tokens[read_index].type)
+	while (tokens[read_index].type)
 	{
 		if (is_quote_type(tokens[read_index].type))
 			quotes_removed++;

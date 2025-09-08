@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 17:04:19 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/07 21:49:03 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/08 03:09:33 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@
 static int	should_tranform_token(t_token *tokens, int i)
 {
 	if ((i == 1 && is_cmd_type(tokens[i - 1].type))
-		|| (i > 1 && is_cmd_type(tokens[i - 1].type)
+		|| (i >= 2 && is_cmd_type(tokens[i - 1].type)
 			&& !is_redir_type(tokens[i - 2].type))
-		|| (i > 1 && is_quote_type(tokens[i - 1].type)
+		|| (i >= 2 && is_quote_type(tokens[i - 1].type)
 			&& is_cmd_type(tokens[i - 2].type))
-		|| (i > 3 && is_quote_type(tokens[i - 1].type)
+		|| (i >= 2 && tokens[i - 1].type == EXPANSION)
+		|| (i >= 4 && is_quote_type(tokens[i - 1].type)
 			&& is_quote_type(tokens[i - 2].type)
 			&& tokens[i - 3].type == NO_SPACE
 			&& is_cmd_type(tokens[i - 4].type)))
@@ -44,10 +45,12 @@ static int	should_tranform_token(t_token *tokens, int i)
 
 static int	should_handle_no_space(t_token *tokens, int i)
 {
-	if ((i > 0 && tokens[i - 1].type == NO_SPACE)
-		|| (i > 1 && tokens[i - 2].type == NO_SPACE)
-		|| (i > 2 && tokens[i - 3].type == NO_SPACE)
-		|| (i > 3 && tokens[i - 4].type == NO_SPACE))
+	if ((i >= 1 && tokens[i - 1].type == NO_SPACE)
+		|| (i >= 2 && tokens[i - 2].type == NO_SPACE
+			&& !is_delimiter_type(tokens[i - 1].type))
+		|| (i >= 3 && tokens[i - 3].type == NO_SPACE
+			&& !is_delimiter_type(tokens[i - 2].type)
+			&& !is_delimiter_type(tokens[i - 1].type)))
 		return (1);
 	return (0);
 }

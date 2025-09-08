@@ -10,14 +10,8 @@ https://github.com/rogerdevworld/minishell/blob/main/src/bonus/syntax/ft_lexer_2
 <h2>MIKEL:</h2>
 <div>
 
-- problemas de simplifly tokens ->  sds""''"$ls"hola''$mikel
-genera doble NO_SPACE pero creo que no hay problema.
-
-- problema de logic trasnform -> cd cd $cd cd ->
-Token [0]: 'cd' (type: BUILT_IN)
-Token [1]: 'cd' (type: WORD)
-Token [2]: '$cd' (type: EXPANSION)
-Token [3]: 'cd' (type: BUILT_IN)
+- problemas de simplifly tokens ->  sds""''"$ls"''$mikel
+genera doble NO_SPACE pero creo que no hay problema a malas se podria hacer una fucion que borre dobles NO_SPACES seguidos.
 
 </div>
 

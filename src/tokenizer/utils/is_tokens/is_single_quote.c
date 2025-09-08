@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/08 02:27:01 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/08 02:47:45 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,15 @@ int	ft_is_dead_s(const char *s, int *i, char quote, int *flag)
 	if ((s[*i] == quote && s[*i + 1] == quote))
 	{
 		if (s[*i + 2])
-				*flag = TRUE;
-			return (1);
+			*flag = TRUE;
+		return (1);
 	}
 	else if ((s[*i] == quote && s[*i + 1] != quote))
 	{
 		if (s[*i + 1] && (ft_isalpha(s[*i + 1]) || s[*i + 1] == '\\'
 				|| s[*i + 1] == '$' || s[*i + 1] == '\"' || s[*i + 1] == '/'))
-				*flag = TRUE;
-			return (1);
+			*flag = TRUE;
+		return (1);
 	}
 	else if (s[*i + 1] && s[*i] == quote && s[*i + 1] == quote)
 	{
