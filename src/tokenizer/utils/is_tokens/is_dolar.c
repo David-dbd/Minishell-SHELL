@@ -100,7 +100,10 @@ static void	make_expan_token(t_shell *data, const char *str, int start, int *i)
 			exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 		expansion = cleanner_exp(data, expansion, len, '{');
 		expansion = cleanner_exp(data, expansion, len, '}');
-		add_token(data, &data->prompt, expansion, EXPANSION);
+		if (ft_strcmp(expansion, "$") == 0)
+			add_token(data, &data->prompt, expansion, WORD);
+		else
+			add_token(data, &data->prompt, expansion, EXPANSION);
 	}
 }
 

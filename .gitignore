@@ -10,7 +10,6 @@
 minishell
 
 # Readline post config
-lib/readline/.rl_confi
 lib/readline/Makefile
 lib/readline/config.h
 lib/readline/config.log

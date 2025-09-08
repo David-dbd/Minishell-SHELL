@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/09/07 22:06:01 by migarrid         ###   ########.fr        #
+#    Updated: 2025/09/08 19:08:25 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -195,7 +195,6 @@ $(READLINE_A): $(READLINE_DIR)/config.h
 $(READLINE_DIR)/config.h:
 	@$(PRINT) "Configuring $(BLUE)readline$(DEFAULT)...\n"
 	@cd $(READLINE_DIR) && ./configure --enable-static --disable-shared > /dev/null 2>&1
-	@touch $(READLINE_DIR)/.rl_confi
 
 # Test the norminette in my .c files
 norm:
@@ -215,7 +214,6 @@ fclean: clean
 	@$(MAKE) fclean -s -C $(LIBFT_DIR)
 	@$(MAKE) distclean -s -C $(READLINE_DIR)
 	@$(RM) $(NAME)
-	@$(RM) $(READLINE_DIR)/.rl_confi
 	@$(PRINT) "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Project cleaned ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 
 # Rebuild everything
