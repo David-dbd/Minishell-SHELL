@@ -1,37 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 22:22:39 by migarrid          #+#    #+#             */
+/*   Updated: 2025/09/10 22:31:12 by migarrid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/minishell.h"
 
 /**
  * Implementación de la función `export` en un shell personalizado.
  *
  * Propósito:
- * Ejecutar asignaciones de variables de entorno cuando se llama al comando `export`,
- * y mostrar las variables exportadas si no se proporcionan argumentos válidos.
+ * Ejecutar asignaciones de variables de entorno cuando se llama al
+ * comando `export` y mostrar las variables exportadas si
+ * no se proporcionan argumentos válidos.
  *
  * Lógica general:
  * - La función recibe un puntero al token que representa el comando `export`.
  * - Comienza a recorrer los tokens a partir de su posición (`tokens->id`).
  * - En cada iteración:
- *   - Si encuentra un operador lógico (`AND`, `OR`), un pipe (`PIPE`) o un paréntesis de apertura (`PAREN_OPEN`),
- *     se detiene, ya que esos tokens indican un cambio de contexto en el árbol de ejecución.
- *   - Si el token actual es de tipo `ASIGNATION`, se ejecuta la asignación mediante `is_it_asig()`.
+ *   - Si encuentra un operador lógico (`AND`, `OR`), un pipe (`PIPE`) o un
+ *     paréntesis de apertura (`PAREN_OPEN`),
+ *     se detiene, ya que esos tokens indican un cambio de contexto en el
+ *     árbol de ejecución.
+ *   - Si el token actual es de tipo `ASIGNATION`, se ejecuta la asignación
+ *     mediante `is_it_asig()`.
  *   - Los tokens que no sean asignaciones se ignoran silenciosamente.
  *
  * Comportamiento especial:
- * - Si no se ejecuta ninguna asignación (es decir, si `export` se llama sin argumentos válidos),
+ * - Si no se ejecuta ninguna asignación (es decir, si `export` se llama
+ *   sin argumentos válidos),
  *   se imprime la lista de variables exportadas actualmente en el entorno.
- * - Cada variable se muestra en formato Bash-compatible: `declare -x VAR="value"`.
+ * - Cada variable se muestra en formato Bash-compatible:
+ *   `declare -x VAR="value"`.
  *
  * Ventajas del diseño:
- * - Evita ejecutar tokens irrelevantes o comandos que no forman parte de `export`.
+ * - Evita ejecutar tokens irrelevantes o comandos que no forman
+ *   parte de `export`.
  * - Respeta el flujo lógico del AST y la semántica real del comando `export`.
- * - Permite extender fácilmente el comportamiento para soportar más casos (como `export -p` o variables sin valor).
+ * - Permite extender fácilmente el comportamiento para soportar más casos
+ *   (como `export -p` o variables sin valor).
  */
 
-int my_export(t_shell *data, t_token *tokens, t_env *env)
+int	my_export(t_shell *data, t_token *tokens, t_env *env)
 {
 	t_var	*var;
-	int	i;
-	int	result;
+	int		i;
+	int		result;
 
 	var = env->vars;
 	i = tokens->id;
@@ -47,7 +67,7 @@ int my_export(t_shell *data, t_token *tokens, t_env *env)
 		i++;
 	}
 	if (i == 1 && (tokens[i].type == WORD
-		&& ft_strcmp(tokens[i].value, BUILTIN_EXPORT) == 0))
+			&& ft_strcmp(tokens[i].value, BUILTIN_EXPORT) == 0))
 	{
 		while (var)
 		{

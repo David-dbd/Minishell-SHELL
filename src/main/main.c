@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 21:17:43 by migarrid          #+#    #+#             */
+/*   Updated: 2025/09/10 21:17:51 by migarrid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
@@ -22,7 +33,7 @@ int	main(int argc, char **argv, char **envp)
 		if (!tokenizer(&data, &data.prompt, input))
 			continue ;
 		ast_built(&data, data.prompt.tokens);
-		//execute_recursive(&data, data.ast_root, &data.executor);
+		execute_recursive(&data, data.ast_root, &data.executor);
 		clean_prompt(&data.prompt);
 	}
 	exit_succes(&data, MSG_GOODBYE, EXIT_SUCCESS);

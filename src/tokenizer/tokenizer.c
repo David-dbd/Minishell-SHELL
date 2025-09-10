@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tokenizer.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
+/*   Updated: 2025/09/10 22:11:37 by migarrid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
@@ -133,8 +144,8 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	allocate_tokens(data, prompt, input);
 	parse_tokens(data, prompt, input);
 	transform_word_to_cmd(data, prompt->tokens);
-	// printf("------------------------------------------------\n");
-	// print_tokens_debug(prompt);
+	printf("------------------------------------------------\n");
+	print_tokens_debug(prompt);
 	if (!valid_tokens(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
 	// printf("------------------------------------------------\n");

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   expansion.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 21:57:33 by migarrid          #+#    #+#             */
+/*   Updated: 2025/09/10 22:23:51 by migarrid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
@@ -50,12 +61,12 @@
  * dentro de un shell, respetando fases de ejecución y tipos de token.
  */
 
-static int aux_mem_alloc(t_shell *data, t_token *token, char **key_to_find)
+static int	aux_mem_alloc(t_shell *data, t_token *token, char **key_to_find)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(token->value);
-	*key_to_find = (char *)malloc((len + 1)* sizeof(char));
+	*key_to_find = (char *)malloc((len + 1) * sizeof(char));
 	if (!*key_to_find)
 	{
 		exit_error(data, ERR_MALLOC, EXIT_USE);
@@ -64,7 +75,6 @@ static int aux_mem_alloc(t_shell *data, t_token *token, char **key_to_find)
 	(*key_to_find)[len] = '\0';
 	return (SUCCESS);
 }
-
 
 int	expansion(t_shell *data, t_token *token, t_env *env, int phase)
 {
@@ -80,7 +90,7 @@ int	expansion(t_shell *data, t_token *token, t_env *env, int phase)
 	j = ft_count_char(token->value, '$');
 	while (j > 0)
 	{
-		found = extract_key_string(data, token, &key_to_find, phase);
+		found = extract_key(data, token, &key_to_find, phase);
 		if (found == ERROR)
 			return (ERROR);
 		j--;

@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   calculate_total_len.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 21:24:06 by migarrid          #+#    #+#             */
+/*   Updated: 2025/09/10 21:24:20 by migarrid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../../inc/minishell.h"
 
-int calculate_total_length(t_shell *data, char *str, char *key_to_find)
+int	calculate_total_length(t_shell *data, char *str, char *key_to_find)
 {
 	t_var	*var;
-	int	len_of_token;
-	int	len_of_expansion;
-	int	total_len;
+	int		len_of_token;
+	int		len_of_expansion;
+	int		total_len;
 
 	var = data->env.vars;
 	len_of_token = 0;

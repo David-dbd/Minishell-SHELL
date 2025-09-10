@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
+/*   Updated: 2025/09/10 22:33:11 by migarrid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -58,7 +69,7 @@ void	ast_built(t_shell *data, t_token *tokens);
 /*                                Executor                                    */
 /* ************************************************************************** */
 void	execute_recursive(t_shell *data, t_node *ast_root, t_exec *executor);
-void		which_builtin(t_shell *data, t_token *tokens, t_token *token);
+void	which_builtin(t_shell *data, t_token *tokens, t_token *token);
 
 /* ************************************************************************** */
 /*                               Expansion                                    */
@@ -152,7 +163,7 @@ void	transform_word_to_asignation(t_shell *data, t_token *tokens);
 int		calculate_total_length(t_shell *data, char *str, char *key_to_find);
 int		copy_key(char *buffer, char **key_to_find);
 int		copy_value(t_shell *d, char **t_val, char *key_value, char *key_to_f);
-int		extract_key_string(t_shell *d, t_token *t, char **key_to_f, int phase);
+int		extract_key(t_shell *d, t_token *t, char **key_to_f, int phase);
 int		find_key_in_lst(t_shell *d, t_token *t, char *key_to_f);
 
 //ASIGNATION

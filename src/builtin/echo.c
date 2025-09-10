@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:23:24 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/10 20:43:41 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/10 22:32:43 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@
 // 		printf("\n");
 // }
 
-
 /*
 	Procesa los argumentos de 'echo' y detecta todas las opciones '-n'
 	consecutivas o -nnnnn..., para evitar imprimir la nueva línea final y
@@ -74,7 +73,8 @@ static void	handle_n_flag(t_token *tokens, int *new_line, int *i)
 	int	j;
 
 	j = 0;
-	while (tokens[*i].type && tokens[*i].value[0] == '-' && tokens[*i].value[1] == 'n')
+	while (tokens[*i].type
+		&& tokens[*i].value[0] == '-' && tokens[*i].value[1] == 'n')
 	{
 		j += 2;
 		while (tokens[*i].value[j] == 'n')

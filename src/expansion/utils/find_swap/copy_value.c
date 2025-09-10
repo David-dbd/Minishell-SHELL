@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   copy_value.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 21:22:59 by migarrid          #+#    #+#             */
+/*   Updated: 2025/09/10 21:23:14 by migarrid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
-static char *find_key_in_new_buffer(char *token_val, int len)
+static char	*find_key_in_new_buffer(char *token_val, int len)
 {
-	char *ptr;
+	char	*ptr;
 
 	while (len > 0)
 	{
@@ -15,7 +26,7 @@ static char *find_key_in_new_buffer(char *token_val, int len)
 	return (ptr);
 }
 
-int copy_value(t_shell *data, char **token_val, char *key_value, char *key_to_find)
+int	copy_value(t_shell *d, char **token_val, char *key_value, char *key_to_find)
 {
 	char	*ptr;
 	int		new_len;
@@ -23,7 +34,7 @@ int copy_value(t_shell *data, char **token_val, char *key_value, char *key_to_fi
 	int		i;
 
 	i = 0;
-	new_len = calculate_total_length(data, *token_val, key_to_find);
+	new_len = calculate_total_length(d, *token_val, key_to_find);
 	old_len = ft_strlen(*token_val);
 	ft_realloc(*token_val, old_len, new_len);
 	if (!*token_val)

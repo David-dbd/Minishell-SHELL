@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asignation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:35:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/10 17:35:43 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/10 21:57:01 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 	*Añade la variable al entorno con add_var().
 */
 
-static int aux_mem_alloc(char **key, char **value, int len)
+static int	aux_mem_alloc(char **key, char **value, int len)
 {
 	*key = (char *)malloc((len + 1) * sizeof(char));
 	*value = (char *)malloc((len + 1) * sizeof(char));
@@ -38,7 +38,7 @@ static int aux_mem_alloc(char **key, char **value, int len)
 	return (SUCCESS);
 }
 
-static void aux_key_asig(t_token *token, char **key, int *i)
+static void	aux_key_asig(t_token *token, char **key, int *i)
 {
 	while (token->value[*i] != '=')
 	{
@@ -49,7 +49,7 @@ static void aux_key_asig(t_token *token, char **key, int *i)
 	(*i)++;
 }
 
-static void aux_value_asig(t_token *token, char **value, int *i)
+static void	aux_value_asig(t_token *token, char **value, int *i)
 {
 	int	j;
 
@@ -66,7 +66,7 @@ static void aux_value_asig(t_token *token, char **value, int *i)
 	(*value)[j] = '\0';
 }
 
-int asignation(t_shell *data, t_token *token, int type)
+int	asignation(t_shell *data, t_token *token, int type)
 {
 	char	*key;
 	char	*value;
@@ -85,4 +85,3 @@ int asignation(t_shell *data, t_token *token, int type)
 	add_var(data, key, value, type);
 	return (SUCCESS);
 }
-

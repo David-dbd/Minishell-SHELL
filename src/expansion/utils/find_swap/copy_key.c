@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   copy_key.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 21:23:28 by migarrid          #+#    #+#             */
+/*   Updated: 2025/09/10 21:24:03 by migarrid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../../../inc/minishell.h"
 
-int copy_key(char *buffer, char **key_to_find)
+int	copy_key(char *buffer, char **key_to_find)
 {
 	int	i;
 	int	j;
@@ -14,7 +26,7 @@ int copy_key(char *buffer, char **key_to_find)
 		{
 			i++;
 			if (!ft_isalpha(buffer[i]))
-				continue;
+				continue ;
 			start = i;
 			while (ft_isalpha(buffer[start]) || (*key_to_find)[j] != '\0')
 			{

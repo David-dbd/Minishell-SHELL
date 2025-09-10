@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   check_asignation_syntax.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:34:34 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/10 17:38:12 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/10 21:56:38 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
 /*
-
-	Asignaciones solo pueden tener && || | asignaciones detras y delante para funcionar. Nada de BUILT-INS o CMD o WORDS
+	Asignaciones solo pueden tener && || | asignaciones detras y delante para
+	funcionar. Nada de BUILT-INS o CMD o WORDS
 	Si tiene asignaciones - cmd ignora la asignacion.
 	si tiene cmd asignacion - es parte argumento
 	Export funciona ignorarndo todo lo que no sea asignacion.
@@ -32,12 +32,12 @@
 	bash-3.2$ jaja=jiji=jaja=jiji
 */
 
-static int count_syntax(t_token *token)
+static int	count_syntax(t_token *token)
 {
-	int i;
+	int	i;
 	int	check_for_equal;
 	int	before_text;
-	int after_text;
+	int	after_text;
 
 	check_for_equal = 0;
 	before_text = 0;
@@ -59,7 +59,7 @@ static int count_syntax(t_token *token)
 	return (TRUE);
 }
 
-int check_asignation_syntax(t_token *token)
+int	check_asignation_syntax(t_token *token)
 {
 	int	i;
 	int	len;
@@ -74,4 +74,3 @@ int check_asignation_syntax(t_token *token)
 	result = count_syntax(token);
 	return (result);
 }
-
