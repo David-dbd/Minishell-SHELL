@@ -6,11 +6,11 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:35:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/09 23:57:23 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/10 17:35:43 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/minishell.h"
+#include "../../../../inc/minishell.h"
 
 /*
 	Propósito:
@@ -43,10 +43,10 @@ static void aux_key_asig(t_token *token, char **key, int *i)
 	while (token->value[*i] != '=')
 	{
 		(*key)[*i] = token->value[*i];
-		*i++;
+		(*i)++;
 	}
 	(*key)[*i] = '\0';
-	*i++;
+	(*i)++;
 }
 
 static void aux_value_asig(t_token *token, char **value, int *i)
@@ -61,7 +61,7 @@ static void aux_value_asig(t_token *token, char **value, int *i)
 		{
 			(*value)[j++] = token->value[*i];
 		}
-		*i++;
+		(*i)++;
 	}
 	(*value)[j] = '\0';
 }

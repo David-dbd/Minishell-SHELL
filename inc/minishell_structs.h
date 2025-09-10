@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/08 17:48:43 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/10 17:07:24 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef enum e_type
 	NO_SPACE,
 	LOCAL,
 	ENV,
+	DELETE,
 }	t_type;
 
 struct s_token

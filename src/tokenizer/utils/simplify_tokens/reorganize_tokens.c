@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reorganize_tokens.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 22:44:45 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/08 02:03:15 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/10 17:30:43 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

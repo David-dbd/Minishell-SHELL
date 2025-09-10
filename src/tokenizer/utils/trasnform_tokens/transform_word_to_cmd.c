@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   logic_trans_args_cmd.c                             :+:      :+:    :+:   */
+/*   transform_word_to_cmd.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 17:04:19 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/08 20:39:09 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/10 17:37:37 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	should_handle_no_space(t_token *tokens, int i)
 	Esto asegura que los argumentos de comandos se tokenicen correctamente.
 */
 
-void	logic_trans_args_cmd(t_shell *data, t_token *tokens)
+void	transform_word_to_cmd(t_shell *data, t_token *tokens)
 {
 	int	i;
 

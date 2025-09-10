@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simplify_tokens.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 20:37:22 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/08 19:01:52 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/10 17:37:39 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,4 +132,5 @@ void	simplify_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 		}
 		i++;
 	}
+	remove_quotes_tokens(prompt, tokens);
 }

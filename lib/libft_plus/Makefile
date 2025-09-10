@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
+#    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 19:51:37 by migarrid          #+#    #+#              #
-#    Updated: 2025/09/04 22:18:16 by migarrid         ###   ########.fr        #
+#    Updated: 2025/09/10 16:27:47 by davdiaz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS =	libft/ft_isalpha.c \
 		libft/ft_isspecial.c \
 		libft/ft_ishex.c \
 		libft/ft_strlen.c \
+		libft/ft_count_char.c \
 		libft/ft_memset.c \
 		libft/ft_bzero.c \
 		libft/ft_memcpy.c \

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
+#    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/09/08 19:08:25 by migarrid         ###   ########.fr        #
+#    Updated: 2025/09/10 17:41:05 by davdiaz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,7 +115,6 @@ SRCS =				main/main.c \
 					tokenizer/utils/is_tokens/is_cmdsubs.c \
 					tokenizer/utils/is_tokens/is_type_I.c \
 					tokenizer/utils/is_tokens/is_type_II.c \
-					tokenizer/utils/check_syntax/logic_trans_args_cmd.c \
 					tokenizer/utils/check_syntax/check_redir_input.c \
 					tokenizer/utils/check_syntax/check_redir_output.c \
 					tokenizer/utils/check_syntax/check_background.c \
@@ -128,10 +127,22 @@ SRCS =				main/main.c \
 					tokenizer/utils/check_syntax/check_double_balance.c \
 					tokenizer/utils/check_syntax/check_cmd_syntaxis.c \
 					tokenizer/utils/check_syntax/check_parent_balance.c \
+					tokenizer/utils/simplify_tokens/simplify_tokens.c \
+					tokenizer/utils/simplify_tokens/reorganize_tokens.c \
+					tokenizer/utils/simplify_tokens/adjust_range_tokens.c \
+					tokenizer/utils/trasnform_tokens/transform_word_to_cmd.c \
+					tokenizer/utils/trasnform_tokens/transform_word_to_asignation.c \
 					expansion/expansion.c \
-					expansion/utils/simplify_tokens/simplify_tokens.c \
-					expansion/utils/simplify_tokens/reorganize_tokens.c \
-					expansion/utils/simplify_tokens/adjust_range_tokens.c \
+					expansion/send_tokens_for_expansion.c \
+					expansion/utils/find_swap/copy_key.c \
+					expansion/utils/find_swap/copy_value.c \
+					expansion/utils/find_swap/extract_key_string.c \
+					expansion/utils/find_swap/find_key_in_list.c \
+					expansion/utils/find_swap/calculate_total_len.c \
+					expansion/utils/asignation/asignation.c \
+					expansion/utils/asignation/is_it_asig.c \
+					expansion/utils/asignation/check_externs_syntax.c \
+					expansion/utils/asignation/check_asignation_syntax.c \
 					ast/ast_builder.c \
 					executor/executor.c \
 					signals/init_signals.c \

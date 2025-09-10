@@ -1,18 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   tokenizer.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 20:20:21 by migarrid          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/09/08 20:53:43 by davdiaz-         ###   ########.fr       */
-=======
-/*   Updated: 2025/09/08 03:10:29 by migarrid         ###   ########.fr       */
->>>>>>> main
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
@@ -36,12 +21,16 @@ char	*g_type_names[] = {
 	"PAREN_CLOSE",
 	"WILDCAR",
 	"EXPANSION",
+	"ASIGNATION",
 	"BACKGROUND",
 	"AND",
 	"OR",
 	"EXPAN_VALUE",
 	"EXPAN_CMD",
 	"NO_SPACE",
+	"LOCAL",
+	"ENV",
+	"DELETE",
 };
 
 static void	print_tokens_debug(t_prompt *prompt)
@@ -63,7 +52,7 @@ static void	print_tokens_debug(t_prompt *prompt)
 	detectar cada tipo de token. Avanza el índice según lo detectado.
 */
 
-void	get_tokens(t_shell *data, t_prompt *prompt, char *input)
+void	parse_tokens(t_shell *data, t_prompt *prompt, char *input)
 {
 	int	i;
 
@@ -101,7 +90,6 @@ int	valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 	int	i;
 
 	i = 0;
-	logic_trans_args_cmd(data, tokens);
 	while (i < prompt->n_tokens)
 	{
 		if (!check_open_parent(data, prompt, tokens, i)
@@ -126,17 +114,20 @@ int	valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 {
 	allocate_tokens(data, prompt, input);
-	get_tokens(data, prompt, input);
-	// print_tokens_debug(prompt);
-	if (!valid_tokens(data, prompt, prompt->tokens))
-		return (SYNTAX_ERROR);
-	// printf("------------------------------------------------\n");
-	print_tokens_debug(prompt);
-	simplify_tokens(data, prompt, prompt->tokens);
-	// printf("------------------------------------------------\n");
-	// print_tokens_debug(prompt);
-	remove_quotes_tokens(prompt, prompt->tokens);
+	parse_tokens(data, prompt, input);
+	transform_word_to_cmd(data, prompt->tokens);
 	printf("------------------------------------------------\n");
 	print_tokens_debug(prompt);
+	if (!valid_tokens(data, prompt, prompt->tokens))
+		return (SYNTAX_ERROR);
+	printf("------------------------------------------------\n");
+	print_tokens_debug(prompt);
+	simplify_tokens(data, prompt, prompt->tokens);
+	printf("------------------------------------------------\n");
+	print_tokens_debug(prompt);
+	transform_word_to_asignation(data, prompt->tokens);
+	printf("------------------------------------------------\n");
+	print_tokens_debug(prompt);
+	send_tokens_for_expansion(data, prompt->tokens, 1);
 	return (SUCCESS);
 }
