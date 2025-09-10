@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:17:17 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/07 20:07:15 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/10 20:37:46 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	shell_pwd(t_shell *data)
+void	my_pwd(t_shell *data)
 {
 	char	*pwd;
 

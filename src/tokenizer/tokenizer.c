@@ -47,6 +47,23 @@ static void	print_tokens_debug(t_prompt *prompt)
 	}
 }
 
+void	test_built_in(t_shell *data, t_token *tokens, int n_tokens)
+{
+	int	i;
+
+	i = 0;
+	while (i < n_tokens)
+	{
+		if (tokens[i].type != BUILT_IN)
+		{
+			i++;
+			continue ;
+		}
+		which_builtin(data, tokens, &tokens[i]);
+		i++;
+	}
+}
+
 /*
 	Recorre el string `input` y llama a las funciones `is_*` para
 	detectar cada tipo de token. Avanza el índice según lo detectado.
@@ -116,18 +133,20 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	allocate_tokens(data, prompt, input);
 	parse_tokens(data, prompt, input);
 	transform_word_to_cmd(data, prompt->tokens);
-	printf("------------------------------------------------\n");
-	print_tokens_debug(prompt);
+	// printf("------------------------------------------------\n");
+	// print_tokens_debug(prompt);
 	if (!valid_tokens(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
-	printf("------------------------------------------------\n");
-	print_tokens_debug(prompt);
+	// printf("------------------------------------------------\n");
+	// print_tokens_debug(prompt);
 	simplify_tokens(data, prompt, prompt->tokens);
-	printf("------------------------------------------------\n");
-	print_tokens_debug(prompt);
+	// printf("------------------------------------------------\n");
+	// print_tokens_debug(prompt);
 	transform_word_to_asignation(data, prompt->tokens);
 	printf("------------------------------------------------\n");
 	print_tokens_debug(prompt);
 	send_tokens_for_expansion(data, prompt->tokens, 1);
+	printf("------------------------------------------------\n");
+	test_built_in(data, prompt->tokens, prompt->n_tokens);
 	return (SUCCESS);
 }

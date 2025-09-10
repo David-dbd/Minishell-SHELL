@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:33:47 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/10 17:30:38 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/10 18:40:24 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int is_it_asig(t_shell *data, t_token *token, t_env *env, int type)
 	if (token->type == ASIGNATION)
 	{
 		if (ft_strchr(token->value, '='))
-			check_externs_syntax(data, token, &result);
+			result = check_externs_syntax(data, token);
 	}
 	if (result == TRUE)
 		result = asignation(data, token, type);

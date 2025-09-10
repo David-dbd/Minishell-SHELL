@@ -6,7 +6,7 @@
 #    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/09/10 17:41:05 by davdiaz-         ###   ########.fr        #
+#    Updated: 2025/09/10 20:41:57 by davdiaz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -145,9 +145,13 @@ SRCS =				main/main.c \
 					expansion/utils/asignation/check_asignation_syntax.c \
 					ast/ast_builder.c \
 					executor/executor.c \
+					executor/utils/which_builtin.c \
 					signals/init_signals.c \
 					signals/signal_handler.c \
 					builtin/env.c \
+					builtin/echo.c \
+					builtin/export.c \
+					builtin/pwd.c \
 					exit/exit.c \
 					exit/error.c \
 					exit/clean.c

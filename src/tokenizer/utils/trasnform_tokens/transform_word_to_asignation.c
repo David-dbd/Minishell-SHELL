@@ -13,9 +13,9 @@ void transform_word_to_asignation(t_shell *data, t_token *tokens)
 			i++;
 			continue ;
 		}
-		result = check_externs_syntax(data, &tokens[i], &result);
+		result = check_externs_syntax(data, &tokens[i]);
 		if (result == TRUE)
-			tokens->type = ASIGNATION;
+			tokens[i].type = ASIGNATION;
 		else if (result == IGNORE)
 			tokens[i].type = DELETE; //o simpelmete un bool que diga: state: ignore;
 		i++;

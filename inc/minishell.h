@@ -58,6 +58,7 @@ void	ast_built(t_shell *data, t_token *tokens);
 /*                                Executor                                    */
 /* ************************************************************************** */
 void	execute_recursive(t_shell *data, t_node *ast_root, t_exec *executor);
+void		which_builtin(t_shell *data, t_token *tokens, t_token *token);
 
 /* ************************************************************************** */
 /*                               Expansion                                    */
@@ -68,9 +69,10 @@ int		send_tokens_for_expansion(t_shell *data, t_token *tokens, int phase);
 /* ************************************************************************** */
 /*                                buil_in                                     */
 /* ************************************************************************** */
-void	shell_env(t_var *vars);
-void	shell_echo(char **args);
-void	shell_pwd(t_shell *data);
+void	my_env(t_var *vars);
+void	my_echo(t_token *tokens);
+void	my_pwd(t_shell *data);
+int		my_export(t_shell *data, t_token *tokens, t_env *env);
 
 /* ************************************************************************** */
 /*                                Signals                                     */
@@ -157,7 +159,7 @@ int		find_key_in_lst(t_shell *d, t_token *t, char *key_to_f);
 int		asignation(t_shell *data, t_token *token, int type);
 int		is_it_asig(t_shell *data, t_token *token, t_env *env, int type);
 int		check_asignation_syntax(t_token *token);
-int		check_externs_syntax(t_shell *data, t_token *token, int *result);
+int		check_externs_syntax(t_shell *data, t_token *token);
 
 //ENV
 void	path_null_no_env(t_shell *data, char **path);
