@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:22:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/12 14:01:08 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/12 16:09:47 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,11 @@ int copy_value(t_shell *d, char **token_val, char *key_value, char *key_to_find)
 	ft_memcpy(ptr, key_value, value_len);
 	return (SUCCESS);
 }
-/*
-int	copy_value(t_shell *d, char **token_val, char *key_value, char *key_to_find)
+
+/*int	copy_value(t_shell *d, char **token_val, char *key_value, char *key_to_find)
 {
 	char	*ptr;
+	char	*buffer;
 	int		new_len;
 	int		old_len;
 	int		i;
@@ -67,14 +68,16 @@ int	copy_value(t_shell *d, char **token_val, char *key_value, char *key_to_find)
 	i = 0;
 	new_len = calculate_total_length(d, *token_val, key_to_find);
 	old_len = ft_strlen(*token_val);
-	ft_realloc(*token_val, old_len, new_len);
-	if (!*token_val)
+	buffer = ft_realloc(*token_val, old_len, new_len);
+	if (!buffer)
 		return (ERROR);
-	ptr = find_key_in_new_buffer(*token_val);
+	ptr = find_key_in_new_buffer(buffer);
 	while (key_value[i] != '\0')
 	{
 		ptr[i + 1] = key_value[i];
 		i++;
 	}
+	//free (buffer);
+	buffer = NULL;
 	return (SUCCESS);
 }*/

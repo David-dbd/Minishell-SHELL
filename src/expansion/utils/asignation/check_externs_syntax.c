@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:30:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/11 16:30:03 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/12 16:35:39 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	check_externs_syntax(t_shell *data, t_token *token)
 
 	result = 0;
 	validate = TRUE;
-	if (token->id > 0 && token->id < data->prompt.n_tokens
+	if (token->id >= 1 && token->id < data->prompt.n_tokens
 		&& (token[+1].type || token[-1].type))
 	{
 		validate = check_case_1(token);
