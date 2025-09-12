@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 02:13:28 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/11 22:03:50 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/12 17:31:29 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,18 @@ static char *is_valid_user_name(void)
 void	print_session_start(t_shell *data, time_t start, char *user_name)
 {
 	struct tm	*local;
+	char *temp;
 
 	local = localtime(&start);
 	print_minishell_title();
 	user_name = is_valid_user_name();
 	if (!user_name)
 		exit_succes(data, MSG_GOODBYE, EXIT_SUCCESS);
+	temp = user_name;
+	user_name = ft_strdup(temp);
+	if (!user_name)
+		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
+	free (temp);
 	print_time_of_day(start, user_name);
 	printf(MSG_TIME_START,
 		user_name, local->tm_hour, local->tm_min, local->tm_sec,

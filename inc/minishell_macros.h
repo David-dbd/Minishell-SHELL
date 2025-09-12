@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell_macros.h                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/09 21:23:16 by migarrid          #+#    #+#             */
+/*   Updated: 2025/09/12 17:17:59 by davdiaz-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef MINISHELL_MACROS_H
 # define MINISHELL_MACROS_H
@@ -127,7 +137,7 @@ Exec format error\n"
 # define ERR_CD_OLDPWD		"minishell: cd: OLDPWD not set\n"
 # define ERR_EXPORT			"minishell: export: `%s': not a valid identifier\n"
 # define ERR_UNSET			"minishell: unset: `%s': not a valid identifier\n"
-# define ERR_EXIT_NUMERIC	"minishell: exit: numeric argument required\n"
+# define ERR_EXIT_NUMERIC	"minishell: exit: %s: numeric argument required\n"
 # define ERR_EXIT_TOO_MANY	"minishell: exit: too many arguments\n"
 # define ERR_ENV		"minishell: env: invalid option\n"
 # define ERR_PWD		"minishell: pwd: error retrieving current directory\n"
@@ -164,13 +174,13 @@ delimited by end-of-file (wanted `%s')\n"
 # define MSG_WELCOME			"\
 \033[1m\033[1;32m────────── Welcome %s! ──────────\033[0m\n"
 # define MSG_WELCOME_EARLY		"\
-\033[1;32m ────────── %s, You're up early! 🌅 ──────────\033[0m\n\n"
+\033[1;32m ────────────── You're up early, %s! 🌅 ──────────\033[0m\n\n"
 # define MSG_WELCOME_MORNING	"\
-\033[1;32m ────────── %s, Good morning, Commander! ☀️ ──────────\033[0m\n\n"
+\033[1;32m ───────────── Good morning, %s! ☀️ ──────────\033[0m\n\n"
 # define MSG_WELCOME_AFTER		"\
-\033[1;32m ────────── %s, Good afternoon, Explorer! 🌤️ ──────────\033[0m\n\n"
+\033[1;32m ───────────── Good afternoon, %s! 🌤️ ──────────\033[0m\n\n"
 # define MSG_WELCOME_NIGHT		"\
-\033[1;32m ────────── %s, Good evening, Night Owl! 🌙 ──────────\033[0m\n\n"
+\033[1;32m ───────────── Good evening, %s! 🌙 ─────────────\033[0m\n\n"
 # define MSG_WELCOME_MIDNIGHT	"\
 \033[1;32m ────────── %s, Burning the midnight oil? 🔥 ──────────\033[0m\n\n"
 # define MSG_GOODBYE			"\
