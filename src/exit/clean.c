@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:47:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/12 22:00:42 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/12 23:53:40 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ void	clean_prompt(t_prompt *prompt)
 	clean_tokens(prompt);
 	*prompt = (t_prompt){0};
 }
+
+/*
+	Libera la memoria reservada para `user_name` en `t_extras`
+	y lo deja apuntando a NULL para evitar accesos inválidos.
+*/
 
 void	clean_extras(t_extras *extra_features)
 {

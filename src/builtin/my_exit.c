@@ -6,11 +6,15 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 23:55:15 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/12 22:58:03 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/12 23:58:31 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+/*
+	Cuenta los argumentos tipo WORD que siguen a "exit".
+*/
 
 static int	counter_args(t_token *tokens)
 {
@@ -27,6 +31,11 @@ static int	counter_args(t_token *tokens)
 	}
 	return (n_args);
 }
+
+/*
+	Devuelve SUCCESS si la cadena es numérica (+/- opcional),
+	FAILURE en caso contrario.
+*/
 
 static int	is_numeric(const char *str)
 {
@@ -47,6 +56,14 @@ static int	is_numeric(const char *str)
 	}
 	return (SUCCESS);
 }
+
+/*
+	Valida los argumentos de "exit":
+	- Más de 1 → error "too many arguments".
+	- 1 argumento válido → devuelve valor dividido por el modulo de 256.
+	- 1 argumento no numérico → error.
+	- Sin argumentos → devuelve 0.
+*/
 
 static int	check_exit(t_shell *data, t_token *tokens)
 {
@@ -69,6 +86,10 @@ static int	check_exit(t_shell *data, t_token *tokens)
 	}
 	return (0);
 }
+
+/*
+	Ejecuta el built-in "exit" con el status validado.
+*/
 
 void	my_exit(t_shell *data, t_token *tokens)
 {
