@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:39:12 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/11 18:30:44 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/12 16:51:29 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	transform_cmd_to_word(t_shell *data, t_token *tokens)
 	i = 0;
 	while (i < data->prompt.n_tokens)
 	{
-		if (i == 0)
+		if (i == 0 || i >=1 && is_delimiter_type(tokens[i - 1].type))
 		{
 			if (tokens[i].type == WORD)
 				tokens[i].type = COMMAND;
