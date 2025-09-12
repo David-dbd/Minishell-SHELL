@@ -2,44 +2,43 @@
 Minishell - Bash
 
 <h2>POR HACER:<h2>
--Bash te abra linea para que completes el comando ver -> Modificar balance de ' " ( || && | <div>
+-Bash te abra linea para que completes el comando ver -> Modificar balance de ' " ( || && |
 https://github.com/rogerdevworld/minishell/blob/main/src/bonus/loop_processing.c
 https://github.com/rogerdevworld/minishell/blob/main/src/bonus/syntax/ft_lexer_2.c#L93
 
 <h2>MIKEL:</h2>
 <div>
-- problemas de simplifly tokens ->  sds""''"$ls"''$mikel <br>
-genera doble NO_SPACE pero creo que no hay problema a malas se podria hacer una fucion que borre dobles NO_SPACES seguidos. <br>
-- is_double_quote manejar \ correctamente <br>
-- is_double_quote seguido de word -> NO_SPACE <br>
-- crear envp char ** <br>
-- bash + argumento deberia abrir ese archivo (solo el primero) y tratar de ejecutar los que haya dentro como input; <br>
+- problemas de simplifly tokens ->  sds""''"$ls"''$mikel
+genera doble NO_SPACE pero creo que no hay problema a malas se podria hacer una fucion que borre dobles NO_SPACES seguidos.
+- is_double_quote manejar \ correctamente
+- is_double_quote seguido de word -> NO_SPACE
+- crear envp char **
+- bash + argumento deberia abrir ese archivo (solo el primero) y tratar de ejecutar los que haya dentro como input;
 - SHLVL actualizar
 
 </div>
 
 <h2>DAVID:</h2>
 <div>
-- Arreglar is_cmd para que esto lo catalogue como cmd -> Token [3]: '/usr/bin/ls' (type: WORD) <br>
-- Errores sintacticos <br>
+- Arreglar is_cmd para que esto lo catalogue como cmd -> Token [3]: '/usr/bin/ls' (type: WORD)
+- Errores sintacticos
 ERRORES
 - (echo) hi -> deberia dar error syntax
 - (echo hi && ((echo hi && (echo hi) && echo hi))) -> deberia dar error syntax
-- Expansiones $?, $$, $!...  <br>
+- Expansiones $?, $$, $!...
 - actualizar el size de env cada vez que se setea con export
-- my_assignation builin  <br>
-- echo $a && a=1  <br>
-- invalid read -> echo $A  <br>
-- locales seteadas no dejan setear la misma variable a export -> no deberia ser asi  <br>
-- no setea export A=2 ls D=5 correctamente como lo hace bash  <br>
-- echo "hola $NOEXISTE" borra toda la string  <br>
-- expansion ha de soportar los wildcars *  <br>
-- refactorizar expansion para que incorpore send_tokens_for_expansion <br>
+- my_assignation builin
+- echo $a && a=1
+- invalid read -> echo $A
+- locales seteadas no dejan setear la misma variable a export -> no deberia ser asi
+- no setea export A=2 ls D=5 correctamente como lo hace bash
+- echo "hola $NOEXISTE" borra toda la string
+- expansion ha de soportar los wildcars *
+- refactorizar expansion para que incorpore send_tokens_for_expansion
 - norminette
 - comentarios
 </div>
-<br>
-<br>
+
 
 ARQUITECTURA GENERAL
                 ┌───────────────────────────┐
