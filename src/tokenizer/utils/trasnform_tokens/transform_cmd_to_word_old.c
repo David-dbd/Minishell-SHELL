@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform_word_to_cmd.c                            :+:      :+:    :+:   */
+/*   transform_cmd_to_word_old.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/16 17:04:19 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/10 17:37:37 by davdiaz-         ###   ########.fr       */
+/*   Created: 2025/09/11 15:39:12 by migarrid          #+#    #+#             */
+/*   Updated: 2025/09/11 17:37:02 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	should_tranform_token(t_token *tokens, int i)
 			&& !is_redir_type(tokens[i - 2].type))
 		|| (i >= 2 && is_quote_type(tokens[i - 1].type)
 			&& is_cmd_type(tokens[i - 2].type))
-		|| (i >= 2 && tokens[i - 1].type == EXPANSION)
+		|| (i >= 1 && tokens[i - 1].type == EXPANSION)
 		|| (i >= 4 && is_quote_type(tokens[i - 1].type)
 			&& is_quote_type(tokens[i - 2].type)
 			&& tokens[i - 3].type == NO_SPACE
@@ -62,7 +62,7 @@ static int	should_handle_no_space(t_token *tokens, int i)
 	Esto asegura que los argumentos de comandos se tokenicen correctamente.
 */
 
-void	transform_word_to_cmd(t_shell *data, t_token *tokens)
+void	transform_cmd_to_word(t_shell *data, t_token *tokens)
 {
 	int	i;
 

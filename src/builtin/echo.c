@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:23:24 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/10 22:32:43 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/10 23:57:14 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static void	handle_n_flag(t_token *tokens, int *new_line, int *i)
 	una nueva línea a menos que se use '-n'.
 */
 
-void	my_echo(t_token *tokens)
+int	my_echo(t_token *tokens)
 {
 	int	i;
 	int	new_line;
@@ -111,4 +111,5 @@ void	my_echo(t_token *tokens)
 	}
 	if (new_line)
 		printf("\n");
+	return (0);
 }

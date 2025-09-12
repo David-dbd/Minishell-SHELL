@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:09:26 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/10 20:36:04 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/10 23:57:28 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	my_env(t_var *vars)
+int	my_env(t_var *vars)
 {
 	t_var	*var;
 
@@ -23,4 +23,5 @@ void	my_env(t_var *vars)
 			printf("%s=%s\n", var->key, var->value);
 		var = var->next;
 	}
+	return (0);
 }

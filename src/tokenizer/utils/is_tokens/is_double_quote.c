@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/08 02:48:29 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:49:04 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ static char	*cleanner_word(t_shell *data, char *word, int len, char quote)
 	- Limpia las comillas.
 	- Si contiene '$' que puede expandirse, crea token EXPANSION.
 	- Registra como comando si corresponde.
-	- Ignora palabras vacías con ft_strcmp.
 */
 
 void	make_word_d(t_shell *data, t_prompt *promp, const char *s, int range[2])
@@ -65,17 +64,12 @@ void	make_word_d(t_shell *data, t_prompt *promp, const char *s, int range[2])
 	if (!word)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 	word = cleanner_word(data, word, range[1] - range[0], '\"');
-	if (ft_strcmp(word, ""))
-	{
-		ptr = ft_strchr(word, '$');
-		if (ptr && *(ptr + 1) && !ft_isspace(*(ptr + 1)) && *(ptr + 1) != '\"')
-			token_id = add_token(data, promp, word, EXPANSION);
-		else
-			token_id = add_token(data, promp, word, WORD);
-		is_cmd(data, &data->prompt, &promp->tokens[token_id], word);
-	}
+	ptr = ft_strchr(word, '$');
+	if (ptr && *(ptr + 1) && !ft_isspace(*(ptr + 1)) && *(ptr + 1) != '\"')
+		token_id = add_token(data, promp, word, EXPANSION);
 	else
-		free(word);
+		token_id = add_token(data, promp, word, WORD);
+	is_cmd(data, &data->prompt, &promp->tokens[token_id], word);
 }
 
 /*
@@ -137,8 +131,7 @@ int	is_special_word_d(t_shell *data, t_prompt *prompt, const char *str, int *i)
 			(*i)++;
 		start_end[1] = *i;
 		len = start_end[1] - start_end[0];
-		if (len >= 1)
-			make_word_d(data, prompt, str, start_end);
+		make_word_d(data, prompt, str, start_end);
 		if (flag)
 			return (NO_SPACE);
 		return (TRUE);

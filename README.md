@@ -17,6 +17,7 @@ genera doble NO_SPACE pero creo que no hay problema a malas se podria hacer una 
 
 <h2>DAVID:</h2>
 <div>
+-arreglar is_cmd para que esto lo catalogue como cmd -> Token [3]: '/usr/bin/ls' (type: WORD)
 -Cuando el usuario pone VAR="HOla" ->VAriable local. Tenerla lista para funncionamiento. <br>
 -Busqueda del valor de la clave en la lista enlazada. Reorono dinamico. <br>
 </div>

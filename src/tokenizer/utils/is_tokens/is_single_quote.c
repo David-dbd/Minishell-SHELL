@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/08 02:47:45 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:49:15 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,8 @@ void	make_word_s(t_shell *data, t_prompt *p, const char *s, int range[2])
 	if (!word)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 	word = cleanner_word(data, word, range[1] - range[0], '\'');
-	if (ft_strcmp(word, ""))
-	{
-		token_id = add_token(data, p, word, WORD);
-		is_cmd(data, &data->prompt, &p->tokens[token_id], word);
-	}
-	else
-		free(word);
+	token_id = add_token(data, p, word, WORD);
+	is_cmd(data, &data->prompt, &p->tokens[token_id], word);
 }
 
 /*
@@ -127,8 +122,7 @@ int	is_special_word_s(t_shell *data, t_prompt *prompt, const char *str, int *i)
 			(*i)++;
 		start_end[1] = *i;
 		len = start_end[1] - start_end[0];
-		if (len >= 1)
-			make_word_s(data, prompt, str, start_end);
+		make_word_s(data, prompt, str, start_end);
 		if (flag)
 			return (NO_SPACE);
 		return (TRUE);

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/10 22:33:11 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/11 22:21:35 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,11 @@ int		send_tokens_for_expansion(t_shell *data, t_token *tokens, int phase);
 /* ************************************************************************** */
 /*                                buil_in                                     */
 /* ************************************************************************** */
-void	my_env(t_var *vars);
-void	my_echo(t_token *tokens);
-void	my_pwd(t_shell *data);
+int		my_env(t_var *vars);
+int		my_echo(t_token *tokens);
+int		my_pwd(t_shell *data);
 int		my_export(t_shell *data, t_token *tokens, t_env *env);
+void 	my_exit(t_shell *data, t_token *tokens);
 
 /* ************************************************************************** */
 /*                                Signals                                     */
@@ -133,6 +134,7 @@ int		is_delimiter_type(int type);
 int		is_alloc_type(int type);
 int		is_between_quotes_type(int type);
 int		is_simplify_type(int type);
+int		is_cmd_builtin_type(int type);
 
 //VALID TOKENS
 int		check_open_parent(t_shell *d, t_prompt *p, t_token *t, int i);
@@ -156,7 +158,7 @@ int		find_range_end(t_token *tokens, int no_space_position);
 void	remove_quotes_tokens(t_prompt *prompt, t_token *tokens);
 
 //TRANSFORM TOKENS
-void	transform_word_to_cmd(t_shell *data, t_token *tokens);
+void	transform_cmd_to_word(t_shell *data, t_token *tokens);
 void	transform_word_to_asignation(t_shell *data, t_token *tokens);
 
 //EXPANSION

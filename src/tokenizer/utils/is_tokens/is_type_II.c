@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:48:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/07 22:36:20 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/11 17:50:17 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ int	is_simplify_type(int type)
 {
 	if (type == WORD || type == NO_SPACE
 		|| type == SINGLE_QUOTE || type == DOUBLE_QUOTE)
+		return (1);
+	return (0);
+}
+
+int	is_cmd_builtin_type(int type)
+{
+	if (type == COMMAND || type == BUILT_IN)
 		return (1);
 	return (0);
 }

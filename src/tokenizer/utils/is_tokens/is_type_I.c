@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:48:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/07 21:27:25 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/11 16:12:22 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	is_quote_type(int type)
 
 int	is_redir_type(int type)
 {
-	if (type == REDIR_APPEND || type == REDIR_OUTPUT)
+	if (type == REDIR_APPEND || type == REDIR_OUTPUT || type == REDIR_HEREDOC
+		|| type == REDIR_INPUT)
 		return (1);
 	return (0);
 }

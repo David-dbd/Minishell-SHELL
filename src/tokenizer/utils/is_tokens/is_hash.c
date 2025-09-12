@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 17:48:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/08/17 16:16:01 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/11 18:39:02 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	is_hash(const char *str, int *i)
 {
 	if (str[*i] == '#')
 	{
-		while (str[*i] != '\0')
+		while (str[*i] != '\0' && str[*i] != '\n')
 			(*i)++;
 	}
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:17:17 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/10 20:37:46 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/10 23:58:48 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	my_pwd(t_shell *data)
+int	my_pwd(t_shell *data)
 {
 	char	*pwd;
 
@@ -21,4 +21,5 @@ void	my_pwd(t_shell *data)
 		ft_printf_fd(STDERR, "%s", ERR_PWD);
 	printf("%s\n", pwd);
 	free(pwd);
+	return (0);
 }

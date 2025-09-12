@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/09/10 21:21:36 by migarrid         ###   ########.fr        #
+#    Updated: 2025/09/11 22:22:20 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,7 +130,7 @@ SRCS =				main/main.c \
 					tokenizer/utils/simplify_tokens/simplify_tokens.c \
 					tokenizer/utils/simplify_tokens/reorganize_tokens.c \
 					tokenizer/utils/simplify_tokens/adjust_range_tokens.c \
-					tokenizer/utils/trasnform_tokens/transform_word_to_cmd.c \
+					tokenizer/utils/trasnform_tokens/transform_cmd_to_word.c \
 					tokenizer/utils/trasnform_tokens/transform_word_to_asignation.c \
 					expansion/expansion.c \
 					expansion/send_tokens_for_expansion.c \
@@ -152,6 +152,7 @@ SRCS =				main/main.c \
 					builtin/echo.c \
 					builtin/export.c \
 					builtin/pwd.c \
+					builtin/exit.c \
 					exit/exit.c \
 					exit/error.c \
 					exit/clean.c
