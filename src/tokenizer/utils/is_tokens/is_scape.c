@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:43 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/07 21:25:11 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/13 22:47:09 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	is_scape(t_shell *data, t_prompt *prompt, const char *str, int *i)
 	{
 		add_token(data, prompt, "\\", SCAPE);
 		(*i)++;
+	}
+	else if (str[*i] == '\\' && str[*i + 1] == '\n')
+	{
+		add_token(data, prompt, ";", SEMICOLON);
+		(*i) += 2;
 	}
 	else if (str[*i] == '\\' && str[*i + 1])
 		is_word(data, prompt, str, i);
