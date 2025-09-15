@@ -6,13 +6,13 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/12 21:41:25 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/15 19:41:46 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-char	*g_type_names[] = {
+char *g_type_names[] = {
 	"START",
 	"WORD",
 	"GROUP",
@@ -44,9 +44,9 @@ char	*g_type_names[] = {
 	"DELETE",
 };
 
-static void	print_tokens_debug(t_prompt *prompt)
+static void print_tokens_debug(t_prompt *prompt)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	printf("------------------------------------------------\n");
@@ -54,14 +54,14 @@ static void	print_tokens_debug(t_prompt *prompt)
 	{
 		if (prompt->tokens[i].value)
 			printf("Token [%d]: '%s' (type: %s)\n", i, prompt->tokens[i].value,
-				g_type_names[prompt->tokens[i].type]);
+				   g_type_names[prompt->tokens[i].type]);
 		i++;
 	}
 }
 
-void	test_built_in(t_shell *data, t_token *tokens, int n_tokens)
+void test_built_in(t_shell *data, t_token *tokens, int n_tokens)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < n_tokens)
@@ -69,7 +69,7 @@ void	test_built_in(t_shell *data, t_token *tokens, int n_tokens)
 		if (tokens[i].type != BUILT_IN)
 		{
 			i++;
-			continue ;
+			continue;
 		}
 		which_builtin(data, tokens, &tokens[i]);
 		i++;
@@ -81,9 +81,9 @@ void	test_built_in(t_shell *data, t_token *tokens, int n_tokens)
 	detectar cada tipo de token. Avanza el índice según lo detectado.
 */
 
-void	parse_tokens(t_shell *data, t_prompt *prompt, char *input)
+void parse_tokens(t_shell *data, t_prompt *prompt, char *input)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (input[i] != '\0')
@@ -114,24 +114,14 @@ void	parse_tokens(t_shell *data, t_prompt *prompt, char *input)
 	'&&' y '||'. Comprueba que estén correctamente colocados y emparejados.
 */
 
-int	check_if_valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
+int check_if_valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < prompt->n_tokens)
 	{
-		if (!check_open_parent(data, prompt, tokens, i)
-			|| (!check_close_parent(data, prompt, tokens, i))
-			|| (!check_pipe(data, prompt, tokens, i))
-			|| (!check_or_and(data, prompt, tokens, i))
-			|| (!check_redir_input(data, prompt, tokens, i))
-			|| (!check_redir_output(data, prompt, tokens, i))
-			|| (!check_double_balance(data, prompt, tokens))
-			|| (!check_single_balance(data, prompt, tokens))
-			|| (!check_background(data, prompt, tokens, i))
-			|| (!check_semicolon(data, prompt, tokens, i))
-			|| (!check_cmd_syntax(data, prompt, tokens, i)))
+		if (!check_open_parent(data, prompt, tokens, i) || (!check_close_parent(data, prompt, tokens, i)) || (!check_pipe(data, prompt, tokens, i)) || (!check_or_and(data, prompt, tokens, i)) || (!check_redir_input(data, prompt, tokens, i)) || (!check_redir_output(data, prompt, tokens, i)) || (!check_double_balance(data, prompt, tokens)) || (!check_single_balance(data, prompt, tokens)) || (!check_background(data, prompt, tokens, i)) || (!check_semicolon(data, prompt, tokens, i)) || (!check_cmd_syntax(data, prompt, tokens, i)))
 			return (SYNTAX_ERROR);
 		i++;
 	}
@@ -140,7 +130,7 @@ int	check_if_valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 	return (SUCCESS);
 }
 
-int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
+int tokenizer(t_shell *data, t_prompt *prompt, char *input)
 {
 	allocate_tokens(data, prompt, input);
 	parse_tokens(data, prompt, input);

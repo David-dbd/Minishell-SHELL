@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:58:35 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/12 23:04:11 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/15 19:33:32 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	which_builtin(t_shell *data, t_token *tokens, t_token *token)
 {
-	if (ft_strcmp(token->value, BUILTIN_ECHO) == 0)
-		data->last_exit_code = my_echo(tokens);
-	else if (ft_strcmp(token->value, BUILTIN_PWD) == 0)
+	if (ft_strcmp(token->value, BUILTIN_PWD) == 0)
 		data->last_exit_code = my_pwd(data);
+	else if (ft_strcmp(token->value, BUILTIN_ECHO) == 0)
+		data->last_exit_code = my_echo(&data->prompt, tokens);
 	else if (ft_strcmp(token->value, BUILTIN_EXPORT) == 0)
 		data->last_exit_code = my_export(data, token, &data->env);
 	else if (ft_strcmp(token->value, BUILTIN_UNSET) == 0)

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/14 23:54:42 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/15 19:32:20 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ int		send_tokens_for_expansion(t_shell *data, t_token *tokens, int phase);
 /*                                buil_in                                     */
 /* ************************************************************************** */
 int		my_env(t_var *vars);
-int		my_echo(t_token *tokens);
 int		my_pwd(t_shell *data);
+int		my_echo(t_prompt *prompt, t_token *tokens);
 int		my_export(t_shell *data, t_token *tokens, t_env *env);
 int		my_unset(t_shell *data, t_env *env, t_token *tokens);
 void	my_exit(t_shell *data, t_token *tokens);

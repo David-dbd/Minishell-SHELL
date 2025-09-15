@@ -35,7 +35,11 @@
 		"deque": "c",
 		"unordered_map": "c",
 		"initializer_list": "c",
-		"random": "c"
+		"random": "c",
+		"istream": "c",
+		"ostream": "c",
+		"functional": "c",
+		"utility": "c"
 	},
 
 	// Configuración C/C++
