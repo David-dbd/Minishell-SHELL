@@ -6,11 +6,18 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 20:43:35 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 01:16:01 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/17 01:32:51 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+/*
+	Crea un array `envp` con las variables de entorno en formato "key=value",
+	recorriendo la lista enlazada de `vars`.
+	- Reserva memoria dinámica para `envp` según el tamaño en `env->size`.
+	- Solo copia las variables con tipo `ENV`.
+*/
 
 char	**make_envp(t_shell *data, t_env *env, t_var *vars)
 {
