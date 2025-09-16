@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/09/15 19:33:55 by migarrid         ###   ########.fr        #
+#    Updated: 2025/09/16 21:19:39 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,9 +96,11 @@ SRCS =				main/main.c \
 					main/utils/time/print_time_of_day.c \
 					init/init_data.c \
 					init/init_env.c \
+					init/init_readline.c \
 					init/utils/alloc_tokens.c \
 					init/utils/add_token.c \
 					init/utils/add_var.c \
+					init/utils/make_envp.c \
 					tokenizer/tokenizer.c \
 					tokenizer/utils/is_tokens/is_and.c \
 					tokenizer/utils/is_tokens/is_dolar.c \
