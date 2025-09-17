@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_externs_syntax.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:30:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/16 17:47:46 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:17:40 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	check_case_2(t_shell *data, t_token *token)
 			|| token[-1].type == ASIGNATION
 			|| token[-1].type == WORD
 			|| ((token[-1].type == BUILT_IN
-				&& ft_strcmp(token[-1].value, BUILTIN_EXPORT) == 0)))
+					&& ft_strcmp(token[-1].value, BUILTIN_EXPORT) == 0)))
 			return (1);
 	}
 	return (0); //if not, then it needs to remain as WORD
@@ -93,4 +93,3 @@ int	check_externs_syntax(t_shell *data, t_token *token)
 	//en caso de que sea el primero y no haya ningun otro token
 	return (result);
 }
-

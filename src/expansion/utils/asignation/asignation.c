@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asignation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:35:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/17 17:05:02 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:17:56 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ static void	aux_value_asig(t_token *token, char **value, int *i)
 	(*value)[j] = '\0';
 }
 
-static int verify_if_already_set(t_shell *data, char *key, char **value, int t)
+static int	verify_if_already_set(t_shell *data, char *key, char **value, int t)
 {
-	t_var *var;
+	t_var	*var;
 
 	var = data->env.vars;
 	while (var)

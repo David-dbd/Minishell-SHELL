@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   find_key_in_list.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 16:59:36 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:16:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
-static void	expand_symbol(t_shell *d, t_token *token, char **key_to_f, int sym_value)
+static void	sym_expa(t_shell *d, t_token *token, char **key_to_f, int sym_value)
 {
 	char	*value_of_symbol_expansion;
 
@@ -40,7 +40,7 @@ static int	is_it_symbol(t_shell *data, t_token *token, char **key_to_find)
 	{
 		if (data->ast_root->pid)
 		{
-			expand_symbol(data, token, key_to_find, data->ast_root->pid);
+			sym_expa(data, token, key_to_find, data->ast_root->pid);
 			return (TRUE);
 		}
 		else
@@ -50,13 +50,13 @@ static int	is_it_symbol(t_shell *data, t_token *token, char **key_to_find)
 	{
 		if (data->last_exit_code)
 		{
-			expand_symbol(data, token, key_to_find, data->shell_pid);
+			sym_expa(data, token, key_to_find, data->shell_pid);
 			return (TRUE);
 		}
 	}
 	else if (*key_to_find[0] == '$' && *key_to_find[1] == '\0')
 	{
-		expand_symbol(data, token, key_to_find, data->shell_pid);
+		sym_expa(data, token, key_to_find, data->shell_pid);
 		return (TRUE);
 	}
 	return (FALSE);

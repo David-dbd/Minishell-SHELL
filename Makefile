@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/09/17 17:08:09 by migarrid         ###   ########.fr        #
+#    Updated: 2025/09/17 19:27:27 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -246,7 +246,8 @@ test:
 leaks:
 	@clear
 	@$(MAKE) all
-	@valgrind --leak-check=full --show-leak-kinds=definite,indirect,possible --track-origins=yes ./minishell
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./minishell
+#	@valgrind --leak-check=full --show-leak-kinds=definite,indirect,possible --track-origins=yes ./minishell
 
 # Test the norminette in my .c files
 norm:

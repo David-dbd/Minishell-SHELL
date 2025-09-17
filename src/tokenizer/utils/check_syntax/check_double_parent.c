@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_double_parent.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 18:14:29 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/17 17:01:18 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:15:28 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
-static void put_space_between(t_shell *d, char **str, char **tmp, char **space)
+static void	put_space_between(t_shell *d, char **str, char **tmp, char **space)
 {
 	*space = ft_strjoin(*str, " ");
 	free (*str);
@@ -53,12 +53,12 @@ static char	*msg_construction(t_shell *d, t_token *tokens, int start, int len)
 static int	ignore_till_paren_close(t_prompt *prompt, t_token *tokens, int i)
 {
 	while (i + 1 < prompt->n_tokens && !(tokens[i].type == PAREN_CLOSE
-		&& tokens[i + 1].type == PAREN_CLOSE))
+			&& tokens[i + 1].type == PAREN_CLOSE))
 		i++;
 	return (i);
 }
 
-int check_double_parent(t_shell *data, t_token *tokens, t_prompt *p)
+int	check_double_parent(t_shell *data, t_token *tokens, t_prompt *p)
 {
 	char	*str;
 	int		i;
@@ -87,4 +87,3 @@ int check_double_parent(t_shell *data, t_token *tokens, t_prompt *p)
 	}
 	return (SUCCESS);
 }
-

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 17:13:59 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:12:18 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,6 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	transform_tokens_logic(data, prompt, prompt->tokens);
 
 	print_tokens_debug(prompt);
-
 
 	test_built_in(data, prompt->tokens, prompt->n_tokens);
 	send_tokens_for_asig(data, prompt->tokens, FINAL_PHASE);

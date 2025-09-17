@@ -6,13 +6,13 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 21:11:15 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 01:22:24 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:13:14 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft_plus.h"
 
-static int	validate_and_calculate_length(int count, va_list args, size_t *total_len)
+int	validate_and_calculate_length(int count, va_list args, size_t *total_len)
 {
 	int		i;
 	char	*current;
@@ -34,7 +34,7 @@ static int	validate_and_calculate_length(int count, va_list args, size_t *total_
 	return (1);
 }
 
-static int	concatenate_strings(int count, va_list args, char *result, size_t total_len)
+int	concatenate_strings(int count, va_list args, char *result, size_t total_len)
 {
 	int		i;
 	char	*current;

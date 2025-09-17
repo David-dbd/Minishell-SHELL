@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 21:56:06 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/17 13:41:30 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:20:13 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
  * La memoria del nodo se libera mediante aux_delete().
 */
 
-static void aux_delete(t_var **node, t_env *env)
+static void	aux_delete(t_var **node, t_env *env)
 {
 	if ((*node)->key)
 	{
@@ -47,10 +47,10 @@ static void aux_delete(t_var **node, t_env *env)
 	env->size--;
 }
 
-static void delete_env_var(t_env *env, char *key)
+static void	delete_env_var(t_env *env, char *key)
 {
 	t_var	*node = env->vars;
-	t_var 	*next;
+	t_var	*next;
 
 	while (node)
 	{
@@ -65,13 +65,13 @@ static void delete_env_var(t_env *env, char *key)
 			next = node->next;
 			aux_delete(&node, env);
 			node = next;
-			continue;
+			continue ;
 		}
 		node = node->next;
 	}
 }
 
-int my_unset(t_shell *data, t_env *env, t_token *tokens)
+int	my_unset(t_shell *data, t_env *env, t_token *tokens)
 {
 	int	i;
 
@@ -84,4 +84,3 @@ int my_unset(t_shell *data, t_env *env, t_token *tokens)
 	}
 	return (0);
 }
-

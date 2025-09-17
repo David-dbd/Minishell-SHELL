@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:23:24 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 17:10:19 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:12:55 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	my_echo(t_prompt *prompt, t_token *token)
 	handle_n_flag(token, &new_line, prompt->n_tokens, &i);
 	while (token->id + i < prompt->n_tokens
 		&& (!is_delimiter_type(token[+i].type)
-		&& !is_redir_type(token[+i].type)))
+			&& !is_redir_type(token[+i].type)))
 	{
 		ft_printf_fd(STDOUT, "%s", token[+i].value);
 		if (token->id + i + 1 < prompt->n_tokens

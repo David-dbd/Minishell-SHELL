@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:18:26 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 17:12:46 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:20:48 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ static void	expand_empty_str(t_shell *data, t_token *token, char **key_to_find)
 	int		token_len;
 
 	key_len = ft_strlen(*key_to_find) + 1; //+ 1 por el '$' que no se copio
-	token_len = ft_strlen(token->value); //si su len es igual es porque no hay nada mas
-	if (token_len == key_len)
+	token_len = ft_strlen(token->value); //si su len es igual es porque
+	if (token_len == key_len) // no hay nada mas
 	{
 		free (token->value);
 		token->value = ft_strdup("");

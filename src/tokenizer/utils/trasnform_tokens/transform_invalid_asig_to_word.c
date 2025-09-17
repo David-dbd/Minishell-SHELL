@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   transform_invalid_asig_to_word.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 21:56:00 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/16 00:00:37 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:14:22 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
-
-static void aux_if_word(t_prompt *prompt, t_token *tokens, int i)
+static void	aux_if_word(t_prompt *prompt, t_token *tokens, int i)
 {
 	int	j;
 
@@ -38,10 +37,10 @@ void	transform_invalid_asig_to_word(t_prompt *prompt, t_token *tokens)
 			{
 				if (tokens[i - 1].type == COMMAND
 					|| (tokens[i - 1].type == BUILT_IN
-					&& ft_strcmp(tokens[i - 1].value, BUILTIN_EXPORT) != 0))
-						tokens[i].type = WORD;
+						&& ft_strcmp(tokens[i - 1].value, BUILTIN_EXPORT) != 0))
+					tokens[i].type = WORD;
 				else if (tokens[i - 1].type == WORD)
-						aux_if_word(prompt, tokens, i);
+					aux_if_word(prompt, tokens, i);
 			}
 		}
 		i++;

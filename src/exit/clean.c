@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:47:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/16 20:25:08 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:23:19 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	clean_extras(t_extras *extra_features)
 	'key' y 'value' de cada nodo.
 */
 
-void	clean_env(t_var *vars)
+void	clean_env(t_env *env, t_var *vars)
 {
 	t_var	*var;
 	t_var	*next;
@@ -90,6 +90,7 @@ void	clean_env(t_var *vars)
 		free(var);
 		var = next;
 	}
+	ft_free_str_array(env->envp);
 }
 
 /*
@@ -109,6 +110,6 @@ void	clean_env(t_var *vars)
 void	clean_all(t_shell *data)
 {
 	clean_prompt(&data->prompt);
-	clean_env(data->env.vars);
+	clean_env(&data->env, data->env.vars);
 	clean_extras(&data->extra_features);
 }

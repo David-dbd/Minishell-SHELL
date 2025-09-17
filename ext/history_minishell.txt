@@ -3,15 +3,11 @@ exit 1 >
 exit 1 > 2
 exit 5
 (())
-Mikel
-A=1
 echo $A
 mvelaqu
-ls
 echo -nnnnnnnn -n
 echo adios
 echo -n
-echo -n hola
 echo -n a
 echo holaa -n
 export a
@@ -32,7 +28,6 @@ export b='hola Mundo'
 env hola
 env -i
 export c
-pwd
 unset a
 unset a+
 export holamUndo@
@@ -87,7 +82,6 @@ exit 1 4 55
 exit 0 5 4 8
 cM
 export A=hola
-env
 export A+=" como" A+=" estas"
 export A+="como" A+="estas"
 export A+= " como"
@@ -114,3 +108,49 @@ echo $$$
 echo $!$USER
 echo $NB$USER
 echo $$$USER
+hola 
+omo 
+echo -n hola
+vsv
+sbas
+bs
+betaha
+gsfsefg
+a
+eag
+esb
+eas
+ g
+e t
+t
+3w 
+t 
+ w
+az
+ gz
+e
+z s
+pwd
+export A=1
+export A=1 B=2
+echo $A $B
+A=1
+AB=2
+echo $AB
+ls
+scsd
+ces
+vves
+bes
+be
+erebe
+unset A
+env
+.
+echo A B C
+Mikel
+export A=1 B=2 C=3
+echo $A $B $C
+echo $vsdvsvd
+export a=3
+echo $a

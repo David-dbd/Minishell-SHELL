@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:22:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 16:56:45 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:34:20 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,3 @@ int	copy_value(t_shell *d, char **token_val, char *key_value, char *key_to_find)
 	ft_memcpy(new_buffer, key_value, value_len);
 	return (SUCCESS);
 }
-
