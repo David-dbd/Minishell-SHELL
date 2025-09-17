@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:23:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 17:09:23 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/17 17:49:14 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@
 # define ERR_PIPE		"minishell: pipe: Too many open files\n"
 # define ERR_DUP		"minishell: dup2: Bad file descriptor\n"
 # define ERR_SIGNAL		"minishell: signals state failed\n"
-# define ERR_MAX_TOKENS "minishell: error: maximum number of tokens exceeded"
+# define ERR_MAX_TOKENS "minishell: error: maximum number of tokens exceeded\n"
 # define ERRNO			"Errno: %s\n"
 
 //File Directory Errors

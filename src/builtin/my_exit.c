@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 23:55:15 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 16:05:02 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/17 17:50:21 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static int	check_exit(t_shell *data, t_token *token, int n_tokens)
 			status = num % 256;
 			return (status);
 		}
-		exit_error(data, ERR_EXIT_NUMERIC, EXIT_USE);
+		exit_error(data, ERR_EXIT_NUMERIC, EXIT_USE, token[+1].value);
 	}
 	return (0);
 }

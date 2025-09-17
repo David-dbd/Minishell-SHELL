@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:42:44 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 17:15:14 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/17 17:53:37 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	exit_error(t_shell *data, const char *error, int exit_code, ...)
 {
 	va_list	args;
 
-	if (data)
-		clean_all(data);
 	if (error)
 	{
 		va_start(args, exit_code);
@@ -32,6 +30,8 @@ int	exit_error(t_shell *data, const char *error, int exit_code, ...)
 	}
 	if ((exit_code == FAILURE || exit_code == EXIT_CMD_NOT_EXECUTABLE) && errno)
 		ft_printf_fd(STDERR, ERRNO, strerror(errno));
+	if (data)
+		clean_all(data);
 	exit(exit_code);
 	return (exit_code);
 }

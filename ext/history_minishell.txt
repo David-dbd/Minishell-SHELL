@@ -6,3 +6,80 @@ exit 5
 Mikel
 A=1
 echo $A
+mvelaqu
+ls
+echo -nnnnnnnn -n
+echo adios
+echo -n
+echo -n hola
+echo -n a
+echo holaa -n
+export a
+export a+=hola
+export a+=adios
+export a+=adios a+='como estas'
+export a+='hola mundo'
+export a=hola
+export a='HOla Munod'
+export b=adios
+export b=nada
+export b+=adios
+export b=hola
+export b='nada adios'
+export b='buenas'
+export b='adios mundo'
+export b='hola Mundo'
+env hola
+env -i
+export c
+env
+pwd
+unset a
+unset a+
+export holamUndo@
+export hola@=adios
+export +=esto
+export d+@%^%&%$^=a
+'Hola 'mundo"adjios''"nada
+echo 'Hola 'mundo"adjios''"nada
+echo "$USER"'$USER'"'$USER'"'"$USER"'
+echo '$USER $USER ' '' adios
+echo '$USER$USER' '' adios
+echo $ $ $
+echo $$ $$
+echo $$$a$
+echo $USER
+echo $$$USER$
+export $$USER=a
+export *
+clear
+echo '$USER'" $USER"
+export a='ls -l'
+export a=ls b=-l
+echo $a $b
+ls -l
+export a=echo
+$a $b
+echo -l
+$a
+export c=-n
+export
+echo $c hola
+$a $c $d hola
+echo $asdfa adios
+exit 1 asfa
+exit 214783647
+2147483647
+exit 2147483647
+exit 
+exit -1
+sa
+exit 1 2 3
+exit a 213123123123123123123
+hola
+exit 123
+exit 12131
+ear
+exit
+exit 12131a
+exit 12a
