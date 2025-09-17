@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:57:33 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/15 18:28:37 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/09/17 19:37:45 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,20 @@ int	expansion(t_shell *data, t_token *token, t_env *env, int phase)
 	found = FALSE;
 	while (i < data->prompt.n_tokens)
 	{
-		aux_mem_alloc(data, &token[i], &key_to_find);
-		j = ft_count_char(token[i].value, '$');
-		while (j > 0)
+		if (token[i].type != EXPANSION)
 		{
-			found = extract_key(data, &token[i], &key_to_find, phase);
-			if (!found) //TAL VEZ VALGA LA PENA QUITAR ESTO
-				break ;
-			j--;
+			aux_mem_alloc(data, &token[i], &key_to_find);
+			j = ft_count_char(token[i].value, '$');
+			while (j > 0)
+			{
+				found = extract_key(data, &token[i], &key_to_find, phase);
+				j--;
+			}
+			i++;
+			free (key_to_find);
+			key_to_find = NULL;
 		}
 		i++;
-		free (key_to_find);
-		key_to_find = NULL;
 	}
 	return (found);
 }
