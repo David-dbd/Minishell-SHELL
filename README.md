@@ -30,10 +30,17 @@ Minishell - Bash
 - Refactorizar expansion para que incorpore `send_tokens_for_expansion`
 - Norminette
 - Comentarios
+- - export con espacios no sirve. por las comillas simpples, ya que lo pone como word en lugar de asignation
+- CUando se hace export a, se actualiza en el export pero no en el env
+- Export con += no concatena
+- CAracteres invalidos para antes del "="
+- NO iterar expandir cuando no es EXPANSION token
+- Cuando es: "$USE" deja espacio. Cuando es: $USE no deja espacio
 
 ## Errores:
 - En is_double_quote -> no se pueden hacer dos expansiones seguidas cuando hay `\` antes del `$` funciona para expansiones
   individuales pero la flag seteada evita las demas expansiones
+
 
 ## ARQUITECTURA GENERAL
 
