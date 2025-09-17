@@ -35,6 +35,7 @@ Token [4]: '*_315131' (type: WILDCAR)
 - bash + argumento debería abrir ese archivo (solo el primero) y tratar de ejecutar los que haya dentro como input
 
 ## DAVID:
+- Hacer built-in CD
 - Arreglar `is_cmd` para que esto lo catalogue como cmd → Token [3]: '/usr/bin/ls' (type: WORD)
 - Expansiones $, $?, $$, $!...
 - `echo $a && a=1`
