@@ -585,8 +585,6 @@ static void sig_handler(int signum, siginfo_t* siginfo, void* uap ) {
       sig_tty->term_resize_event = true;
     }
   }
-  else if (signum = SIGINT)
-  	return ;
   else {
     // the rest are termination signals; restore the terminal mode. (`tcsetattr` is signal-safe)
     if (sig_tty != NULL && sig_tty->raw_enabled) {
@@ -595,13 +593,11 @@ static void sig_handler(int signum, siginfo_t* siginfo, void* uap ) {
     }
   }
   // call previous handler
-  if (signum != SIGINT) {
-    signal_handler_t* sh = sighandlers;
-    while( sh->signum != 0 && sh->signum != signum) { sh++; }
-    if (sh->signum == signum) {
-      if (sigaction_is_valid(&sh->action.previous)) {
-        (sh->action.previous.sa_sigaction)(signum, siginfo, uap);
-      }
+  signal_handler_t* sh = sighandlers;
+  while( sh->signum != 0 && sh->signum != signum) { sh++; }
+  if (sh->signum == signum) {
+    if (sigaction_is_valid(&sh->action.previous)) {
+      (sh->action.previous.sa_sigaction)(signum, siginfo, uap);
     }
   }
 }

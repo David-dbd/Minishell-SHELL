@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_signals.c                                     :+:      :+:    :+:   */
+/*   init_signals_old.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:37:17 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 00:50:58 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/18 02:41:32 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ volatile sig_atomic_t	g_signal_event;
 	Si falla, muestra error y termina el programa.
 */
 
-int	init_signals(void)
-{
-	struct sigaction	sa;
+// int	init_signals(void)
+// {
+// 	struct sigaction	sa;
 
-	sa = (struct sigaction){0};
-	sa.sa_sigaction = signal_handler;
-	sa.sa_flags = SA_RESTART | SA_SIGINFO;
-	if (sigaction(SIGINT, &sa, NULL) == ERROR)
-		exit_error(NULL, ERR_SIGNAL, EXIT_FAILURE);
-	if (sigaction(SIGQUIT, &sa, NULL) == ERROR)
-		exit_error(NULL, ERR_SIGNAL, EXIT_FAILURE);
-	return (0);
-}
+// 	sa = (struct sigaction){0};
+// 	sa.sa_sigaction = signal_handler;
+// 	sa.sa_flags = SA_RESTART | SA_SIGINFO;
+// 	if (sigaction(SIGINT, &sa, NULL) == ERROR)
+// 		exit_error(NULL, ERR_SIGNAL, EXIT_FAILURE);
+// 	if (sigaction(SIGQUIT, &sa, NULL) == ERROR)
+// 		exit_error(NULL, ERR_SIGNAL, EXIT_FAILURE);
+// 	return (0);
+// }

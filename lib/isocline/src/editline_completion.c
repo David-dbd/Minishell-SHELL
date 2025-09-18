@@ -143,10 +143,10 @@ again:
   }
   if (count > count_displayed) {
     if (more_available) {
-      sbuf_append(eb->extra, "\n[ic-info](press page-down to see all completions)[/]");
+      sbuf_append(eb->extra, "\n[ic-info](press page-down (or ctrl-j) to see all further completions)[/]");
     }
     else {
-      sbuf_appendf(eb->extra, "\n[ic-info](press page-down to see all %zd completions)[/]", count );
+      sbuf_appendf(eb->extra, "\n[ic-info](press page-down (or ctrl-j) to see all %zd completions)[/]", count );
     }
   }
   if (!env->complete_nopreview && selected >= 0 && selected <= count_displayed) {

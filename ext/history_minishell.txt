@@ -1,37 +1,7 @@
-export a+=adios a+='como estas'
-export a+='hola mundo'
-export a=hola
-export a='HOla Munod'
-export b=adios
-export b=nada
-export b+=adios
-export b=hola
-export b='nada adios'
-export b='buenas'
-export b='adios mundo'
-export b='hola Mundo'
-env hola
-env -i
-export c
-unset a
-unset a+
-export holamUndo@
-export hola@=adios
-export +=esto
-export d+@%^%&%$^=a
-'Hola 'mundo"adjios''"nada
-echo 'Hola 'mundo"adjios''"nada
-echo "$USER"'$USER'"'$USER'"'"$USER"'
-echo '$USER $USER ' '' adios
-echo '$USER$USER' '' adios
-echo $ $ $
-echo $$ $$
-echo $$$a$
 echo $USER
 echo $$$USER$
 export $$USER=a
 export *
-clear
 echo '$USER'" $USER"
 export a='ls -l'
 export a=ls b=-l
@@ -188,12 +158,42 @@ cd tt
 ls *
 ./minishell
 ENV
-exit
-Mikel
 env
 cd
 cds
 lsvs
 sdv
 seves
+Mikel
+\x03slsd
+\x03\x03\x03\x03\x03\x03\x03\x03\x03\x03
+\x03\x03\x03\x03\x03\x03\x03\x03\x03
+\x03\x03\x03cd /home/mikel/documents/cursus/rank03/minishell && make
+\x03pkill -SIGINT -f "./minishell"
+\x03\x03\x03\x03\x03\x03
+\x03ps aux | grep "./minishell" | grep -v grep
+\x03\x03\x03\x03\x03\x03\x03\x03\x03\x03\x03
+\x03\x03ls
+\x03ls
+clear
+\x03ps aux | grep "./minishell" | grep -v grep | head -1 | awk '{print $2}' | xargs kill -INT
+\x03\x03cd /home/mikel/documents/cursus/rank03/minishell && make
+\x03\x03\x03\x03\x03\x03\x03\x03cd /home/mikel/documents/cursus/rank03/minishell && make
+\x03pkill -SIGINT minishell
+\x03\x03\x03\x03
 ls
+s
+lss
+sdsvsv
+\x03mikel
+exit
+\x03\x03\x03\x03\x03\x03\x03\x03
+\x03l
+\x03\x18\x03\x03\x03\x03\x03
+\x03sd
+\x03\x03\x03\x03\x03d
+\x03c
+\x03\x03\x03ls
+\x03\x03\x03\x03ls
+\x03\x03\x03\x03\x03
+\x03\x03\x03

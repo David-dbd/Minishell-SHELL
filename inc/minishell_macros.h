@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:23:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 22:01:00 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/18 02:42:28 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define SYNTAX_ERROR				0
 # define IGNORE						2
 # define VOID						0
+# define RECIVED_SIGNAL				0
 
 /* ************************************************************************** */
 /*                               Global Flag                                  */
@@ -63,7 +64,6 @@
 # define EXIT_CMD_NOT_EXECUTABLE	126
 # define EXIT_FATAL_SIGNAL			128
 # define EXIT_CTRL_C				130
-# define EXIT_CTRL_D				131
 
 /* ************************************************************************** */
 /*                              File Operations                               */

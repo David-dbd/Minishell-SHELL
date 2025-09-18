@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 20:09:48 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/18 02:38:30 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ typedef struct s_shell
 	t_exec		executor;
 	t_env		env;
 	t_extras	extra_features;
-	int			last_exit_code;
+	int			exit_code;
 	pid_t		shell_pid;
 }	t_shell;
 

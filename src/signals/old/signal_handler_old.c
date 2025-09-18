@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal_handler.c                                   :+:      :+:    :+:   */
+/*   signal_handler_old.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:45:52 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 01:12:41 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/18 02:41:25 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@
 // 	return ;
 // }
 
-void	signal_handler(int sig, siginfo_t *info, void *context)
-{
-	if (sig == SIGINT)
-	{
-		ic_print("\n");
-		g_signal_event = CLEAN;
-	}
-	else if (sig == SIGQUIT)
-	{
-		g_signal_event = CONTINUE;
-	}
-	return ;
-}
+// void	signal_handler(int sig, siginfo_t *info, void *context)
+// {
+// 	if (sig == SIGINT)
+// 	{
+// 		ic_print("\n");
+// 		g_signal_event = CLEAN;
+// 	}
+// 	else if (sig == SIGQUIT)
+// 	{
+// 		g_signal_event = CONTINUE;
+// 	}
+// 	return ;
+// }

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 19:16:58 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/18 02:38:30 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	is_it_symbol(t_shell *data, t_token *token, char **key_to_find)
 	}
 	if (*key_to_find[0] == '?' && *key_to_find[1] == '\0')
 	{
-		if (data->last_exit_code)
+		if (data->exit_code)
 		{
 			sym_expa(data, token, key_to_find, data->shell_pid);
 			return (TRUE);

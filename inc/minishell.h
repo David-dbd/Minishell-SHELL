@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 23:18:09 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/18 05:07:57 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 /* ************************************************************************** */
 /*                                 Globales                                   */
 /* ************************************************************************** */
-extern volatile sig_atomic_t	g_signal_event;
+extern volatile sig_atomic_t	g_signal[2];
 
 /* ************************************************************************** */
 /*                             Initialization                                 */
@@ -53,7 +53,7 @@ void	init_ic_readline(void);
 /*                               Tokenizer                                    */
 /* ************************************************************************** */
 int		tokenizer(t_shell *data, t_prompt *prompt, char *input);
-char	*recieve_input(char **input, t_shell *data);
+char	*receive_input(char **input, t_shell *data);
 void	parse_tokens(t_shell *data, t_prompt *prompt, char *input);
 int		check_if_valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens);
 int		add_token(t_shell *data, t_prompt *prompt, char *value, int type);
@@ -87,8 +87,14 @@ void	my_exit(t_shell *data, t_prompt *prompt, t_token *tokens);
 /* ************************************************************************** */
 /*                                Signals                                     */
 /* ************************************************************************** */
-int		init_signals(void);
-void	signal_handler(int sig, siginfo_t *info, void *context);
+// int		init_signals(void);
+// void	signal_handler(int sig, siginfo_t *info, void *context);
+void	setup_signals_interactive(void);
+void	setup_signals_child(void);
+void	setup_signals_heredoc(void);
+void	handle_sigint_interative(int sig);
+void	handle_sigint_heredoc(int sig);
+int 	check_signals(t_shell *data, char **input);
 
 /* ************************************************************************** */
 /*                                 Clean                                      */
