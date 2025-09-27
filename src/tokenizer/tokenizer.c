@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/27 21:34:25 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/27 21:36:04 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,6 @@ int	check_if_valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 
 int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 {
-	setup_signals_interactive();
 	allocate_tokens(data, prompt, input);
 	parse_tokens(data, prompt, input);
 	if (!check_if_valid_tokens(data, prompt, prompt->tokens))
@@ -160,7 +159,6 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 
 	print_tokens_debug(prompt);
 
-	check_signals(data);
 	test_built_in(data, prompt->tokens, prompt->n_tokens);
 	send_tokens_for_asig(data, prompt->tokens, FINAL_PHASE);
 	return (SUCCESS);
