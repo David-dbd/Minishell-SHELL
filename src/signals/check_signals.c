@@ -6,13 +6,13 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:47:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/18 15:28:09 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/09/27 21:32:35 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int check_signals(t_shell *data, char **input)
+int check_signals(t_shell *data)
 {
 	if (g_signal[0] == SIG_INTERACTIVE)
 	{
@@ -29,6 +29,7 @@ int check_signals(t_shell *data, char **input)
 		{
 			data->exit_code = EXIT_CTRL_C;
 			g_signal[1] = VOID;
+			exit_error(data, NULL, EXIT_CTRL_C);
 			return (RECIVED_SIGNAL);
 		}
 	}
