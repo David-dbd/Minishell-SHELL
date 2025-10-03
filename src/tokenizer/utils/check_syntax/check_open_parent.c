@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 22:40:41 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/17 19:14:55 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/03 22:54:38 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ int	check_open_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 	if (tokens[i].type != PAREN_OPEN)
 		return (SUCCESS);
 	if (is_valid_before_open(tokens, i))
-		return (syntax_error(data, ERR_SYNTAX, EXIT_USE, "("));
+	{
+		syntax_error(data, ERR_SYNTAX, EXIT_USE, "(");
+		return (SYNTAX_ERROR);
+	}
 	while (i < prompt->n_tokens)
 	{
 		if (tokens[i].type != PAREN_OPEN && tokens[i].type != PAREN_CLOSE)
@@ -51,6 +54,6 @@ int	check_open_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 		}
 		i++;
 	}
-	return (syntax_error(data, ERR_SYNTAX, EXIT_USE, "("));
-	return (SUCCESS);
+	syntax_error(data, ERR_SYNTAX, EXIT_USE, "(");
+	return (SYNTAX_ERROR);
 }

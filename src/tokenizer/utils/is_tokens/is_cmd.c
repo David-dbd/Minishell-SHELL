@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 21:35:11 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/29 20:41:59 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/03 21:49:13 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ static int	is_built_in(t_shell *d, t_prompt *prompt, t_token *token, char *str)
 	built_in[7] = NULL;
 	while (built_in[i])
 	{
-		if (ft_strmatch_cmp(built_in[i], str, &flag_error) == 0)
+		if (ft_strmatch_cmp(built_in[i], str) == 0)
 		{
 			if (flag_error == ERROR)
 				exit_error(d, ERR_MALLOC, EXIT_FAILURE);

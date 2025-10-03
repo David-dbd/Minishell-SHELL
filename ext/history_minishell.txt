@@ -1,68 +1,3 @@
-bs
-betaha
-gsfsefg
-eag
-esb
-eas
- g
-e t
-3w
-t
- w
-az
- gz
-z s
-export A=1 B=2
-echo $A $B
-AB=2
-echo $AB
-scsd
-ces
-vves
-bes
-be
-erebe
-unset A
-.
-echo A B C
-export A=1 B=2 C=3
-echo $vsdvsvd
-export a=3
-echo $a
-.vscode/launch.json
-ls > ''
-ls >
-ls <
-ls < &&
-ls < |
-ls < >
-ls < <
-ls > <
-ls > >
-ls > |
-ls > ""
-ls > &&
-ls > &
-echo $1
-export A=1 ls B=2
-echo "hola $A"
-echo "hola $sdvsddvd"
-echo "hola$sdvsddvd"
-echo hola & > ls
-ls > ls
-ls > &ls
-ls > & ls
-ls >& ls
-ls >&
-ls &
-avolcy
-expot p
-export p
-p = 2
-export =lol
-export pp+=op
-export pp=op
-export pp=op+
 unset pp+
 export pp=tttt
 export test="$pp"
@@ -82,7 +17,6 @@ ls *
 ENV
 cds
 lsvs
-sdv
 seves
 Mikel
 \x03slsd
@@ -95,7 +29,6 @@ Mikel
 \x03\x03\x03\x03\x03\x03\x03\x03\x03\x03\x03
 \x03\x03ls
 \x03ls
-clear
 \x03ps aux | grep "./minishell" | grep -v grep | head -1 | awk '{print $2}' | xargs kill -INT
 \x03\x03cd /home/mikel/documents/cursus/rank03/minishell && make
 \x03\x03\x03\x03\x03\x03\x03\x03cd /home/mikel/documents/cursus/rank03/minishell && make
@@ -115,7 +48,6 @@ exit
 \x03\x03\x03\x03ls
 \x03\x03\x03\x03\x03
 \x03\x03\x03
-s
 >>>>>>> origin/mikel
 cd
 export a
@@ -129,10 +61,8 @@ echo "$HOME" ; "$USER"
 echo "$HOME" "$USER"
 echo $HOME $USER
 echo $USER $HOME
-a
 dvafdas asdg asdg asd
 asdasd= asd
-A=1 B=2 C=3
 a=1
 b=2 echo $b
 b=2 ls
@@ -166,27 +96,22 @@ echo $
 echo $ $GOME
 echo $ $HOME
 echo $SHLVL
-ls
 sve
 e
 ce
 export A+=" como estas"
 export A=" Hola como estas = BIEN"
-export A=1
 A=2
 B=1
 export A=$USER d B=3 dfbd C=2
 export A=
 export A =1
-export
 export A=4 svds sds d B=3 dfbd C=2
 export A=$USER d B=$HOME dfbd C=$?
 export A=1 B=2 dfbd C=3
 export C=$?
-env
 export A=$USER sdsdbds sdsvsdvs = B=$HOME dfbd C=$?
 export A=$USER  = ?
-export A=1 =
 $USER
 echo $USER
 echo '$USER'
@@ -197,3 +122,78 @@ echo hola
 Echo hola
 ECHO hola
 EcHo hola
+l
+clarfa
+lcea
+lce
+acela
+csd
+hola como estas $US
+echo hola como estas $US
+echo hola como estas sd$US
+cd cd cd
+cd cd cd cd cd
+make
+make 
+CD CD CD 
+cd cd cd 
+ ls -l
+echo "hola como estas" > ls
+clear
+ls
+lsd
+cs
+dv
+sdbsdb
+v
+ds
+sdv
+av
+dav
+va
+a
+fd
+s
+d
+sd
+f
+A=1 B=2 C=3
+env
+export
+VAR+=value echo $VAR
+VAR=temp ls | grep file
+VAR1="hello" VAR2=$USER"world" echo $VAR1 $VAR2
+echo "hello"'world'"test"
+echo "line1\\nline2" 'don'\\''t escape'
+echo "$USER"'$H'"$PWD"
+echo "$USER"'$HOME'"$PWD"
+echo "$USER"'$HOME'"$sds""$PWD"
+echo"hello"world'test'
+cat <file1 >file2 2>&1 | grep pattern >>output
+exec 3<file 4>output && echo "test" >&3
+(echo hello; echo world) | (cat && echo done)
+(test -f file && echo exists) || (echo missing && exit 1)
+(test -f file && echo exists) || (echo missing && exit 1) 
+VAR=1 && VAR=2 || echo failed
+(VAR=local echo $VAR) && echo $VAR
+echo hello 2>&1 | cat
+echo hello &>file
+echo hello |& cat
+echo hello 3>file 4<input 5>>append
+A=" = equals = sign" echo $A
+VAR='value with spaces' echo $VAR
+A=1 B+=2 C="test" echo $A $B $C
+echo "start'middle"end'
+echo test 2>&1
+expoer A=1
+expoer A=1 =
+export A=1
+export A=1 =
+ls"
+ls" sdsfef
+ls" sdsfef egse
+ls) 
+ls) asgeg g eg sg 
+(ls) "asgeg g eg sg 
+(ls) asgeg g eg sg 
+VAR1="test" VAR2+=value (echo "$VAR1"'literal'$USER) | grep pattern >output 2>&1 && echo success || echo "failed"

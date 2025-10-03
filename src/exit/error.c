@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 03:26:20 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/18 02:38:30 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/03 22:41:13 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ int	syntax_error(t_shell *data, const char *error, int exit_code, ...)
 		ft_var_printf_fd(STDERR, error, args);
 		va_end(args);
 	}
-	if (data->prompt.tokens)
+	if (data)
+	{
 		clean_prompt(&data->prompt);
-	data->exit_code = exit_code;
+		data->exit_code = exit_code;
+	}
 	return (exit_code);
 }

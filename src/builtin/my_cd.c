@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 17:12:22 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/03 20:30:43 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/03 21:50:34 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	my_cd(t_shell *data, t_token *tokens, t_token *token)
 	}
 	else if (args_found > 1)
 	{
-		printf("BABYYYYY\n\n");
 		ft_printf_fd(STDOUT, ERR_CD_TOO_MANY);
 		return (EXIT_USE);
 	}

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:22:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/03 20:31:15 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/03 22:43:59 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ static int	asignation_type(t_shell *data, t_token *token, t_env *env)
 	else if (token->type == WORD)
 	{
 		if (check_asignation_syntax(token, EXP) == FALSE)
-			syntax_error(data, ERR_EXPORT, EXIT_CMD_NOT_FOUND, token->value);
+		{
+			ft_printf_fd(STDERR, ERR_EXPORT, token->value);
+			return (EXIT_FAIL);
+		}
 		else
 			asignation(data, token, EXP);
 	}
@@ -113,10 +116,7 @@ int	my_export(t_shell *data, t_token *tokens, t_token *token, t_env *env)
 			break ;
 		if ((is_asignation_type(tokens[i].type) || tokens[i].type == WORD)
 			&& tokens[i].type != BUILT_IN)
-		{
-			printf("token: %s\n\n", tokens[i].value);
 			result = asignation_type(data, &tokens[i], env);
-		}
 		i++;
 	}
 	if (!args_found)
