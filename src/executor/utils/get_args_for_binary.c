@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   get_args_for_binary.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 23:03:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 19:19:33 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/05 15:17:41 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+/*
+	En esta funcion se verifica cuantos argumnetos tiene un cmd para poder crear
+	un **args y poder retornarlo ya construido, transformando cada token WORD
+	en un arg.
+
+	Logica:
+	1. Se cuentan cuantos args hay.
+	2. Se crea el **args
+	3. Se vuevlen a recorrer los tokens, esta vez haciendo un strlen sobre cada
+		uno para poder saber su len y poder crear el str en uno de los espacios
+		de **args
+	4. Se avanza index ya que esta funcion se llama desde la construccion del
+		arbol de modo que se tiene que omitir todos los args de cada cmd.
+
+*/
 
 static void	aux_alloc_mem(t_shell *data, char ***args, int len)
 {
@@ -26,25 +42,31 @@ static void	extract_bin_arg(t_shell *d, char **arg_extract, char *word, int len)
 		exit_error(d, ERR_MALLOC, EXIT_FAILURE);
 }
 
-char	**group_args_for_binary(t_shell *data, t_token *token)
+char	**group_args_for_binary(t_shell *data, t_token *token, int *index)
 {
 	char	**args;
 	int		n_args;
-	int		n_chars;
-	int		i;
+	int		arg_len;
+	int		j;
 
-	i = 0;
+	j = 0;
 	n_args = 0;
 	if (token->type == COMMAND)
-		i++;
-	while (token[i].type == WORD || token[i].type == ASIGNATION)
-		n_args++;
-	aux_alloc_mem(data, &args, n_args);
-	while (token[i].type && !is_delimiter_type(token[i].type))
 	{
-		n_chars = ft_strlen(token[i].value);
-		extract_bin_arg(data, args[i], token[i].value, n_chars);
-		i++;
+		j++;
+		(*index)++;
+	}
+	while (index < data->prompt.n_tokens && is_arg_type(token[j].type))
+	{
+		n_args++;
+		(*index)++;
+	}
+	aux_alloc_mem(data, &args, n_args);
+	while (j < data->prompt.n_tokens && is_arg_type(token[j].type))
+	{
+		arg_len = ft_strlen(token[j].value);
+		extract_bin_arg(data, &args[j], token[j].value, arg_len);
+		j++;
 	}
 	return (args);
 }

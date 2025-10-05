@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/30 19:02:40 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/05 15:05:17 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ void	is_not_token(const char *str, int *i);
 void	is_hash(const char *str, int *i);
 int		is_symbol(int c);
 int		is_cmd_type(int type);
+int		is_arg_type(int type);
 int		is_quote_type(int type);
 int		is_redir_type(int type);
 int		is_delimiter_type(int type);
