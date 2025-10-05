@@ -11,6 +11,8 @@ Minishell - Bash
 
 ## DAVID:
 - Hacer built-in CD
+- get_argsbinary ha de saltar las redireciones y los filenames.
+- intentar hacer las asignaciones para el arbol.
 - Arreglar `is_cmd` para que esto lo catalogue como cmd → Token [3]: '/usr/bin/ls' (type: WORD)
 - Expansiones $, $?, $$, $!...
 - `echo $a && a=1`

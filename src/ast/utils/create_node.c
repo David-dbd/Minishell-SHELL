@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:41:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 16:34:47 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/05 20:41:13 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_node	*create_node(t_shell *data, t_token *token, t_type type)
 	node->type = type;
 	node->token = token;
 	node->args = NULL;
+	node->redir = NULL;
 	node->left = NULL;
 	node->right = NULL;
 	node->pid = 0;

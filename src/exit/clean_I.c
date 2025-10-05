@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:47:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 02:38:48 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/05 22:39:27 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,10 @@ void	clean_ast(t_node *node)
 		return ;
 	clean_ast(node->left);
 	clean_ast(node->right);
+	if (node->args)
+		ft_free_str_array(node->args);
+	if (node->redir)
+		clean_redirs(&node->redir);
 	free(node);
 }
 

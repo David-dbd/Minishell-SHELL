@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:24:05 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 16:38:06 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/05 21:59:38 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ t_node	*parse_subshell(t_shell *data, t_token *tokens, int *i, int n_tokens)
 		if (*i < n_tokens)
 			(*i)++;
 		left = parse_sequence(data, tokens, i, n_tokens);
-		if (*i < n_tokens)
+		if (*i < n_tokens && tokens[*i].type == PAREN_CLOSE)
 			(*i)++;
+		central->redir = get_redirs(data, tokens, SUBSHELL, i);
 		central->left = left;
 		return (central);
 	}

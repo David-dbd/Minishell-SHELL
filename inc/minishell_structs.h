@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/04 20:46:01 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/05 21:41:44 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct s_var	t_var;
 typedef struct s_env	t_env;
 typedef struct s_token	t_token;
+typedef struct s_redir	t_redir;
 typedef struct s_node	t_node;
 typedef struct s_extras	t_extras;
 
@@ -56,7 +57,9 @@ typedef enum e_type
 	INDIFERENT,
 	PLUS_ASIGNATION,
 	TEMP_ASIGNATION,
+	FILENAME,
 	SUBSHELL,
+	SHELL,
 }	t_type;
 
 struct s_token
@@ -114,12 +117,21 @@ typedef struct s_exec
 	t_env		*env;
 }	t_exec;
 
+struct	s_redir
+{
+	t_type		type;
+	char		*filename;
+	int			fd;
+	t_redir		*next;
+};
+
 struct s_node
 {
 	int			id;
 	t_type		type;
 	t_token		*token;
 	char		**args;
+	t_redir		*redir;
 	t_node		*left;
 	t_node		*right;
 	pid_t		pid;

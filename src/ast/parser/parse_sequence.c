@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:04:50 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 16:33:42 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/05 19:34:39 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,17 @@ t_node	*parse_sequence(t_shell *data, t_token *tokens, int *i, int n_tokens)
 	left = parse_and_or(data, tokens, i, n_tokens);
 	if (!left)
 		return (NULL);
-	if (*i < n_tokens
+	while (*i < n_tokens
 		&& (tokens[*i].type == SEMICOLON || tokens[*i].type == BACKGROUND))
 	{
-		right = parse_and_or(data, tokens, i, n_tokens);
 		central = create_node(data, &tokens[*i], tokens[*i].type);
+		(*i)++;
+		right = parse_and_or(data, tokens, i, n_tokens);
+		if (!right)
+			return (NULL);
 		central->left = left;
 		central->right = right;
-		(*i)++;
-		return (central);
+		left = central;
 	}
 	return (left);
 }

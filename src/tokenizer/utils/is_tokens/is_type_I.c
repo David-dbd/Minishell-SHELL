@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:48:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 16:46:04 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/05 22:08:50 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	is_redir_type(int type)
 
 int	is_delimiter_type(int type)
 {
-	if (type == PIPE || type == SEMICOLON || type == AND || type == OR)
+	if (type == PIPE || type == SEMICOLON || type == AND || type == OR
+		|| type == PAREN_OPEN || type == PAREN_CLOSE)
 		return (1);
 	return (0);
 }
@@ -64,9 +65,9 @@ int	is_delimiter_type(int type)
 int	is_alloc_type(int type)
 {
 	if (type == WORD || type == BUILT_IN || type == COMMAND || type == WILDCAR
-		|| type == REDIR_APPEND || type == REDIR_HEREDOC
-		|| type == REDIR_INPUT || type == REDIR_OUTPUT
-		|| type == EXPANSION || type == ASIGNATION || type == TEMP_ASIGNATION)
+		|| type == REDIR_APPEND || type == REDIR_HEREDOC || type == REDIR_INPUT
+		|| type == REDIR_OUTPUT || type == EXPANSION || type == FILENAME
+		|| type == ASIGNATION)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:58:35 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 16:49:48 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/05 22:45:11 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	env_commands(t_shell *data, t_token *tokens, t_token *token)
 
 static void	basic_builtins(t_shell *data, t_token *tokens, t_token *token)
 {
-	int flag_error;
+	int	flag_error;
 
 	flag_error = 0;
 	if (ft_strmatch_cmp(token->value, BUILTIN_ECHO, &flag_error) == 0)

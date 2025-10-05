@@ -6,11 +6,34 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 01:53:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 02:37:45 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/05 22:38:18 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+
+/*
+	Libera toda la memoria de una lista enlazada de redirecciones (t_redir)
+	y establece el puntero de la lista a NULL.
+*/
+
+void	clean_redirs(t_redir **lst)
+{
+	t_redir	*current;
+	t_redir	*next;
+
+	if (!lst || !*lst)
+		return;
+	current = *lst;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	*lst = NULL;
+}
 
 /*
 	Libera la memoria reservada para `user_name` en `t_extras`

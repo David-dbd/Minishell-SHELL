@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 23:03:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 16:50:52 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/05 18:05:27 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 
 */
 
-static void	aux_alloc_mem(t_shell *data, char ***args, int len)
+static void	aux_alloc_mem(t_shell *data, char ***args, int n_args)
 {
-	**args = ft_calloc(len + 1, sizeof(char *));
-	if (args)
+	*args = ft_calloc(n_args + 1, sizeof(char *));
+	if (!*args)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 }
 
@@ -42,30 +42,30 @@ static void	extract_bin_arg(t_shell *d, char **arg_extract, char *word, int len)
 		exit_error(d, ERR_MALLOC, EXIT_FAILURE);
 }
 
-char	**group_args_for_binary(t_shell *data, t_token *token, int *index)
+char	**get_args_for_binary(t_shell *data, t_token *tokens, int *i)
 {
 	char	**args;
 	int		n_args;
 	int		arg_len;
 	int		j;
+	int		k;
 
-	j = 0;
+	k = 0;
+	j = *i;
 	n_args = 0;
-	if (token->type == COMMAND)
-	{
-		j++;
-		(*index)++;
-	}
-	while (*index < data->prompt.n_tokens && is_arg_type(token[j].type))
+	while (*i < data->prompt.n_tokens && is_arg_type(tokens[*i].type))
 	{
 		n_args++;
-		(*index)++;
+		(*i)++;
 	}
+	if (n_args == 0)
+		return (NULL);
 	aux_alloc_mem(data, &args, n_args);
-	while (j < data->prompt.n_tokens && is_arg_type(token[j].type))
+	while (k < n_args && j < data->prompt.n_tokens && is_arg_type(tokens[j].type))
 	{
-		arg_len = ft_strlen(token[j].value);
-		extract_bin_arg(data, &args[j], token[j].value, arg_len);
+		arg_len = ft_strlen(tokens[j].value);
+		extract_bin_arg(data, &args[k], tokens[j].value, arg_len);
+		k++;
 		j++;
 	}
 	return (args);

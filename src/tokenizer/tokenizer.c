@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/03 22:52:30 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/05 22:22:16 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ char	*g_type_names[] = {
 	"EXP",
 	"INDIFERENT",
 	"PLUS_ASIGNATION",
-	"TEMP_ASIGNATION"
+	"TEMP_ASIGNATION",
+	"FILENAME",
+	"SUBSHELL",
+	"SHELL"
 };
 
 static void	print_tokens_debug(t_prompt *prompt)
@@ -148,18 +151,18 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	if (!check_if_valid_tokens(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
 
-	print_tokens_debug(prompt);
+	// print_tokens_debug(prompt);
 
 	is_it_quoted(prompt, prompt->tokens); // Se puede hacer mas eficiente
 
 	expansion(data, prompt->tokens, &data->env, FINAL_PHASE);
 	simplify_tokens(data, prompt, prompt->tokens);
 
-	print_tokens_debug(prompt);
+	// print_tokens_debug(prompt);
 
 	transform_tokens_logic(data, prompt, prompt->tokens);
 
-	print_tokens_debug(prompt);
+	// print_tokens_debug(prompt);
 
 	test_built_in(data, prompt->tokens, prompt->n_tokens);
 	//send_tokens_for_asig(data, prompt->tokens, FINAL_PHASE);

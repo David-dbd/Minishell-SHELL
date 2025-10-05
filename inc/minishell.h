@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 16:43:00 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/05 22:38:52 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	clean_all(t_shell *data);
 void	clean_ast(t_node *node);
 void	clean_prompt(t_prompt *prompt);
 void	clean_tokens(t_prompt *prompt);
+void	clean_redirs(t_redir **lst);
 void	clean_env(t_env *env, t_var *vars);
 void	clean_extras(t_extras *extra_features);
 void	clean_cycle(t_shell *data, t_prompt *prompt, t_node *ast_root);
@@ -190,9 +191,11 @@ void	transform_cmd_to_word(t_shell *data, t_token *tokens, int phase);
 void	transform_invalid_asig_to_word(t_prompt *prompt, t_token *tokens);
 void	transform_word_to_asignation(t_shell *data, t_token *tokens, int phase);
 void	transform_tokens_logic(t_shell *data, t_prompt *promp, t_token *tokens);
+void	transform_word_to_file(t_prompt *prompt, t_token *tokens);
 
 //AST
-char	**get_args_for_binary(t_shell *data, t_token *token, int n_tokens);
+char	**get_args_for_binary(t_shell *data, t_token *token, int *i);
+t_redir	*get_redirs(t_shell *data, t_token *tokens, int mode, int *i);
 
 //EXPANSION
 int		copy_key(char *buffer, char **key_to_find);

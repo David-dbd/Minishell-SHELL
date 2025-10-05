@@ -1,208 +1,20 @@
-echo "hola$sdvsddvd"
-echo hola & > ls
-ls > ls
-ls > &ls
-ls > & ls
-ls >& ls
-ls >&
-ls &
-avolcy
-expot p
-export p
-p = 2
-export =lol
-export pp+=op
-export pp=op
-export pp=op+
-unset pp+
-export pp=tttt
-export test="$pp"
-$pp
-echo
-echo $$
-echo $$$
-echo $$$$
-echo $$$$$$
-echo $$$$$$$
-echo $HOME'$HOME'USER'"'$USER'"'''"'$USER'"
-mkdir tt
-cd tt
-ls *
-./minishell
-ENV
-cds
-lsvs
-sdv
-seves
-Mikel
-\x03slsd
-\x03\x03\x03\x03\x03\x03\x03\x03\x03\x03
-\x03\x03\x03\x03\x03\x03\x03\x03\x03
-\x03\x03\x03cd /home/mikel/documents/cursus/rank03/minishell && make
-\x03pkill -SIGINT -f "./minishell"
-\x03\x03\x03\x03\x03\x03
-\x03ps aux | grep "./minishell" | grep -v grep
-\x03\x03\x03\x03\x03\x03\x03\x03\x03\x03\x03
-\x03\x03ls
-\x03ls
-\x03ps aux | grep "./minishell" | grep -v grep | head -1 | awk '{print $2}' | xargs kill -INT
-\x03\x03cd /home/mikel/documents/cursus/rank03/minishell && make
-\x03\x03\x03\x03\x03\x03\x03\x03cd /home/mikel/documents/cursus/rank03/minishell && make
-\x03pkill -SIGINT minishell
-\x03\x03\x03\x03
-lss
-sdsvsv
-\x03mikel
-exit
-\x03\x03\x03\x03\x03\x03\x03\x03
-\x03l
-\x03\x18\x03\x03\x03\x03\x03
-\x03sd
-\x03\x03\x03\x03\x03d
-\x03c
-\x03\x03\x03ls
-\x03\x03\x03\x03ls
-\x03\x03\x03\x03\x03
-\x03\x03\x03
->>>>>>> origin/mikel
-export a
-var=hola ls
-A=1
-echo $A
-echo "$HOME $USER"
-echo "$HOME"$USER
-echo "$HOME" $USER
-echo "$HOME" ; "$USER"
-echo "$HOME" "$USER"
-echo $HOME $USER
-echo $USER $HOME
-dvafdas asdg asdg asd
-asdasd= asd
-a=1
-b=2 echo $b
-b=2 ls
-b=2
-b=2 bash
-echo $A $B $C
-export A+=1
-export A+=" $USER"
-export A=Hola
-echo "hola $USER donde vives $HOME y que tal sales $?"
-echo "hola $USER donde vives $HOME"
-export SHLVL=356383636436
-echo $!
-$?
-$$
-$!
-echo "hola $USER como estas? donde vives $HOME y como sales $?"
-echo "hola $USER "$?
-echo hola $USER $? $$
-echo hola $USER $?
-cd /src
-cd src/
-cd exit/exit.c
-cd exit/
-cd src/exit
-echo $
-echo $ $GOME
-echo $ $HOME
-<<<<<<< HEAD
-sve
-e
-ce
-export A=1
-=======
-echo $SHLVL
-sve
-e
-ce
-export A+=" como estas"
-export A=" Hola como estas = BIEN"
->>>>>>> mikel
-A=2
-B=1
-export A=$USER d B=3 dfbd C=2
-export A=
-export A =1
-export A=4 svds sds d B=3 dfbd C=2
-export A=$USER d B=$HOME dfbd C=$?
-export A=1 B=2 dfbd C=3
-export C=$?
-export A=$USER sdsdbds sdsvsdvs = B=$HOME dfbd C=$?
-export A=$USER  = ?
-$USER
-echo $USER
-echo '$USER'
-echo "$USER"
-echo "hola $use como vas"
-echo hola $use como vas
-<<<<<<< HEAD
-clear
-export A=" Hola como estas = BIEN"
-/usr/bin/ls
-ls && /usr/bin/ls
-Ls
-lS
-echo -n
-A=1 echo $A
-echo $A && A=1
-echo $SHLVL
-export A=" hola = bien"
-export A =" hola = bien"
-export A+=" como estas"
-cd ..
-pwd
-cd minishell/
-cd test/
-ls -la
-ls -la | wc -l
-echo $HOME
-echo $PWD
-echo hola$PWD
-echo hola$PWD$HOME
-mkdir -p test/test/test/test
-cd test/test
-echo hola > test
-cat test
-echo htrehherherhe $PWD
-echo htrehherherhe $PWD thrrth
-echo htrehherherhe $PWDthrrth
-echo 'htrehherherhe$PWDthrrth
-echo 'htrehherherhe$PWDthrrth'
-echo 'htrehherherhe$PWDthrrth''
-echo '"htrehherherhe$PWDthrrth''
-echo '"htrehherherhe$PWDthrrth"''
-echo '"'htrehherherhe$PWDthrrth"''
-echo ''"htrehherherhe$PWDthrrth"''
-echo ''"htrehherherhe$PWDthrrth"hyhtf''
-echo ''"htrehherherhe$PWDthrrth"hyhtf'tdhhed'
-unset $PWD
-declare
-echo '$PWD'"htrehherherhe$PWDthrrth"hyhtf'tdhhed'
-echo '$PWD'"htrehherherhe$PWDthrrth"hyhtf'tdhhed'$HOME
-set test=1
-set test =1
 set test = 1
 test = 1
 test =1
 test=1
 export test=1
 declare test
-export
 export test=hola
 export test=
 export test
-env
 echo $test
 echo $?
 exit 255
 exit 2500
 cat cat
-ls
  = 1
  =1
 export =1
-export A=1 =
 =======
 echo hola
 Echo hola
@@ -216,9 +28,7 @@ acela
 hola como estas $US
 echo hola como estas $US
 echo hola como estas sd$US
-cd cd cd
 cd cd cd cd cd
-make
 make
 CD CD CD
 cd cd cd
@@ -254,7 +64,6 @@ cat <file1 >file2 2>&1 | grep pattern >>output
 exec 3<file 4>output && echo "test" >&3
 (echo hello; echo world) | (cat && echo done)
 (test -f file && echo exists) || (echo missing && exit 1)
-(test -f file && echo exists) || (echo missing && exit 1)
 VAR=1 && VAR=2 || echo failed
 (VAR=local echo $VAR) && echo $VAR
 echo hello 2>&1 | cat
@@ -284,24 +93,107 @@ echo a
 echo 1;
 ls && echo hola
 lsd
-cd
 csd
 sd
 g
 s
-cd
 ls > test
 (echo hola) > ls | wc -c && echo como
 (echo hola) > ls | wc -c && echo como; echo estas
 (sdvfs)  | sldsf && > 1145
 (ls) sd vsd | && -
 (ls) > ls && cmd || ls > wc -l
-ls
 cat | cat | cat
-(cat 'config' | grep "value" > result.txt) || echo "error" ; ps aux & wait && echo 456 >> "log.txt"
 (cat 'config' | grep "value" > result.txt)  || echo "error" ; ps aux & wait && echo 456 >> "log.txt"
 (cat 'config' | grep "value" > result.txt) || echo "error" ; ps aux & wait && echo 456 >> "log.txt"
 (cat 'config' | grep "value" > result.txt) || echo "error" ; ps aux & wait && echo 456 2>> "log.txt" ; \x23asfdfaafas
 skds
 asga  sdf | (sdsdgsdf)
 >>>>>>> mikel
+LS
+ECHO 1 | ECHO 2
+cd
+echo  echo 2
+echo && echo 2
+echo
+echo | echo 2
+echo 1 | echo 2 | echo 3
+ /usr/bin/env /bin/sh /tmp/Microsoft-MIEngine-Cmd-yubvacq1.tzq 
+echo 1 | echo 2
+echo 1  echo 2
+echo 1 || echo 2
+echo > echo 2
+echo 1 > echo file
+echo 1 && echo 2
+echo || echo
+echo && echo
+echo | echo && echo
+echo 1 | echo 2 && echo 3
+(echo 1 | echo 2) && echo 3
+(echo 1 | echo 2) && echo 3; echo 4 > file
+(echo 1 | echo 2) && echo 3; echo 4
+((echo a | cat) && echo b || (echo c | grep x)) ; echo d
+\x16echo a && echo b
+echo a; echo b
+echo a | echo b
+echo a || echo b || echo c
+(echo a)
+(echo a) && echo b
+(echo a | echo b) | echo c
+echo a | echo b | echo c
+echo && wc && ls
+echo | wc | ls
+\x16echo a | cat | grep a | wc
+echo a && echo b && echo c
+echo a && echo b ; echo c
+echo a | cat && echo b | grep x
+\x16(echo a | cat)
+(echo a | cat)
+echo a && echo b || echo c
+echo a && (echo b | cat || echo c) && echo d
+echo a && (echo b | cat || echo c) && echo d e
+echo a && (echo b | cat || echo c) && echo d e f
+\x16echo hello > file.txt
+\x16echo hello
+\x16echo hello >
+\x16echo hello > file l
+\x16echo hello > file ls
+\x16echo hello > file
+(echo hola) > ls
+(echo hola | wc -c | ls) > ls
+var=hola
+ls && va=as
+echo 1 > file 2 ls
+echo 1 > file 
+echo 1 > file ls ls ls ls ls 
+echo 1 > file ls ls
+echo 1 2 3
+echo 1 > file
+echo 1 >
+echo 1 
+echo 1
+echo 1 > 2
+echo 1 > filename
+echo 1 > filename 2 3
+ls 
+echo a > file
+(echo A) > file
+(echo A) > file1 2> file2
+(echo A) > file1 9> file2
+(echo A) > file1 0> file2
+(echo A) > file1 &> file2
+\x16grep foo < input.txt
+echo Hello > out.txt
+(echo A; echo B) > out.txt | grep A >> result.txt
+grep foo < in.txt > out.txt 2> err.txt
+(echo hi; echo err >&2) &> all.txt
+echo a & > log
+echo `ls` > log
+echo a &> log
+echo &2
+(echo X; echo Y) > out.txt | (grep X > result.txt 2>> err.log)
+cat | cat | cat | cat
+babasnbs
+ls
+old/
+(sds) || sds s

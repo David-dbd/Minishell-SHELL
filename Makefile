@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/10/05 02:11:51 by migarrid         ###   ########.fr        #
+#    Updated: 2025/10/05 22:00:14 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -149,6 +149,7 @@ SRCS =				main/main.c \
 					tokenizer/utils/trasnform_tokens/transform_invalid_asig_to_word.c \
 					tokenizer/utils/trasnform_tokens/transform_asig_to_asig_plus.c \
 					tokenizer/utils/trasnform_tokens/transform_asig_to_temp_asig.c \
+					tokenizer/utils/trasnform_tokens/transform_word_to_file.c \
 					expansion/expansion.c \
 					expansion/send_tokens_for_asig.c \
 					expansion/utils/find_swap/copy_key.c \
@@ -171,6 +172,7 @@ SRCS =				main/main.c \
 					ast/parser/parse_cmd.c \
 					ast/utils/create_node.c \
 					ast/utils/get_args_for_binary.c \
+					ast/utils/get_redirs.c \
 					executor/executor.c \
 					executor/utils/eliminate_token.c \
 					executor/utils/which_builtin.c \
