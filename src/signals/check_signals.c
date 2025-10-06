@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   check_signals.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:47:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/30 21:35:30 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:19:12 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+/*
+ * Verifica si se recibieron señales y actúa según el contexto:
+ * En modo interactivo actualiza el código de salida y en heredoc
+ * termina la ejecución del heredoc con código de Ctrl+C
+ */
 
 int	check_signals(t_shell *data)
 {

@@ -6,11 +6,16 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:46:42 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 02:07:25 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:23:44 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
+
+/*
+ * Maneja errores de apertura de archivo:
+ * verifica si el archivo no existe o no tiene permisos.
+ */
 
 static void	open_error(t_shell *data, char *file)
 {
@@ -20,6 +25,11 @@ static void	open_error(t_shell *data, char *file)
 		exit_error(data, ERR_PERM_DENIED, EXIT_CMD_NOT_EXECUTABLE, file);
 	exit_error(data, ERR_NO_INPUT_FILE, EXIT_USE);
 }
+
+/*
+ * Procesa argumentos como script: abre el archivo, lee línea por línea
+ * ejecutando cada comando y termina el programa al finalizar el script
+ */
 
 void	init_arg(t_shell *data, int ac, char **av)
 {

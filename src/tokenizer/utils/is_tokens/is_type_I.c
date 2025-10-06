@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:48:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 22:08:50 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:29:22 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 	Devuelve 1 si el tipo es un comando, built-in o palabra.
 */
 
-int	is_cmd_type(int type)
+int	is_primitive_cmd_type(int type)
 {
 	if (type == COMMAND || type == BUILT_IN || type == WORD)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 22:38:52 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:29:22 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void	is_parenten(t_shell *data, t_prompt *prompt, const char *str, int *i);
 void	is_not_token(const char *str, int *i);
 void	is_hash(const char *str, int *i);
 int		is_symbol(int c);
-int		is_cmd_type(int type);
+int		is_primitive_cmd_type(int type);
 int		is_arg_type(int type);
 int		is_quote_type(int type);
 int		is_redir_type(int type);

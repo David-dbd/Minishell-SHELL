@@ -6,15 +6,16 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:30:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/03 17:28:54 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:26:15 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
-static int	check_case_1(t_token *tokens, t_token *token)
+static int	check_case_1(t_token *tokens, t_token *token, int n_tokens)
 {
-	if (tokens[token->id - 1].type && tokens[token->id + 1].type)
+	if (token->id < n_tokens - 1
+		&& tokens[token->id - 1].type && tokens[token->id + 1].type)
 	{
 		if ((tokens[token->id - 1].type == AND
 			|| tokens[token->id - 1].type == OR
@@ -38,9 +39,9 @@ static int	check_case_1(t_token *tokens, t_token *token)
 	return (0); //comillas hace que no se tenga en cuenta "hola""var=hola"
 }
 
-static int	check_case_2(t_shell *data, t_token *tokens, t_token *token)
+static int	check_case_2(t_token *tokens, t_token *token, int n_tokens)
 {
-	if (token->id > 0 && token->id <= data->prompt.n_tokens)
+	if (token->id > 0 && token->id <= n_tokens)
 	{
 		if (tokens[token->id - 1].type == AND
 			|| tokens[token->id - 1].type == OR
@@ -83,9 +84,9 @@ static int	check_case_2(t_shell *data, t_token *tokens, t_token *token)
 	return (0);
 }*/
 
-static int	check_case_3(t_token *tokens, t_token *token)
+static int	check_case_3(t_token *tokens, t_token *token, int n_tokens)
 {
-	if (token->id == 0 && tokens[token->id + 1].type)
+	if (token->id == 0 && n_tokens > 1 && tokens[token->id + 1].type)
 	{
 		if (tokens[token->id + 1].type == AND
 			|| tokens[token->id + 1].type == OR
@@ -109,14 +110,15 @@ int	check_externs_syntax(t_shell *d, t_token *tokens, t_token *token, int type)
 
 	result = FALSE;
 	if (token->id >= 1 && token->id < d->prompt.n_tokens
-		&& (tokens[token->id + 1].type || tokens[token->id - 1].type)
+		&& (token->id + 1 < d->prompt.n_tokens
+			&& (tokens[token->id + 1].type || tokens[token->id - 1].type))
 		&& (token->type == ASIGNATION || token->type == WORD))
 	{
-		if (check_case_1(tokens, token))
+		if (check_case_1(tokens, token, d->prompt.n_tokens))
 			result = check_asignation_syntax(token, type);
-		if (check_case_2(d, tokens, token))
+		if (check_case_2(tokens, token, d->prompt.n_tokens))
 			result = check_asignation_syntax(token, type);
-		if (check_case_3(tokens, token))
+		if (check_case_3(tokens, token, d->prompt.n_tokens))
 			result = check_asignation_syntax(token, type);
 	}
 	else

@@ -3,38 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 23:17:43 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/30 20:50:30 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:21:10 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
 /*
-	Inicializa la estructura 'data' del shell: limpia valores,
-	inicia tokens, AST y variables de entorno, guarda el inicio
-	de sesión y muestra mensaje de bienvenida.
-*/
-
-/*
-	Simulación de la expansión de la variable especial `$$`.
-	En shells como Bash, `$$` representa el PID (Process ID) del
-	proceso actual del shell. Sin embargo, en este proyecto no se permite
-	el uso directo de `getpid()`, ni se puede acceder al PID real desde
-	las variables de entorno estándar.
-
-	Por esta razón, se genera un valor simulado para `$$` al iniciar el shell,
-	que se guarda en `data->shell_pid`.
-
-	Este valor se usa únicamente para expandir `$$` en el contexto
-	del shell, y no debe considerarse como el PID real del proceso.
-	No se recomienda usarlo en comandos como `kill $$` o `ps -p $$`, ya que no
-	reflejará un proceso válido en el sistema. Mientras se mantenga estable
-	durante la sesión, esta simulación es suficiente para cumplir con las
-	expectativas del usuario en la mayoría de los casos de uso.
-*/
+ * Inicializa la estructura principal del shell: establece valores
+ * por defecto, configura el entorno, imprime la sesión y prepara
+ * readline para la entrada interactiva
+ */
 
 void	init_data(t_shell *data, char **envp)
 {

@@ -1,22 +1,5 @@
-set test = 1
-test = 1
-test =1
-test=1
-export test=1
-declare test
-export test=hola
-export test=
-export test
-echo $test
-echo $?
-exit 255
-exit 2500
-cat cat
- = 1
- =1
 export =1
 =======
-echo hola
 Echo hola
 ECHO hola
 EcHo hola
@@ -34,7 +17,6 @@ CD CD CD
 cd cd cd
  ls -l
 echo "hola como estas" > ls
-clear
 cs
 dv
 sdbsdb
@@ -175,7 +157,6 @@ echo 1
 echo 1 > 2
 echo 1 > filename
 echo 1 > filename 2 3
-ls 
 echo a > file
 (echo A) > file
 (echo A) > file1 2> file2
@@ -194,6 +175,25 @@ echo &2
 (echo X; echo Y) > out.txt | (grep X > result.txt 2>> err.log)
 cat | cat | cat | cat
 babasnbs
-ls
 old/
 (sds) || sds s
+echo hola
+exit 1
+hola
+clear
+cd 
+cd  ls
+cd  cds
+scd
+sdcsfs
+ls 
+1  2
+1 2 3
+1 2 3 4
+ls
+1 2
+1 2 3 4  5
+1 2 3 4  5 46824 6426 46824 684 642 84  
+sabv asge gasg ash as h sh a sh  ah a hae h re h eh r ha h ae h a  h a h a eh ras  fv sdvsd f vs df  & &  ||  $
+sabv asge gasg ash as h sh a sh  ah a hae h re h eh r ha h ae h a  h a h a eh ras  fv sdvsd f vs df 
+vasvjb aj as;lh sd s s d sd d d d  e  e w af a  ag  ag  e  s e gs   a  a s v s   e e gs vsef es f seg se ge s gs

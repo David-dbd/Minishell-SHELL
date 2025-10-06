@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:47:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 22:39:27 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:33:25 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,16 +96,6 @@ void	clean_ast(t_node *node)
 	variables de entorno asociadas a 'data'.
 */
 
-// void	clean_all(t_shell *data)
-// {
-// 	ic_history_clear();
-// 	clear_history();
-// 	clean_prompt(&data->prompt);
-// 	clean_env(data->env.vars);
-//	clean_ast(data->ast_root);
-// 	clean_extras(&data->extra_features);
-// }
-
 void	clean_all(t_shell *data)
 {
 	clean_prompt(&data->prompt);
@@ -114,3 +104,4 @@ void	clean_all(t_shell *data)
 	clean_extras(&data->extra_features);
 	free(data->home);
 }
+

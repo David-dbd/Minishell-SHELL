@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/10/05 22:00:14 by migarrid         ###   ########.fr        #
+#    Updated: 2025/10/06 19:04:35 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -167,7 +167,6 @@ SRCS =				main/main.c \
 					ast/parser/parse_sequence.c \
 					ast/parser/parse_and_or.c \
 					ast/parser/parse_pipes.c \
-					ast/parser/parse_redir.c \
 					ast/parser/parse_subshell.c \
 					ast/parser/parse_cmd.c \
 					ast/utils/create_node.c \
