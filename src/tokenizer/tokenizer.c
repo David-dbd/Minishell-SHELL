@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 17:07:32 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:17:28 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,6 @@ static void	print_tokens_debug(t_prompt *prompt)
 	}
 }
 
-/*void	test_built_in(t_shell *data, t_token *tokens, int n_tokens)
-{
-	int	i;
-
-	i = 0;
-	while (i < n_tokens)
-	{
-		if (tokens[i].type == BUILT_IN || is_asignation_type(tokens[i].type))
-			which_builtin(data, tokens, &tokens[i]);
-		i++; //ESTO HACE QUE SE MULTIPLIQUEN LOS RESULTADOS x2
-	}
-}*/
 
 /*
 	Recorre el string `input` y llama a las funciones `is_*` para
@@ -117,7 +105,7 @@ void	parse_tokens(t_shell *data, t_prompt *prompt, char *input)
 	'&&' y '||'. Comprueba que estén correctamente colocados y emparejados.
 */
 
-int	check_if_valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
+int	check_if_valid_tokens_init(t_shell *data, t_prompt *prompt, t_token *tokens)
 {
 	int	i;
 
@@ -144,11 +132,25 @@ int	check_if_valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 	return (SUCCESS);
 }
 
+int	check_if_valid_tokens_end(t_shell *data, t_prompt *prompt, t_token *tokens)
+{
+	int	i;
+
+	i = 0;
+	while (i < prompt->n_tokens)
+	{
+		if (!check_cmd_externs(data, prompt, tokens, i))
+			return (SYNTAX_ERROR);
+		i++;
+	}
+	return (SUCCESS);
+}
+
 int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 {
 	allocate_tokens(data, prompt, input);
 	parse_tokens(data, prompt, input);
-	if (!check_if_valid_tokens(data, prompt, prompt->tokens))
+	if (!check_if_valid_tokens_init(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
 
 	print_tokens_debug(prompt);
@@ -162,11 +164,15 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 
 	transform_tokens_logic(data, prompt, prompt->tokens);
 
+	print_tokens_debug(prompt);
+	if (!check_if_valid_tokens_end(data, prompt, prompt->tokens))
+		return (SYNTAX_ERROR);
+
 	// print_tokens_debug(prompt);
 
-	//test_built_in(data, prompt->tokens, prompt->n_tokens);
+
 	//send_tokens_for_asig(data, prompt->tokens, FINAL_PHASE);
-	eliminate_temp_asig(prompt, prompt->tokens);
+	//eliminate_temp_asig(prompt, prompt->tokens);
 
 	print_tokens_debug(prompt);
 	return (SUCCESS);

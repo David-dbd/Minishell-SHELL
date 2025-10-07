@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 17:05:28 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 19:24:51 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		asignation(t_shell *data, t_token *token, int type);
 /* ************************************************************************** */
 void	ast_builder(t_shell *data, t_token *tokens, int n_tokens);
 t_node	*create_node(t_shell *data, t_token *token, t_type type);
+t_node	*create_fake_node(t_shell *data, t_type type);
 t_node	*parse_sequence(t_shell *data, t_token *tokens, int *i, int n_tokens);
 t_node	*parse_and_or(t_shell *data, t_token *tokens, int *i, int n_tokens);
 t_node	*parse_pipes(t_shell *data, t_token *tokens, int *i, int n_tokens);
@@ -177,6 +178,8 @@ int		check_pipe(t_shell *data, t_prompt *prompt, t_token *tokens, int i);
 int		check_double_parent(t_shell *data, t_token *tokens, t_prompt *prompt);
 int		check_or_and(t_shell *data, t_prompt *prompt, t_token *tokens, int i);
 int		check_parent_balance(t_shell *data, t_prompt *prompt, t_token *tokens);
+int		check_cmd_externs(t_shell *d, t_prompt *prompt, t_token *tokens, int i);
+
 
 //SIMPLIFY TOKENS
 int		find_range_end(t_token *tokens, int no_space_position);
@@ -196,9 +199,10 @@ void	transform_word_to_file(t_prompt *prompt, t_token *tokens);
 void	transform_command_built_lowercase(t_prompt *prompt, t_token *tokens);
 
 //AST
-char	**get_args_for_binary(t_shell *data, t_token *token, int *i);
-t_redir	*get_redirs(t_shell *data, t_token *tokens, int mode, int *i);
 int		*get_arg_types(t_shell *data, t_token *tokens, int i, int j);
+char	**get_args_for_binary(t_shell *data, t_token *token, int *i);
+char	**get_temp_asignations(t_shell *data, t_token *tokens, int i);
+t_redir	*get_redirs(t_shell *data, t_token *tokens, int mode, int *i);
 
 //EXPANSION
 int		copy_key(char *buffer, char **key_to_find);

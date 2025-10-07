@@ -1,26 +1,3 @@
-ls) asgeg g eg sg
-(ls) "asgeg g eg sg
-(ls) asgeg g eg sg
-VAR1="test" VAR2+=value (echo "$VAR1"'literal'$USER) | grep pattern >output 2>&1 && echo success || echo "failed"
-echo ;
-echo q;
-echo a
-echo 1;
-ls && echo hola
-lsd
-csd
-sd
-g
-s
-ls > test
-(echo hola) > ls | wc -c && echo como
-(echo hola) > ls | wc -c && echo como; echo estas
-(sdvfs)  | sldsf && > 1145
-(ls) sd vsd | && -
-(ls) > ls && cmd || ls > wc -l
-cat | cat | cat
-(cat 'config' | grep "value" > result.txt)  || echo "error" ; ps aux & wait && echo 456 >> "log.txt"
-(cat 'config' | grep "value" > result.txt) || echo "error" ; ps aux & wait && echo 456 >> "log.txt"
 (cat 'config' | grep "value" > result.txt) || echo "error" ; ps aux & wait && echo 456 2>> "log.txt" ; \x23asfdfaafas
 skds
 asga  sdf | (sdsdgsdf)
@@ -113,7 +90,6 @@ echo hola > test adios
 (echo hola) > test env
 (echo hola) > test hola env
 (echo hola) > test hola ls
-echo hola > test como estas?
 echo hola com estas
 (echo hola) > test ls
 hola 1> adios
@@ -176,7 +152,6 @@ A="hola"
 A+="hola"
 echo $A $B $C
 enc
-export
 export A+="hola"
 env
 sdcd
@@ -197,3 +172,28 @@ export var=hola var=1
 export var=hola && ls
 export var=hola && ls | hola
 export ls=hola david hola
+export ls=hola david hola && ls > test
+export ls+=hola david hola && ls > test
+cd hola || export ls=hola david hola && ls > test
+EXPORT > test
+cd hola || export ls=hola david hola && echo > test
+echo hola || export ls=hola david hola && echo > test
+echo hola || export ls=hola david hola && echo
+ECHO HOLA
+export HOLA
+export
+EXPORT var=1 > test
+var=1 > test
+> test
+true
+true; > test
+true;
+l &&  true;
+(cd hola || export ls=hola david hola && ls > test)
+(echo hola) > test como estas?
+echo hola > test como estas?
+ls && true
+ls && true;
+;
+true && > test
+true && test

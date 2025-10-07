@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 01:44:27 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/07 02:48:19 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:59:02 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	*get_arg_types(t_shell *data, t_token *tokens, int start_i, int end_j)
 	int	*arg_types;
 	int		arg_index;
 
+	arg_types = 0;
 	arg_index = 0;
 	if (ft_strcmp(tokens[start_i].value, BUILTIN_EXPORT) != 0)
 		return (NULL);
@@ -47,5 +48,7 @@ int	*get_arg_types(t_shell *data, t_token *tokens, int start_i, int end_j)
 		start_i++;
 		arg_index++;
 	}
+	if (arg_index == 0)
+		arg_types = NULL;
 	return (arg_types);
 }

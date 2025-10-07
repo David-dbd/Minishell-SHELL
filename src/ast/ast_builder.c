@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:36:48 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 17:18:10 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:10:02 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,14 +202,27 @@ void	print_ast(t_node *root)
 	print_node_helper(root, 0, is_last_array);
 }
 
+
 /*
  * Construye el Árbol de Sintaxis Abstracta (AST): crea nodo raíz SHELL
  * y parsea secuencias de tokens en subárboles izquierdo y derecho
- */
+*/
+
+static void	test_built_in(t_shell *data, t_token *tokens, int n_tokens, t_node *node)
+{
+	int	i;
+
+	i = 0;
+	while (i < n_tokens)
+	{
+		if (tokens[i].type == BUILT_IN || is_asignation_type(tokens[i].type))
+			which_builtin(data, &tokens[i], node);
+		i++; //ESTO HACE QUE SE MULTIPLIQUEN LOS RESULTADOS x2
+	}
+}
 
 void	ast_builder(t_shell *data, t_token *tokens, int n_tokens)
 {
-	t_node *temp;
 	int		i;
 
 	i = 0;
@@ -217,4 +230,5 @@ void	ast_builder(t_shell *data, t_token *tokens, int n_tokens)
 		return ;
 	data->ast_root = parse_sequence(data, tokens, &i, n_tokens);
 	print_ast(data->ast_root);
+	//test_built_in(data, tokens, n_tokens, data->ast_root);
 }

@@ -6,7 +6,7 @@
 #    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/10/07 17:04:29 by davdiaz-         ###   ########.fr        #
+#    Updated: 2025/10/07 19:26:35 by davdiaz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,6 +140,7 @@ SRCS =				main/main.c \
 					tokenizer/utils/check_syntax/check_double_balance.c \
 					tokenizer/utils/check_syntax/check_cmd_syntaxis.c \
 					tokenizer/utils/check_syntax/check_parent_balance.c \
+					tokenizer/utils/check_syntax/check_cmd_externs.c \
 					tokenizer/utils/simplify_tokens/simplify_tokens.c \
 					tokenizer/utils/simplify_tokens/reorganize_tokens.c \
 					tokenizer/utils/simplify_tokens/adjust_range_tokens.c \
@@ -174,6 +175,7 @@ SRCS =				main/main.c \
 					ast/utils/get_args_for_binary.c \
 					ast/utils/get_redirs.c \
 					ast/utils/get_arg_types.c \
+					ast/utils/get_temp_asignations.c \
 					executor/executor.c \
 					executor/utils/eliminate_token.c \
 					executor/utils/which_builtin.c \

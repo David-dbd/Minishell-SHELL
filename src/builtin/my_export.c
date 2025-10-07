@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:22:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 15:41:40 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:09:51 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,11 +166,13 @@ int	my_export(t_shell *data, t_token *tokens, t_env *env, t_node *node)
 
 	var = data->env.vars;
 	i = 0;
-	args_found = FALSE;
-	while (i < data->prompt.n_tokens)
+	if (!node->arg_types)
 	{
-		if (i > 0)
-			args_found = TRUE;
+		print_env_variables(var);
+		return (SUCCESS);
+	}
+	while (node->arg_types[i])
+	{
 		if (check_for_valid_args(tokens, node->arg_types[i]) == FALSE)
 				break ;
 		if ((is_asignation_type(tokens[node->arg_types[i]].type)
@@ -184,7 +186,5 @@ int	my_export(t_shell *data, t_token *tokens, t_env *env, t_node *node)
 			}
 		i++;
 	}
-	if (!args_found)
-		print_env_variables(var);
 	return (SUCCESS);
 }
