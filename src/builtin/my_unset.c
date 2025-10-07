@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 21:56:06 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/03 20:31:47 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 15:45:08 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	delete_env_var(t_env *env, char *key)
 		node = node->next;
 	}
 }
-
+/*
 int	my_unset(t_shell *data, t_env *env, t_token *tokens)
 {
 	int	i;
@@ -82,6 +82,19 @@ int	my_unset(t_shell *data, t_env *env, t_token *tokens)
 		if (tokens[i].type == WORD || tokens[i].type == ASIGNATION)
 			delete_env_var(env, tokens[i].value);
 		i++;
+	}
+	return (0);
+}*/
+
+int	my_unset(t_shell *data, t_env *env, char **args)
+{
+	int	i;
+
+	i = 0;
+	while (args[i] != NULL)
+	{
+		delete_env_var(env, args[i]);
+			i++;
 	}
 	return (0);
 }

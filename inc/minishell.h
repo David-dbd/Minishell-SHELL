@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 03:05:02 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 15:39:26 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		add_token(t_shell *data, t_prompt *prompt, char *value, int type);
 /*                               Expansion                                    */
 /* ************************************************************************** */
 int		expansion(t_shell *data, t_token *token, t_env *env, int phase);
-int		asignation(t_shell *data, t_token *token, char *arg, int type);
+int		asignation(t_shell *data, t_token *token, int type);
 
 /* ************************************************************************** */
 /*                                  AST                                       */

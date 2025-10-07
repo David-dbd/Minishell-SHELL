@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:58:35 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 03:13:51 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 15:40:01 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	asignations(t_shell *data, t_token *token)
 {
 	if (token->type == ASIGNATION)
-		data->last_exit_code = asignation(data, token, LOCAL);data, &tokens[i], arg, PLUS_ASIGNATION
+		data->last_exit_code = asignation(data, token, LOCAL);
 	else if (token->type == PLUS_ASIGNATION)
 		data->last_exit_code = asignation(data, token, PLUS_ASIGNATION);
 	else if (token->type == TEMP_ASIGNATION)
@@ -54,7 +54,7 @@ static void	basic_builtins(t_shell *data, t_token *tokens, t_token *token)
 
 void	which_builtin(t_shell *data, t_token *tokens, t_token *token)
 {
-	//asignations(data, token);
+	asignations(data, token);
 	env_commands(data, tokens, token);
 	basic_builtins(data, tokens, token);
 }

@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:22:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 03:05:43 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 15:41:40 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,8 @@ int	my_export(t_shell *data, t_token *tokens, t_token *token, t_env *env)
 static int	check_for_valid_args(t_token *tokens, int index)
 {
 	if (tokens[index].type == PIPE || tokens[index].type == AND
-		|| tokens[index].type == OR || tokens[index].type == PAREN_OPEN)
+		|| tokens[index].type == OR || tokens[index].type == PAREN_OPEN
+		|| is_redir_type(tokens[index].type))
 		return (FALSE);
 	return (TRUE);
 }
@@ -137,25 +138,22 @@ static void	print_env_variables(t_var	*var)
 	}
 }
 
-static int	asignation_type(t_shell *data, char *arg, int i, t_env *env)
+static int	asignation_type(t_shell *data, t_token *tokens, int i, t_env *env)
 {
-	t_token *tokens;
-
-	tokens = data->prompt.tokens;
 	if (tokens[i].type == ASIGNATION)
-		asignation(data, &tokens[i], arg, ENV);
+		asignation(data, &tokens[i], ENV);
 	else if (tokens[i].type == WORD)
 	{
-		if (check_asignation_syntax(arg, EXP) == FALSE)
+		if (check_asignation_syntax(&tokens[i], EXP) == FALSE)
 		{
-			ft_printf_fd(STDERR, ERR_EXPORT, arg);
+			ft_printf_fd(STDERR, ERR_EXPORT, &tokens[i]);
 			return (EXIT_FAIL);
 		}
 		else
-			asignation(data, &tokens[i], arg, EXP);
+			asignation(data, &tokens[i], EXP);
 	}
 	else if (tokens[i].type == PLUS_ASIGNATION)
-		asignation(data, &tokens[i], arg, PLUS_ASIGNATION);
+		asignation(data, &tokens[i], PLUS_ASIGNATION);
 	return (SUCCESS);
 }
 
@@ -173,15 +171,15 @@ int	my_export(t_shell *data, t_token *tokens, t_env *env, t_node *node)
 	{
 		if (i > 0)
 			args_found = TRUE;
-		if (check_for_valid_args(node->arg_types, node->arg_types[i]) == FALSE)
-			break ;
+		if (check_for_valid_args(tokens, node->arg_types[i]) == FALSE)
+				break ;
 		if ((is_asignation_type(tokens[node->arg_types[i]].type)
 			|| tokens[node->arg_types[i]].type == WORD)
 			&& tokens[node->arg_types[i]].type != BUILT_IN)
 			{
 				//printf("token: %s\n\n", tokens[i].value);
-				if (asignation_type(data, node->arg_types[i],
-					node->args[i], env) == EXIT_FAIL)
+				if (asignation_type(data, tokens,
+						node->arg_types[i], env) == EXIT_FAIL)
 					return (EXIT_FAIL);
 			}
 		i++;
