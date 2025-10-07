@@ -6,7 +6,11 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:36:48 by migarrid          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/10/06 20:47:39 by davdiaz-         ###   ########.fr       */
+=======
+/*   Updated: 2025/10/06 17:34:53 by migarrid         ###   ########.fr       */
+>>>>>>> mikel
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +186,12 @@ void	print_ast(t_node *root)
 	printf("\n=== AST ===\n");
 	print_node_helper(root, 0, is_last_array);
 }
+
+/*
+ * Construye el Árbol de Sintaxis Abstracta (AST): crea nodo raíz SHELL
+ * y parsea secuencias de tokens en subárboles izquierdo y derecho
+ */
+
 void	ast_builder(t_shell *data, t_token *tokens, int n_tokens)
 {
 	t_node *temp;

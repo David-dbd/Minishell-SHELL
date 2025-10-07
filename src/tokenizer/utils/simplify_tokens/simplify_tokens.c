@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 20:37:22 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/13 00:16:13 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:11:02 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	join_tokens(t_prompt *prompt, t_token *tokens, int *range)
 	result = ft_strdup("");
 	while (i <= range[1])
 	{
-		if (is_cmd_type(tokens[i].type))
+		if (is_primitive_cmd_type(tokens[i].type))
 		{
 			tmp = result;
 			result = ft_strjoin(result, tokens[i].value);
@@ -66,12 +66,12 @@ static int	is_possible_simplify(t_token *tokens, int *range)
 	y devuelve su rango (start/end).
 */
 
-int	get_no_space_range(t_token *tokens, int *range, int start_i)
+int	get_no_space_range(t_token *tokens, int *range, int start_i, int n_tokens)
 {
 	int	i;
 
 	i = start_i;
-	while (tokens[i].type)
+	while (i < n_tokens && tokens[i].type)
 	{
 		if (tokens[i].type == NO_SPACE)
 		{
@@ -93,7 +93,7 @@ void	remove_quotes_tokens(t_prompt *prompt, t_token *tokens)
 	read_index = 0;
 	write_index = 0;
 	quotes_removed = 0;
-	while (tokens[read_index].type)
+	while (read_index < prompt->n_tokens && tokens[read_index].type)
 	{
 		if (is_quote_type(tokens[read_index].type))
 			quotes_removed++;
@@ -121,7 +121,7 @@ void	simplify_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 	i = 0;
 	while (i < prompt->n_tokens && tokens[i].type)
 	{
-		if (get_no_space_range(tokens, range, i))
+		if (get_no_space_range(tokens, range, i, prompt->n_tokens))
 		{
 			if (is_possible_simplify(tokens, range))
 			{

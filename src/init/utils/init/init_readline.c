@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 20:37:34 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 03:26:31 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:21:46 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,12 @@ static void highlighter(ic_highlight_env_t *henv, const char *input, void *arg)
 		i++;
 	}
 }
+
+/*
+ * Configura readline interactivo: establece historial ilimitado,
+ * habilita resaltado de sintaxis con colores personalizados y
+ * configura multilínea para una mejor experiencia de usuario
+ */
 
 void	init_ic_readline(void)
 {

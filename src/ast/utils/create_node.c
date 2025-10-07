@@ -6,11 +6,20 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:41:39 by migarrid          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/10/07 01:51:32 by davdiaz-         ###   ########.fr       */
+=======
+/*   Updated: 2025/10/06 17:36:07 by migarrid         ###   ########.fr       */
+>>>>>>> mikel
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+/*
+ * Crea un nuevo nodo del AST: inicializa todos los campos
+ * incluyendo tipo, token asociado y estructuras vacías
+ */
 
 t_node	*create_node(t_shell *data, t_token *token, t_type type)
 {
@@ -31,3 +40,4 @@ t_node	*create_node(t_shell *data, t_token *token, t_type type)
 	node->executed = FALSE;
 	return (node);
 }
+

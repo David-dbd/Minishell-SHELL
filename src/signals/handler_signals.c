@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:47:09 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/18 05:53:54 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:20:14 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,21 @@
 // 	rl_redisplay();
 // }
 
+/*
+ * Maneja Ctrl+C en modo interactivo: marca la señal
+ * recibida para ser procesada posteriormente
+ */
+
 void	handle_sigint_interative(int sig)
 {
 	(void)sig;
 	g_signal[1] = SIGINT;
 }
+
+/*
+ * Maneja Ctrl+C en heredoc: marca la señal y escribe
+ * un salto de línea para limpiar la entrada
+ */
 
 void	handle_sigint_heredoc(int sig)
 {

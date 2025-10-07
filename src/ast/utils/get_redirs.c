@@ -6,11 +6,17 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:59:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 22:44:57 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:37:25 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+
+/*
+ * Encuentra el último nodo en lista de redirecciones:
+ * recorre la lista hasta el final para añadir nuevos elementos
+ */
 
 t_redir	*lstlast_redir(t_redir *lst)
 {
@@ -20,6 +26,11 @@ t_redir	*lstlast_redir(t_redir *lst)
 		lst = lst->next;
 	return (lst);
 }
+
+/*
+ * Añade redirección a lista: crea estructura con tipo, archivo
+ * y descriptor, manejando números explícitos o valores por defecto
+ */
 
 t_redir	*add_redir(t_shell *data, t_redir *lst, t_token *token, char *filename)
 {
@@ -46,6 +57,11 @@ t_redir	*add_redir(t_shell *data, t_redir *lst, t_token *token, char *filename)
 	last->next = redir;
 	return (lst);
 }
+
+/*
+ * Obtiene lista de redirecciones desde tokens: recorre tokens
+ * recolectando operadores de redirección y sus archivos asociados
+ */
 
 t_redir	*get_redirs(t_shell *data, t_token *tokens, int mode, int *i)
 {

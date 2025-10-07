@@ -6,11 +6,16 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 21:47:52 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/03 20:14:10 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:32:49 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
+
+/*
+ * Incrementa el nivel de shell (SHLVL): suma 1 al valor actual,
+ * maneja casos límite como valores demasiado altos o negativos
+ */
 
 void	update_shlvl(t_var *vars)
 {

@@ -6,7 +6,11 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/10/06 21:28:39 by davdiaz-         ###   ########.fr       */
+=======
+/*   Updated: 2025/10/06 19:36:56 by migarrid         ###   ########.fr       */
+>>>>>>> mikel
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,9 +155,9 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	if (!check_if_valid_tokens(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
 
-	// print_tokens_debug(prompt);
+	print_tokens_debug(prompt);
 
-	is_it_quoted(prompt, prompt->tokens); // Se puede hacer mas eficiente
+	// is_it_quoted(prompt, prompt->tokens); // Se puede hacer mas eficiente
 
 	expansion(data, prompt->tokens, &data->env, FINAL_PHASE);
 	simplify_tokens(data, prompt, prompt->tokens);

@@ -6,7 +6,11 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/10/07 15:39:26 by davdiaz-         ###   ########.fr       */
+=======
+/*   Updated: 2025/10/06 19:56:21 by migarrid         ###   ########.fr       */
+>>>>>>> mikel
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +153,7 @@ void	is_parenten(t_shell *data, t_prompt *prompt, const char *str, int *i);
 void	is_not_token(const char *str, int *i);
 void	is_hash(const char *str, int *i);
 int		is_symbol(int c);
-int		is_cmd_type(int type);
+int		is_primitive_cmd_type(int type);
 int		is_arg_type(int type);
 int		is_quote_type(int type);
 int		is_redir_type(int type);
@@ -191,6 +195,7 @@ void	transform_invalid_asig_to_word(t_prompt *prompt, t_token *tokens);
 void	transform_word_to_asignation(t_shell *data, t_token *tokens, int phase);
 void	transform_tokens_logic(t_shell *data, t_prompt *promp, t_token *tokens);
 void	transform_word_to_file(t_prompt *prompt, t_token *tokens);
+void	transform_command_built_lowercase(t_shell *d, t_prompt *p, t_token *t);
 
 //AST
 char	**get_args_for_binary(t_shell *data, t_token *token, int *i);

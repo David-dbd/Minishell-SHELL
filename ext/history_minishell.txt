@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+echo "hola como estas" > ls
+cs
+dv
+>>>>>>> mikel
 sdbsdb
 v
 ds
@@ -8,9 +14,6 @@ va
 fd
 d
 f
-A=1 B=2 C=3
-env
-export
 VAR+=value echo $VAR
 VAR=temp ls | grep file
 VAR1="hello" VAR2=$USER"world" echo $VAR1 $VAR2
@@ -70,7 +73,6 @@ cat | cat | cat
 skds
 asga  sdf | (sdsdgsdf)
 >>>>>>> mikel
-LS
 ECHO 1 | ECHO 2
 cd
 echo  echo 2
@@ -135,7 +137,6 @@ echo 1
 echo 1 > 2
 echo 1 > filename
 echo 1 > filename 2 3
-ls 
 echo a > file
 (echo A) > file
 (echo A) > file1 2> file2
@@ -154,9 +155,9 @@ echo &2
 (echo X; echo Y) > out.txt | (grep X > result.txt 2>> err.log)
 cat | cat | cat | cat
 babasnbs
-ls
 old/
 (sds) || sds s
+<<<<<<< HEAD
 (echo hola) > test adios
 (echo hola) > test adios hola
 a
@@ -197,3 +198,47 @@ echo $USER && echo $use
 sl
 export a=1
 unset hola var a
+=======
+echo hola
+exit 1
+hola
+clear
+cd 
+cd  ls
+cd  cds
+scd
+sdcsfs
+ls 
+1  2
+1 2 3
+1 2 3 4
+1 2
+1 2 3 4  5
+1 2 3 4  5 46824 6426 46824 684 642 84  
+sabv asge gasg ash as h sh a sh  ah a hae h re h eh r ha h ae h a  h a h a eh ras  fv sdvsd f vs df  & &  ||  $
+sabv asge gasg ash as h sh a sh  ah a hae h re h eh r ha h ae h a  h a h a eh ras  fv sdvsd f vs df 
+vasvjb aj as;lh sd s s d sd d d d  e  e w af a  ag  ag  e  s e gs   a  a s v s   e e gs vsef es f seg se ge s gs
+echo "hola como estas"
+echo "hola como estas $USER"
+echo "hola como estas" $USER
+echo "hola como estas"$USER
+echo "hola como estas "$USER
+echo "hola como estas "$USER' '$?
+A=1
+echo $A
+A=1 B=2 C=3
+echo $A  $b $
+A="hola"
+A+="hola"
+echo $A $B $C
+enc
+export
+export A+="hola"
+env
+sdcd
+ls
+LS
+LS  LS LS LS LS  
+ECHO ecHo echO
+ECHO EcHo EchO
+>>>>>>> mikel

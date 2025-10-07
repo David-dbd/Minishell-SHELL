@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:39:12 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/03 17:19:36 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:29:22 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ void	transform_cmd_to_word(t_shell *data, t_token *tokens, int phase)
 			}
 			else if (before_is_cmd_word_redir(tokens, i))
 			{
-				if (is_cmd_type(tokens[i].type))
+				if (is_primitive_cmd_type(tokens[i].type))
 					tokens[i].type = WORD;
 			}
 		}

@@ -6,7 +6,11 @@
 #    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2025/10/07 02:22:32 by davdiaz-         ###   ########.fr        #
+=======
+#    Updated: 2025/10/06 19:57:22 by migarrid         ###   ########.fr        #
+>>>>>>> mikel
 #                                                                              #
 # **************************************************************************** #
 
@@ -150,6 +154,7 @@ SRCS =				main/main.c \
 					tokenizer/utils/trasnform_tokens/transform_asig_to_asig_plus.c \
 					tokenizer/utils/trasnform_tokens/transform_asig_to_temp_asig.c \
 					tokenizer/utils/trasnform_tokens/transform_word_to_file.c \
+					tokenizer/utils/trasnform_tokens/transform_command_builtin_lowercase.c \
 					expansion/expansion.c \
 					expansion/send_tokens_for_asig.c \
 					expansion/utils/find_swap/copy_key.c \

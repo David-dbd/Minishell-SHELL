@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:48:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/11 17:50:17 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:27:29 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ int	is_simplify_type(int type)
 		return (1);
 	return (0);
 }
+
+/*
+ * Verifica si el tipo de token corresponde a un comando ejecutable:
+ * retorna 1 para comandos normales y built-ins, 0 para otros tipos
+ */
 
 int	is_cmd_builtin_type(int type)
 {
