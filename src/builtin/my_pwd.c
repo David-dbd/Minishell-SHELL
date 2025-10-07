@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:17:17 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/12 23:59:00 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 16:21:54 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 	- Si falla, muestra el error.
 */
 
-int	my_pwd(t_shell *data)
+int	my_pwd(void)
 {
 	char	*pwd;
 

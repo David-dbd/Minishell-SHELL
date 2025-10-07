@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 21:35:11 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 16:50:10 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 16:42:01 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,9 @@ static int	find_bin(char **path_arr, char *path_slash, char *path, char *word)
 static int	is_built_in(t_shell *d, t_prompt *prompt, t_token *token, char *str)
 {
 	char	*built_in[8];
-	int		flag_error;
 	int		i;
 
 	i = 0;
-	flag_error = 0;
 	built_in[0] = "cd";
 	built_in[1] = "echo";
 	built_in[2] = "export";
@@ -111,10 +109,8 @@ static int	is_built_in(t_shell *d, t_prompt *prompt, t_token *token, char *str)
 	built_in[7] = NULL;
 	while (built_in[i])
 	{
-		if (ft_strmatch_cmp(built_in[i], str, &flag_error) == 0)
+		if (ft_strmatch_cmp(built_in[i], str) == 0)
 		{
-			if (flag_error == ERROR)
-				exit_error(d, ERR_MALLOC, EXIT_FAILURE);
 			token->type = BUILT_IN;
 			prompt->n_cmds++;
 			return (YES);

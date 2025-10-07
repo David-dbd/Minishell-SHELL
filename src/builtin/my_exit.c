@@ -6,32 +6,23 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 23:55:15 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 21:58:19 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 16:34:20 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
 /*
-	Cuenta los argumentos tipo WORD que siguen a "exit".
+	Cuenta los argumentos del "exit".
 */
 
-static int	counter_args(t_token *token, int n_tokens)
+static int	counter_args(char **args)
 {
-	int	i;
 	int	n_args;
 
-	i = 1;
 	n_args = 0;
-	while (token->id + i < n_tokens
-		&& token[+i].type
-		&& (!is_delimiter_type((token[+i].type))
-			&& !is_redir_type(token[+i].type)))
-	{
-		if (token[+i].type == WORD)
-			n_args++;
-		i++;
-	}
+	while (args[n_args])
+		n_args++;
 	return (n_args);
 }
 
@@ -68,26 +59,24 @@ static int	is_numeric(const char *str)
 	- Sin argumentos → devuelve 0.
 */
 
-static int	check_exit(t_shell *data, t_token *token, int n_tokens)
+static int	check_exit(t_shell *data, char **args)
 {
 	long	num;
 	int		status;
 	int		n_args;
-	int		i;
 
-	i = 1;
-	n_args = counter_args(token, n_tokens);
+	n_args = counter_args(args);
 	if (n_args > 1)
 		return (ERROR);
 	if (n_args == 1)
 	{
-		if (is_numeric(token[+i].value))
+		if (is_numeric(args[0]))
 		{
-			num = ft_atol(token[+i].value);
+			num = ft_atol(args[0]);
 			status = num % 256;
 			return (status);
 		}
-		exit_error(data, ERR_EXIT_NUMERIC, EXIT_USE, token[+1].value);
+		exit_error(data, ERR_EXIT_NUMERIC, EXIT_USE, args[0]);
 	}
 	return (0);
 }
@@ -96,11 +85,11 @@ static int	check_exit(t_shell *data, t_token *token, int n_tokens)
 	Ejecuta el built-in "exit" con el status validado.
 */
 
-void	my_exit(t_shell *data, t_prompt *prompt, t_token *token)
+void	my_exit(t_shell *data, char **args)
 {
 	int	status;
 
-	status = check_exit(data, token, prompt->n_tokens);
+	status = check_exit(data, args);
 	if (status == ERROR)
 		return (ft_printf_fd(STDERR, ERR_EXIT_TOO_MANY), (void)0);
 	exit_succes(data, NULL, status);

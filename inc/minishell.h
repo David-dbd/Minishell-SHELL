@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 16:30:43 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 16:48:26 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,12 @@ void	execute_recursive(t_shell *data, t_node *ast_root, t_exec *executor);
 int		my_pwd(void);
 int		my_env(t_var *vars);
 int		my_echo(char **args);
+void	my_exit(t_shell *data, char **args);
 int		my_unset(t_shell *data, t_env *env, char **args);
 int		my_cd(t_shell *data, t_token *tokens, t_token *token);
-void	my_exit(t_shell *data, t_prompt *prompt, t_token *tokens);
 int		my_export(t_shell *data, t_token *tokens, t_env *env, t_node *node);
+
+
 
 /* ************************************************************************** */
 /*                                Signals                                     */
@@ -191,7 +193,7 @@ void	transform_invalid_asig_to_word(t_prompt *prompt, t_token *tokens);
 void	transform_word_to_asignation(t_shell *data, t_token *tokens, int phase);
 void	transform_tokens_logic(t_shell *data, t_prompt *promp, t_token *tokens);
 void	transform_word_to_file(t_prompt *prompt, t_token *tokens);
-void	transform_command_built_lowercase(t_shell *d, t_prompt *p, t_token *t);
+void	transform_command_built_lowercase(t_prompt *prompt, t_token *tokens);
 
 //AST
 char	**get_args_for_binary(t_shell *data, t_token *token, int *i);

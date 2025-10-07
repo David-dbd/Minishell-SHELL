@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 sdbsdb
+=======
+>>>>>>> mikel
 v
 ds
 sdv
@@ -228,8 +231,12 @@ export
 export A+="hola"
 env
 sdcd
-ls
 LS
 LS  LS LS LS LS
 ECHO ecHo echO
 ECHO EcHo EchO
+ls
+cds
+csdc
+ls > file
+echo hola > file
