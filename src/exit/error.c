@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 03:26:20 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/03 22:41:13 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:15:35 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 	Se llama al detectar un error de sintaxis: limpia el 'prompt' si tiene
 	tokens, muestra el mensaje de error y guarda el código en
-	'last_exit_code' sin terminar el programa.
+	'exit_code' sin terminar el programa.
 */
 
 int	syntax_error(t_shell *data, const char *error, int exit_code, ...)

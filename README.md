@@ -7,14 +7,10 @@ Minishell - Bash
 - Bash te abra línea para que completes el comando ver → Modificar balance de ' " ( || && |
   - https://github.com/rogerdevworld/minishell/blob/main/src/bonus/loop_processing.c
   - https://github.com/rogerdevworld/minishell/blob/main/src/bonus/syntax/ft_lexer_2.c#L93
-- Normalizar los comandos y builtins todos a minusculas para que siempre sean ejecutados.
 
 ## DAVID:
 - Hacer built-in CD
-- get_argsbinary ha de saltar las redireciones y los filenames.
-- intentar hacer las asignaciones para el arbol.
-- Arreglar `is_cmd` para que esto lo catalogue como cmd → Token [3]: '/usr/bin/ls' (type: WORD)
-- Expansiones $, $?, $$, $!...
+- Hacer funcion de asignaciones temporales.
 - `echo $a && a=1`
 - invalid read `echo $SHLVL`
 - invalid read `token: =1`

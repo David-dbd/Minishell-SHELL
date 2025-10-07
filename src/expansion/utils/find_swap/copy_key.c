@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_key.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:23:28 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 01:19:25 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 19:18:59 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	copy_key(char *str, char **key_to_find)
 	int	i;
 	int	j;
 	int	start;
-	int flag;
+	int	flag;
 
 	i = 0;
 	j = 0;

@@ -6,12 +6,11 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 01:53:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/05 22:38:18 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:13:32 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
-
 
 /*
 	Libera toda la memoria de una lista enlazada de redirecciones (t_redir)
@@ -24,7 +23,7 @@ void	clean_redirs(t_redir **lst)
 	t_redir	*next;
 
 	if (!lst || !*lst)
-		return;
+		return ;
 	current = *lst;
 	while (current)
 	{

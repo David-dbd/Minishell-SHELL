@@ -3,81 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 17:07:32 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 17:50:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
-
-char	*g_type_names[] = {
-	"START",
-	"WORD",
-	"GROUP",
-	"PIPE",
-	"REDIR_INPUT",
-	"REDIR_OUTPUT",
-	"REDIR_APPEND",
-	"REDIR_HEREDOC",
-	"COMMAND",
-	"SCAPE",
-	"BUILT_IN",
-	"SEMICOLON",
-	"SINGLE_QUOTE",
-	"DOUBLE_QUOTE",
-	"CMD_SUBSTITUTION",
-	"PAREN_OPEN",
-	"PAREN_CLOSE",
-	"WILDCAR",
-	"EXPANSION",
-	"ASIGNATION",
-	"BACKGROUND",
-	"AND",
-	"OR",
-	"EXPAN_VALUE",
-	"EXPAN_CMD",
-	"NO_SPACE",
-	"LOCAL",
-	"ENV",
-	"DELETE",
-	"EXP",
-	"INDIFERENT",
-	"PLUS_ASIGNATION",
-	"TEMP_ASIGNATION",
-	"FILENAME",
-	"SUBSHELL",
-	"SHELL"
-};
-
-static void	print_tokens_debug(t_prompt *prompt)
-{
-	int	i;
-
-	i = 0;
-	printf("------------------------------------------------\n");
-	while (i < prompt->n_tokens)
-	{
-		if (prompt->tokens[i].value)
-			printf("Token [%d]: '%s' (type: %s)\n", i, prompt->tokens[i].value,
-				g_type_names[prompt->tokens[i].type]);
-		i++;
-	}
-}
-
-/*void	test_built_in(t_shell *data, t_token *tokens, int n_tokens)
-{
-	int	i;
-
-	i = 0;
-	while (i < n_tokens)
-	{
-		if (tokens[i].type == BUILT_IN || is_asignation_type(tokens[i].type))
-			which_builtin(data, tokens, &tokens[i]);
-		i++; //ESTO HACE QUE SE MULTIPLIQUEN LOS RESULTADOS x2
-	}
-}*/
 
 /*
 	Recorre el string `input` y llama a las funciones `is_*` para

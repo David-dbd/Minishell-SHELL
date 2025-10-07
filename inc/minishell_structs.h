@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_structs.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 15:52:42 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:15:10 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,6 @@ typedef struct s_shell
 	t_node		*ast_root;
 	pid_t		shell_pid;
 	t_extras	extra_features;
-	int			last_exit_code;
 	char		*home;
 	int			exit_code;
 }	t_shell;

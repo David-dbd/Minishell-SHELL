@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
+#    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/10/07 17:04:29 by davdiaz-         ###   ########.fr        #
+#    Updated: 2025/10/07 18:55:31 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,6 +104,9 @@ SRCS =				main/main.c \
 					init/utils/env/add_var.c \
 					init/utils/env/make_envp.c \
 					init/utils/env/update_shlvl.c \
+					init/utils/highlighther/highlighter.c \
+					init/utils/highlighther/is_highlighter_I.c \
+					init/utils/highlighther/is_highlighter_II.c \
 					tokenizer/tokenizer.c \
 					tokenizer/utils/is_tokens/is_and.c \
 					tokenizer/utils/is_tokens/is_dolar.c \
@@ -188,6 +191,9 @@ SRCS =				main/main.c \
 					builtin/my_pwd.c \
 					builtin/my_cd.c \
 					builtin/my_exit.c \
+					debug/print_ast_tree.c \
+					debug/print_tokens_debug.c \
+					debug/test_buil_in_debug.c \
 					exit/exit.c \
 					exit/error.c \
 					exit/clean_I.c \

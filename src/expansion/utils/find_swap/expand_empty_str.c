@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_empty_str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:57:46 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/28 21:04:04 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:11:54 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ static void	ignore_words(t_shell *data, t_token *token, char **str, int len)
 			{// en lugar de new_str[j++] = (*str)[i++]
 			//porque(*str)[i++]puede ser cualquier otro simbolo que no sea alnum
 				new_str[j++] = ' ';
-
 				i++;
 			}
 		}

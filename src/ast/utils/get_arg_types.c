@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_arg_types.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 01:44:27 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/07 02:48:19 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:18:01 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	create_dinamic_arr(t_shell *data, int **arg_types, int i, int j)
 
 int	*get_arg_types(t_shell *data, t_token *tokens, int start_i, int end_j)
 {
-	int	*arg_types;
+	int		*arg_types;
 	int		arg_index;
 
 	arg_index = 0;

@@ -6,6 +6,7 @@
 *.a
 *.py
 *.swp
+*.DS_Store
 ./obj
 minishell
 

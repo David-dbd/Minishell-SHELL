@@ -1,19 +1,3 @@
-ls" sdsfef egse
-ls)
-ls) asgeg g eg sg
-(ls) "asgeg g eg sg
-(ls) asgeg g eg sg
-VAR1="test" VAR2+=value (echo "$VAR1"'literal'$USER) | grep pattern >output 2>&1 && echo success || echo "failed"
-echo ;
-echo q;
-echo a
-echo 1;
-ls && echo hola
-lsd
-csd
-sd
-g
-s
 ls > test
 (echo hola) > ls | wc -c && echo como
 (echo hola) > ls | wc -c && echo como; echo estas
@@ -186,7 +170,6 @@ LS
 LS  LS LS LS LS
 ECHO ecHo echO
 ECHO EcHo EchO
-ls
 cds
 csdc
 ls > file
@@ -197,3 +180,20 @@ var=hola && ls
 cd hola && echo hola && ls
 export var=hola var=1
 export var=hola && ls
+export A+=" como estas"
+export a=1 =
+l
+s
+dscsadva
+echo hola && echo estoy borracho
+ls
+slsd
+sses
+fe
+fes
+g
+lsv
+s s
+dv
+svsbsf bbsabsa 
+echo hola 4> barriga

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:41:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 17:01:35 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:18:06 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ t_node	*create_node(t_shell *data, t_token *token, t_type type)
 	node->executed = FALSE;
 	return (node);
 }
-

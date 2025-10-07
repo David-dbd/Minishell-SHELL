@@ -6,11 +6,11 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:45:52 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/18 02:41:25 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:11:20 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+// #include "../../inc/minishell.h"
 
 /*
 	Define el comportamiento cuando se recibe una señal SIGINT o SIGQUIT.

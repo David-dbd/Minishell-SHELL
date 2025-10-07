@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_redirs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:59:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 16:05:42 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:17:53 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
-
 
 /*
  * Encuentra el último nodo en lista de redirecciones:

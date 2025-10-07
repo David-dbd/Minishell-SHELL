@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 21:56:06 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/07 15:45:08 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:15:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	my_unset(t_shell *data, t_env *env, char **args)
 	while (args[i] != NULL)
 	{
 		delete_env_var(env, args[i]);
-			i++;
+		i++;
 	}
 	return (0);
 }

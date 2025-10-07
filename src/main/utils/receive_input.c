@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:42:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/06 17:31:45 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:11:27 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ char	*receive_input(char **input, t_shell *data)
 // 	check_signals(data, input);
 // 	return (*input);
 // }
-

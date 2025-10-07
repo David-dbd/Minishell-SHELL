@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform_asig_to_temp_asig.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 20:39:26 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/26 17:53:52 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:10:34 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ static int	check_if_temp_asig(t_prompt *prompt, t_token *tokens, t_token *token)
 	if (token->id < prompt->n_tokens)
 	{
 		if ((tokens[token->id + 1].type == WORD
-			&& verify_till_valid_token(prompt, tokens, token->id))
-		|| tokens[token->id + 1].type == COMMAND
-		|| (is_asignation_type(tokens[token->id + 1].type)
-			&& !verify_till_valid_token(prompt, tokens, token->id))
-		|| tokens[token->id + 1].type == BUILT_IN)
-		return (SUCCESS);
+				&& verify_till_valid_token(prompt, tokens, token->id))
+			|| tokens[token->id + 1].type == COMMAND
+			|| (is_asignation_type(tokens[token->id + 1].type)
+				&& !verify_till_valid_token(prompt, tokens, token->id))
+			|| tokens[token->id + 1].type == BUILT_IN)
+			return (SUCCESS);
 	}
 	return (FALSE);
 }

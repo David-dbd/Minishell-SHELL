@@ -6,13 +6,13 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:37:17 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/18 02:41:32 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:11:17 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+// #include "../../inc/minishell.h"
 
-volatile sig_atomic_t	g_signal_event;
+// volatile sig_atomic_t	g_signal_event;
 
 /*
 	Inicializa la estructura `sigaction` en cero para limpiar datos residuales.
