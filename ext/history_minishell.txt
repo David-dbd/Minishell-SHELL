@@ -1,4 +1,3 @@
-ls" sdsfef egse
 ls)
 ls) asgeg g eg sg
 (ls) "asgeg g eg sg
@@ -197,3 +196,4 @@ var=hola && ls
 cd hola && echo hola && ls
 export var=hola var=1
 export var=hola && ls
+export var=hola && ls | hola
