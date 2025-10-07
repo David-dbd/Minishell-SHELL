@@ -6,7 +6,7 @@
 #    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/10/07 19:31:32 by davdiaz-         ###   ########.fr        #
+#    Updated: 2025/10/07 20:53:35 by davdiaz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -179,6 +179,8 @@ SRCS =				main/main.c \
 					ast/utils/get_redirs.c \
 					ast/utils/get_arg_types.c \
 					ast/utils/get_temp_asignations.c \
+					ast/utils/get_background.c \
+					ast/utils/safe_index_plus.c \
 					executor/executor.c \
 					executor/utils/eliminate_token.c \
 					executor/utils/which_builtin.c \

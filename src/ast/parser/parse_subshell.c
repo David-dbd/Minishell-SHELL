@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:24:05 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/06 20:47:52 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:59:24 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ t_node	*parse_subshell(t_shell *data, t_token *tokens, int *i, int n_tokens)
 	if (*i < n_tokens && tokens[*i].type == PAREN_OPEN)
 	{
 		central = create_node(data, &tokens[*i], SUBSHELL);
-		if (*i < n_tokens)
-			(*i)++;
+		safe_index_plus(i, n_tokens);
 		left = parse_sequence(data, tokens, i, n_tokens);
 		if (*i < n_tokens && tokens[*i].type == PAREN_CLOSE)
 			(*i)++;
 		central->redir = get_redirs(data, tokens, SUBSHELL, i);
+		central->background = get_background(tokens, n_tokens, i);
 		central->left = left;
 		return (central);
 	}

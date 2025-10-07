@@ -1,74 +1,3 @@
-ls > test
-(echo hola) > ls | wc -c && echo como
-(echo hola) > ls | wc -c && echo como; echo estas
-(sdvfs)  | sldsf && > 1145
-(ls) sd vsd | && -
-(ls) > ls && cmd || ls > wc -l
-cat | cat | cat
-(cat 'config' | grep "value" > result.txt)  || echo "error" ; ps aux & wait && echo 456 >> "log.txt"
-(cat 'config' | grep "value" > result.txt) || echo "error" ; ps aux & wait && echo 456 >> "log.txt"
-(cat 'config' | grep "value" > result.txt) || echo "error" ; ps aux & wait && echo 456 2>> "log.txt" ; \x23asfdfaafas
-skds
-asga  sdf | (sdsdgsdf)
->>>>>>> mikel
-ECHO 1 | ECHO 2
-echo  echo 2
-echo && echo 2
-echo
-echo | echo 2
-echo 1 | echo 2 | echo 3
- /usr/bin/env /bin/sh /tmp/Microsoft-MIEngine-Cmd-yubvacq1.tzq
-echo 1 | echo 2
-echo 1  echo 2
-echo 1 || echo 2
-echo > echo 2
-echo 1 > echo file
-echo 1 && echo 2
-echo || echo
-echo && echo
-echo | echo && echo
-echo 1 | echo 2 && echo 3
-(echo 1 | echo 2) && echo 3
-(echo 1 | echo 2) && echo 3; echo 4 > file
-(echo 1 | echo 2) && echo 3; echo 4
-((echo a | cat) && echo b || (echo c | grep x)) ; echo d
-\x16echo a && echo b
-echo a; echo b
-echo a | echo b
-echo a || echo b || echo c
-(echo a)
-(echo a) && echo b
-(echo a | echo b) | echo c
-echo a | echo b | echo c
-echo && wc && ls
-echo | wc | ls
-\x16echo a | cat | grep a | wc
-echo a && echo b && echo c
-echo a && echo b ; echo c
-echo a | cat && echo b | grep x
-\x16(echo a | cat)
-(echo a | cat)
-echo a && echo b || echo c
-echo a && (echo b | cat || echo c) && echo d
-echo a && (echo b | cat || echo c) && echo d e
-echo a && (echo b | cat || echo c) && echo d e f
-\x16echo hello > file.txt
-\x16echo hello
-\x16echo hello >
-\x16echo hello > file l
-\x16echo hello > file ls
-\x16echo hello > file
-(echo hola) > ls
-(echo hola | wc -c | ls) > ls
-ls && va=as
-echo 1 > file 2 ls
-echo 1 > file ls ls ls ls ls
-echo 1 > file ls ls
-echo 1 2 3
-echo 1 > file
-echo 1 >
-echo 1
-echo 1 > 2
 echo 1 > filename
 echo 1 > filename 2 3
 echo a > file
@@ -154,7 +83,6 @@ echo "hola como estas"$USER
 echo "hola como estas "$USER
 echo "hola como estas "$USER' '$?
 A=1
-echo $A
 A=1 B=2 C=3
 echo $A  $b $
 A="hola"
@@ -213,7 +141,6 @@ l
 s
 dscsadva
 echo hola && echo estoy borracho
-ls
 slsd
 sses
 fe
@@ -225,3 +152,48 @@ dv
 svsbsf bbsabsa
 echo hola 4> barriga
 >>>>>>> mikel
+echo
+ls ls ls ls
+LS ls LS LS LS LS
+LS LS LS LS LS LS
+LS ls LS LS LS LS && RM rm RM RM RM RM RM RM
+ls
+A=1 echo $A
+echo $A
+ls LS LS LS LS
+> file
+ls ; echo
+|| ls
+;ls
+;  ls
+; ls
+ls;
+EXPORT HOLA
+EXPORT HOLA > test
+EXPORT HOLA > test var=43
+export hola > test
+ls&
+ls hola && echo &
+export hola var+=adios > test
+export hola var+=adios > test &
+export hola var+=adios > test 
+export hola var+=adios & > test 
+export A B+=1 & > test 
+export W P+=1 > file &
+export A > file & 
+export A > file &
+(echo hola) > file &
+X=42; Y=hello; export Z+=world && echo "$X-$Y-$Z" > out.txt | grep hello >> log.txt & (A=1 B=2; echo $A $B | cat -e > inner.txt && export C=ok; D=fail; echo done >> inner.txt) ; sleep 1 & echo "background done" || echo "background failed"; E=$(cat < out.txt | tr a-z A-Z); echo "E=$E" >> result.txt & unset Y Z; F=123; export G+=456; echo $F:$G >> result.txt ; (H=test; echo $H && false || echo "subshell fail") & pwd > path.txt; echo "All done" >> summary.txt &
+(echo hola && ls || echo | ls)
+export Z+=world && echo "$X-$Y-$Z" > out.txt | grep hello >> log.txt & 
+Y=hello; export Z+=world && echo "$X-$Y-$Z" > out.txt | grep hello >> log.txt & 
+ls ; export Z+=world && echo "$X-$Y-$Z" > out.txt | grep hello >> log.txt & 
+echo "$USER-$HOME"
+echo "$SHLVL-$HOME"
+echo "$SHLVL.$HOME"
+echo "$SHLVL $HOME
+echo \\\\$SHLVL $HOME
+echo $SHLVL $HOME
+echo "$SHLVL $HOME"
+a=1 ; export Z+=world && echo "$X-$Y-$Z" > out.txt | grep hello >> log.txt & 
+X=42; Y=hello; export Z+=world && echo "$X-$Y-$Z" > out.txt | grep hello >> log.txt & 

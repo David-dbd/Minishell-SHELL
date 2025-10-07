@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_I.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:47:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 18:13:37 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:57:33 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,12 @@ void	clean_ast(t_node *node)
 	clean_ast(node->right);
 	if (node->args)
 		ft_free_str_array(node->args);
+	if (node->arg_types)
+		free(node->arg_types);
 	if (node->redir)
 		clean_redirs(&node->redir);
+	if (node->fake)
+		clean_token(node->token);
 	free(node);
 }
 

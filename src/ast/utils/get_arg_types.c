@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 01:44:27 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/07 19:30:26 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:46:14 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 static void	create_dinamic_arr(t_shell *data, int **arg_types, int i, int j)
 {
-	*arg_types = ft_calloc((j - i) - 1, sizeof(int));
+	*arg_types = ft_calloc((j - i), sizeof(int));
 	if (!*arg_types)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 }
@@ -44,11 +44,17 @@ int	*get_arg_types(t_shell *data, t_token *tokens, int start_i, int end_j)
 	start_i += 1;
 	while (start_i < data->prompt.n_tokens && start_i < end_j)
 	{
-		arg_types[arg_index] = tokens[start_i].id;
+		if (is_arg_type(tokens[start_i].type))
+		{
+			arg_types[arg_index] = tokens[start_i].id;
+			arg_index++;
+		}
 		start_i++;
-		arg_index++;
 	}
 	if (arg_index == 0)
+	{
+		free (arg_types);
 		arg_types = NULL;
+	}
 	return (arg_types);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_ast_tree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 17:51:53 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 19:21:15 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:56:16 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,43 @@ static void	print_indent(int depth, int *is_last_array)
 	}
 }
 
-static void	print_array(void **array, char type)
+static void	print_args(char **args)
 {
 	int	i;
 
-	if (!array || !array[0])
-		return ;
-
-	printf(" [");
+	if (!args || !args[0])
+		return;
+	printf(" [Args: ");
 	i = 0;
-	while (array[i])
+	while (args[i])
 	{
-		if (type == 's')
-			printf("%s", (char *)array[i]);
-		else if (type == 'd')
-			printf("%d", *((int *)array[i]));
-
-		if (array[i + 1])
+		printf("%s", args[i]);
+		if (args[i + 1])
 			printf(", ");
 		i++;
 	}
 	printf("]");
 }
+
+static void	print_token_index(int *index)
+{
+	int	i;
+
+	if (!index)
+		return;
+
+	printf(" [Index: ");
+	i = 0;
+	while (index[i])
+	{
+		printf("%d", index[i]);
+		if (index[i + 1] != 0)
+			printf(", ");
+		i++;
+	}
+	printf("]");
+}
+
 
 static void	print_redirs(t_redir *redirs)
 {
@@ -94,8 +109,11 @@ static void	print_node_helper(t_node *node, int depth, int *is_last_array)
 		printf("%s", g_type_names[node->type]);
 
 	// Imprimir argumentos si existen
-	print_array((void **)node->args, 's');
-	print_array((void **)node->arg_types, 'd');
+	print_args(node->args);
+	print_token_index(node->arg_types);
+
+	if (node->background)
+		printf(" <Background> ");
 
 	// Imprimir redirecciones si existen
 	print_redirs(node->redir);

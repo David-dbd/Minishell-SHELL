@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_type_III.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 17:23:51 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 19:18:06 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 20:10:03 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int	is_symbol(int c)
 
 int	is_arg_type(int type)
 {
-	if (type == ASIGNATION || type == WORD || type == PLUS_ASIGNATION)
+	if (type == ASIGNATION || type == WORD || type == PLUS_ASIGNATION
+		|| type == EXPANSION)
 		return (1);
 	return (0);
 }

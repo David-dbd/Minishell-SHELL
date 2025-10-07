@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 19:31:40 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 20:54:50 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		asignation(t_shell *data, t_token *token, int type);
 /* ************************************************************************** */
 void	ast_builder(t_shell *data, t_token *tokens, int n_tokens);
 t_node	*create_node(t_shell *data, t_token *token, t_type type);
-t_node	*create_fake_node(t_shell *data, t_type type);
+t_node	*create_true_node(t_shell *data, t_type type);
 t_node	*parse_sequence(t_shell *data, t_token *tokens, int *i, int n_tokens);
 t_node	*parse_and_or(t_shell *data, t_token *tokens, int *i, int n_tokens);
 t_node	*parse_pipes(t_shell *data, t_token *tokens, int *i, int n_tokens);
@@ -112,6 +112,7 @@ int		check_signals(t_shell *data);
 void	clean_all(t_shell *data);
 void	clean_ast(t_node *node);
 void	clean_prompt(t_prompt *prompt);
+void	clean_token(t_token *token);
 void	clean_tokens(t_prompt *prompt);
 void	clean_redirs(t_redir **lst);
 void	clean_env(t_env *env, t_var *vars);
@@ -199,6 +200,7 @@ void	transform_word_to_file(t_prompt *prompt, t_token *tokens);
 void	transform_command_built_lowercase(t_prompt *prompt, t_token *tokens);
 
 //AST
+int		get_background(t_token *tokens, int n_tokens, int *i);
 int		*get_arg_types(t_shell *data, t_token *tokens, int i, int j);
 char	**get_args_for_binary(t_shell *data, t_token *token, int *i);
 char	**get_temp_asignations(t_shell *data, t_token *tokens, int i);
@@ -250,6 +252,7 @@ char	*clean_slash_expan_d(t_shell *data, char *word, int len, char slash);
 void	clean_quote_until_slash_d(char *word, char *clean_word, char quote);
 void	void_tokens_at_the_end(t_token *tokens, int n_alloc, int n_tokens);
 void	eliminate_token(t_prompt *prompt, t_token *tokens, int index);
+void	safe_index_plus(int *i, int n_tokens);
 
 /* ************************************************************************** */
 /*                               extras - time                                */

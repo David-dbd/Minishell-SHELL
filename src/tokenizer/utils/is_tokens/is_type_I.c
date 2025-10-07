@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_type_I.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:48:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 18:10:44 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 20:36:49 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	is_redir_type(int type)
 int	is_delimiter_type(int type)
 {
 	if (type == PIPE || type == SEMICOLON || type == AND || type == OR
-		|| type == PAREN_OPEN || type == PAREN_CLOSE)
+		|| type == PAREN_OPEN || type == PAREN_CLOSE || type == BACKGROUND)
 		return (1);
 	return (0);
 }

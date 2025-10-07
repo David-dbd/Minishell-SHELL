@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_II.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 01:53:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 18:13:32 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/07 19:58:10 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,25 @@ void	clean_redirs(t_redir **lst)
 		current = next;
 	}
 	*lst = NULL;
+}
+
+/*
+	Libera un token en conreto que sea alojado dinamicamente
+	se preve utilizar en los true o fake nodes.
+*/
+
+void	clean_token(t_token *token)
+{
+	if (token->value)
+	{
+		free(token->value);
+		token->value = NULL;
+	}
+	if (token)
+	{
+		free(token);
+		token = NULL;
+	}
 }
 
 /*

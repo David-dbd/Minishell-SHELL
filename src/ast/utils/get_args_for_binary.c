@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 23:03:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 19:10:21 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 21:54:34 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,16 @@ static void	arg_count(t_token *tokens, int n_tokens, int *i, int *n_args)
 		if (is_redir_type(tokens[*i].type))
 		{
 			while (*i < n_tokens && !is_arg_type(tokens[*i].type))
+			{
+				if (is_delimiter_type(tokens[*i].type))
+					break ;
 				(*i)++;
+			}
 		}
 		if (is_arg_type(tokens[*i].type))
 			(*n_args)++;
+		if (is_delimiter_type(tokens[*i].type))
+			break ;
 		(*i)++;
 	}
 }

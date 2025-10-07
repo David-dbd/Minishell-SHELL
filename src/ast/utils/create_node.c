@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:41:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 19:30:21 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/07 20:52:36 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,29 @@
  * incluyendo tipo, token asociado y estructuras vacías
 */
 
-t_node	*create_fake_node(t_shell *data, t_type type)
+t_node	*create_true_node(t_shell *data, t_type type)
 {
 	t_node	*node;
-	t_token	*fake_token;
+	t_token	*true_token;
 
-	fake_token = ft_calloc(1, sizeof(t_token));
-	if (!fake_token)
+	true_token = ft_calloc(1, sizeof(t_token));
+	if (!true_token)
 		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
 	node = ft_calloc(1, sizeof(t_node));
 	if (!node)
 	{
-		free (fake_token);
+		free (true_token);
 		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
 	}
-	fake_token->value = ft_strdup("true");
-	if (!fake_token->value)
+	true_token->value = ft_strdup("true");
+	if (!true_token->value)
 	{
-		free (fake_token);
+		free (true_token);
 		free (node);
 		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
 	}
 	node->type = type;
-	node->token = fake_token;
+	node->token = true_token;
 	node->args = NULL;
 	node->redir = NULL;
 	node->arg_types = NULL;
@@ -48,6 +48,8 @@ t_node	*create_fake_node(t_shell *data, t_type type)
 	node->pid = 0;
 	node->exit_code = 0;
 	node->executed = FALSE;
+	node->fake = TRUE;
+	node->background = FALSE;
 	return (node);
 }
 
@@ -68,5 +70,7 @@ t_node	*create_node(t_shell *data, t_token *token, t_type type)
 	node->pid = 0;
 	node->exit_code = 0;
 	node->executed = FALSE;
+	node->fake = FALSE;
+	node->background = FALSE;
 	return (node);
 }
