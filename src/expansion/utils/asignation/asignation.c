@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:35:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/07 15:38:24 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/08 01:45:42 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	aux_value_asig(t_token *token, char **value, int *i, int type)
 	//printf("value: %s\n\n", *value);
 }
 
-/*static int	verify_if_already_set(t_shell *data, char *key, char **value, int t)
+/*static int	verify_if_already_set(t_shell *d, char *ke, char **value, int t)
 {
 	t_var	*var;
 	char	*tmp;
@@ -91,16 +91,19 @@ static void	aux_value_asig(t_token *token, char **value, int *i, int type)
 			printf("Found it-> %s=%s\n\n", key, *value);
 			if (t == EXP) // si solo es una palabra sin ""="" -> hola
 				return (IGNORE);
-			if (var->value && (t == LOCAL || t == ENV)) // si existe su valor y es local o env, solo hay que cambiarlo
+			if (var->value && (t == LOCAL || t == ENV))
+			// si existe su valor y es local o env, solo hay que cambiarlo
 			{
 				printf("if t == LOCAL\n");
 				if (var->value)
 					free (var->value);
 				var->value = *value;
 			}
-			if (!var->value && t != EXP) // Si no existe su valor, solo hay que agregarselo
+			if (!var->value && t != EXP)
+			// Si no existe su valor, solo hay que agregarselo
 				var->value = *value;
-			if (var->value && t == PLUS_ASIGNATION) //Si existe su valor y es PLUS_ASIGNATION entonces hay que sumarla
+			if (var->value && t == PLUS_ASIGNATION)
+			//Si existe su valor y es PLUS_ASIGNATION entonces hay que sumarla
 			{
 				printf("if t == PLUS_ASIG\n");
 				printf("%s=%s\n\n", key, *value);

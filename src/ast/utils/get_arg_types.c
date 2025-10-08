@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 01:44:27 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/07 21:46:14 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/08 03:21:04 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@
 
 	Esto evita tener que reanalizar los args de export, es decir, duplicar el
 	trabajo que ya se hizo en otras funciones que verifican los tokens.
+
+	En get_bin_args(); se avanza el index desde el primer argumento del cmd
+	hasta el último. Aquí, start_i hace refernecia a la posición de i
+	sobre el cmd otra vez, mientras que end_j hace referencia al index en el
+	úlrimo cmd, de modo que se puede cubrir la distancia exacta entre el cmd
+	y su ultimo argumento
 */
 
 static void	create_dinamic_arr(t_shell *data, int **arg_types, int i, int j)

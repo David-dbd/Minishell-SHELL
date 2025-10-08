@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:36:48 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 19:32:14 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/08 01:42:04 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 	🟤 6. Nivel de comandos
 		parse_command() agrupa palabras, variables y asignaciones.
 		Recorre tokens tipo WORD como argumentos.
-		Devuelve un nodo CMD con todos los elementos agrupados y redirs.
+		Devuelve un nodo CMD con todos los elementos agrupados, redirs y mas.
 
 	🔁 7. Fin de la recursión
 		Cada función superior recibe el nodo inferior construido.

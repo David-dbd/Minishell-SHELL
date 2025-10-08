@@ -6,11 +6,37 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:29:52 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 22:07:33 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/08 01:41:10 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+/*
+	Este bloque de funciones forma parte del parser encargado de
+	construir nodos CMD a partir de los tokens del prompt. Su objetivo
+	es interpretar correctamente comandos, asignaciones y redirecciones.
+
+	La función `parse_cmd` es el punto de entrada principal. Antes de
+	procesar el token actual, llama a `special_cases` para detectar
+	patrones especiales como redirecciones sin comando o asignaciones
+	temporales.
+
+	Si el token es una redirección, se crea un nodo `true` como
+	placeholder. Esto permite que redirecciones como `> archivo.txt`
+	funcionen incluso sin comando explícito.
+
+	Si no hay casos especiales, `parse_cmd` verifica si el token actual
+	representa un comando válido o una asignación real. Si es así, crea
+	el nodo y llama a `get_information`.
+
+	La función `get_information` completa el nodo con redirecciones,
+	argumentos, tipos de argumentos y si el comando va en segundo plano.
+
+	Este diseño modular permite interpretar correctamente líneas como:
+	`export VAR=1 > archivo.txt &` o `> archivo.txt`, manteniendo la
+	semántica y estructura de cada componente.
+*/
 
 static	t_node *special_cases(t_shell *d, t_token *tokens, int *i, int n_tokens)
 {
