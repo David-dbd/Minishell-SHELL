@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/08 15:41:16 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:16:27 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	parse_tokens(t_shell *data, t_prompt *prompt, char *input)
 		is_word(data, prompt, input, &i);
 		is_hash(input, &i);
 	}
-	printf("Alloc Tokens: %d\n", data->prompt.n_alloc_tokens);
-	printf("Syntax Tokens: %d\n", data->prompt.n_tokens);
+	// printf("Alloc Tokens: %d\n", data->prompt.n_alloc_tokens);
+	// printf("Syntax Tokens: %d\n", data->prompt.n_tokens);
 }
 
 /*
@@ -98,18 +98,18 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	if (!check_if_valid_tokens_init(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
 
-	print_tokens_debug(prompt);
+	// print_tokens_debug(prompt);
 
 	// is_it_quoted(prompt, prompt->tokens); // Se puede hacer mas eficiente
 
-	expansion(data, prompt->tokens, &data->env, FINAL_PHASE);
+	expansion(data, prompt->tokens, &data->env, INITIAL_PHASE);
 	simplify_tokens(data, prompt, prompt->tokens);
 
 	// print_tokens_debug(prompt);
 
 	transform_tokens_logic(data, prompt, prompt->tokens);
 
-	print_tokens_debug(prompt);
+	// print_tokens_debug(prompt);
 	if (!check_if_valid_tokens_end(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
 
@@ -118,6 +118,6 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	//send_tokens_for_asig(data, prompt->tokens, FINAL_PHASE);
 	//eliminate_temp_asig(prompt, prompt->tokens);
 
-	print_tokens_debug(prompt);
+	// print_tokens_debug(prompt);
 	return (SUCCESS);
 }

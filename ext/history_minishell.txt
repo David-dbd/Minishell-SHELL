@@ -1,22 +1,3 @@
-<< EOF ls > file
-<< EOF
-<< EOF > file
-<< EOF 1> file
-<< EOF 1> ls file
-ls\n
-(ls) 
-(ls) > 
-(ls) > ls
-ls && echo &
-ls &  && ech
-fsdf
-echo & || ls
-echo & && ls
-echo & | ls
-HOL
-/usr/bin/ls -a
-/usr/bin/ls -l
-/usr/bin/ls 
 /usr/bin/ls
 l
  /usr/bin/env /bin/sh /tmp/Microsoft-MIEngine-Cmd-l2xc0wql.mwa 
@@ -69,38 +50,28 @@ cd
 sd
 vdsbavbas sa
 vasbasdbsasad
-ls | grep minishell
 du
 du -h | head -20
-cat | cat | cat
-sleep 10
 Cat | Cat
 Cat | Cat | cat | cat
 s
 d
 ddssv
-ls
 ls -
-ls -l
 ls -l && echo hola
 ls -l || echo hola
 hola || echo hola
 pwd
 pwd | grep minishell
 pwd | grep minishell && hola
-sl
 true
 export hola
-export
 hola=1
-env
 echo $!
 echo hola
 (echo hola)
 (ls)
-clear
 ls &
-echo $?
 hola &
 echo &
 ls | ls
@@ -197,3 +168,32 @@ ls | ls
 74;144;226mminishell> 74;144;226m176;174;186m74111;109;120m;176;174;186m144111;109;120m;176;174;186m226mminishell157;155;168m> 176;174;186m74111;109;120m;176;174;186m144111;109;120m;176;174;186m226mecho 176;174;186m14
 74;144;226mminishell> 74;144;226m176;174;186m74111;109;120m;176;174;186m144111;109;120m;176;174;186m226mminishell157;155;168m> 176;174;186m74111;109;120m;176;174;186m144111;109;120m;176;174;186m226mecho 176;174;186m147
 74;144;226mminishell> 74;144;226m176;174;186m74111;109;120m;176;174;186m144111;109;120m;176;174;186m226mminishell157;155;168m> 176;174;186m74111;109;120m;176;174;186m144111;109;120m;176;174;186m226mecho 176;174;186m147111;109;120m;
+(ls | cat README.md && sleep 10)
+sleep 10
+htop
+btop
+nmap
+cmatriz
+cmatrix
+sl
+ls | grep minishell
+cat | cat | cat | cat
+./minishell
+cat | cat
+echo "hello"
+export A=1 && (echo $A)
+cat | cat | cat
+clear
+export A=1 && echo $A
+export B=1 && (echo $B)
+ls
+ls -l
+echo "hola"
+echo -n "hola"
+env hello world
+env | grep hello
+export
+env
+export hello
+export | grep hello
+echo $?
