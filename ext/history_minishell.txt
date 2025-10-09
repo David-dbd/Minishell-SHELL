@@ -1,0 +1,126 @@
+export hola
+export
+export | ls
+export | grep hola
+export hello
+export | grep hello
+echo 1
+echo 
+echo hola
+scd
+c
+d
+sdvv
+sg
+sd
+dcd
+)
+(echo) hi
+exit 42 42 42 42 42 
+exit 42 42 42
+exit cd ..
+exit a
+exit -4
+exit +1
+exit -1
+exit " "
+exit ""
+exit A
+/bin/ls 
+/bin/ls
+bin/ls
+usr/bin/ls
+/bin/echo hola
+A=1 | echo $A
+export A=1
+env
+export A=1 && echo $A
+unset
+/bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+/bin/echo $"HOME"$USER
+/bin/echo ""$?""
+env | grep "minishell"
+env | grep "SHLVL="
+echo "$ "
+echo "$ " | cat -e
+/bin/echo $USER =intergalaktikus miaf*szomez
+/bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER '' | cat -e
+/bin/echo '' ""
+/bin/echo '' "" | cat -e
+/bin/echo $USER$TESTNOTFOUND$HOME$
+echo $/
+">>" asd
+>> '$USER'
+"echo "
+"ECho" -n -nnn"" "-"nnnnn
+"echo -nnnnn"
+>> $HOME
+'PWD'
+"ECHO" "-n"
+echo
+echo -n
+bash
+OLDPWD
+"  ls"
+echo 4?
+'''''''''''''''' echo ok
+echo $U/SER
+echo '$/'
+echo '$/' | cat -e
+echo $/"$/"
+echo $/"$/" | cat -e
+echo $/"$/" 
+echo cd ~
+echo $"HOME"$USER
+echo '' ""
+echo '' "" | cat -e
+/bin/echo $HALLO42
+/bin/echo $HOME
+exit 1 2
+exit ---000
+rm -rf echo
+<| echo wtf
+>| echo wtf
+rm -f something
+cp src/init/init_minishell.c .
+rm init_minishell.c
+\\\\\n
+\\\\\n\n
+\\\\\nhola
+/
+<<
+<>
+echo $? | cat -e
+.
+..
+~
+>echo>
+<echo<
+echo "$""$"
+echo $"$"
+echo $"$" | cat -e
+$$
+echo $"42$" | cat -e
+echo $'HOME'
+echo "" ''
+echo "" '' | cat -e
+exit A 1
+exit 1 2 3
+"" | cat -e
+"."
+""
+/bin/echo 1 >/dev/null | /usr/bin/grep 1
+/bin/env | grep "_="
+/bin/env | grep "SHLVL"
+ls | ls | ls | ls
+ls | ls | ls | ls | ls | ls | ls | ls
+exit something somethingv2
+echo $?
+ ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls
+ls
+rm echo
+./min
+./minishell
+clear
+ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls
+echo hola mundo?

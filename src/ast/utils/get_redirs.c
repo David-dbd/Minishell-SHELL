@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:59:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/08 22:28:07 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/09 23:17:20 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_redir	*add_redir(t_shell *data, t_redir *lst, t_token *token, char *filename)
  * recolectando operadores de redirección y sus archivos asociados
 */
 
-t_redir	*get_redirs(t_shell *data, t_token *tokens,  int *i, int mode)
+t_redir	*get_redirs(t_shell *data, t_token *tokens, int *i, int mode)
 {
 	int		j;
 	t_redir	*head;

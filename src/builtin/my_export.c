@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:22:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 00:50:28 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:02:41 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ int	my_export(t_shell *data, t_token *tokens, t_env *env, t_node *node)
 	if (!node->arg_types)
 	{
 		print_env_variables(&data->env);
-		return (SUCCESS);
+		return (0);
 	}
 	while (node->arg_types[i])
 	{
@@ -182,9 +182,9 @@ int	my_export(t_shell *data, t_token *tokens, t_env *env, t_node *node)
 		{
 			if (asignation_type(data, tokens,
 					node->arg_types[i], env) == EXIT_FAIL)
-				return (EXIT_FAIL);
+				return (1);
 		}
 		i++;
 	}
-	return (SUCCESS);
+	return (0);
 }

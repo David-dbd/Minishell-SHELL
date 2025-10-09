@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 03:27:40 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/09 23:15:45 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ t_node	*parse_cmd(t_shell *data, t_token *tokens, int *i, int n_tokens);
 /* ************************************************************************** */
 void	executor_recursive(t_shell *data, t_node *ast_root, int mode);
 void	exec_semicolon(t_shell *data, t_node *node, int mode);
-void 	exec_and(t_shell *data, t_node *node, int mode);
+void	exec_and(t_shell *data, t_node *node, int mode);
 void	exec_or(t_shell *data, t_node *node, int mode);
 void	exec_pipe(t_shell *data, t_node *node, int mode);
-void	exec_command(t_shell *data, t_node *node, t_env *env, int mode);
 void	exec_subshell(t_shell *data, t_node *node, int mode);
-void	exec_builtin(t_shell *data, t_node *node, int mode);
+void	exec_builtin(t_shell *data, t_node *node, t_env *env, int mode);
+void	exec_command(t_shell *data, t_node *node, t_env *env, int mode);
 
 /* ************************************************************************** */
 /*                                buil_in                                     */
@@ -186,7 +186,6 @@ int		check_double_parent(t_shell *data, t_token *tokens, t_prompt *prompt);
 int		check_or_and(t_shell *data, t_prompt *prompt, t_token *tokens, int i);
 int		check_parent_balance(t_shell *data, t_prompt *prompt, t_token *tokens);
 int		check_cmd_externs(t_shell *d, t_prompt *prompt, t_token *tokens, int i);
-
 
 //SIMPLIFY TOKENS
 int		find_range_end(t_token *tokens, int no_space_position);

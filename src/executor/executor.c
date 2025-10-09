@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:36:57 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 03:24:52 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/09 23:18:19 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	executor_recursive(t_shell *data, t_node *node, int mode)
 		return ;
 
 	node->executed = true;
-
+	
 	if (node->type == SEMICOLON)
 		exec_semicolon(data, node, mode);
 	else if (node->type == AND)
@@ -30,7 +30,7 @@ void	executor_recursive(t_shell *data, t_node *node, int mode)
 	else if (node->type == SUBSHELL)
 		exec_subshell(data, node, mode);
 	else if (node->type == BUILT_IN || is_asignation_type(node->token->type))
-		exec_builtin(data, node, mode);
+		exec_builtin(data, node, &data->env, mode);
 	else if (node->type == COMMAND)
 		exec_command(data, node, &data->env, mode);
 }

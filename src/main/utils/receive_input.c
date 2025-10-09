@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:42:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 18:11:27 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/09 23:20:20 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,23 @@
 
 char	*receive_input(char **input, t_shell *data)
 {
+	char	*line;
+
 	*input = NULL;
-	*input = ic_readline("\033[1;34mminishell\033[1;34m> \033[0m");
-	if (*input && input)
-		ic_history_add(*input);
+	if (isatty(fileno(stdin)))
+	{
+		*input = ic_readline("\033[1;34mminishell\033[1;34m> \033[0m");
+		if (*input && input)
+			ic_history_add(*input);
+	}
+	else
+	{
+		line = get_next_line(fileno(stdin));
+		if (!line)
+			return (NULL);
+		*input = ft_strtrim(line, "\n");
+		free(line);
+	}
 	check_signals(data);
 	return (*input);
 }

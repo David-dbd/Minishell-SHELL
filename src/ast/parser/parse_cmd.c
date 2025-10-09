@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:29:52 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 03:20:30 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/09 23:16:36 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 	semántica y estructura de cada componente.
 */
 
-static	t_node *special_cases(t_shell *d, t_token *tokens, int *i, int n_tokens)
+t_node	*special_cases(t_shell *data, t_token *tokens, int *i, int n_tokens)
 {
 	t_node	*left;
 
@@ -50,24 +50,24 @@ static	t_node *special_cases(t_shell *d, t_token *tokens, int *i, int n_tokens)
 	}
 	else if (is_redir_type(tokens[*i].type))
 	{
-		left = create_true_node(d, COMMAND);
-		left->redir = get_redirs(d, tokens, i, COMMAND);
+		left = create_true_node(data, COMMAND);
+		left->redir = get_redirs(data, tokens, i, COMMAND);
 		left->background = get_background(tokens, n_tokens, i);
 		return (left);
 	}
 	return (NULL);
 }
 
-static void	get_information(t_shell *dat, t_token *tokens, int *i, t_node *left)
+void	get_information(t_shell *data, t_token *tokens, int *i, t_node *left)
 {
 	int		start;
 
 	start = *i;
-	left->assig_tmp = get_temp_asignations(dat, tokens, *i);
-	left->redir = get_redirs(dat, tokens, i, COMMAND);
-	left->args = get_args_for_binary(dat, tokens, i);
-	left->arg_types = get_arg_types(dat, left, start, *i);
-	left->background = get_background(tokens, dat->prompt.n_tokens, i);
+	left->assig_tmp = get_temp_asignations(data, tokens, *i);
+	left->redir = get_redirs(data, tokens, i, COMMAND);
+	left->args = get_args_for_binary(data, tokens, i);
+	left->arg_types = get_arg_types(data, left, start, *i);
+	left->background = get_background(tokens, data->prompt.n_tokens, i);
 }
 
 t_node	*parse_cmd(t_shell *data, t_token *tokens, int *i, int n_tokens)

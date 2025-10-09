@@ -6,13 +6,21 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 19:24:46 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/08 23:14:19 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/09 23:19:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
 
-char	*get_path(t_shell *d, char *cmd, char **envp)
+void	special_cases_path_dir(t_shell *data, char *cmd)
+{
+	if (ft_strcmp(cmd, ".") == 0)
+		return ((void)exit_error(data, ERR_IS_DIR, 126, cmd));
+	if (ft_strcmp(cmd, "..") == 0)
+		return ((void)exit_error(data, ERR_CMD_NOT_FOUND, 127, cmd));
+}
+
+static char	*search_in_path(t_shell *d, char *cmd, char **envp)
 {
 	char	**paths;
 	char	*part_path;
@@ -38,5 +46,27 @@ char	*get_path(t_shell *d, char *cmd, char **envp)
 		free(path);
 	}
 	ft_free_str_array(paths);
-	return (exit_error(d, ERR_CMD_NOT_FOUND, EXIT_CMD_NOT_FOUND, cmd), NULL);
+	return (NULL);
+}
+
+char	*get_path(t_shell *d, char *cmd, char **envp)
+{
+	char		*path;
+	struct stat	st;
+
+	special_cases_path_dir(d, cmd);
+	if (ft_strchr(cmd, '/'))
+	{
+		if (stat(cmd, &st) == -1)
+			return (exit_error(d, ERR_CMD_NOT_FOUND, 127, cmd), NULL);
+		if (S_ISDIR(st.st_mode))
+			return (exit_error(d, ERR_IS_DIR, 126, cmd), NULL);
+		if (access(cmd, X_OK) != 0)
+			return (exit_error(d, ERR_EXEC, 126, cmd), NULL);
+		return (ft_strdup(cmd));
+	}
+	path = search_in_path(d, cmd, envp);
+	if (!path)
+		return (exit_error(d, ERR_CMD_NOT_FOUND, 127, cmd), NULL);
+	return (path);
 }

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:46:42 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/08 20:44:28 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/09 22:30:19 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	init_arg(t_shell *data, int ac, char **av)
 			line = get_next_line(fd);
 		}
 		get_next_line(RESET);
-		exit_succes(data, NULL, EXIT_SUCCESS);
+		exit_succes(data, NULL, data->exit_code);
 	}
 }

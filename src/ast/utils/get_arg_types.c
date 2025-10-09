@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_arg_types.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 01:44:27 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/09 15:43:57 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/09 23:17:44 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	*alloc_arg_types(t_shell *dat, t_node *node, int start_i, int end_j)
 		len = tmp_counter;
 		tmp_token_index = tmp_counter;
 		tmp_counter = 0;
-		while (tmp_counter < len)//copiamos las temp_Asigs en el orden correcto (de la primera a la ultima)
+		while (tmp_counter < len) //copiamos las temp_Asigs en el orden correcto (de la primera a la ultima)
 		{
 			arg_types[tmp_counter] = node->token[start_i - tmp_token_index - 1].id;
 			tmp_counter++;
@@ -90,7 +90,7 @@ static void	check_arg_index(int arg_index, int **arg_types)
 
 int	*get_arg_types(t_shell *data, t_node *node, int start_i, int end_j)
 {
-	t_token *tokens;
+	t_token	*tokens;
 	int		*arg_types;
 	int		arg_index;
 

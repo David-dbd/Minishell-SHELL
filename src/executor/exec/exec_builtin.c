@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:12 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 16:06:39 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/09 23:18:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,13 @@
 	ejecución secuencial como en estructuras complejas.
 */
 
-void	exec_builtin(t_shell *data, t_node *node, int mode)
+void	exec_builtin(t_shell *data, t_node *node, t_env *env, int mode)
 {
 	pid_t	pid;
 
-	if (node->background)//si es por background
+	if (mode == FATHER)
+		expansion(data, data->prompt.tokens, env, FINAL_PHASE);
+	if (node->background) //si es por background
 	{
 		pid = fork();
 		if (pid == ERROR)
@@ -59,11 +61,11 @@ void	exec_builtin(t_shell *data, t_node *node, int mode)
 			exit_succes(data, NULL, data->exit_code);
 		}
 		ft_printf_fd(STDOUT, "[&] %d\n", pid);
-		data->exit_code = 0; //da 0 porque el fork en si fue exitoso
+		data->exit_code = OK; //da 0 porque el fork en si fue exitoso
 		return ;
 	}
 	which_builtin(data, node->token, node); //tanto si es child o parent entra aqui
-	if (mode == CHILD) // si era child de una subshell o pipe se sale con su exit_code
-		exit_error(data, NULL, data->exit_code);
+	if (mode == CHILD) // si era child de un pipe se sale con su exit_code
+		exit_succes(data, NULL, data->exit_code);
 	return ;
 }

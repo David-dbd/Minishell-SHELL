@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 23:55:15 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/08 22:29:47 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:53:38 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int	counter_args(char **args)
 	int	n_args;
 
 	n_args = 0;
+	if (!args)
+		return (0);
 	while (args[n_args])
 		n_args++;
 	return (n_args);
@@ -73,7 +75,7 @@ static int	check_exit(t_shell *data, char **args)
 		if (is_numeric(args[0]))
 		{
 			num = ft_atol(args[0]);
-			status = num % 256;
+			status = ((num % 256) + 256) % 256;
 			return (status);
 		}
 		exit_error(data, ERR_EXIT_NUMERIC, EXIT_USE, args[0]);
@@ -91,6 +93,10 @@ void	my_exit(t_shell *data, char **args)
 
 	status = check_exit(data, args);
 	if (status == ERROR)
-		return (ft_printf_fd(STDERR, ERR_EXIT_TOO_MANY), (void)0);
+	{
+		data->exit_code = 1;
+		ft_printf_fd(STDERR, ERR_EXIT_TOO_MANY);
+		return ;
+	}
 	exit_succes(data, NULL, status);
 }

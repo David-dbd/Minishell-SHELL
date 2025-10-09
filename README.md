@@ -1,6 +1,15 @@
 # Minishell
 Minishell - Bash
 
+🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
+🏁                                    RESULT                                    🏁
+🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
+             TOTAL TEST COUNT: 894  TESTS PASSED: 563  LEAKING: 0
+                     STD_OUT: 174  STD_ERR: 168  EXIT_CODE: 135
+                         TOTAL FAILED AND PASSED CASES:
+                                     ❌ 477
+                                     ✅ 2205
+
 ## POR HACER:
 
 ## MIKEL:

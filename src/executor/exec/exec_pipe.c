@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:20 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 15:53:25 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/09 23:23:12 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,25 @@ void	close_pipes(int *pipefd)
 	close(pipefd[1]);
 }
 
+int	check_if_background(t_shell *data, t_node *node, pid_t *pid, int mode)
+{
+	int	status;
+
+	status = 0;
+	waitpid(pid[0], &status, 0);
+	if (!node->right->background)
+	{
+		waitpid(pid[1], &status, 0);
+		if (WIFEXITED(status))
+			data->exit_code = WEXITSTATUS(status);
+		else if (WIFSIGNALED(status))
+			data->exit_code = 128 + WTERMSIG(status);
+	}
+	if (mode == CHILD)
+		exit_succes(data, NULL, data->exit_code);
+	return (data->exit_code);
+}
+
 void	handle_child(t_shell *data, t_node *node, int *pipefd, int side)
 {
 	if (side == LEFT)
@@ -65,31 +84,6 @@ void	handle_child(t_shell *data, t_node *node, int *pipefd, int side)
 	}
 }
 
-static void	check_mode(t_shell *data, int mode)
-{
-	//verifica el mode porque puede venir de un subshell
-	if (mode == CHILD)
-		exit_error(data, NULL, data->exit_code);
-}
-
-static int check_if_background(t_shell *dat, t_node *node, pid_t *pid, int mode)
-{
-	int	status;
-
-	status = 0;
-	waitpid(pid[0], &status, 0);
-	if (!node->right->background)
-	{
-		waitpid(pid[1], &status, 0);
-		if (WIFEXITED(status))
-			dat->exit_code = WEXITSTATUS(status);
-		else if (WIFSIGNALED(status))
-			dat->exit_code = 128 + WTERMSIG(status);
-	}
-	check_mode(dat, mode);
-	return (dat->exit_code);
-}
-
 void	exec_pipe(t_shell *data, t_node *node, int mode)
 {
 	int		pipefd[2];
@@ -99,12 +93,12 @@ void	exec_pipe(t_shell *data, t_node *node, int mode)
 		exit_error(data, ERR_PIPE, EXIT_FAILURE);
 	pid[0] = fork();
 	if (pid[0] == ERROR)
-		return(close_pipes(pipefd), (void)exit_error(data, ERR_FORK, FAIL));
+		return (close_pipes(pipefd), (void)exit_error(data, ERR_FORK, FAIL));
 	if (pid[0] == 0)
 		handle_child(data, node->left, pipefd, LEFT);
 	pid[1] = fork();
 	if (pid[1] == ERROR)
-		return(close_pipes(pipefd), (void)exit_error(data, ERR_FORK, FAIL));
+		return (close_pipes(pipefd), (void)exit_error(data, ERR_FORK, FAIL));
 	if (pid[1] == 0)
 		handle_child(data, node->right, pipefd, RIGHT);
 	close_pipes(pipefd);

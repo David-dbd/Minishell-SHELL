@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 16:13:43 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/09 23:23:57 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void	apply_properties(t_shell *data, t_node *node, t_env *env)
 
 void	wait_cmd_background(t_shell *data, t_node *node, pid_t pid)
 {
-	int status;
+	int	status;
 
 	status = 0;
-	if (!node->background)//si no tiene background se hace el waitpid
+	if (!node->background) //si no tiene background se hace el waitpid
 	{
 		waitpid(pid, &status, 0);
 		if (WIFEXITED(status))
@@ -65,9 +65,9 @@ void	wait_cmd_background(t_shell *data, t_node *node, pid_t pid)
 	}
 	if (node->background)
 	{
-		// si lo tiene exit_code del padre es 0 porque el fork fue exitoso
+		// exit_code para padre es 0 porque el fork fue exitoso
 		ft_printf_fd(STDOUT, "[&] %d\n", pid);
-		data->exit_code = 0;
+		data->exit_code = OK;
 	}
 }
 
@@ -110,5 +110,8 @@ void	exec_command(t_shell *data, t_node *node, t_env *env, int mode)
 	if (mode == CHILD)
 		execute_cmd_from_child(data, node, env);
 	if (mode == FATHER)
+	{
+		expansion(data, data->prompt.tokens, env, FINAL_PHASE);
 		execute_cmd_from_father(data, node, env);
+	}
 }

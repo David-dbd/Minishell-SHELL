@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 03:51:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/08 19:46:26 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/09 23:20:32 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 	  porque '&' solo puede seguir a algo ejecutable.
 	- Devuelve SUCCESS si el '&' está en una posición válida.
 */
-
-
 
 int	check_background(t_shell *data, t_prompt *p, t_token *tokens, int i)
 {

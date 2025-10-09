@@ -25,6 +25,13 @@ lib/readline/readline.pc
 lib/readline/shlib/Makefile
 lib/readline/stamp-h
 
+# Tester temp file
+tmp_err_bash
+tmp_err_minishell
+tmp_out_bash
+tmp_out_minishell
+tmp_valgrind-out
+
 # Prerequisites
 *.d
 

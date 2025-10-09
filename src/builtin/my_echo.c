@@ -6,11 +6,21 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:23:24 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/08 22:29:43 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:07:30 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+int	check_no_args(char **args)
+{
+	if (!args || !args[0])
+	{
+		ft_printf_fd(STDOUT, "\n");
+		return (TRUE);
+	}
+	return (FALSE);
+}
 
 /*
 	Procesa los argumentos de 'echo' y detecta todas las opciones '-n'
@@ -50,6 +60,8 @@ int	my_echo(char **args)
 
 	i = 0;
 	new_line = TRUE;
+	if (check_no_args(args))
+		return (0);
 	handle_n_flag(args, &new_line, &i);
 	while (args[i])
 	{
