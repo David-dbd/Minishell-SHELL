@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:12 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 04:56:56 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:06:39 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ void	exec_builtin(t_shell *data, t_node *node, int mode)
 			exit_error(data, ERR_FORK, FAIL);
 		if (pid == 0)
 		{
+			setup_signals_child();
 			which_builtin(data, node->token, node);
-			exit_error(data, NULL, data->exit_code);
+			exit_succes(data, NULL, data->exit_code);
 		}
 		ft_printf_fd(STDOUT, "[&] %d\n", pid);
 		data->exit_code = 0; //da 0 porque el fork en si fue exitoso

@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 01:44:27 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/09 01:36:07 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/09 15:43:57 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static int	*alloc_arg_types(t_shell *dat, t_node *node, int start_i, int end_j)
 {
 	int	*arg_types;
 	int	tmp_counter;
+	int	tmp_token_index;
+	int	len;
 
 	tmp_counter = 0;
 	if (node->assig_tmp)
@@ -63,6 +65,14 @@ static int	*alloc_arg_types(t_shell *dat, t_node *node, int start_i, int end_j)
 		while (node->assig_tmp[tmp_counter])
 			tmp_counter++;
 		create_dinamic_arr(dat, &arg_types, start_i, (end_j + tmp_counter));
+		len = tmp_counter;
+		tmp_token_index = tmp_counter;
+		tmp_counter = 0;
+		while (tmp_counter < len)//copiamos las temp_Asigs en el orden correcto (de la primera a la ultima)
+		{
+			arg_types[tmp_counter] = node->token[start_i - tmp_token_index - 1].id;
+			tmp_counter++;
+		}
 	}
 	else
 		create_dinamic_arr(dat, &arg_types, start_i, end_j);
