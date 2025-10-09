@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:46:42 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/06 17:23:44 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/08 20:44:28 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	open_error(t_shell *data, char *file)
 	if (errno == ENOENT)
 		exit_error(data, ERR_NO_INPUT_FILE, EXIT_USE);
 	else if (errno == EACCES)
-		exit_error(data, ERR_PERM_DENIED, EXIT_CMD_NOT_EXECUTABLE, file);
+		exit_error(data, ERR_PERM_DENIED, EXIT_CMD_NOT_EXEC, file);
 	exit_error(data, ERR_NO_INPUT_FILE, EXIT_USE);
 }
 
@@ -47,7 +47,7 @@ void	init_arg(t_shell *data, int ac, char **av)
 			if (!tokenizer(data, &data->prompt, line))
 				exit_error(data, NULL, EXIT_USE);
 			ast_builder(data, data->prompt.tokens, data->prompt.n_tokens);
-			execute_recursive(data, data->ast_root, &data->executor);
+			executor_recursive(data, data->ast_root, FATHER);
 			clean_prompt(&data->prompt);
 			line = get_next_line(fd);
 		}

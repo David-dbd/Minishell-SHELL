@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_I.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:47:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 21:57:33 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:54:18 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,4 @@ void	clean_all(t_shell *data)
 	clean_env(&data->env, data->env.vars);
 	clean_ast(data->ast_root);
 	clean_extras(&data->extra_features);
-	free(data->home);
 }

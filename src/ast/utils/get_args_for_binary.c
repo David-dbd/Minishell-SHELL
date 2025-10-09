@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args_for_binary.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 23:03:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 21:54:34 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/08 23:04:56 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ static void	arg_count(t_token *tokens, int n_tokens, int *i, int *n_args)
 			break ;
 		if (is_redir_type(tokens[*i].type))
 		{
-			while (*i < n_tokens && !is_arg_type(tokens[*i].type))
+			while (*i < n_tokens && (!is_arg_type(tokens[*i].type) && tokens[*i].type != COMMAND))
 			{
 				if (is_delimiter_type(tokens[*i].type))
 					break ;
 				(*i)++;
 			}
 		}
-		if (is_arg_type(tokens[*i].type))
+		if (is_arg_type(tokens[*i].type) || tokens[*i].type == COMMAND)
 			(*n_args)++;
 		if (is_delimiter_type(tokens[*i].type))
 			break ;
@@ -73,8 +73,10 @@ char	**get_args_for_binary(t_shell *data, t_token *tokens, int *i)
 	int		j;
 	int		k;
 
-	k = 0;
+	if (tokens[*i].type == BUILT_IN)
+		safe_index_plus(i, data->prompt.n_tokens);
 	j = *i;
+	k = 0;
 	n_args = 0;
 	arg_count(tokens, data->prompt.n_tokens, i, &n_args);
 	if (n_args == 0)

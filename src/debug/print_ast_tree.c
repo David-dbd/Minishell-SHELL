@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_ast_tree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 17:51:53 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 21:56:16 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/08 23:07:05 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	print_args(char **args)
 {
 	int	i;
 
-	if (!args || !args[0])
+	if (!args || !args[0] || !args[1])
 		return;
 	printf(" [Args: ");
 	i = 0;

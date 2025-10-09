@@ -6,22 +6,43 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 01:44:27 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/07 21:46:14 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/09 01:36:07 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
 
 /*
-	get_arg_types() sirve para contextualizar los args de un cmd o built_in.
-	En este caso en concreto solo se necesita contextualizar export debido a
-	los diferentes tipos de argumentos que puede manejar.
+	get_arg_types() sirve para contextualizar los argumentos de un comando.
+	En especial, se usa para `export`, que puede manejar ASIGNATIONS,
+	PLUS_ASIGNATIONS (`+=`) y WORD.
 
-	Eg.
-	export [args: var=1, var+=1, hola] -> [context: ASIGNATION, PLUS_ASIG, WORD]
+	Ejemplos:
+	*export [args: var=1, var+=1, hola]-> [context: ASIGNATION, PLUS_ASIG, WORD]
 
-	Esto evita tener que reanalizar los args de export, es decir, duplicar el
-	trabajo que ya se hizo en otras funciones que verifican los tokens.
+	*var+=1 export [args: var=1, var+=1, hola]->
+	[context: PLUS_ASIG, ASIGNATION, PLUS_ASIG, WORD]
+
+	*var=1 ls [args: -l] [temp: var=1] ->[context: TEMP_ASIGNATION]
+
+	En vez de guardar los tipos (`t_type`), se guarda el índice del token
+	original. Esto permite acceder a sus vecinos y analizar el contexto,
+	como en `is_it_env_or_local()`.
+
+	Si hay asignaciones temporales (`TEMP_ASIGNATION`), también se incluyen
+	en el array, ya que `export` las tratará como asignaciones normales
+	en el proceso hijo.
+
+	Esto evita duplicar trabajo y permite que el executor tenga toda la
+	información necesaria sin reanalizar los argumentos.
+
+	En get_bin_args(); se avanza el index desde el primer argumento del cmd
+	hasta el último. Aquí, start_i hace refernecia a la posición de i
+	sobre el cmd otra vez, mientras que end_j hace referencia al index en el
+	úlrimo cmd, de modo que se puede cubrir la distancia exacta entre el cmd
+	y su ultimo argumento
+
+	Si arg_index no se movio es porque no hay args o no son validos
 */
 
 static void	create_dinamic_arr(t_shell *data, int **arg_types, int i, int j)
@@ -31,16 +52,46 @@ static void	create_dinamic_arr(t_shell *data, int **arg_types, int i, int j)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 }
 
-int	*get_arg_types(t_shell *data, t_token *tokens, int start_i, int end_j)
+static int	*alloc_arg_types(t_shell *dat, t_node *node, int start_i, int end_j)
 {
+	int	*arg_types;
+	int	tmp_counter;
+
+	tmp_counter = 0;
+	if (node->assig_tmp)
+	{
+		while (node->assig_tmp[tmp_counter])
+			tmp_counter++;
+		create_dinamic_arr(dat, &arg_types, start_i, (end_j + tmp_counter));
+	}
+	else
+		create_dinamic_arr(dat, &arg_types, start_i, end_j);
+	return (arg_types);
+}
+
+static void	check_arg_index(int arg_index, int **arg_types)
+{
+	if (arg_index == 0)
+	{
+		free (*arg_types);
+		*arg_types = NULL;
+	}
+}
+
+int	*get_arg_types(t_shell *data, t_node *node, int start_i, int end_j)
+{
+	t_token *tokens;
 	int		*arg_types;
 	int		arg_index;
 
-	arg_types = 0;
 	arg_index = 0;
+	tokens = data->prompt.tokens;
+	arg_types = alloc_arg_types(data, node, start_i, end_j);
 	if (ft_strcmp(tokens[start_i].value, BUILTIN_EXPORT) != 0)
+	{
+		free (arg_types);
 		return (NULL);
-	create_dinamic_arr(data, &arg_types, start_i, end_j);
+	}
 	start_i += 1;
 	while (start_i < data->prompt.n_tokens && start_i < end_j)
 	{
@@ -51,10 +102,6 @@ int	*get_arg_types(t_shell *data, t_token *tokens, int start_i, int end_j)
 		}
 		start_i++;
 	}
-	if (arg_index == 0)
-	{
-		free (arg_types);
-		arg_types = NULL;
-	}
+	check_arg_index(arg_index, &arg_types);
 	return (arg_types);
 }

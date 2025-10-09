@@ -6,11 +6,16 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 18:54:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/07 19:13:53 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/08 03:20:25 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+/*
+	Verifica si el token[i - 1] es una asignación temporal y la guarda como
+	parte del contexto/metadata del comando que le sigue.
+*/
 
 static void	aux_alloc_mem(t_shell *data, char ***args, int n_args)
 {

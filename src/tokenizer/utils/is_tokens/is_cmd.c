@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 21:35:11 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 16:42:01 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:49:41 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static int	find_bin(char **path_arr, char *path_slash, char *path, char *word)
 /*
 	Comprueba si la palabra es un built-in conocido.
 	- built_in: lista de comandos internos.
-	- Si coincide, marca token->type = BUILT_IN y aumenta prompt->n_cmds.
+	- Si coincide, marca token->type = BUILT_IN
 	- Devuelve YES si es built-in, NO si no lo es.
 	- Usa ft_strmatch_cmp: Tranforma s1 para que haga match con s2 por si el
 	usuario hace: Ls - Echo - ECHO - LS - CD - cd - etc...
@@ -112,7 +112,6 @@ static int	is_built_in(t_shell *d, t_prompt *prompt, t_token *token, char *str)
 		if (ft_strmatch_cmp(built_in[i], str) == 0)
 		{
 			token->type = BUILT_IN;
-			prompt->n_cmds++;
 			return (YES);
 		}
 		i++;
@@ -125,7 +124,7 @@ static int	is_built_in(t_shell *d, t_prompt *prompt, t_token *token, char *str)
 	- Primero revisa built-ins con is_built_in.
 	- Luego busca en PATH si no es built-in.
 	- Si PATH no existe por no env, crea un PATH por defecto.
-	- Actualiza token->type = COMMAND y prompt->n_cmds si lo encuentra.
+	- Actualiza token->type = COMMAND si lo encuentra.
 	- Maneja errores de memoria con set_free y exit_error.
 */
 
@@ -147,7 +146,7 @@ void	is_cmd(t_shell *data, t_prompt *prompt, t_token *token, char *str)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 	validate = find_bin(path_arr, path_slash, path, str);
 	if (validate == SUCCESS)
-		return (token->type = COMMAND, prompt->n_cmds++, (void)OK);
+		return (token->type = COMMAND, (void)OK);
 	else if (validate == ERROR)
 	{
 		set_free(path_arr, &path_slash, &path);

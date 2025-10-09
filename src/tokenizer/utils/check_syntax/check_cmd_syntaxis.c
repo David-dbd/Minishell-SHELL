@@ -6,7 +6,11 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 22:39:55 by davdiaz-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/10/08 16:36:01 by davdiaz-         ###   ########.fr       */
+=======
+/*   Updated: 2025/10/08 16:56:59 by migarrid         ###   ########.fr       */
+>>>>>>> f462f62e8ef439e64c261d848882915c1a10d5e0
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +43,7 @@ int	check_cmd_syntax(t_shell *data, t_prompt *prompt, t_token *token, int i)
 			free (error_message);
 			return (SYNTAX_ERROR);
 		}
+<<<<<<< HEAD
 		/*if (i >= 1 && token[i - 1].type && token[i + 1].type
 			&& token[i + 2].type && token[i - 1].type == PAREN_OPEN
 			&& token[i + 1].type == PAREN_CLOSE)
@@ -48,6 +53,17 @@ int	check_cmd_syntax(t_shell *data, t_prompt *prompt, t_token *token, int i)
 			free (error_message);
 			return (SYNTAX_ERROR);
 		}*/
+=======
+		// if (i >= 1 && token[i - 1].type && token[i + 1].type
+		// 	&& token[i + 2].type && token[i - 1].type == PAREN_OPEN
+		// 	&& token[i + 1].type == PAREN_CLOSE)
+		// {
+		// 	aux_error(data, token, &error_message, i);
+		// 	syntax_error(data, ERR_SYNTAX, EXIT_USE, error_message);
+		// 	free (error_message);
+		// 	return (SYNTAX_ERROR);
+		// }
+>>>>>>> f462f62e8ef439e64c261d848882915c1a10d5e0
 	}
 	return (SUCCESS);
 }

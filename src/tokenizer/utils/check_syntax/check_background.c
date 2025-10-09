@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 03:51:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 21:35:38 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/08 19:46:26 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 	- Devuelve SUCCESS si el '&' está en una posición válida.
 */
 
+
+
 int	check_background(t_shell *data, t_prompt *p, t_token *tokens, int i)
 {
 	if (tokens[i].type == BACKGROUND)
@@ -31,13 +33,20 @@ int	check_background(t_shell *data, t_prompt *p, t_token *tokens, int i)
 			syntax_error(data, ERR_SYNTAX, EXIT_USE, "&");
 			return (SYNTAX_ERROR);
 		}
-		if (!(tokens[i - 1].type == COMMAND
-				|| tokens[i - 1].type == WORD
-				|| tokens[i - 1].type == BUILT_IN
+		if (i > 0 && !(tokens[i - 1].type == COMMAND
+				|| tokens[i - 1].type == WORD || tokens[i - 1].type == BUILT_IN
 				|| tokens[i - 1].type == EXPANSION
 				|| tokens[i - 1].type == WILDCAR))
 		{
 			syntax_error(data, ERR_SYNTAX, EXIT_USE, tokens[i - 1].value);
+			return (SYNTAX_ERROR);
+		}
+		if (i < p->n_tokens && (tokens[i + 1].type == PIPE
+				|| tokens[i + 1].type == AND || tokens[i + 1].type == OR
+				|| tokens[i + 1].type == SEMICOLON
+				|| tokens[i + 1].type == BACKGROUND))
+		{
+			syntax_error(data, ERR_SYNTAX, EXIT_USE, tokens[i + 1].value);
 			return (SYNTAX_ERROR);
 		}
 	}

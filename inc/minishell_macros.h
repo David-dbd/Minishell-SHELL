@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:23:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/06 19:27:41 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/08 22:02:21 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define REPLACED					2
 # define VOID						0
 # define RECIVED_SIGNAL				0
+# define FAIL						1
 
 /* ************************************************************************** */
 /*                               Global Flag                                  */
@@ -53,6 +54,10 @@
 # define BACKWARDS					-1
 # define INITIAL_PHASE				1
 # define FINAL_PHASE				2
+# define FATHER						1
+# define CHILD						2
+# define LEFT						2
+# define RIGHT						1
 
 /* ************************************************************************** */
 /*                               Exit Codes                                   */
@@ -62,7 +67,7 @@
 # define EXIT_FAIL					1
 # define EXIT_USE					2
 # define EXIT_CMD_NOT_FOUND			127
-# define EXIT_CMD_NOT_EXECUTABLE	126
+# define EXIT_CMD_NOT_EXEC			126
 # define EXIT_FATAL_SIGNAL			128
 # define EXIT_CTRL_C				130
 
@@ -123,6 +128,7 @@
 /* ************************************************************************** */
 //General Errors
 # define ERR_MALLOC		"minishell: memory allocation failed\n"
+# define MALLOC			"minishell: memory allocation failed\n"
 # define ERR_FORK		"minishell: fork: Resource temporarily unavailable\n"
 # define ERR_PIPE		"minishell: pipe: Too many open files\n"
 # define ERR_DUP		"minishell: dup2: Bad file descriptor\n"
@@ -139,7 +145,7 @@
 //Command Errors
 # define ERR_CMD_NOT_FOUND	"minishell: %s: command not found\n"
 # define ERR_CMD_NOT_EXEC	"minishell: %s: cannot execute binary file\n"
-# define ERR_EXEC_FORMAT	"minishell: %s: cannot execute binary file: \
+# define ERR_EXEC			"minishell: %s: cannot execute binary file: \
 Exec format error\n"
 
 //Built-in Errors

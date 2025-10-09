@@ -40,15 +40,7 @@
 		"ostream": "c",
 		"functional": "c",
 		"utility": "c",
-<<<<<<< HEAD
-		"__availability": "c",
-		"__errc": "c",
-		"__hash_table": "c",
-		"__tuple": "c",
-		"ios": "c"
-=======
 		"typeinfo": "c"
->>>>>>> origin/mikel
 	},
 
 	// Configuración C/C++

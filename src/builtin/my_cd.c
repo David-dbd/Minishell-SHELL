@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 17:12:22 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/03 21:50:34 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:55:15 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,17 @@ int	my_cd(t_shell *data, t_token *tokens, t_token *token)
 	if (tokens[i].type == BUILT_IN)
 		i++;
 	args_found = count_args(tokens, i, data->prompt.n_tokens);
-	if (!args_found)
-	{
-		data->home = getenv("HOME");
-		if (!data->home || chdir(data->home) == -1)
-		{
-			ft_printf_fd(STDOUT, ERR_CD_NO_HOME);
-			return (EXIT_USE);
-		}
-		return (SUCCESS);
-	}
-	else if (args_found > 1)
+	// if (!args_found)
+	// {
+	// 	data->home = getenv("HOME");
+	// 	if (!data->home || chdir(data->home) == -1)
+	// 	{
+	// 		ft_printf_fd(STDOUT, ERR_CD_NO_HOME);
+	// 		return (EXIT_USE);
+	// 	}
+	// 	return (SUCCESS);
+	// }
+	if (args_found > 1)
 	{
 		ft_printf_fd(STDOUT, ERR_CD_TOO_MANY);
 		return (EXIT_USE);
@@ -115,6 +115,7 @@ int	my_cd(t_shell *data, t_token *tokens, t_token *token)
 	return (SUCCESS);
 	//falla con /MINISHELL
 	//cd ../../../
+	//Sacar home desde env propio no volver a buscarlo porque puede dar errores.
 	//cd 42 desde el home
 	//falla en escenarios random. Tal vez sea como lo escribi
 	//falla desde el home casi siempre

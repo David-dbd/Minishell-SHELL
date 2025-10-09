@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 20:54:50 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/09 03:27:40 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,14 @@ t_node	*parse_cmd(t_shell *data, t_token *tokens, int *i, int n_tokens);
 /* ************************************************************************** */
 /*                                Executor                                    */
 /* ************************************************************************** */
-void	which_builtin(t_shell *data, t_token *token, t_node *node);
-void	execute_recursive(t_shell *data, t_node *ast_root, t_exec *executor);
+void	executor_recursive(t_shell *data, t_node *ast_root, int mode);
+void	exec_semicolon(t_shell *data, t_node *node, int mode);
+void 	exec_and(t_shell *data, t_node *node, int mode);
+void	exec_or(t_shell *data, t_node *node, int mode);
+void	exec_pipe(t_shell *data, t_node *node, int mode);
+void	exec_command(t_shell *data, t_node *node, t_env *env, int mode);
+void	exec_subshell(t_shell *data, t_node *node, int mode);
+void	exec_builtin(t_shell *data, t_node *node, int mode);
 
 /* ************************************************************************** */
 /*                                buil_in                                     */
@@ -201,10 +207,14 @@ void	transform_command_built_lowercase(t_prompt *prompt, t_token *tokens);
 
 //AST
 int		get_background(t_token *tokens, int n_tokens, int *i);
-int		*get_arg_types(t_shell *data, t_token *tokens, int i, int j);
+int		*get_arg_types(t_shell *data, t_node *node, int i, int j);
 char	**get_args_for_binary(t_shell *data, t_token *token, int *i);
 char	**get_temp_asignations(t_shell *data, t_token *tokens, int i);
-t_redir	*get_redirs(t_shell *data, t_token *tokens, int mode, int *i);
+t_redir	*get_redirs(t_shell *data, t_token *tokens, int *i, int mode);
+
+//EXECUTOR
+char	*get_path(t_shell *data, char *cmd, char **envp);
+void	which_builtin(t_shell *data, t_token *token, t_node *node);
 
 //EXPANSION
 int		copy_key(char *buffer, char **key_to_find);

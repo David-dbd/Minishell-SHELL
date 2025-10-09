@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:07:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 22:40:37 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/08 15:50:47 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ int	add_token(t_shell *data, t_prompt *prompt, char *value, int type)
 	tokens[i].id = i;
 	tokens[i].value = value;
 	tokens[i].type = type;
-	if (tokens[i].type == EXPANSION)
-		tokens[i].expand = TRUE;
 	if (i > 0 && tokens[i - 1].type == DOUBLE_QUOTE)
 		tokens[i].double_quoted = TRUE;
 	if (i > 0 && tokens[i - 1].type == SINGLE_QUOTE)

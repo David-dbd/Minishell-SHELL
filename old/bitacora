@@ -53,7 +53,7 @@ Edit
 if (!tokenizer(data, input))    return error(...);
 if (!expansion(data->tokens, data->envp)) return error(...);
 if (!ast(data, data->tokens))   return error(...);
-if (!execute_recursive(data, data->ast))  return error(...);
+if (!executor_recursive(data, data->ast))  return error(...);
 clean_data(data);
 Cada etapa devuelve false si falla y dispara limpieza y gestión de error.
 

@@ -4,13 +4,23 @@ Minishell - Bash
 ## POR HACER:
 
 ## MIKEL:
+- Important:
+- HEREDOC
+- Todos los tipos de REDIRS
+
+- Secondary:
 - Bash te abra línea para que completes el comando ver → Modificar balance de ' " ( || && |
   - https://github.com/rogerdevworld/minishell/blob/main/src/bonus/loop_processing.c
   - https://github.com/rogerdevworld/minishell/blob/main/src/bonus/syntax/ft_lexer_2.c#L93
 
 ## DAVID:
+- Important:
+- get_Arg_types funciona y sin leaks
+- get_temp_asig funciona y sin leaks -> con export y con cualquier otro comando
+- bugs de tempasignations bien catalogadas
+
+- Secondary:
 - Hacer built-in CD
-- Hacer funcion de asignaciones temporales.
 - `echo $a && a=1`
 - invalid read `echo $SHLVL`
 - invalid read `token: =1`
