@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_type_III.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 17:23:51 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 20:10:03 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/11 03:54:59 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,6 @@ int	is_asignation_type(int type)
 	return (0);
 }
 
-/*
- * Verifica si el carácter es un símbolo válido para identificadores:
- * acepta ?, !, $ y _ como parte de nombres de variables
- */
-
-int	is_symbol(int c)
-{
-	if (c == '?' || c == '!' || c == '$' || c == '_')
-		return (1);
-	return (0);
-}
 
 /*
  * Comprueba si el tipo puede ser argumento de comando:
@@ -57,6 +46,30 @@ int	is_arg_type(int type)
 int	is_real_assignation_type(int type)
 {
 	if (type == ASIGNATION || type == PLUS_ASIGNATION)
+		return (1);
+	return (0);
+}
+
+/*
+ * Comprueba si el tipo son asignaciones de output:
+ * Para nodos true.
+ */
+
+int	is_redir_output_type(int type)
+{
+	if (type == REDIR_APPEND || type == REDIR_OUTPUT)
+		return (1);
+	return (0);
+}
+
+/*
+ * Comprueba si el tipo son asignaciones de input:
+ * Para nodos command.
+ */
+
+int	is_redir_input_type(int type)
+{
+	if (type == REDIR_HEREDOC || type == REDIR_INPUT)
 		return (1);
 	return (0);
 }

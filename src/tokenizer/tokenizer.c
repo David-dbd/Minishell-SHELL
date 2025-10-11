@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 23:06:29 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 05:44:52 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 	detectar cada tipo de token. Avanza el índice según lo detectado.
 */
 
-void	parse_tokens(t_shell *data, t_prompt *prompt, char *input)
+void	get_tokens(t_shell *data, t_prompt *prompt, char *input)
 {
 	int	i;
 
@@ -94,7 +94,7 @@ int	check_if_valid_tokens_end(t_shell *data, t_prompt *prompt, t_token *tokens)
 int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 {
 	allocate_tokens(data, prompt, input);
-	parse_tokens(data, prompt, input);
+	get_tokens(data, prompt, input);
 	if (!check_if_valid_tokens_init(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
 
@@ -102,14 +102,13 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 
 	// is_it_quoted(prompt, prompt->tokens); // Se puede hacer mas eficiente
 
-	expansion(data, prompt->tokens, &data->env, INITIAL_PHASE);
+	expansion(data, prompt->tokens, &data->env, FINAL_PHASE);
 	simplify_tokens(data, prompt, prompt->tokens);
 
 	// print_tokens_debug(prompt);
 
 	transform_tokens_logic(data, prompt, prompt->tokens);
 
-	// print_tokens_debug(prompt);
 	if (!check_if_valid_tokens_end(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
 

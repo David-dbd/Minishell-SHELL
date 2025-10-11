@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:47:09 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/06 17:20:14 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 06:46:18 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,4 @@ void	handle_sigint_heredoc(int sig)
 {
 	(void)sig;
 	g_signal[1] = SIGINT;
-	write(STDOUT_FILENO, "\n", 1);
 }

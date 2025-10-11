@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
+#    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/10/09 03:32:30 by davdiaz-         ###   ########.fr        #
+#    Updated: 2025/10/11 04:56:59 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -181,6 +181,7 @@ SRCS =				main/main.c \
 					ast/utils/get_temp_asignations.c \
 					ast/utils/get_background.c \
 					ast/utils/safe_index_plus.c \
+					ast/utils/get_heredoc.c \
 					executor/executor.c \
 					executor/exec/exec_semicolon.c \
 					executor/exec/exec_and.c \
@@ -193,6 +194,8 @@ SRCS =				main/main.c \
 					executor/utils/get_path_cmd.c \
 					executor/utils/eliminate_token.c \
 					executor/utils/eliminate_temp_asig.c \
+					executor/utils/apply_properties.c \
+					executor/utils/apply_redirs.c \
 					signals/setup_signals.c \
 					signals/handler_signals.c \
 					signals/check_signals.c \

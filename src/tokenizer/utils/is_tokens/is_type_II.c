@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:48:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/06 17:27:29 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 03:54:14 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,18 @@ int	is_simplify_type(int type)
 int	is_cmd_builtin_type(int type)
 {
 	if (type == COMMAND || type == BUILT_IN)
+		return (1);
+	return (0);
+}
+
+/*
+ * Verifica si el carácter es un símbolo válido para identificadores:
+ * acepta ?, !, $ y _ como parte de nombres de variables
+ */
+
+int	is_symbol(int c)
+{
+	if (c == '?' || c == '!' || c == '$' || c == '_')
 		return (1);
 	return (0);
 }

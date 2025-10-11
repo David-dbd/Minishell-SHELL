@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 19:24:46 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 23:19:58 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 05:42:41 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	special_cases_path_dir(t_shell *data, char *cmd)
 	if (ft_strcmp(cmd, ".") == 0)
 		return ((void)exit_error(data, ERR_IS_DIR, 126, cmd));
 	if (ft_strcmp(cmd, "..") == 0)
+		return ((void)exit_error(data, ERR_CMD_NOT_FOUND, 127, cmd));
+	if (ft_strcmp(cmd, "") == 0)
 		return ((void)exit_error(data, ERR_CMD_NOT_FOUND, 127, cmd));
 }
 

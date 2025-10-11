@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 17:51:53 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 23:22:31 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 04:58:25 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ static void	print_redirs(t_redir *redirs)
 	{
 		if (!first)
 			printf(", ");
-		if (current->fd >= 0)
+		if (current->fd_redir >= 0)
 			printf("%s %s (fd:%d)", g_type_names[current->type],
-				current->filename, current->fd);
+				current->filename, current->fd_redir);
 		else
 			printf("%s %s", g_type_names[current->type], current->filename);
 		first = 0;

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:12 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 23:18:58 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 05:29:01 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	exec_builtin(t_shell *data, t_node *node, t_env *env, int mode)
 		if (pid == 0)
 		{
 			setup_signals_child();
+			apply_properties(data, node, env, mode);
 			which_builtin(data, node->token, node);
 			exit_succes(data, NULL, data->exit_code);
 		}
@@ -64,7 +65,8 @@ void	exec_builtin(t_shell *data, t_node *node, t_env *env, int mode)
 		data->exit_code = OK; //da 0 porque el fork en si fue exitoso
 		return ;
 	}
-	which_builtin(data, node->token, node); //tanto si es child o parent entra aqui
+	if (apply_properties(data, node, env, mode) == SUCCESS)
+		which_builtin(data, node->token, node);
 	if (mode == CHILD) // si era child de un pipe se sale con su exit_code
 		exit_succes(data, NULL, data->exit_code);
 	return ;

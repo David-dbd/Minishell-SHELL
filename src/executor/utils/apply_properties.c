@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_cmd_externs.c                                :+:      :+:    :+:   */
+/*   apply_properties.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/07 17:35:07 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/11 03:28:16 by migarrid         ###   ########.fr       */
+/*   Created: 2025/10/11 04:51:08 by migarrid          #+#    #+#             */
+/*   Updated: 2025/10/11 05:30:16 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../inc/minishell.h"
+#include "../../../inc/minishell.h"
 
-int	check_cmd_externs(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
+int	apply_properties(t_shell *data, t_node *node, t_env *env, int mode)
 {
-	if (tokens[i].type != COMMAND)
-		return (SUCCESS);
-	if (i >= 2 && tokens[i - 1].type
-		&& tokens[i - 1].type == FILENAME && !tokens[i - 1].type == REDIR_INPUT)
-	{
-		syntax_error(data, ERR_SYNTAX, EXIT_USE, tokens[i].value);
-		return (SYNTAX_ERROR);
-	}
+	if (node->assig_tmp)
+		my_export(data, data->prompt.tokens, env, node);
+	if (node->redir);
+		if (!apply_redirs(data, node, mode))
+			return (FAILURE);
 	return (SUCCESS);
 }

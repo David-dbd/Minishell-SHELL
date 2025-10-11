@@ -1,60 +1,3 @@
-export hola
-export
-export | ls
-export | grep hola
-export hello
-export | grep hello
-echo 1
-echo 
-echo hola
-scd
-c
-d
-sdvv
-sg
-sd
-dcd
-)
-(echo) hi
-exit 42 42 42 42 42 
-exit 42 42 42
-exit cd ..
-exit a
-exit -4
-exit +1
-exit -1
-exit " "
-exit ""
-exit A
-/bin/ls 
-/bin/ls
-bin/ls
-usr/bin/ls
-/bin/echo hola
-A=1 | echo $A
-export A=1
-env
-export A=1 && echo $A
-unset
-/bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
-/bin/echo $"HOME"$USER
-/bin/echo ""$?""
-env | grep "minishell"
-env | grep "SHLVL="
-echo "$ "
-echo "$ " | cat -e
-/bin/echo $USER =intergalaktikus miaf*szomez
-/bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER '' | cat -e
-/bin/echo '' ""
-/bin/echo '' "" | cat -e
-/bin/echo $USER$TESTNOTFOUND$HOME$
-echo $/
-">>" asd
->> '$USER'
-"echo "
-"ECho" -n -nnn"" "-"nnnnn
-"echo -nnnnn"
->> $HOME
 'PWD'
 "ECHO" "-n"
 echo
@@ -67,11 +10,9 @@ echo 4?
 echo $U/SER
 echo '$/'
 echo '$/' | cat -e
-echo $/"$/"
 echo $/"$/" | cat -e
 echo $/"$/" 
 echo cd ~
-echo $"HOME"$USER
 echo '' ""
 echo '' "" | cat -e
 /bin/echo $HALLO42
@@ -80,7 +21,6 @@ exit 1 2
 exit ---000
 rm -rf echo
 <| echo wtf
->| echo wtf
 rm -f something
 cp src/init/init_minishell.c .
 rm init_minishell.c
@@ -94,33 +34,166 @@ echo $? | cat -e
 .
 ..
 ~
->echo>
 <echo<
 echo "$""$"
 echo $"$"
 echo $"$" | cat -e
 $$
 echo $"42$" | cat -e
-echo $'HOME'
 echo "" ''
 echo "" '' | cat -e
 exit A 1
 exit 1 2 3
 "" | cat -e
 "."
-""
 /bin/echo 1 >/dev/null | /usr/bin/grep 1
 /bin/env | grep "_="
 /bin/env | grep "SHLVL"
 ls | ls | ls | ls
 ls | ls | ls | ls | ls | ls | ls | ls
 exit something somethingv2
-echo $?
  ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls
-ls
 rm echo
 ./min
 ./minishell
-clear
 ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls
 echo hola mundo?
+Clear
+exit
+exit csds
+export
+cleae
+A=1 && echo $A
+A=1
+echo $A
+echo $USER 
+echo $HOME
+echo $SHLVL
+env
+cat Makefile
+env -i ./minishell
+ld
+ls | ls | ls | ls | ls
+ls && ls
+btop
+cmatrix
+""
+>|
+<< EOF cat 
+<< EOF cat | echo hola
+<< EOF grep hola
+grep hola < Makefile
+< Makefile grep hola
+ls && (<< EOF grep hola)
+> test grep hello
+A=1 B=2
+(<< EOF grep hola)
+<< EOF echo hola
+(<< EOF echo hola)
+< EOF echo hola
+< Makefile grep libft
+ls > test
+ls >> test
+< NOEXISTE printf hola
+< NOEXISTE echo hola
+make
+echo hola
+echo $USER
+echo $/"$/"
+>| echo sure
+export A=1
+export T
+hello
+testing your minishell
+< out
+touch "
+asd
+pwd
+/bin/echo $"HOME"$USER
+/bin/echo $"'HOM'E"$USER
+/bin/echo $'HOM'E$USER
+/bin/echo $"HOME" | cat -e
+/bin/echo $"HOME"
+/bin/echo $'HOME'
+/bin/echo "$""$"
+/bin/echo $"$"
+/bin/echo $"42$"
+/bin/echo "$"$
+/bin/echo $'$'
+echo $'HOME'
+echo $"HOME"$USER
+echo $"'HOM'E"$USER
+echo $'HOM'E$USER
+echo $"HOME"
+>| echo wtf
+> file NOFOUND
+< file
+> ls WTF
+> ls s
+> ls
+> test
+> test CMD
+> test cmd
+cat << $USER
+why
+cat << lm
+estoy
+testeando
+cat tmp_lol.c | cat > tmp_lol.c
+ "lim"
+HELLO
+42
+tes
+cat << 1
+$USER
+$HOME
+echo $USE"R"$HOME
+$USE"R"$HOME
+>>echo>>
+>echo>
+sdcs
+sdc
+lm
+< Makefile
+"lim"
+ lm
+limm
+ lim
+dc
+lim
+cat << lim
+<< Makefile
+sld
+sc
+cs
+clear
+>">" asd
+echo hi >./outfiles/outfile01 | echo bye
+(echo hi >./outfiles/outfile01 | echo bye) 2> prueba 2
+(echo hi >./outfiles/outfile01 | echo bye) 2> prueba2
+(echo hi >./outfiles/outfile01 | echo bye)
+<< EOF
+svsv
+echo <123 <456 hi | echo 42
+ls|cat Makefile|<wc -l
+ls | cat Makefile| <wc -l
+grep hi <./test_files/infile
+< NOEXISTE
+cat <"1""2""3""4""5"
+cat < sds
+cat < "1""2""3""4""5"
+cat < scdsdc
+<< lm
+sdv
+sdvs
+<< lm ls
+sd
+sv
+vsd
+svd
+echo $?
+l
+sl
+csd
+lsd
+ls

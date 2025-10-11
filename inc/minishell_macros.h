@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:23:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/08 22:02:21 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 06:44:54 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define IGNORE						2
 # define REPLACED					2
 # define VOID						0
-# define RECIVED_SIGNAL				0
+# define RECIVED_SIGNAL				1
 # define FAIL						1
 
 /* ************************************************************************** */

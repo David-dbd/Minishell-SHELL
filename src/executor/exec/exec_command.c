@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 23:23:57 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 05:28:05 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,6 @@
 	tiene, se imprime el PID y se omite el wait.
 */
 
-void	apply_properties(t_shell *data, t_node *node, t_env *env)
-{
-	if (node->assig_tmp)
-		my_export(data, data->prompt.tokens, env, node);
-	// if (node->redir);
-	// 	apply_redirs();
-}
-
 void	wait_cmd_background(t_shell *data, t_node *node, pid_t pid)
 {
 	int	status;
@@ -75,7 +67,7 @@ void	execute_cmd_from_child(t_shell *data, t_node *node, t_env *env)
 {
 	char	*path;
 
-	apply_properties(data, node, env);
+	apply_properties(data, node, env, CHILD);
 	path = get_path(data, node->token->value, env->envp);
 	execve(path, node->args, env->envp);
 	free(path);
@@ -95,7 +87,7 @@ void	execute_cmd_from_father(t_shell *data, t_node *node, t_env *env)
 	if (pid == 0)
 	{
 		setup_signals_child();
-		apply_properties(data, node, env);
+		apply_properties(data, node, env, CHILD);
 		path = get_path(data, node->token->value, env->envp);
 		execve(path, node->args, env->envp);
 		free(path);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_type_I.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:48:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 20:36:49 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/11 03:16:01 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	is_quote_type(int type)
 }
 
 /*
-	Devuelve 1 si el tipo es redirección de salida o append.
+	Devuelve 1 si el tipo es redirección.
 */
 
 int	is_redir_type(int type)

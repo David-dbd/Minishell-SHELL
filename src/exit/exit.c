@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:42:44 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 23:11:40 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 05:09:51 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	exit_error(t_shell *data, const char *error, int exit_code, ...)
 		ft_var_printf_fd(STDERR, error, args);
 		va_end(args);
 	}
-	if ((exit_code == EXIT_FAIL) && errno)
+	if ((exit_code == EXIT_FAIL) && errno && error != NULL)
 		ft_printf_fd(STDERR, ERRNO, strerror(errno));
 	if (data)
 		clean_all(data);

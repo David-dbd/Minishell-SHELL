@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/08 18:59:10 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 04:16:51 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef enum e_type
 	PLUS_ASIGNATION,
 	TEMP_ASIGNATION,
 	FILENAME,
+	DELIMITER,
 	SUBSHELL,
 	SHELL,
 }	t_type;
@@ -114,7 +115,9 @@ struct	s_redir
 {
 	t_type		type;
 	char		*filename;
-	int			fd;
+	char		*delimiter;
+	int			fd_redir;
+	int			fd_heredoc;
 	t_redir		*next;
 };
 

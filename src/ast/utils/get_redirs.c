@@ -6,11 +6,19 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:59:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 23:17:20 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 07:34:14 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+void	set_index(t_token *tokens, int *j, int *i)
+{
+	if (*i >= 2 && is_redir_type(tokens[*i - 2].type))
+		*j = *i - 2;
+	else
+		*j = *i;
+}
 
 /*
  * Encuentra el último nodo en lista de redirecciones:
@@ -42,14 +50,16 @@ t_redir	*add_redir(t_shell *data, t_redir *lst, t_token *token, char *filename)
 	redir->type = token->type;
 	redir->filename = filename;
 	if (ft_isdigit(token->value[0]))
-		redir->fd = token->value[0] - '0';
+		redir->fd_redir = token->value[0] - '0';
 	else
 	{
 		if (redir->type == REDIR_INPUT)
-			redir->fd = 0;
+			redir->fd_redir = 0;
 		else
-			redir->fd = 1;
+			redir->fd_redir = 1;
 	}
+	if (redir->type == REDIR_HEREDOC)
+		redir->fd_heredoc = get_heredoc(data, filename);
 	if (!lst)
 		return (redir);
 	last = lstlast_redir(lst);
@@ -68,14 +78,16 @@ t_redir	*get_redirs(t_shell *data, t_token *tokens, int *i, int mode)
 	t_redir	*head;
 
 	head = NULL;
-	j = *i;
+	set_index(tokens, &j, i);
 	while (j < data->prompt.n_tokens && !is_delimiter_type(tokens[j].type))
 	{
 		if (is_redir_type(tokens[j].type))
+		{
 			head = add_redir(data, head, &tokens[j], tokens[j + 1].value);
+		}
 		j++;
 	}
-	if (mode == SUBSHELL)
+	if (mode == SUBSHELL || mode == TRUE)
 		*i = j;
 	return (head);
 }

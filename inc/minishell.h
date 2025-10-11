@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 23:15:45 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 06:42:41 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	init_ic_readline(void);
 /* ************************************************************************** */
 int		tokenizer(t_shell *data, t_prompt *prompt, char *input);
 char	*receive_input(char **input, t_shell *data);
-void	parse_tokens(t_shell *data, t_prompt *prompt, char *input);
+void	get_tokens(t_shell *data, t_prompt *prompt, char *input);
 int		check_if_valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens);
 int		add_token(t_shell *data, t_prompt *prompt, char *value, int type);
 
@@ -110,7 +110,7 @@ void	setup_signals_child(void);
 void	setup_signals_heredoc(void);
 void	handle_sigint_interative(int sig);
 void	handle_sigint_heredoc(int sig);
-int		check_signals(t_shell *data);
+int		check_signals(t_shell *data, char *line, int *pipe_fd);
 
 /* ************************************************************************** */
 /*                                 Clean                                      */
@@ -169,6 +169,8 @@ int		is_simplify_type(int type);
 int		is_cmd_builtin_type(int type);
 int		is_asignation_type(int type);
 int		is_real_assignation_type(int type);
+int		is_redir_output_type(int type);
+int		is_redir_input_type(int type);
 
 //VALID TOKENS
 void	is_it_quoted(t_prompt *prompt, t_token *tokens);
@@ -205,6 +207,7 @@ void	transform_word_to_file(t_prompt *prompt, t_token *tokens);
 void	transform_command_built_lowercase(t_prompt *prompt, t_token *tokens);
 
 //AST
+int		get_heredoc(t_shell *data, char *delimiter);
 int		get_background(t_token *tokens, int n_tokens, int *i);
 int		*get_arg_types(t_shell *data, t_node *node, int i, int j);
 char	**get_args_for_binary(t_shell *data, t_token *token, int *i);
@@ -214,6 +217,8 @@ t_redir	*get_redirs(t_shell *data, t_token *tokens, int *i, int mode);
 //EXECUTOR
 char	*get_path(t_shell *data, char *cmd, char **envp);
 void	which_builtin(t_shell *data, t_token *token, t_node *node);
+int		apply_properties(t_shell *data, t_node *node, t_env *env, int mode);
+int		apply_redirs(t_shell *data, t_node *node, int mode);
 
 //EXPANSION
 int		copy_key(char *buffer, char **key_to_find);

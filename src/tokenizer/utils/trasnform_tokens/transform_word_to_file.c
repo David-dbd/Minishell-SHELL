@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:43:29 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 18:09:48 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 03:23:43 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,16 @@ void	transform_word_to_file(t_prompt *prompt, t_token *tokens)
 {
 	int	i;
 
-	i = 0;
-	while (i < prompt->n_tokens)
+	i = -1;
+	while (i++ < prompt->n_tokens)
 	{
 		if (i > 0 && tokens[i].type == WORD
 			&& is_redir_type(tokens[i - 1].type))
 		{
-			tokens[i].type = FILENAME;
+			if (tokens[i - 1].type == REDIR_HEREDOC)
+				tokens[i].type = DELIMITER;
+			else
+				tokens[i].type = FILENAME;
 		}
 		if (i > 0 && is_cmd_builtin_type(tokens[i].type)
 			&& tokens[i - 1].type == FILENAME
@@ -64,6 +67,5 @@ void	transform_word_to_file(t_prompt *prompt, t_token *tokens)
 		{
 			tokens[i].type = COMMAND;
 		}
-		i++;
 	}
 }

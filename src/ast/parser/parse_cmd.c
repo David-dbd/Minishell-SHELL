@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:29:52 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 23:16:36 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 07:33:51 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@
 	semántica y estructura de cada componente.
 */
 
+void	index_redir_input(int type, int *i, int n_tokens)
+{
+	if (is_redir_type(type))
+	{
+		safe_index_plus(i, n_tokens);
+		safe_index_plus(i, n_tokens);
+	}
+}
+
 t_node	*special_cases(t_shell *data, t_token *tokens, int *i, int n_tokens)
 {
 	t_node	*left;
@@ -48,17 +57,17 @@ t_node	*special_cases(t_shell *data, t_token *tokens, int *i, int n_tokens)
 	{
 		(*i)++;
 	}
-	else if (is_redir_type(tokens[*i].type))
+	else if (n_tokens == 2 && is_redir_type(tokens[*i].type))
 	{
 		left = create_true_node(data, COMMAND);
-		left->redir = get_redirs(data, tokens, i, COMMAND);
+		left->redir = get_redirs(data, tokens, i, TRUE);
 		left->background = get_background(tokens, n_tokens, i);
 		return (left);
 	}
 	return (NULL);
 }
 
-void	get_information(t_shell *data, t_token *tokens, int *i, t_node *left)
+int	get_information(t_shell *data, t_token *tokens, int *i, t_node *left)
 {
 	int		start;
 
@@ -68,6 +77,7 @@ void	get_information(t_shell *data, t_token *tokens, int *i, t_node *left)
 	left->args = get_args_for_binary(data, tokens, i);
 	left->arg_types = get_arg_types(data, left, start, *i);
 	left->background = get_background(tokens, data->prompt.n_tokens, i);
+	return (OK);
 }
 
 t_node	*parse_cmd(t_shell *data, t_token *tokens, int *i, int n_tokens)
@@ -80,8 +90,10 @@ t_node	*parse_cmd(t_shell *data, t_token *tokens, int *i, int n_tokens)
 		return (left);
 	if (*i < n_tokens && tokens[*i].type
 		&& (is_cmd_builtin_type(tokens[*i].type)
-			|| is_real_assignation_type(tokens[*i].type)))
+			|| is_real_assignation_type(tokens[*i].type)
+			|| is_redir_type(tokens[*i].type)))
 	{
+		index_redir_input(tokens[*i].type, i, n_tokens);
 		left = create_node(data, &tokens[*i], tokens[*i].type);
 		if (is_asignation_type(tokens[*i].type))
 		{

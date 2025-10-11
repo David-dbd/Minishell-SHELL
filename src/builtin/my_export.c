@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:22:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 17:02:41 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/11 05:50:44 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ static int	asignation_type(t_shell *data, t_token *tokens, int i, t_env *env)
 	}
 	else if (tokens[i].type == PLUS_ASIGNATION)
 		asignation(data, &tokens[i], PLUS_ASIGNATION);
-	return (SUCCESS);
+	return (OK);
 }
 
 int	my_export(t_shell *data, t_token *tokens, t_env *env, t_node *node)
