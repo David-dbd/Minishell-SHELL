@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 23:03:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/11 17:34:31 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/12 18:31:20 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static void	arg_count(t_token *tokens, int n_tokens, int *i, int *n_args)
 			break ;
 		if (is_redir_type(tokens[*i].type))
 		{
-			while (*i < n_tokens && (!is_arg_type(tokens[*i].type) && tokens[*i].type != COMMAND))
+			while (*i < n_tokens && (!is_arg_type(tokens[*i].type)
+				&& tokens[*i].type != COMMAND))
 			{
 				if (is_delimiter_type(tokens[*i].type))
 					break ;

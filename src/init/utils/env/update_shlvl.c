@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 21:47:52 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/06 17:32:49 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/13 19:56:06 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	update_shlvl(t_var *vars)
 	var = vars;
 	while (var)
 	{
-		if (strcmp(var->key, "SHLVL") == 0)
+		if (ft_strcmp(var->key, "SHLVL") == 0)
 		{
 			lvl = ft_atol(var->value) + 1;
 			if (lvl > INT_MAX)

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/11 21:12:19 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/13 19:57:09 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 /* ************************************************************************** */
 # include "../lib/isocline/include/isocline.h"
 # include "../lib/libft_plus/libft_plus.h"
-# include "../lib/readline/readline.h"
-# include "../lib/readline/history.h"
 # include "minishell_structs.h"
 # include "minishell_macros.h"
 # include <sys/types.h>
@@ -30,6 +28,7 @@
 # include <strings.h>
 # include <termios.h>
 # include <dirent.h>
+# include <string.h>
 # include <signal.h>
 # include <errno.h>
 # include <term.h>
@@ -108,7 +107,7 @@ void	setup_signals_child(void);
 void	setup_signals_heredoc(void);
 void	handle_sigint_interative(int sig);
 void	handle_sigint_heredoc(int sig);
-int     check_signal_node_heredoc(t_redir *redir);
+int     check_signal_node_heredoc(t_node *node, t_redir *redir);
 int		check_signals(t_shell *data, t_redir *redir, char *line, int *pipe_fd);
 
 /* ************************************************************************** */
@@ -116,13 +115,14 @@ int		check_signals(t_shell *data, t_redir *redir, char *line, int *pipe_fd);
 /* ************************************************************************** */
 void	clean_all(t_shell *data);
 void	clean_ast(t_node *node);
+void	clean_node(t_node **node);
 void	clean_prompt(t_prompt *prompt);
-void	clean_token(t_token *token);
-void	clean_tokens(t_prompt *prompt);
+void	clean_token(t_token **token);
+void	clean_tokens(t_prompt **prompt);
 void	clean_redirs(t_redir **lst);
 void	clean_env(t_env *env, t_var *vars);
 void	clean_extras(t_extras *extra_features);
-void	clean_cycle(t_shell *data, t_prompt *prompt, t_node *ast_root);
+void	clean_cycle(t_shell *data, t_prompt *prompt, t_node **ast_root);
 
 /* ************************************************************************** */
 /*                                 Exits                                      */

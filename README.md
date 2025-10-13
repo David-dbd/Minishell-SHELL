@@ -4,11 +4,11 @@ Minishell - Bash
 🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
 🏁                                    RESULT                                    🏁
 🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
-             TOTAL TEST COUNT: 881  TESTS PASSED: 711  LEAKING: 0
-                     STD_OUT: 98  STD_ERR: 87  EXIT_CODE: 69
+             TOTAL TEST COUNT: 881  TESTS PASSED: 726  LEAKING: 0
+                     STD_OUT: 87  STD_ERR: 67  EXIT_CODE: 53
                          TOTAL FAILED AND PASSED CASES:
-                                     ❌ 254
-                                     ✅ 2389
+                                     ❌ 207
+                                     ✅ 2436
 
 ## POR HACER:
 
@@ -16,20 +16,12 @@ Minishell - Bash
 - Important:
 - Actualizar ultimo comando env
 - env what
-- multilinea
-
-minishell> echo seg <> echo seg
-minishell: syntax error near unexpected token `>'
-minishell> echo <<< echo seegf
-minishell: syntax error near unexpected token `<'
 
 - Secondary:
 - Bash te abra línea para que completes el comando ver → Modificar balance de ' " ( || && |
   - https://github.com/rogerdevworld/minishell/blob/main/src/bonus/loop_processing.c
   - https://github.com/rogerdevworld/minishell/blob/main/src/bonus/syntax/ft_lexer_2.c#L93
 
-Que falta:
-- hacer redirecciones de subshells
 
 ## DAVID:
 - Important:

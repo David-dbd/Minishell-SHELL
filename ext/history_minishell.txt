@@ -1,25 +1,35 @@
-ls | > tmp
-> tmp
-<< EOF
-sdv
-sd
-EOF
->> tmp
-ls || >tmp
-ls | >ls
-clear
-ls | cat << stop 
-ls
-ls | cat << stop | ls -la | cat << stop1
-stop
-stop1
+ls > > test
 ls | cat << stop | ls -la | cat << stop1 | ls | cat << stop2 | ls -la > > out | cat << stop3
-echo segfault <"<<<"<<amazing
-amazing
-(echo 1 | echo 2) | (exit 2)
-(echo) hi
-asd
+ls | cat << stop | ls -la | cat << stop1 | ls | cat << stop2 | ls -la > out | cat << stop3
+ls|cat Makefile|>> out|cd ..
+ls -a|cat Makefile|>> out|cd ..
+rm out
+ls |cat Makefile|>> out|cd ..
 pwd
-echo $?
-echo seg <> echo seg
-echo <<< echo seegf
+ic_set_prompt_marker("", ""); ic_enable_multiline(true);
+ic_set_prompt_marker("", "");
+lspwd
+ls pwd
+ sd
+a sdvs sdvsvvsvsvsv \\n
+ls \\n ls
+echo a \\n echo b
+La clave es ic_set_tty_esc_delay(1, 1) - esto hace que Isocline procese la entrada m\xC3\xA1s r\xC3\xA1pidamente y sea menos probable que interprete un \\n como final de entrada durant
+La clave es ic_set_tty_esc_delay (1, 1) - esto hace que Isocline procese la entrada m\xC3\xA1s r\xC3\xA1pidamente y sea menos probable que interprete un \\n como final de entrada durante
+ps
+btop
+sleep
+sleep 10
+clear
+<< LM
+ld
+lasd
+==133853== Command: ./minishell
+sl
+sdl
+asd
+cleara
+ls
+cle
+lca
+asc

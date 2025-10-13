@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:47:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/08 15:54:18 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/12 19:28:55 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@
 	la memoria del array de tokens.
 */
 
-void	clean_tokens(t_prompt *prompt)
+void	clean_tokens(t_prompt **prompt)
 {
 	int	i;
 
 	i = 0;
-	while (i < prompt->n_alloc_tokens)
+	while (i < (*prompt)->n_alloc_tokens)
 	{
-		if (prompt->tokens[i].value
-			&& (is_alloc_type(prompt->tokens[i].type)))
+		if ((*prompt)->tokens[i].value
+			&& (is_alloc_type((*prompt)->tokens[i].type)))
 		{
-			free(prompt->tokens[i].value);
-			prompt->tokens[i].value = NULL;
+			free((*prompt)->tokens[i].value);
+			(*prompt)->tokens[i].value = NULL;
 		}
 		i++;
 	}
-	free(prompt->tokens);
-	prompt->tokens = NULL;
+	free((*prompt)->tokens);
+	(*prompt)->tokens = NULL;
 }
 
 /*
@@ -45,7 +45,7 @@ void	clean_prompt(t_prompt *prompt)
 {
 	if (prompt->prompt)
 		free(prompt->prompt);
-	clean_tokens(prompt);
+	clean_tokens(&prompt);
 	*prompt = (t_prompt){0};
 }
 
@@ -64,9 +64,15 @@ void	clean_env(t_env *env, t_var *vars)
 	{
 		next = var->next;
 		if (var->key)
+		{
 			free(var->key);
+			var->key = NULL;
+		}
 		if (var->value)
+		{
 			free(var->value);
+			var->value = NULL;
+		}
 		free(var);
 		var = next;
 	}
@@ -84,15 +90,7 @@ void	clean_ast(t_node *node)
 		return ;
 	clean_ast(node->left);
 	clean_ast(node->right);
-	if (node->args)
-		ft_free_str_array(node->args);
-	if (node->arg_types)
-		free(node->arg_types);
-	if (node->redir)
-		clean_redirs(&node->redir);
-	if (node->fake)
-		clean_token(node->token);
-	free(node);
+	clean_node(&node);
 }
 
 /*

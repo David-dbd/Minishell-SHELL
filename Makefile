@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/10/11 21:12:22 by migarrid         ###   ########.fr        #
+#    Updated: 2025/10/13 19:52:19 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,9 @@ NAME				= minishell
 CC					= cc
 #WFLAGS				= -Wall -Wextra -Werror
 DFLAGS				= -g
-#OFLAGS				= -O2 -march=native -flto
-#SFLAGS				= -fsanitize=address
+#OFLAGS				= -Ofast -march=native -flto
+#SFLAGS				= -fsanitize=address,leak
+DEPFLAGS			= -MMD -MP
 
 # **************************************************************************** #
 #                               Shell Comands                                  #
@@ -42,7 +43,6 @@ LIB_DIR				= lib
 OBJ_DIR				= obj
 SRC_DIR				= src
 LIBFT_DIR			= $(LIB_DIR)/libft_plus
-READLINE_DIR		= $(LIB_DIR)/readline
 ISOCLINE_DIR		= $(LIB_DIR)/isocline
 
 # **************************************************************************** #
@@ -55,20 +55,10 @@ HEADER				= $(INC_DIR)/minishell.h \
 LIBFT_A				= $(LIBFT_DIR)/libft_plus.a
 LIBFT_H				= $(LIBFT_DIR)/libft_plus.h
 LIBFT_MAKEFILE		= $(LIBFT_DIR)/Makefile
-HISTORY_A			= $(READLINE_DIR)/libhistory.a
-READLINE_A			= $(READLINE_DIR)/libreadline.a
 ISOCLINE_A			= $(ISOCLINE_DIR)/build/release/libisocline.a
 ISOCLINE_H			= $(ISOCLINE_DIR)/include/isocline.h
-READLINE_HEADERS	=	ansi_stdlib.h chardefs.h colors.h config.h histlib.h \
-						history.h keymaps.h parse-colors.h posixdir.h posixjmp.h \
-						posixselect.h posixstat.h readline.h rlconf.h rldefs.h \
-						rlmbutil.h rlprivate.h rlshell.h rlstdc.h rltty.h \
-						rltypedefs.h rlwinsize.h tcap.h tilde.h xmalloc.h
-READLINE_H			= $(addprefix $(READLINE_DIR)/, $(READLINE_HEADERS))
-READLINE_MAKEFILE	= $(READLINE_DIR)/Makefile
-READLINE_CONFIGURE	= $(READLINE_DIR)/configure
-LDLIBS				= $(READLINE_A) $(HISTORY_A) -ltermcap
 DEPS				= $(HEADER) $(MAKEFILE) $(LIBFT_H) $(LIBFT_MAKEFILE)
+LDLIBS				= -lreadline -lhistory -ltermcap
 
 # **************************************************************************** #
 #                                   Colors                                     #
@@ -231,6 +221,7 @@ SRC_PCT = $(shell expr 100 \* $(SRC_COUNT) / $(SRC_COUNT_TOT))
 # Create directories
 $(OBJ_DIR):
 	@$(MKDIR) $(OBJ_DIR)
+	@$(MKDIR) $(DEPS_DIR)
 
 OBJS		= $(SRCS:%.c=$(OBJ_DIR)/%.o)
 DEPS_DIR	= $(OBJ_DIR)
@@ -241,7 +232,7 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c $(DEPS) $(LIBFT_A) | $(OBJ_DIR)
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
 	@$(PRINT) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)...\n" "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
 	@$(MKDIR) $(dir $@)
-	@$(CC) $(WFLAGS) $(DFLAGS) $(SFLAGS) $(OFLAGS) -I$(INC_DIR) -MMD -MP -c -o $@ $<
+	@$(CC) $(WFLAGS) $(DFLAGS) $(SFLAGS) $(OFLAGS) -I$(INC_DIR) $(DEPFLAGS) -c -o $@ $<
 
 # Include .deps files
 -include $(DEPS_FILES)
@@ -250,10 +241,10 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c $(DEPS) $(LIBFT_A) | $(OBJ_DIR)
 #                              Targets                                         #
 # **************************************************************************** #
 
-all: $(READLINE_A) $(ISOCLINE_A) $(LIBFT_A) $(NAME)
+all: $(ISOCLINE_A) $(LIBFT_A) $(NAME)
 
 # Build executable
-$(NAME): $(OBJS) $(LIBFT_A) $(READLINE_A) $(HISTORY_A) $(ISOCLINE_A)
+$(NAME): $(OBJS) $(LIBFT_A) $(HISTORY_A) $(ISOCLINE_A)
 	@$(CC) $(WFLAGS) $(DFLAGS) $(SFLAGS) $(OFLAGS) $(OBJS) $(LIBFT_A) $(ISOCLINE_A) -I$(INC_DIR) $(LDLIBS) -o $(NAME)
 	@$(PRINT) "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}${NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 
@@ -261,16 +252,7 @@ $(NAME): $(OBJS) $(LIBFT_A) $(READLINE_A) $(HISTORY_A) $(ISOCLINE_A)
 $(LIBFT_A): FORCE $(LIBFT_MAKEFILE) $(LIBFT_H)
 	@$(MAKE) -s -C $(LIBFT_DIR)
 
-# Rebuild readline libraries
-$(READLINE_A): $(READLINE_DIR)/config.h
-	@$(PRINT) "Compiling $(BLUE)readline libraries$(DEFAULT)...\n"
-	@$(MAKE) -s -C $(READLINE_DIR)
-
-$(READLINE_DIR)/config.h:
-	@$(PRINT) "Configuring $(BLUE)readline$(DEFAULT)...\n"
-	@cd $(READLINE_DIR) && ./configure --enable-static --disable-shared > /dev/null 2>&1
-
-# Rebuild readline libraries
+# Rebuild isocline library
 $(ISOCLINE_A):
 	@$(PRINT) "Compiling $(BLUE)isocline library$(DEFAULT)...\n"
 	@$(MKDIR) $(ISOCLINE_DIR)/build/release
@@ -298,7 +280,6 @@ norm:
 # Clean object files
 clean:
 	@$(MAKE) clean -s -C $(LIBFT_DIR)
-	@$(MAKE) clean -s -C $(READLINE_DIR)
 	@$(RM) $(ISOCLINE_DIR)/build
 	@$(RM) $(OBJ_DIR)
 	@$(PRINT) "${CLEAR}${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Objects were cleaned ${GREEN}successfully${RESET}.\n${RESET}"
@@ -306,7 +287,6 @@ clean:
 # Full clean
 fclean: clean
 	@$(MAKE) fclean -s -C $(LIBFT_DIR)
-	@$(MAKE) distclean -s -C $(READLINE_DIR)
 	@$(RM) $(NAME)
 	@$(PRINT) "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Project cleaned ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 

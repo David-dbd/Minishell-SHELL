@@ -3,14 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   clean_II.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 01:53:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 19:58:10 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/12 19:35:12 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+/*
+	Libera toda la memoria de una lista enlazada a un nodo
+	redirs, args y tokens falsos, luego setea el puntero a NULL
+*/
+
+void	clean_node(t_node **node)
+{
+	if ((*node)->args)
+		ft_free_str_array((*node)->args);
+	if ((*node)->arg_types)
+		free((*node)->arg_types);
+	if ((*node)->redir)
+		clean_redirs(&(*node)->redir);
+	if ((*node)->fake)
+		clean_token(&(*node)->token);
+	free(*node);
+	*node = NULL;
+}
 
 /*
 	Libera toda la memoria de una lista enlazada de redirecciones (t_redir)
@@ -39,17 +58,17 @@ void	clean_redirs(t_redir **lst)
 	se preve utilizar en los true o fake nodes.
 */
 
-void	clean_token(t_token *token)
+void	clean_token(t_token **token)
 {
-	if (token->value)
+	if ((*token)->value)
 	{
-		free(token->value);
-		token->value = NULL;
+		free((*token)->value);
+		(*token)->value = NULL;
 	}
-	if (token)
+	if (*token)
 	{
-		free(token);
-		token = NULL;
+		free(*token);
+		*token = NULL;
 	}
 }
 
@@ -61,8 +80,11 @@ void	clean_token(t_token *token)
 void	clean_extras(t_extras *extra_features)
 {
 	if (extra_features->user_name)
+	{
 		free(extra_features->user_name);
-	extra_features->user_name = NULL;
+		extra_features->user_name = NULL;
+	}
+	*extra_features = (t_extras){0};
 }
 
 /*
@@ -70,9 +92,9 @@ void	clean_extras(t_extras *extra_features)
 	tiene que llamarse en cada ciclo del minishell.
 */
 
-void	clean_cycle(t_shell *data, t_prompt *prompt, t_node *ast_root)
+void	clean_cycle(t_shell *data, t_prompt *prompt, t_node **ast_root)
 {
 	clean_prompt(prompt);
-	clean_ast(ast_root);
-	data->ast_root = NULL;
+	clean_ast(*ast_root);
+	*ast_root = NULL;
 }

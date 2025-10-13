@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:48:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/11 03:16:01 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/12 18:20:42 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	is_alloc_type(int type)
 		|| type == REDIR_APPEND || type == REDIR_HEREDOC || type == REDIR_INPUT
 		|| type == REDIR_OUTPUT || type == EXPANSION || type == FILENAME
 		|| type == ASIGNATION || type == TEMP_ASIGNATION
-		|| type == PLUS_ASIGNATION)
+		|| type == PLUS_ASIGNATION || type == DELIMITER
+		|| type == FILENAME)
 		return (1);
 	return (0);
 }

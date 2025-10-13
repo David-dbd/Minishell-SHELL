@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:47:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/11 17:01:13 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/12 19:49:52 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,11 @@ int	check_signals(t_shell *data, t_redir *redir, char *line, int *pipe_fd)
 	{
 		if (g_signal[1] == SIGINT)
 		{
-			if (pipe_fd)
-				close(pipe_fd[0]);
+			close(pipe_fd[0]);
+			close(pipe_fd[1]);
 			if (line)
 				free(line);
-			if (redir)
-				redir->signal = TRUE;
+			redir->signal = TRUE;
 			data->exit_code = EXIT_CTRL_C;
 			g_signal[1] = VOID;
 			return (RECIVED_SIGNAL);
@@ -53,12 +52,15 @@ int	check_signals(t_shell *data, t_redir *redir, char *line, int *pipe_fd)
  * evita la ejecucion del nodo por CTRL+C
  */
 
-int	check_signal_node_heredoc(t_redir *redir)
+int	check_signal_node_heredoc(t_node *node, t_redir *redir)
 {
 	if (redir)
 	{
 		if (redir->signal == RECIVED_SIGNAL)
+		{
+			clean_node(&node);
 			return (TRUE);
+		}
 	}
 	return (FALSE);
 }

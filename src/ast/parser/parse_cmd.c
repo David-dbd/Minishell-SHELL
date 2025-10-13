@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:29:52 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/11 22:11:44 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/12 19:09:00 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ t_node	*parse_cmd(t_shell *data, t_token *tokens, int *i, int n_tokens)
 			return (left);
 		}
 		get_information(data, tokens, i, left);
-		if (left->redir && check_signal_node_heredoc(left->redir))
+		if (left->redir && check_signal_node_heredoc(left, left->redir))
 			return (NULL);
 		return (left);
 	}
