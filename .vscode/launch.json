@@ -74,6 +74,31 @@
 				}
 			],
 			"preLaunchTask": "build"
+		},
+		// Configuración para entrada en los chids
+		{
+			"name": "Debug Minishell (Follow Childs)",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/minishell",
+			"args": [],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"externalConsole": true,
+			"MIMode": "gdb",
+			"miDebuggerPath": "/usr/bin/gdb",
+			"setupCommands": [
+				{
+					"description": "Seguir hijos tras fork()",
+					"text": "set follow-fork-mode child",
+					"ignoreFailures": false
+				},
+				{
+					"description": "No detener padre tras fork()",
+					"text": "set detach-on-fork off",
+					"ignoreFailures": false
+				}
+			]
 		}
 	]
 }

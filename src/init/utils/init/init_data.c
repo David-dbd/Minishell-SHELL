@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 23:17:43 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 17:10:11 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/25 17:52:46 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@
 void	init_data(t_shell *data, char **envp)
 {
 	*data = (t_shell){0};
-	data->prompt.tokens = NULL;
-	data->ast_root = NULL;
-	data->env.vars = NULL;
 	data->shell_pid = getpid();
 	data->extra_features.session_start = time(NULL);
 	// print_session_start(data, data->extra_features.session_start,

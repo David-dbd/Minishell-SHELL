@@ -40,7 +40,6 @@ touch infile
 export A=1
 echo 1
 echo hi < infile bye bye
-ls
 ls < infile
 ls 1 < infile 2 3
 echo 1 2 3
@@ -48,9 +47,15 @@ echo < infile
 echo $?
 ./nopermision
 ./nopermission
-./missing
 clear
 touch outfile
 sdssds
 echo hi >> outfile
 ls >> outfile
+echo
+echo hola
+ls
+echo hola > test
+$PWD
+./missing
+./missing.out

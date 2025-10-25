@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/11 16:39:29 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/25 16:43:55 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,9 @@ typedef struct s_exec
 {
 	int			mode;
 	int			original_stdin;
+	int			last_stdin;
 	int			original_stdout;
+	int			last_sdtin;
 	t_env		*env;
 }	t_exec;
 

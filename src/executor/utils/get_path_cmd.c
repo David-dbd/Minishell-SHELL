@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 19:24:46 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/18 13:31:10 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/25 18:31:07 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ char	*get_path(t_shell *d, char *cmd, char **envp)
 	special_cases_path_dir(d, cmd);
 	if (ft_strchr(cmd, '/'))
 	{
-		if (stat(cmd, &st) == -1)
-			return (exit_error(d, ERR_CMD_NOT_FOUND, 127, cmd), NULL);
 		if (S_ISDIR(st.st_mode))
 			return (exit_error(d, ERR_IS_DIR, 126, cmd), NULL);
+		if (stat(cmd, &st) == -1)
+			return (exit_error(d, ERR_CMD_NOT_FOUND, 127, cmd), NULL);
 		if (access(cmd, X_OK) != 0)
 			return (exit_error(d, ERR_PERM_DENIED, 126, cmd), NULL);
 		return (ft_strdup(cmd));
