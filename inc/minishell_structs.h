@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 21:38:14 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/25 22:28:21 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ struct s_cmd
 {
 	char	*value;
 	char 	*alias;
-	bool	active;
+	int		active;
 	t_cmd	*prev;
 	t_cmd	*next;
 };

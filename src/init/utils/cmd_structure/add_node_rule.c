@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_cmd_rule.c                                     :+:      :+:    :+:   */
+/*   add_node_rule.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:48:20 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/22 20:48:20 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/25 17:51:55 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	add_node_rule(t_shell *data, char *value, char *alias, int state)
 		return (free(alias), free(value), (void)exit_error(data, ERR_MALLOC, 1));
 	new_rule_node->value = value;
 	new_rule_node->alias = alias;
-	new_rule_node->alias = state;
 	new_rule_node->active = state;
 	new_rule_node->next = NULL;
 	new_rule_node->prev = NULL;

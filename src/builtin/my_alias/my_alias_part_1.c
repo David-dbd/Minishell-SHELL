@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:48:38 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/25 19:33:14 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/25 22:29:33 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@
 int	check_arg_syntax(char *arg, const char *built_in_err)
 {
 	int	i;
+	int	len;
 
 	i = 0;
-	if (ft_strlen(arg) < 1)
+	len = ft_strlen(arg);
+	if (len < 1)
 		return (FALSE);
 	while (arg[i] != '\0')
 	{

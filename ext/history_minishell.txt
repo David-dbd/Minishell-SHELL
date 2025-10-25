@@ -1,19 +1,199 @@
-cd
-cd ..
-cd minishell/
-mkdir test
-mkdir tests
-cdtests/
-cd tests/
-ls | ls
-ls > outfile
-ls >> outfile
-PWD
-ls
+pwd hola
+pwd hola perro
+export var=!
+export hola=21
+echo $hola
+export var=1
+echo $bbb
+echo $1
+var=1 export a=2
+echo $a
+(hola=1 export perro)
+make
+ls && (var=hola ls)
+(var=hola; ls)
+var=hola (ls)
+echo 1 2
+echo 1 2 3
+ls 1
+ls hola
+pwd 1
+pwd 21 21 21
+pwd 21
+unset hola perrp
+unset hola
+ls 21
+echo 21
+echo 21 21
+echo 21 21, echo
+echo david
+var=hola var+=hola ls
+echo 1
+(var=a ls)
+echo $SHLVL
+./minishell
+var=a ls
+var=a var+=21 ls
+(var=1; ls)
+var=1 (ls)
+(var=hola ls)
+var=hola ls
+var=hola echo ole
+(var=hola; echo $var)
+(var=hola && echo $var)
+var=hola && echo $var
+var=1 var+=12 var=2 var+=32 ls -l
+var=21
+var+=21
+VAR=hola bash -c 'echo $VAR'
+LONGNAME=LALA
+ECHO $longname
+ECHO $LONGNAME
+LOGNAME=PEPE
+unset LOGNAME
+UNSET SHLVL
+UNSET USER
+bash
+execve("/bin/bash", (char *[]){ "bash", "--noprofile", "--norc", "-c", "env" }, envp);
+zshell
+zshl
+zsl
+zslh
+echo "$USER"
+var=1 echo hola
+var=1 echo
+ppwd
+var=1 ls -l
+var=1 ls | grep "var=1"
+var=1 ls | grep "var"
+var=1 ls
+unset echo
+var=asig
+var=asig var=2
+var=1 var+=21
+var=21 var+=99 && export a=10
+unset VAR
+var=21 var+=99 var=2 var+=21 && export a=10
+CLEAR
+var=21 var+=21 ls
+echo "Hello $var"
+echo $var
+var=1 echo $var
+var=1 var+=21 echo $var
+var=1 var+=21 var+=a echo $var
+var=1 var+=21 var+=a ver=21 echo $var
+var=1 var+=21 var+=a ver+=21 ver=11 echo $var
+var=1 var+=21 var+=a ver+=21 echo $var
+var=1 var+=21 var+=a ver+=21 ls -l
+var=1 var+=21 var+=a ver+=21 ls -l && pepe=1 ls
+unset david
+(var=21 ls)
+(export var=21 && echo hello)
+export var=21 && echo hello
+(echo $USER)
+(echo $USE)
+(echo "Hola $USE")
+(echo "Hola $USE how you doin?")
+(echo "Hola "$USE" how you doin?")
+echo "Hola "$USE" how you doin?"
+'ex'port A=1
+echo
+echo echo
+'ex'port
+'e'cho
+export A=" Hola como estas = BIEN"
+export =
+export A=1 =
+export A=1 b=1
+echo $b
+export A=1 l
+export A=1 b+=1
+var=1 b+=1 c=3 d+=2
+unset var b c d
+echo $var $b $c $d
+'expo'rt
+(echo "Hola "$USE"how you doin?")
+(var=21 echo hello)
+unser var pepe
+unset var
+unset pepe
+export var=1 pepe=2
+unset var pepe
+unset hoolamundo
+unset
+env ----
+unset ------
+unset 1234
+unset 1234sdferf341r34f3v trbwre wrg234g3g- &$\xC2\xB74 wefqwf
+readonly
+export a =hola
+unset 1var
+unset var+
+unset va12r
+unset $""
+unset "$"
+unset $
+unset "?"
+unset ?
+unset =""
+unset ""=
+unset doesntexist
+unset OLDPWD
+unset PATH
+unset TERM
+unset MAIL
+unset SHLVL
+unset TES;T
+unset TES.T
+unset TES}T
+ECHO $?
+unset TEST_
+unset TES@T
+unset ============
+unset export
+unset unset
+unset sudo
+unset TES\\~T
+ECHO SHLVL
+ECHO $SHLVL
+export TE1ST=100
+echo $jaja
+export jaja+=12
+export jaja=jiji=jaja=jiji
+jaja+=12
+unset jaja
+echo $?
+export TEST-=100
+export ____TEST=!23
+export TES\x23T=123
+export TES!T123
+export
+export TES{T=123}
+export TES^T=123
+export HELLO42=T=""
+export ?=hallo
+export test=42 | echo 99
+echo mini_test
+echo $mini
+echo $UAE
+export p
+echo $p
+unset mini_test
+export mini_test=
+echo $mini_test
+cler
+echo $USE
+echo $USER
+export aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+=222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+env
+echo $aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+hola
+alias
+alias ls hola
+alias hola cd
+>>>>>>> origin/david
+clcear
 clear
-pwd
-$PWD
-echo hola > test
-echo hola
-ysd
-echo < infile hi
+ls
+git status

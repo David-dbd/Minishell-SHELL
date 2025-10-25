@@ -40,7 +40,8 @@
 		"ostream": "c",
 		"functional": "c",
 		"utility": "c",
-		"typeinfo": "c"
+		"typeinfo": "c",
+		"ranges": "c"
 	},
 
 	// Configuración C/C++

@@ -6,11 +6,20 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:58:35 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 19:38:40 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/25 22:32:34 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+
+static void	extras(t_shell *data, t_token *token, t_node *node)
+{
+	if (ft_strcmp(token->value, BUILTIN_ALIAS) == 0)
+		data->exit_code = my_alias(data, data->extra_features.cmd, node->args);
+	else if (ft_strcmp(token->value, BUILTIN_UNALIAS) == 0)
+		data->exit_code = my_unalias(data, data->extra_features.cmd, node->args);
+}
 
 static void	asignations(t_shell *data, t_token *token)
 {
@@ -49,4 +58,5 @@ void	which_builtin(t_shell *data, t_token *token, t_node *node)
 	asignations(data, token);
 	env_commands(data, token, node);
 	basic_builtins(data, token, node);
+	extras(data, token, node);
 }
