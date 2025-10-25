@@ -6,19 +6,17 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:43 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/12 19:25:17 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/14 00:43:54 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
 /*
-	Aquí inicializamos la estructura principal `data` con las listas y datos
-	con los que trabajaremos. También inicializamos la estructura `sa`
-	para el manejo de señales con `sigaction`. Luego definimos un bucle
-	infinito donde llamamos a `recieve_input` (que usa `readline`).
-	Guardamos la entrada en el historial de comandos y empezamos el proceso
-	con `steps_manager`.
+	Función principal `main` de Minishell. Inicializa la estructura `data`
+	con `init_minishell` y entra en el bucle principal. Lee la entrada del
+	usuario, tokeniza, construye el AST y ejecuta los comandos. Limpia la
+	memoria tras cada ciclo y termina con `exit_succes` al salir.
 */
 
 int	main(int argc, char **argv, char **envp)

@@ -20,7 +20,6 @@ ps
 btop
 sleep
 sleep 10
-clear
 << LM
 ld
 lasd
@@ -29,7 +28,29 @@ sl
 sdl
 asd
 cleara
-ls
 cle
 lca
 asc
+cd
+echo hola < infle
+echo hola < infile
+echo hi >> infile | echo bye
+./infile
+touch infile
+export A=1
+echo 1
+echo hi < infile bye bye
+ls
+ls < infile
+ls 1 < infile 2 3
+echo 1 2 3
+echo < infile
+echo $?
+./nopermision
+./nopermission
+./missing
+clear
+touch outfile
+sdssds
+echo hi >> outfile
+ls >> outfile

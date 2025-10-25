@@ -15,7 +15,12 @@ Minishell - Bash
 ## MIKEL:
 - Important:
 - Actualizar ultimo comando env
-- env what
+- env + argumento
+- funcion que revierta los cambios de redirecciones porque en builtin
+suceden en el padre y no en el hijo
+- Test 137: ✅⚠️  ./missing.out
+mini error = ( command not found)
+bash error = ( No such file or directory)
 
 - Secondary:
 - Bash te abra línea para que completes el comando ver → Modificar balance de ' " ( || && |

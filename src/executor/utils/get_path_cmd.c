@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 19:24:46 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/11 05:42:41 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:31:10 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*get_path(t_shell *d, char *cmd, char **envp)
 		if (S_ISDIR(st.st_mode))
 			return (exit_error(d, ERR_IS_DIR, 126, cmd), NULL);
 		if (access(cmd, X_OK) != 0)
-			return (exit_error(d, ERR_EXEC, 126, cmd), NULL);
+			return (exit_error(d, ERR_PERM_DENIED, 126, cmd), NULL);
 		return (ft_strdup(cmd));
 	}
 	path = search_in_path(d, cmd, envp);

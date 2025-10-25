@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:42:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/13 18:56:35 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/14 01:01:11 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ char	*receive_input(char **input, t_shell *data)
 		if (*input && input)
 			ic_history_add(*input);
 	}
-	// else
-	// {
-	// 	line = get_next_line(fileno(stdin));
-	// 	if (!line)
-	// 		return (NULL);
-	// 	*input = ft_strtrim(line, "\n");
-	// 	free(line);
-	// }
+	else
+	{
+		line = get_next_line(fileno(stdin));
+		if (!line)
+			return (NULL);
+		*input = ft_strtrim(line, "\n");
+		free(line);
+	}
 	check_signals(data, NULL, NULL, NULL);
 	return (*input);
 }
