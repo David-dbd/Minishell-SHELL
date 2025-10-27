@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 21:56:06 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/27 20:41:17 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/27 21:32:16 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,48 +28,6 @@
  * Si es el único nodo, también actualiza env->vars y termina la función.
  * La memoria del nodo se libera mediante aux_delete().
 */
-
-static void	aux_delete(t_var **node, t_env *env)
-{
-	if ((*node)->key)
-	{
-		free((*node)->key);
-		(*node)->key = NULL;
-	}
-	if ((*node)->value)
-	{
-		free((*node)->value);
-		(*node)->value = NULL;
-	}
-	free(*node);
-	*node = NULL;
-	env->size--;
-}
-
-static void	delete_env_var(t_env *env, char *key)
-{
-	t_var	*node;
-	t_var	*next;
-
-	node = env->vars;
-	while (node)
-	{
-		if (node->key && ft_strcmp(node->key, key) == 0)
-		{
-			if (!node->prev)
-				env->vars = node->next;
-			else
-				node->prev->next = node->next;
-			if (node->next)
-				node->next->prev = node->prev;
-			next = node->next;
-			aux_delete(&node, env);
-			node = next;
-			continue ;
-		}
-		node = node->next;
-	}
-}
 
 /*
 	El primer caracter tiene que ser letra/_, mientras que el resto puede ser
@@ -108,7 +66,7 @@ int	my_unset(t_shell *data, t_env *env, char **args)
 			ft_printf_fd(STDERR, ERR_UNSET, args[i]);
 			exit_flag = EXIT_FAIL;
 		}
-		delete_env_var(env, args[i]);
+		delete_var(env, args[i]);
 		i++;
 	}
 	make_envp(data, env, env->vars);
@@ -162,7 +120,7 @@ void	my_clean_unset(t_shell *data, t_env *env, t_token *tokens, int *index)
 		if (char_to_find)
 			len = char_to_find - tokens[index[i]].value;
 		ft_memcpy(ptr, tokens[index[i]].value, len);
-		delete_env_var(env, ptr);
+		delete_var(env, ptr);
 		free (ptr);
 		ptr = NULL;
 		char_to_find = NULL;

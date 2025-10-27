@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
+#    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/10/27 16:22:19 by davdiaz-         ###   ########.fr        #
+#    Updated: 2025/10/27 21:31:25 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,6 +96,8 @@ SRCS =				main/main.c \
 					init/utils/env/add_var.c \
 					init/utils/env/make_envp.c \
 					init/utils/env/update_shlvl.c \
+					init/utils/env/update_var.c \
+					init/utils/env/delete_var.c \
 					init/utils/highlighther/highlighter.c \
 					init/utils/highlighther/is_highlighter_I.c \
 					init/utils/highlighther/is_highlighter_II.c \

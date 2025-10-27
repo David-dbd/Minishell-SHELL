@@ -1,70 +1,3 @@
-var=hola ls
-var=hola echo ole
-(var=hola; echo $var)
-(var=hola && echo $var)
-var=hola && echo $var
-var=1 var+=12 var=2 var+=32 ls -l
-var=21
-var+=21
-VAR=hola bash -c 'echo $VAR'
-LONGNAME=LALA
-ECHO $longname
-ECHO $LONGNAME
-LOGNAME=PEPE
-unset LOGNAME
-UNSET SHLVL
-UNSET USER
-bash
-execve("/bin/bash", (char *[]){ "bash", "--noprofile", "--norc", "-c", "env" }, envp);
-zshell
-zshl
-zsl
-zslh
-var=1 echo hola
-var=1 echo
-ppwd
-var=1 ls -l
-var=1 ls | grep "var=1"
-var=1 ls | grep "var"
-var=1 ls
-unset echo
-var=asig
-var=asig var=2
-var=1 var+=21
-var=21 var+=99 && export a=10
-unset VAR
-var=21 var+=99 var=2 var+=21 && export a=10
-CLEAR
-var=21 var+=21 ls
-echo "Hello $var"
-var=1 echo $var
-var=1 var+=21 echo $var
-var=1 var+=21 var+=a echo $var
-var=1 var+=21 var+=a ver=21 echo $var
-var=1 var+=21 var+=a ver+=21 ver=11 echo $var
-var=1 var+=21 var+=a ver+=21 echo $var
-var=1 var+=21 var+=a ver+=21 ls -l
-var=1 var+=21 var+=a ver+=21 ls -l && pepe=1 ls
-unset david
-(var=21 ls)
-(export var=21 && echo hello)
-export var=21 && echo hello
-(echo $USER)
-(echo $USE)
-(echo "Hola $USE")
-(echo "Hola $USE how you doin?")
-(echo "Hola "$USE" how you doin?")
-echo "Hola "$USE" how you doin?"
-'ex'port A=1
-echo
-echo echo
-'ex'port
-'e'cho
-export A=" Hola como estas = BIEN"
-export =
-export A=1 =
-export A=1 b=1
-echo $b
 export A=1 l
 export A=1 b+=1
 var=1 b+=1 c=3 d+=2
@@ -121,7 +54,6 @@ export jaja+=12
 export jaja=jiji=jaja=jiji
 jaja+=12
 unset jaja
-echo $?
 export TEST-=100
 export ____TEST=!23
 export TES\x23T=123
@@ -143,7 +75,6 @@ echo $mini_test
 echo $USE
 export aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+=222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
-env
 echo $aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 hola
 alias
@@ -152,6 +83,7 @@ alias hola cd
 >>>>>>> origin/david
 clcear
 git status
+<<<<<<< HEAD
 cd
 cd 123453
 echo $USER
@@ -167,13 +99,10 @@ echo ""'$USER'""
 echo """"""""$USER""""""""
 echo '$='
 echo "$?"
-echo \\$USER
 echo \\\\\\\\\\\\\\\\\\$USER
 echo \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\$USER \\$PATH \\\\$PWD
 echo '$USER' "$USER" "text  ' text"
 echo text"$USER"
-pwd
-cd ..
 echo $USER.txt
 echo $USE.txt
 echo "Hello $USE.txt"
@@ -186,14 +115,85 @@ var=1 && echo $var
 echo $var
 var=$USER
 var=$USE
-ls
 cd minishell_tester
 echo "ello $USE como vas?
 echo "Hello $USE como vas?"
 echo Hello $USE como vas?
 echo test$h "$h"
 echo test$h"$h"
+=======
+cls
+echo < infile
+echo < infile hola
+echo hola < infile como estas?
+cd minishell_tester/
+cd ..
+ls >> ./outfile
+ls >> outfile1 >> outfile2
+echo <"./test_files/infile" <missing <"./test_files/infile"
+echo <"infile" <missing <"infile"
+ls <missing
+echo <missing
+>| echo wtf
+exit ""
+exit something somethingv2
+exit A 2 3
+exit cd ..
+exit A 1
+exit 1 2 3
+>| file wtf
+>| file wtf hola
+>| file wtf hola como estas
+()>| file wtf hola como estas
+(echo hola) >| file wtf hola como estas
+(ls) > file cmd
+infile
+ls infile
+cat < file infile
+echo < file hola
+> ">" cmd
+rm -rf ">"
+echo $/"$/"
+ls | cat << stop | ls -la | cat << stop1 | ls | cat << stop2 | ls -la > > out | cat << stop3
+ls|cat Makefile|>> out|cd ..
+/bin/rm -f out
+asd
+pwd
+echo $"42$"
+echo \\$
+echo \\$USER
+"."
+ls .
+echo .
+.
+"\x23"
+echo $?
+env && ls
+env s
+env | grep "_
+env
+/bin/env | grep "_="
+(echo hola)
+(echo)
+((echo 1) | (echo 2) | (echo 3 | (echo 4)))
+(echo 1 | echo 2) | (exit 2)
+(echo 1 && echo 2) | (grep 1 && grep 2)
+echo > file
+ls > file
+echo hola > file
+ls >> file
+echo < file
+env | grep "_="
+echo $h "$h" | cat -e
+echo "$h" | cat -e
+echo test $h "$h" | cat -e
+echo "hello $USE"
+echo "hello $USE" | cat -e
+echo "hola $H como estas" | cat -e
 echo test$h "$h" | cat -e
-clear
+echo test"$h" | cat -e
+>>>>>>> mikel
 echo "$USER.txt"
 echo "$USE.txt"
+ls
+clear

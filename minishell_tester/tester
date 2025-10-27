@@ -72,8 +72,8 @@ for testfile in ${test_lists[*]}; do
 
 		# Ejecutar bash para referencia
 		BASH_OUTPUT=$(bash -c "printf '%s\n' \"$teste\" | bash" 2> /dev/null)
-		BASH_EXIT_CODE=$(bash -c "printf '%s\n' \"$teste\" | bash >/dev/null 2>/dev/null; printf '%s' \$?")
 		BASH_OUTFILES=$(cp ./outfiles/* ./bash_outfiles &>/dev/null)
+		BASH_EXIT_CODE=$(bash -c "printf '%s\n' \"$teste\" | bash >/dev/null 2>/dev/null; printf '%s' \$?")
 		BASH_ERROR_MSG=$(bash -c "printf '%s\n' \"$teste\" | bash" 2>&1 >/dev/null | grep -o '[^:]*$' | head -n1)
 
 		OUTFILES_DIFF=$(diff --brief ./mini_outfiles ./bash_outfiles)

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 23:55:15 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/09 17:53:38 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/26 19:45:45 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	my_exit(t_shell *data, char **args)
 	status = check_exit(data, args);
 	if (status == ERROR)
 	{
-		data->exit_code = 1;
+		data->exit_code = 2;
 		ft_printf_fd(STDERR, ERR_EXIT_TOO_MANY);
 		return ;
 	}

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:43:29 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/11 20:56:27 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/27 14:05:08 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,21 @@
 
 static int	search_for_paren(t_token *tokens, int i)
 {
-	if (tokens[i].type == WORD || is_cmd_builtin_type(tokens[i].type))
-		i--;
 	while (i > 0 && (is_redir_type(tokens[i].type)
-			|| tokens[i].type == FILENAME))
+		|| tokens[i].type == FILENAME || tokens[i].type == WORD))
 		i--;
-	if (tokens[i].type == WORD)
+	if (tokens[i].type == PAREN_CLOSE)
 		return (TRUE);
-	else if (tokens[i].type == PAREN_CLOSE)
-		return (FALSE);
+	return (FALSE);
+}
+
+static int	search_for_cmd(t_token *tokens, int i)
+{
+	while (i > 0 && (is_redir_type(tokens[i].type)
+		|| tokens[i].type == FILENAME || tokens[i].type == WORD))
+		i--;
+	if (is_cmd_builtin_type(tokens[i].type))
+		return (TRUE);
 	return (FALSE);
 }
 
@@ -63,7 +69,8 @@ void	transform_word_to_file(t_prompt *prompt, t_token *tokens)
 			tokens[i].type = WORD;
 		}
 		else if (i > 0 && tokens[i].type == WORD
-			&& tokens[i - 1].type == FILENAME && !search_for_paren(tokens, i))
+			&& tokens[i - 1].type == FILENAME
+			&& (!search_for_cmd(tokens, i) || search_for_paren(tokens, i)))
 		{
 			tokens[i].type = COMMAND;
 		}

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:02:53 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/13 19:55:55 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/27 18:26:55 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,18 @@ static void	init_no_env(t_shell *data)
 {
 	char	**var;
 
-	var = ft_calloc(8, sizeof(char *));
+	var = ft_calloc(6, sizeof(char *));
 	var[0] = strdup("PWD");
 	var[1] = getcwd(NULL, 0);
 	var[2] = strdup("SHLVL");
 	var[3] = strdup("1");
-	var[4] = strdup("_");
-	var[5] = strdup("/usr/bin/env");
-	var[6] = strdup("PATH");
-	var[7] = strdup("/usr/local/bin:/usr/bin:/bin");
-	if (!var[0] || !var[1] || !var[2] || !var[3] || !var[4] || !var[5]
-		|| !var[6] || !var[7])
+	var[4] = strdup("PATH");
+	var[5] = strdup("/usr/local/bin:/usr/bin:/bin");
+	if (!var[0] || !var[1] || !var[2] || !var[3] || !var[4] || !var[5])
 		return (ft_free_str_array(var), (void)exit_error(data, ERR_MALLOC, 1));
 	add_var(data, var[0], var[1], ENV);
 	add_var(data, var[2], var[3], ENV);
 	add_var(data, var[4], var[5], ENV);
-	add_var(data, var[6], var[7], ENV);
 }
 
 /*
@@ -92,6 +88,7 @@ static void	init_env(t_shell *data, char **envp)
 		add_var(data, key, value, ENV);
 		i++;
 	}
+	delete_var(&data->env, "_");
 	update_shlvl(data->env.vars);
 }
 

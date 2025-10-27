@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:23:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 18:36:57 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/27 16:19:02 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ Exec format error\n"
 # define ERR_UNSET			"minishell: unset: `%s': not a valid identifier\n"
 # define ERR_EXIT_NUMERIC	"minishell: exit: %s: numeric argument required\n"
 # define ERR_EXIT_TOO_MANY	"minishell: exit: too many arguments\n"
-# define ERR_ENV		"minishell: env: invalid option\n"
+# define ERR_ENV		"minishell: env: does not accept arguments\n"
 # define ERR_PWD		"minishell: pwd: error retrieving current directory\n"
 # define ERR_BUILTIN_ALIAS		"minishell: alias: `%s': not a valid alias\n"
 # define ERR_BUILTIN_UNALIAS	"minishell: unalias: `%s': not a valid alias\n"

@@ -4,29 +4,20 @@ Minishell - Bash
 🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
 🏁                                    RESULT                                    🏁
 🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
-             TOTAL TEST COUNT: 881  TESTS PASSED: 726  LEAKING: 0
-                     STD_OUT: 87  STD_ERR: 67  EXIT_CODE: 53
+             TOTAL TEST COUNT: 881  TESTS PASSED: 742  LEAKING: 0
+                     STD_OUT: 90  STD_ERR: 53  EXIT_CODE: 83
                          TOTAL FAILED AND PASSED CASES:
-                                     ❌ 207
-                                     ✅ 2436
+                                     ❌ 226
+                                     ✅ 2417
 
 ## POR HACER:
 
 ## MIKEL:
-- Important:
-- Actualizar ultimo comando env
-- env + argumento
-- funcion que revierta los cambios de redirecciones porque en builtin
-suceden en el padre y no en el hijo
-- Test 137: ✅⚠️  ./missing.out
-mini error = ( command not found)
-bash error = ( No such file or directory)
-
+-
 - Secondary:
 - Bash te abra línea para que completes el comando ver → Modificar balance de ' " ( || && |
   - https://github.com/rogerdevworld/minishell/blob/main/src/bonus/loop_processing.c
   - https://github.com/rogerdevworld/minishell/blob/main/src/bonus/syntax/ft_lexer_2.c#L93
-
 
 ## DAVID:
 - Important:

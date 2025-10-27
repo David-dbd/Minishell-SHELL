@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 17:12:22 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/27 20:36:01 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/27 21:33:03 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,6 @@ static int	has_one_arg(char **args)
 		return (TRUE);
 	ft_printf_fd(STDERR, ERR_CD_TOO_MANY);
 	return (FALSE);
-}
-
-static void	update_pwd(t_shell *data, char *cwd, char *key_to_find)
-{
-	t_var	*var;
-	int		flag_found;
-
-	flag_found = FALSE;
-	var = data->env.vars;
-	while (var)
-	{
-		if (ft_strcmp(var->key, key_to_find) == 0)
-		{
-			flag_found = TRUE;
-			if (var->value)
-				free (var->value);
-			var->value = ft_strdup(cwd);
-			if (!var->value)
-				exit_error(data, ERR_MALLOC, EXIT_FAILURE);
-			break ;
-		}
-		var = var->next;
-	}
-	if (!flag_found)
-		add_var(data, key_to_find, cwd, ENV);
 }
 
 //EN OBRAS...no esta listo
@@ -118,8 +93,8 @@ static int	find_home(t_shell *data)
 		perror("minishell: cd");
 		return (EXIT_FAILURE);
 	}
-	update_pwd(data, cwd, "OLDPWD");
-	update_pwd(data, new_cwd, "PWD");
+	update_var(data, cwd, "OLDPWD");
+	update_var(data, new_cwd, "PWD");
 	return (SUCCESS);
 }
 
@@ -149,7 +124,7 @@ int	my_cd(t_shell *data, char **args)
 		perror("minishell: cd: ");
 		return (EXIT_FAILURE);
 	}
-	update_pwd(data, cwd, "OLDPWD");
-	update_pwd(data, new_cwd, "PWD");
+	update_var(data, cwd, "OLDPWD");
+	update_var(data, new_cwd, "PWD");
 	return (0);
 }

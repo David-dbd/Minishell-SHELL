@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_it_quoted.c                                     :+:      :+:    :+:   */
+/*   update_var.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/26 21:23:00 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/27 21:02:24 by migarrid         ###   ########.fr       */
+/*   Created: 2025/10/27 16:32:57 by migarrid          #+#    #+#             */
+/*   Updated: 2025/10/27 16:33:07 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
-void	is_it_quoted(t_prompt *prompt, t_token *tokens)
+void	update_var(t_shell *data, char *new_value, char *key_to_find)
 {
-	int	i;
-	int	in_quotes_flag;
+	t_var	*var;
+	int		flag_found;
 
-	i = 0;
-	in_quotes_flag = FALSE;
-	while (i < prompt->n_tokens)
+	flag_found = FALSE;
+	var = data->env.vars;
+	while (var)
 	{
-		if (tokens[i].type == DOUBLE_QUOTE)
+		if (ft_strcmp(var->key, key_to_find) == 0)
 		{
-			in_quotes_flag = !in_quotes_flag;
-			i++;
-			continue ;
+			flag_found = TRUE;
+			if (var->value)
+				free (var->value);
+			var->value = ft_strdup(new_value);
+			if (!var->value)
+				exit_error(data, ERR_MALLOC, EXIT_FAILURE);
+			break ;
 		}
-		if (in_quotes_flag)
-			tokens[i].double_quoted = TRUE;
-		i++;
+		var = var->next;
 	}
+	if (!flag_found)
+		add_var(data, key_to_find, new_value, ENV);
 }

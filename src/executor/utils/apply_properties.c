@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:02:23 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/25 21:34:34 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/27 14:11:05 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int	apply_properties(t_shell *data, t_node *node, t_env *env, int mode)
 	}
 	if (node->redir)
 		if (!apply_redirs(data, node, mode))
+		{
+			data->exit_code = FAIL;
 			return (FAILURE);
+		}
 	return (SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 16:22:32 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/27 21:31:57 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ void	exec_command(t_shell *data, t_node *node, t_exec *exec, int mode);
 /*                                buil_in                                     */
 /* ************************************************************************** */
 int		my_pwd(void);
-int		my_env(t_var *vars);
 int		my_echo(char **args);
+int		my_env(t_var *vars, char **args);
 int		my_cd(t_shell *data, char **args);
 void	my_exit(t_shell *data, char **args);
 int		my_alias(t_shell *data, t_cmd *cmd, char **args);
@@ -251,9 +251,11 @@ int		check_externs_syntax(t_shell *d, t_token *tkens, t_token *token, int t);
 
 //ENV
 void	update_shlvl(t_var *vars);
+void	delete_var(t_env *env, char *key);
 void	*lstlast_var(void *data, char type);
 void	path_null_no_env(t_shell *data, char **path);
 char	**make_envp(t_shell *data, t_env *env, t_var *vars);
+void	update_var(t_shell *data, char *new_value, char *key_to_find);
 char	*get_var_value(t_var *vars, const char *key);
 
 //HIGHLIGHTHER
