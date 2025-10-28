@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_minishell.c                                   :+:      :+:    :+:   */
+/*   ft_capitalize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 22:31:21 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 17:14:27 by migarrid         ###   ########.fr       */
+/*   Created: 2025/10/28 16:47:15 by migarrid          #+#    #+#             */
+/*   Updated: 2025/10/28 17:11:55 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../libft_plus.h"
 
-/*
- * Inicializa minishell: configura señales interactivas,
- * variables de entorno y procesa el primer argumento como un script de bash
- */
-
-void	init_minishell(t_shell *data, int ac, char **av, char **envp)
+char *ft_capitalize(char *str)
 {
-	setup_signals_interactive();
-	init_data(data, envp);
-	init_arg(data, ac, av);
-	// print_session_start(data, data->extras.session_start,
-	// 	&data->extras.user_name);
+	size_t	i;
+	int	 	start;
+
+	if (!str)
+		return (NULL);
+	i = 0;
+	start = true;
+	while (str[i] != '\0')
+	{
+		if (ft_isalnum(str[i]))
+		{
+			if (start && ft_isalpha(str[i]))
+					str[i] = ft_toupper(str[i]);
+			if (!start && ft_isalpha(str[i]))
+					str[i] = ft_tolower(str[i]);
+			start = false;
+		}
+		else
+			start = true;
+		i++;
+	}
+	return (str);
 }

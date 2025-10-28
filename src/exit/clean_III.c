@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 21:43:11 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 21:52:36 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:56:33 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,26 @@ void	clean_temp_variables(t_shell *d, t_env *e, t_token *t, t_node *node)
 {
 	my_clean_unset(d, e, t, node->arg_types);
 }
+
+/*
+	Restea toda la memorua de `t_extras` y la deja apuntando
+	a NULL para evitar accesos inválidos.
+*/
+
+void	clean_extras(t_extras *extras)
+{
+	if (extras->user_name)
+	{
+		free(extras->user_name);
+		extras->user_name = NULL;
+	}
+	*extras = (t_extras){0};
+}
+
+/*
+	Cierra los fd originales al finalizar el programa
+	asi cumplimos con la limpieza para el sistema.
+*/
 
 void	clean_fd(t_exec *exec)
 {

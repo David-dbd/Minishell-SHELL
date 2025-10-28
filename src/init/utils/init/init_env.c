@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:02:53 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 18:26:55 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:23:34 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static void	init_env(t_shell *data, char **envp)
 		add_var(data, key, value, ENV);
 		i++;
 	}
-	delete_var(&data->env, "_");
+	delete_var(data, &data->env, "_");
 	update_shlvl(data->env.vars);
 }
 

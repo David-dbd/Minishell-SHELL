@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:42:44 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/13 19:56:28 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:03:32 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	exit_succes(t_shell *data, char *msg, int exit_code)
 {
 	// if (msg)
 	// {
-	// 	print_session_end(data->extra_features.session_start, NULL);
-	// 	if (data->extra_features.user_name)
-	// 		ft_printf_fd(STDOUT, msg, data->extra_features.user_name);
+	// 	print_session_end(data->extras.session_start, NULL);
+	// 	if (data->extras.user_name)
+	// 		ft_printf_fd(STDOUT, msg, data->extras.user_name);
 	// 	else
 	// 		ft_printf_fd(STDOUT, MSG_GOODBYE_V2);
 	// }

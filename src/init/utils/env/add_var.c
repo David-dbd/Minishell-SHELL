@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:05:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 22:30:04 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:38:13 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,6 @@
 /*
 	Devuelve el último nodo de la lista de variables o NULL si está vacía.
 */
-/*
-t_var	*lstlast_var(t_var *lst)
-{
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
-}*/
 
 void	*lstlast_var(void *data, char type)
 {
@@ -76,4 +67,35 @@ void	add_var(t_shell *data, char *key, char *value, int type)
 		new_var->prev = last_var;
 	}
 	data->env.size++;
+}
+
+/*
+	Crea una nueva variable de entorno con 'key' y 'value' y la añade
+	al final de la lista de variables del shell. Ademas reconstruye el
+	char **envp necesario para execve
+*/
+
+void	add_var_and_envp(t_shell *data, char *key, char *value, int type)
+{
+	t_var	*new_var;
+	t_var	*last_var;
+
+	new_var = ft_calloc(1, sizeof(t_var));
+	if (!new_var)
+		return (free(key), free(value), (void)exit_error(data, ERR_MALLOC, 1));
+	new_var->key = key;
+	new_var->value = value;
+	new_var->type = type;
+	new_var->next = NULL;
+	new_var->prev = NULL;
+	last_var = lstlast_var(data->env.vars, 'v');
+	if (!last_var)
+		data->env.vars = new_var;
+	else
+	{
+		last_var->next = new_var;
+		new_var->prev = last_var;
+	}
+	data->env.size++;
+	update_envp(data);
 }

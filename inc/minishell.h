@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 13:11:06 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:37:20 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	clean_token(t_token **token);
 void	clean_tokens(t_prompt **prompt);
 void	clean_redirs(t_redir **lst);
 void	clean_env(t_env *env, t_var *vars);
-void	clean_extras(t_extras *extra_features);
+void	clean_extras(t_extras *extras);
 void	clean_cycle(t_shell *data, t_prompt *prompt, t_node **ast_root);
 void	my_clean_unset(t_shell *data, t_env *env, t_token *tokens, int *index);
 void	clean_temp_variables(t_shell *d, t_env *e, t_token *t, t_node *node);
@@ -146,7 +146,6 @@ int		syntax_error(t_shell *data, const char *error, int exit_code, ...);
 /* ************************************************************************** */
 // INIT
 void	allocate_tokens(t_shell *data, t_prompt *prompt, char *input);
-void	add_var(t_shell *data, char *key, char *value, int type);
 
 // GET TOKENS
 void	is_cmd(t_shell *d, t_prompt *p, t_token *t, char *s);
@@ -252,11 +251,14 @@ int		verify_if_already_set(t_shell *data, char *key, char **value, int t);
 int		check_externs_syntax(t_shell *d, t_token *tkens, t_token *token, int t);
 
 //ENV
+void	add_var(t_shell *data, char *key, char *value, int type);
+void	add_var_and_envp(t_shell *data, char *key, char *value, int type);
 void	update_shlvl(t_var *vars);
-void	delete_var(t_env *env, char *key);
+void	delete_var(t_shell *data, t_env *env, char *key);
 void	*lstlast_var(void *data, char type);
 void	path_null_no_env(t_shell *data, char **path);
 char	**make_envp(t_shell *data, t_env *env, t_var *vars);
+void	update_envp(t_shell *data);
 void	update_var(t_shell *data, char *new_value, char *key_to_find);
 char	*get_var_value(t_var *vars, const char *key);
 
@@ -285,7 +287,6 @@ void	clean_quote_until_slash_d(char *word, char *clean_word, char quote);
 void	void_tokens_at_the_end(t_token *tokens, int n_alloc, int n_tokens);
 void	eliminate_token(t_prompt *prompt, t_token *tokens, int index);
 int		cmd_correction(t_shell *data, t_token *tokens, int n_tokens);
-void	update_envp(t_shell *data);
 void	safe_index_plus(int *i, int n_tokens);
 void	normalize_token_to_lower(char *str);
 
@@ -298,7 +299,7 @@ int		check_arg_syntax(char *arg, const char *built_in_err);
 /* ************************************************************************** */
 void	print_session_end(time_t start, char *user_name);
 void	print_time_of_day(time_t start, char *user_name);
-void	print_session_start(t_shell *data, time_t start, char *user_name);
+void	print_session_start(t_shell *data, time_t start, char **user_name);
 void	add_node_rule(t_shell *data, char *value, char *alias, int state);
 
 #endif

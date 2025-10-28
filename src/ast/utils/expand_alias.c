@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:48:05 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/25 19:08:20 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:03:32 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	expand_alias(t_shell *data, t_token *tokens, int i)
 
 	if (tokens[i].type == COMMAND)
 	{
-		result = find_alias(data, data->extra_features.cmd, &tokens[i]);
+		result = find_alias(data, data->extras.cmd, &tokens[i]);
 		if (result == ERROR)
 			exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 	}

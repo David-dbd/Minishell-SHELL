@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 16:32:57 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 16:33:07 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:38:53 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ void	update_var(t_shell *data, char *new_value, char *key_to_find)
 			var->value = ft_strdup(new_value);
 			if (!var->value)
 				exit_error(data, ERR_MALLOC, EXIT_FAILURE);
+			update_envp(data);
 			break ;
 		}
 		var = var->next;
 	}
 	if (!flag_found)
-		add_var(data, key_to_find, new_value, ENV);
+		add_var_and_envp(data, key_to_find, new_value, ENV);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   which_builtin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:58:35 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 11:22:56 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:37:40 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 static void	extras(t_shell *data, t_token *token, t_node *node)
 {
 	if (ft_strcmp(token->value, BUILTIN_ALIAS) == 0)
-		data->exit_code = my_alias(data, data->extra_features.cmd, node->args);
+		data->exit_code = my_alias(data, data->extras.cmd, node->args);
 	else if (ft_strcmp(token->value, BUILTIN_UNALIAS) == 0)
-		data->exit_code = my_unalias(data, data->extra_features.cmd, node->args);
+		data->exit_code = my_unalias(data, data->extras.cmd, node->args);
 }
 
 static void	asignations(t_shell *data, t_token *token)
@@ -37,7 +37,6 @@ static void	env_commands(t_shell *d, t_token *token, t_node *node)
 		d->exit_code = my_unset(d, &d->env, node->args);
 	else if (ft_strcmp(token->value, BUILTIN_ENV) == 0)
 		d->exit_code = my_env(d->env.vars, node->args);
-	update_envp(d);
 }
 
 static void	basic_builtins(t_shell *data, t_token *token, t_node *node)

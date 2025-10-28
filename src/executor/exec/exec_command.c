@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 18:31:12 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:12:29 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	execute_cmd_from_child(t_shell *data, t_node *node, t_env *env)
 
 	apply_properties(data, node, env, CHILD);
 	path = get_path(data, node->token->value, env->envp);
-	add_var(data, "_", path, ENV);
+	add_var_and_envp(data, "_", path, ENV);
 	execve(path, node->args, env->envp);
 	free(path);
 	exit_error(data, ERR_EXEC, EXIT_CMD_NOT_EXEC, node->token->value);
@@ -90,7 +90,7 @@ void	execute_cmd_from_father(t_shell *data, t_node *node, t_env *env)
 		setup_signals_child();
 		apply_properties(data, node, env, CHILD);
 		path = get_path(data, node->token->value, env->envp);
-		add_var(data, "_", path, ENV);
+		add_var_and_envp(data, "_", path, ENV);
 		execve(path, node->args, env->envp);
 		free(path);
 		exit_error(data, ERR_EXEC, EXIT_CMD_NOT_EXEC, node->token->value);

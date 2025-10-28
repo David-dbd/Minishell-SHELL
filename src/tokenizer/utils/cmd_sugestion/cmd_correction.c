@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_correction.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:48:00 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/28 14:22:11 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:34:41 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,22 @@ static int	ask_confirmation(t_shell *data, t_token *token, char *built_in)
 
 	while (1)
 	{
-		printf("\033[1;32mDid you mean %s? y/n\033[0m\n", built_in);
+		printf("\033[1;32mDid you mean \"%s\"? y/n\033[0m\n", built_in);
 		ptr = ic_readline("\033[1;32m->\033[0m");//desde aqui hasta el else de readline puede ser una sola funcion que se llame sola
 		if (!ptr)
-			exit_error(data, NULL, EXIT_FATAL_SIGNAL);
+			return (FAILURE);
 		if (check_signals(data, NULL, NULL, NULL))
 		{
-			free (ptr);
+			free(ptr);
 			return (FAILURE);
 		}
 		if (parse_answer(data, token, ptr, built_in) != ERROR)
 		{
-			free (ptr);
+			free(ptr);
 			return (SUCCESS);
 		}
 		//Si es ERROR se vuelve a repetir la pregunta
-		free (ptr);
+		free(ptr);
 	}
 	return (SUCCESS);
 }
@@ -142,7 +142,7 @@ int	cmd_correction(t_shell *data, t_token *tokens, int n_tokens)
 			j = 0;
 			while (j < 9)
 			{
-				if (ft_strlen(tokens[i].value) >= 1
+				if (ft_strlen(tokens[i].value) >= 2
 					&& find_match(tokens[i].value, built_in[j])) //si solo hay un caracter diferente
 				{ //mayor que 1 porque el el built_in mas corto es cd y es de 1
 					result = ask_confirmation(data, &tokens[i], built_in[j]);

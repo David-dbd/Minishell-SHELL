@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:47:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 22:02:17 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:03:32 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,5 @@ void	clean_all(t_shell *data)
 	clean_env(&data->env, data->env.vars);
 	clean_ast(data->ast_root);
 	clean_fd(&data->exec);
-	clean_extras(&data->extra_features);
+	clean_extras(&data->extras);
 }
