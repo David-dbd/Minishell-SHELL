@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handler_signals.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:47:09 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/11 06:46:18 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/28 12:37:42 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 /*
  * Maneja Ctrl+C en modo interactivo: marca la señal
  * recibida para ser procesada posteriormente
- */
+*/
 
 void	handle_sigint_interative(int sig)
 {
@@ -38,7 +38,7 @@ void	handle_sigint_interative(int sig)
 /*
  * Maneja Ctrl+C en heredoc: marca la señal y escribe
  * un salto de línea para limpiar la entrada
- */
+*/
 
 void	handle_sigint_heredoc(int sig)
 {

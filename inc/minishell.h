@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 10:55:55 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/28 13:11:06 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,10 @@ void	setup_signals_child(void);
 void	setup_signals_heredoc(void);
 void	handle_sigint_interative(int sig);
 void	handle_sigint_heredoc(int sig);
-int     check_signal_node_heredoc(t_node *node, t_redir *redir);
+int		check_signal_node_heredoc(t_node *node, t_redir *redir);
 int		check_signals(t_shell *data, t_redir *redir, char *line, int *pipe_fd);
+void	setup_signals_cmd_correction(void);
+int		check_signal_cmd_correction(t_shell *data);
 
 /* ************************************************************************** */
 /*                                 Clean                                      */
@@ -282,7 +284,7 @@ char	*clean_slash_expan_d(t_shell *data, char *word, int len, char slash);
 void	clean_quote_until_slash_d(char *word, char *clean_word, char quote);
 void	void_tokens_at_the_end(t_token *tokens, int n_alloc, int n_tokens);
 void	eliminate_token(t_prompt *prompt, t_token *tokens, int index);
-void	cmd_correction(t_shell *data, t_token *tokens, int n_tokens);
+int		cmd_correction(t_shell *data, t_token *tokens, int n_tokens);
 void	update_envp(t_shell *data);
 void	safe_index_plus(int *i, int n_tokens);
 void	normalize_token_to_lower(char *str);

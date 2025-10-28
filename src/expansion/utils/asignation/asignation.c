@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:35:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/15 12:48:55 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/28 13:39:11 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,6 @@ int	asignation(t_shell *data, t_token *token, int type)
 	}
 	if (result == FALSE)
 	{
-		data->env.size++;
 		if (type == PLUS_ASIGNATION)
 			is_it_env_or_local(data, &type, token->id);
 		add_var(data, key, value, type);

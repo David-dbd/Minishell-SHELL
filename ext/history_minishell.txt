@@ -1,86 +1,3 @@
-var+=21
-VAR=hola bash -c 'echo $VAR'
-LONGNAME=LALA
-ECHO $longname
-ECHO $LONGNAME
-LOGNAME=PEPE
-unset LOGNAME
-UNSET SHLVL
-UNSET USER
-bash
-execve("/bin/bash", (char *[]){ "bash", "--noprofile", "--norc", "-c", "env" }, envp);
-zshell
-zshl
-zsl
-zslh
-var=1 echo hola
-var=1 echo
-ppwd
-var=1 ls -l
-var=1 ls | grep "var=1"
-var=1 ls | grep "var"
-var=1 ls
-unset echo
-var=asig
-var=asig var=2
-var=1 var+=21
-var=21 var+=99 && export a=10
-unset VAR
-var=21 var+=99 var=2 var+=21 && export a=10
-CLEAR
-var=21 var+=21 ls
-echo "Hello $var"
-var=1 echo $var
-var=1 var+=21 echo $var
-var=1 var+=21 var+=a echo $var
-var=1 var+=21 var+=a ver=21 echo $var
-var=1 var+=21 var+=a ver+=21 ver=11 echo $var
-var=1 var+=21 var+=a ver+=21 echo $var
-var=1 var+=21 var+=a ver+=21 ls -l
-var=1 var+=21 var+=a ver+=21 ls -l && pepe=1 ls
-unset david
-(var=21 ls)
-(export var=21 && echo hello)
-export var=21 && echo hello
-(echo $USER)
-(echo $USE)
-(echo "Hola $USE")
-(echo "Hola $USE how you doin?")
-(echo "Hola "$USE" how you doin?")
-echo "Hola "$USE" how you doin?"
-'ex'port A=1
-echo
-echo echo
-'ex'port
-'e'cho
-export A=" Hola como estas = BIEN"
-export =
-export A=1 =
-export A=1 b=1
-echo $b
-export A=1 l
-export A=1 b+=1
-var=1 b+=1 c=3 d+=2
-unset var b c d
-echo $var $b $c $d
-'expo'rt
-(echo "Hola "$USE"how you doin?")
-(var=21 echo hello)
-unser var pepe
-unset var
-unset pepe
-export var=1 pepe=2
-unset var pepe
-unset hoolamundo
-unset
-env ----
-unset ------
-unset 1234
-unset 1234sdferf341r34f3v trbwre wrg234g3g- &$\xC2\xB74 wefqwf
-readonly
-export a =hola
-unset 1var
-unset var+
 unset va12r
 unset $""
 unset "$"
@@ -141,7 +58,6 @@ alias hola cd
 >>>>>>> origin/david
 clcear
 git status
-<<<<<<< HEAD
 cd
 cd 123453
 echo $USER
@@ -179,7 +95,6 @@ echo "Hello $USE como vas?"
 echo Hello $USE como vas?
 echo test$h "$h"
 echo test$h"$h"
-=======
 cls
 echo < infile
 echo < infile hola
@@ -225,7 +140,6 @@ ls .
 echo .
 .
 "\x23"
-echo $?
 env && ls
 env s
 env | grep "_
@@ -250,8 +164,6 @@ echo "hello $USE" | cat -e
 echo "hola $H como estas" | cat -e
 echo test$h "$h" | cat -e
 <<<<<<< HEAD
-echo "$USER.txt"
-echo "$USE.txt"
 export=Hello World
 export hello world
 export Hello david
@@ -259,7 +171,6 @@ export
 export var=1
 hola
 export hola
-clear
 export a
 unset a
 =======
@@ -267,6 +178,22 @@ echo test"$h" | cat -e
 >>>>>>> mikel
 echo "$USER.txt"
 echo "$USE.txt"
-ls
-clear
 >>>>>>> bd88b8461bf801d7326754aa1c691558f078c1c5
+var=1 var+=2 ls
+var=1 var+=2 ls && echo $var
+var=1 var+=2 ls && env
+(var=1 var+=2 ls && env)
+ls
+./minishell
+exit
+ech
+ech hola
+export 123var123=hola
+expot 123var123=hola
+eca
+eca hola
+yes
+echa hola
+(ech hola && ls)
+echo $?
+clear

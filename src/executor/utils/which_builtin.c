@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:58:35 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 10:56:03 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/28 11:22:56 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ static void	env_commands(t_shell *d, t_token *token, t_node *node)
 		d->exit_code = my_unset(d, &d->env, node->args);
 	else if (ft_strcmp(token->value, BUILTIN_ENV) == 0)
 		d->exit_code = my_env(d->env.vars, node->args);
-	else if (ft_strcmp(token->value, BUILTIN_UNSET) == 0)
-		d->exit_code = my_unset(d, &d->env, node->args);
+	update_envp(d);
 }
 
 static void	basic_builtins(t_shell *data, t_token *token, t_node *node)
@@ -58,6 +57,5 @@ void	which_builtin(t_shell *data, t_token *token, t_node *node)
 	asignations(data, token);
 	env_commands(data, token, node);
 	basic_builtins(data, token, node);
-	update_envp(data);
 	//extras(data, token, node);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_correction.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:48:00 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/25 22:31:59 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/28 14:22:11 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,30 @@ static	int	parse_answer(t_shell *d, t_token *token, char *str, char *built_in)
 	return (ERROR); //El usuario introduce cualquier otro valor distinto a yes/no
 }
 
-static void	ask_confirmation(t_shell *data, t_token *token, char *built_in)
+static int	ask_confirmation(t_shell *data, t_token *token, char *built_in)
 {
 	char	*ptr;
 
 	while (1)
 	{
-		printf("Did you mean %s? y/n\n", built_in);
-		ptr = ic_readline("\033[1;34->\033[1;34m> \033[0m");//desde aqui hasta el else de readline puede ser una sola funcion que se llame sola
+		printf("\033[1;32mDid you mean %s? y/n\033[0m\n", built_in);
+		ptr = ic_readline("\033[1;32m->\033[0m");//desde aqui hasta el else de readline puede ser una sola funcion que se llame sola
 		if (!ptr)
-			exit_error(data, ERR_MALLOC, EXIT_FAILURE);
-		check_signals(data, NULL, NULL, NULL);
+			exit_error(data, NULL, EXIT_FATAL_SIGNAL);
+		if (check_signals(data, NULL, NULL, NULL))
+		{
+			free (ptr);
+			return (FAILURE);
+		}
 		if (parse_answer(data, token, ptr, built_in) != ERROR)
 		{
 			free (ptr);
-			return ;
+			return (SUCCESS);
 		}
 		//Si es ERROR se vuelve a repetir la pregunta
 		free (ptr);
 	}
+	return (SUCCESS);
 }
 
 /*
@@ -111,9 +116,10 @@ static int	find_match(const char *s1, const char *s2)
 	return (FALSE);
 }
 
-void	cmd_correction(t_shell *data, t_token *tokens, int n_tokens)
+int	cmd_correction(t_shell *data, t_token *tokens, int n_tokens)
 {
 	char	*built_in[10];
+	int		result;
 	int		i;
 	int		j;
 
@@ -128,6 +134,7 @@ void	cmd_correction(t_shell *data, t_token *tokens, int n_tokens)
 	built_in[7] = "alias";
 	built_in[8] = "unalias";
 	built_in[9] = NULL;
+	result = SUCCESS;
 	while (i < n_tokens)
 	{
 		if (tokens[i].type == COMMAND)
@@ -138,12 +145,15 @@ void	cmd_correction(t_shell *data, t_token *tokens, int n_tokens)
 				if (ft_strlen(tokens[i].value) >= 1
 					&& find_match(tokens[i].value, built_in[j])) //si solo hay un caracter diferente
 				{ //mayor que 1 porque el el built_in mas corto es cd y es de 1
-					ask_confirmation(data, &tokens[i], built_in[j]);
-					return ; //Solo corrige el el primero que encuentra mal escrito en lugar de intnetar corregir todos ya que sería fastidioso para el usuario
+					result = ask_confirmation(data, &tokens[i], built_in[j]);
+					break ;//Solo corrige el el primero que encuentra mal escrito en lugar de intnetar corregir todos ya que sería fastidioso para el usuario
 				}
 				j++;
 			}
 		}
 		i++;
 	}
+	if (!result)
+		clean_prompt(&data->prompt);
+	return (result);
 }

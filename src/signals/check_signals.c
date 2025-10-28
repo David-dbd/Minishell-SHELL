@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_signals.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:47:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/12 19:49:52 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/28 14:21:22 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * Verifica si se recibieron señales y actúa según el contexto:
  * En modo interactivo actualiza el código de salida y en heredoc
  * termina la ejecución del heredoc con código de Ctrl+C
- */
+*/
 
 int	check_signals(t_shell *data, t_redir *redir, char *line, int *pipe_fd)
 {
@@ -50,7 +50,7 @@ int	check_signals(t_shell *data, t_redir *redir, char *line, int *pipe_fd)
  * Verifica si se recibieron señales y actúa según el contexto:
  * Funcion auxiliar que en el proceso del nodo comprueba la flag de señal
  * evita la ejecucion del nodo por CTRL+C
- */
+*/
 
 int	check_signal_node_heredoc(t_node *node, t_redir *redir)
 {

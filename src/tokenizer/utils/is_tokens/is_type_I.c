@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_type_I.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:48:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/12 18:20:42 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/28 13:55:31 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ int	is_alloc_type(int type)
 {
 	if (type == WORD || type == BUILT_IN || type == COMMAND || type == WILDCAR
 		|| type == REDIR_APPEND || type == REDIR_HEREDOC || type == REDIR_INPUT
-		|| type == REDIR_OUTPUT || type == EXPANSION || type == FILENAME
+		|| type == REDIR_OUTPUT || type == EXPANSION
 		|| type == ASIGNATION || type == TEMP_ASIGNATION
-		|| type == PLUS_ASIGNATION || type == DELIMITER
-		|| type == FILENAME)
+		|| type == TEMP_PLUS_ASIGNATION || type == PLUS_ASIGNATION
+		|| type == DELIMITER || type == FILENAME)
 		return (1);
 	return (0);
 }
