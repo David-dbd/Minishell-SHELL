@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 02:13:28 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/28 17:12:11 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 02:00:15 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ char *find_user(t_shell *data, t_var *vars)
 		if (ft_strcmp(var->key, "USER") == 0)
 		{
 			name = ft_strdup(var->value);
+			if (!name)
+				exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 			name = ft_capitalize(name);
 			return(name);
 		}

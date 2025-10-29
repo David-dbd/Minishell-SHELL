@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 23:03:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 20:19:10 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 01:24:15 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,6 @@ static void	aux_alloc_mem(t_shell *data, char ***args, int n_args)
 	*args = ft_calloc(n_args + 1, sizeof(char *));
 	if (!*args)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
-}
-
-static void	extract_bin_arg(t_shell *d, char **arg_extract, char *word)
-{
-	*arg_extract = ft_strdup(word);
-	if (!*arg_extract)
-		exit_error(d, ERR_MALLOC, EXIT_FAILURE);
 }
 
 static void	arg_count(t_token *tokens, int n_tokens, int *i, int *n_args)
@@ -92,7 +85,7 @@ char	**get_args_for_binary(t_shell *data, t_token *tokens, int *i)
 			j++;
 			continue ;
 		}
-		extract_bin_arg(data, &args[k], tokens[j].value);
+		args[k] = tokens[j].value;
 		k++;
 		j++;
 	}

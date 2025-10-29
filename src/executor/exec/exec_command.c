@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 16:12:29 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 01:51:51 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	wait_cmd_background(t_shell *data, t_node *node, pid_t pid)
 	if (node->background)
 	{
 		// exit_code para padre es 0 porque el fork fue exitoso
+		data->last_background_pid = pid;
 		ft_printf_fd(STDOUT, "[&] %d\n", pid);
 		data->exit_code = OK;
 	}

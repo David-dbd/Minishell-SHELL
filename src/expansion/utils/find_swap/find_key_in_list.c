@@ -6,11 +6,30 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 21:10:27 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 02:31:09 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
+
+char *find_value_key(t_shell *data, t_var *vars, char *key_to_find)
+{
+	char	*name;
+	t_var 	*var;
+
+	var = vars;
+	name = NULL;
+	while(var)
+	{
+		if (ft_strcmp(var->key, key_to_find) == 0)
+		{
+			name = var->key;
+			return(name);
+		}
+		var = var->next;
+	}
+	return (name);
+}
 
 static void	sym_expa(t_shell *d, t_token *token, char **key_to_f, int sym_value)
 {
@@ -32,7 +51,6 @@ static void	sym_expa(t_shell *d, t_token *token, char **key_to_f, int sym_value)
 	Si es así, la expande usando su valor correspondiente:
 
 	$$ → PID del shell actual (shell padre)
-	$! → PID del último proceso en segundo plano (hijo)
 	$? → Código de salida del último proceso ejecutado
 */
 
@@ -40,9 +58,9 @@ static int	is_it_symbol(t_shell *data, t_token *token, char **key_to_find)
 {
 	if (key_to_find[0][0] == '!' && key_to_find[0][1] == '\0')
 	{
-		if (data->ast_root->pid)
+		if (data->last_background_pid)
 		{
-			sym_expa(data, token, key_to_find, data->ast_root->pid);
+			sym_expa(data, token, key_to_find, data->last_background_pid);
 			return (TRUE);
 		}
 		else

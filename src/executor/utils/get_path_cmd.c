@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 19:24:46 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 16:01:11 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 02:03:16 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,24 +51,27 @@ static char	*search_in_path(t_shell *d, char *cmd, char **envp)
 	return (NULL);
 }
 
-char	*get_path(t_shell *d, char *cmd, char **envp)
+char	*get_path(t_shell *data, char *cmd, char **envp)
 {
 	char		*path;
 	struct stat	st;
 
-	special_cases_path_dir(d, cmd);
+	special_cases_path_dir(data, cmd);
 	if (ft_strchr(cmd, '/'))
 	{
 		if (stat(cmd, &st) == -1)
-			return (exit_error(d, ERR_FILE_NOT_FOUND, 127, cmd), NULL);
+			return (exit_error(data, ERR_FILE_NOT_FOUND, 127, cmd), NULL);
 		if (S_ISDIR(st.st_mode))
-			return (exit_error(d, ERR_IS_DIR, 126, cmd), NULL);
+			return (exit_error(data, ERR_IS_DIR, 126, cmd), NULL);
 		if (access(cmd, X_OK) != 0)
-			return (exit_error(d, ERR_PERM_DENIED, 126, cmd), NULL);
-		return (ft_strdup(cmd));
+			return (exit_error(data, ERR_PERM_DENIED, 126, cmd), NULL);
+		path = ft_strdup(cmd);
+		if (!path)
+			exit_error(data, ERR_MALLOC, EXIT_FAILURE);
+		return (path);
 	}
-	path = search_in_path(d, cmd, envp);
+	path = search_in_path(data, cmd, envp);
 	if (!path)
-		return (exit_error(d, ERR_CMD_NOT_FOUND, 127, cmd), NULL);
+		return (exit_error(data, ERR_CMD_NOT_FOUND, 127, cmd), NULL);
 	return (path);
 }

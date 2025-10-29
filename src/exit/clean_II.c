@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 01:53:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 16:43:58 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 01:26:09 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	clean_redirs(t_redir **lst)
 void	clean_node(t_node **node)
 {
 	if ((*node)->args)
-		ft_free_str_array((*node)->args);
+		free((*node)->args);
 	if ((*node)->arg_types)
 		free((*node)->arg_types);
 	if ((*node)->redir)

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:12 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 21:32:24 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 01:51:59 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	exec_builtin(t_shell *data, t_node *node, t_exec *exec, int mode)
 			which_builtin(data, node->token, node);
 			exit_succes(data, NULL, data->exit_code);
 		}
+		data->last_background_pid = pid;
 		ft_printf_fd(STDOUT, "[&] %d\n", pid);
 		data->exit_code = OK; //da 0 porque el fork en si fue exitoso
 		return ;

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:41:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/12 18:39:53 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 01:33:43 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ t_node	*create_true_node(t_shell *data, t_type type)
 	node->arg_types = NULL;
 	node->left = NULL;
 	node->right = NULL;
-	node->pid = 0;
-	node->exit_code = 0;
 	node->executed = FALSE;
 	node->fake = TRUE;
 	node->background = FALSE;
@@ -91,8 +89,6 @@ t_node	*create_node(t_shell *data, t_token *token, t_type type)
 	node->assig_tmp = NULL;
 	node->left = NULL;
 	node->right = NULL;
-	node->pid = 0;
-	node->exit_code = 0;
 	node->executed = FALSE;
 	node->fake = FALSE;
 	node->background = FALSE;

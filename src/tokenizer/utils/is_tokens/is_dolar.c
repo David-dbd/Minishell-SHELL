@@ -113,6 +113,30 @@ static void	make_expan_token(t_shell *data, const char *str, int start, int *i)
 	}
 }
 
+void	handle_tilde_expansion(t_shell *d, t_prompt *p, const char *str, int *i)
+{
+	int		start;
+	int		len;
+	char	*word;
+
+	start = *i;
+	(*i)++;
+	make_expan_token(d, str, start, i);
+	if (str[*i] != '\0' && !ft_isspace(str[*i]))
+	{
+		start = *i;
+		while (str[*i] != '\0' && !ft_isspace(str[*i]))
+			(*i)++;
+		if (*i > start)
+		{
+			len = *i - start;
+			add_token(d, p, "", NO_SPACE);
+			word = ft_substr(str, start, len);
+			add_token(d, p, word, WORD);
+		}
+	}
+}
+
 /*
 	Procesa un token que comienza con '$':
 	- Salta si está seguido de un dígito ($1), que no se expande.
@@ -144,4 +168,8 @@ void	is_dolar(t_shell *data, t_prompt *prompt, const char *str, int *i)
 		if (flag == TRUE)
 			add_token(data, prompt, "", NO_SPACE);
 	}
+	if (str[*i] == '~'
+		&& ((str[*i + 1] && ft_isspace(str[*i + 1])) || str[*i + 1] == '\0')
+		|| (str[*i] == '~' && str[*i + 1] && str[*i + 1]== '/'))
+		handle_tilde_expansion(data, prompt, str, i);
 }

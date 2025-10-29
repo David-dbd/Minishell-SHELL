@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 16:03:32 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 01:51:25 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,14 +132,11 @@ struct s_node
 	int			*arg_types;
 	char		**assig_tmp;
 	t_redir		*redir;
-	pid_t		pid;
-	int			exit_code;
 	t_node		*left;
 	t_node		*right;
 	bool		fake;
 	bool		background;
 	bool		executed;
-	bool		mode;
 };
 
 struct s_cmd
@@ -166,6 +163,7 @@ typedef struct s_shell
 	t_exec		exec;
 	t_node		*ast_root;
 	pid_t		shell_pid;
+	pid_t		last_background_pid;
 	t_extras	extras;
 	int			exit_code;
 }	t_shell;

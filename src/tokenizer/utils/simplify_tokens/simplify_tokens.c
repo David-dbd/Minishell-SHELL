@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simplify_tokens.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 20:37:22 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 17:56:58 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/29 01:59:22 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 	y reorganiza los tokens resultando en uno solo.
 */
 
-static void	join_tokens(t_prompt *prompt, t_token *tokens, int *range)
+void	join_tokens(t_shell *d, t_prompt *prompt, t_token *tokens, int *range)
 {
 	int		i;
 	char	*tmp;
@@ -25,6 +25,8 @@ static void	join_tokens(t_prompt *prompt, t_token *tokens, int *range)
 
 	i = range[0];
 	result = ft_strdup("");
+	if (!result)
+		exit_error(d, ERR_MALLOC, EXIT_FAILURE);
 	while (i <= range[1])
 	{
 		if (is_primitive_cmd_type(tokens[i].type))
@@ -125,7 +127,7 @@ void	simplify_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 		{
 			if (is_possible_simplify(tokens, range))
 			{
-				join_tokens(prompt, tokens, range);
+				join_tokens(data, prompt, tokens, range);
 				i = range[0] + 1;
 				continue ;
 			}
