@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_temp_asignations.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 18:54:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/27 21:37:33 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:48:26 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	get_correct_index(t_token *tokens, int n_tokens, int start)
 		start--; //quedar en la temp_asig
 		while (is_asignation_type(tokens[start].type) && start >= 0) //iterar sobre las temp_asig
 			start--;
-		if (start < 0 || !is_asignation_type(tokens[start].type))//sumar un indice si es que no se esta en 0
+		if (start < 0 && (start < n_tokens || !is_asignation_type(tokens[start].type))) //sumar un indice si es que no se esta en 0
 			start++;
 	}
 	return (start);

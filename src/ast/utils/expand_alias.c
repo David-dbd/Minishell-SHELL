@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:48:05 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/28 16:03:32 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:49:46 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 	El cmd->value es "cd", "echo", "unset", etc...
 */
 
-static int	find_alias(t_shell *data, t_cmd *cmd, t_token *token)
+static int	find_alias(t_cmd *cmd, t_token *token)
 {
 	while (cmd)
 	{
@@ -58,7 +58,7 @@ void	expand_alias(t_shell *data, t_token *tokens, int i)
 
 	if (tokens[i].type == COMMAND)
 	{
-		result = find_alias(data, data->extras.cmd, &tokens[i]);
+		result = find_alias(data->extras.cmd, &tokens[i]);
 		if (result == ERROR)
 			exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 	}

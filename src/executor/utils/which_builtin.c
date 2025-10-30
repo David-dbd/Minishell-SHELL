@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:58:35 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 16:37:40 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 02:05:35 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	extras(t_shell *data, t_token *token, t_node *node)
 	if (ft_strcmp(token->value, BUILTIN_ALIAS) == 0)
 		data->exit_code = my_alias(data, data->extras.cmd, node->args);
 	else if (ft_strcmp(token->value, BUILTIN_UNALIAS) == 0)
-		data->exit_code = my_unalias(data, data->extras.cmd, node->args);
+		data->exit_code = my_unalias(data->extras.cmd, node->args);
 }
 
 static void	asignations(t_shell *data, t_token *token)
@@ -29,14 +29,14 @@ static void	asignations(t_shell *data, t_token *token)
 		data->exit_code = asignation(data, token, PLUS_ASIGNATION);
 }
 
-static void	env_commands(t_shell *d, t_token *token, t_node *node)
+static void	env_cmds(t_shell *data, t_env *env, t_token *token, t_node *node)
 {
 	if (ft_strcmp(token->value, BUILTIN_EXPORT) == 0)
-		d->exit_code = my_export(d, d->prompt.tokens, &d->env, node);
+		data->exit_code = my_export(data, data->prompt.tokens, env, node);
 	else if (ft_strcmp(token->value, BUILTIN_UNSET) == 0)
-		d->exit_code = my_unset(d, &d->env, node->args);
+		data->exit_code = my_unset(data, env, node->args);
 	else if (ft_strcmp(token->value, BUILTIN_ENV) == 0)
-		d->exit_code = my_env(d->env.vars, node->args);
+		data->exit_code = my_env(env->vars, node->args);
 }
 
 static void	basic_builtins(t_shell *data, t_token *token, t_node *node)
@@ -54,7 +54,7 @@ static void	basic_builtins(t_shell *data, t_token *token, t_node *node)
 void	which_builtin(t_shell *data, t_token *token, t_node *node)
 {
 	asignations(data, token);
-	env_commands(data, token, node);
+	env_cmds(data, &data->env, token, node);
 	basic_builtins(data, token, node);
-	//extras(data, token, node);
+	extras(data, token, node);
 }

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 17:35:07 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/28 19:43:59 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:05:59 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int after_a_subshell_no_arg_or_cmd(t_token *tokens, int i)
 
 int	check_cmd_externs(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 {
+	(void)prompt;
 	if (!after_filename_just_argument_unless_cmd_after_redir(tokens, i))
 	{
 		syntax_error(data, ERR_SYNTAX, EXIT_USE, tokens[i].value);

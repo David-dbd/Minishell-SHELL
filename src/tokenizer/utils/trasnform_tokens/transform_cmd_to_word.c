@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 15:39:12 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/06 17:29:22 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:07:48 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,24 +75,24 @@ static int	verify_till_valid_token(t_token *tokens, int i)
 	return (FALSE);
 }
 
-static void	check_again_more_tokens(t_shell *data, t_token *tokens, t_token *t)
+static void	check_again_more_tokens(t_token *tokens, t_token *token)
 {
 	int	i;
 
-	i = t->id;
-	if (i >= 1 && (ft_strcmp(t->value, BUILTIN_EXPORT) == 0
-			|| ft_strcmp(t->value, BUILTIN_ECHO) == 0
-			|| ft_strcmp(t->value, BUILTIN_ENV) == 0
-			|| ft_strcmp(t->value, BUILTIN_EXIT) == 0
-			|| ft_strcmp(t->value, BUILTIN_UNSET) == 0
-			|| ft_strcmp(t->value, BUILTIN_CD) == 0
-			|| ft_strcmp(t->value, BUILTIN_PWD) == 0)
+	i = token->id;
+	if (i >= 1 && (ft_strcmp(token->value, BUILTIN_EXPORT) == 0
+			|| ft_strcmp(token->value, BUILTIN_ECHO) == 0
+			|| ft_strcmp(token->value, BUILTIN_ENV) == 0
+			|| ft_strcmp(token->value, BUILTIN_EXIT) == 0
+			|| ft_strcmp(token->value, BUILTIN_UNSET) == 0
+			|| ft_strcmp(token->value, BUILTIN_CD) == 0
+			|| ft_strcmp(token->value, BUILTIN_PWD) == 0)
 		&& tokens[i - 1].type == ASIGNATION
 		&& verify_till_valid_token(tokens, i))
-		t->type = BUILT_IN;
+		token->type = BUILT_IN;
 	else if (i >= 1 && tokens[i - 1].type == ASIGNATION
 		&& verify_till_valid_token(tokens, i))
-		t->type = COMMAND;
+		token->type = COMMAND;
 }
 
 /*
@@ -152,7 +152,7 @@ void	transform_cmd_to_word(t_shell *data, t_token *tokens, int phase)
 	{
 		if (phase == INITIAL_PHASE)
 		{
-			if (i == 0 || i >= 1 && is_delimiter_type(tokens[i - 1].type))
+			if (i == 0 || (i >= 1 && is_delimiter_type(tokens[i - 1].type)))
 			{
 				if (tokens[i].type == WORD)
 					tokens[i].type = COMMAND;
@@ -164,7 +164,7 @@ void	transform_cmd_to_word(t_shell *data, t_token *tokens, int phase)
 			}
 		}
 		else if (phase == FINAL_PHASE && tokens[i].type == WORD)
-			check_again_more_tokens(data, tokens, &tokens[i]);
+			check_again_more_tokens(tokens, &tokens[i]);
 		i++;
 	}
 }

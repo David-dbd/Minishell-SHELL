@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 16:42:21 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/28 17:40:15 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:53:34 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	exec_subshell(t_shell *data, t_node *node, t_exec *exec, int mode)
 	if (pid == 0)
 	{
 		setup_signals_child();
-		apply_properties(data, node, &data->env, FATHER);
+		apply_properties(data, node, FATHER);
 		executor_recursive(data, node->left, exec, FATHER); //tiene que ser fhater ya que si es child en cuanto ejecuta el primer cmd, hace exit y se queda sin ejecutar el resto
 		exit_succes(data, NULL, data->exit_code);
 	}

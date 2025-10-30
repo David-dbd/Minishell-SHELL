@@ -133,8 +133,9 @@ head -c 1000 /dev/urandom | cat | cat | base64 | head -n 10 | wc -l
 ./minishell
 |echo|
 ls
-clear
 export TEST=
-> test
 echo $$
 pwd
+clear
+(ls) ls
+> test

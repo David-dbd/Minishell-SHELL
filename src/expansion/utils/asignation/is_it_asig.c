@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_it_asig.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:33:47 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/24 17:37:43 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:21:45 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,19 +107,20 @@
  *  clásico de un shell: parseo → AST → ejecución.
 */
 //Probably have to eliminate this one as it is no longer helpful
-int	is_it_asig(t_shell *data, t_token *token, t_env *env, int type)
-{
-	int	result;
 
-	result = FALSE;
-	if (token->type == ASIGNATION)
-	{
-		//if (ft_strchr(token->value, '='))
-			//result = check_externs_syntax(data, token, INDIFERENT);
-	}
-	if (type == EXP)
-		result = check_asignation_syntax(token, type);
-	if (result == TRUE)
-		result = asignation(data, token, type);
-	return (result);
-}
+// int	is_it_asig(t_shell *data, t_token *token, int type)
+// {
+// 	int	result;
+
+// 	result = FALSE;
+// 	if (token->type == ASIGNATION)
+// 	{
+// 		//if (ft_strchr(token->value, '='))
+// 			//result = check_externs_syntax(data, token, INDIFERENT);
+// 	}
+// 	if (type == EXP)
+// 		result = check_asignation_syntax(token, type);
+// 	if (result == TRUE)
+// 		result = asignation(data, token, type);
+// 	return (result);
+// }

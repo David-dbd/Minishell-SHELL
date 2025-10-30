@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform_asig_to_temp_asig.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 20:39:26 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/15 15:58:41 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:09:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ static int	check_if_temp_plus(t_prompt *promp, t_token *tokens, t_token *token)
 		return (FALSE);
 }
 
-void	transform_asig_to_temp(t_shell *data, t_prompt *prompt, t_token *tokens)
+void	transform_asig_to_temp(t_prompt *prompt, t_token *tokens)
 {
 	int	i;
 

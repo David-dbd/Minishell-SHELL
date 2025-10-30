@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:02:53 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 16:23:34 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 02:03:14 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,11 @@ static void	init_env(t_shell *data, char **envp)
 	Inicializa el entorno del shell: usa 'envp' si existe o crea uno básico.
 */
 
-void	init_enviroment(t_shell *data, char **envp)
+void	init_enviroment(t_shell *data, t_env *env, char **envp)
 {
 	if (!envp || !*envp)
 		init_no_env(data);
 	else
 		init_env(data, envp);
-	data->env.envp = make_envp(data, &data->env, data->env.vars);
+	env->envp = make_envp(data, env, env->vars);
 }

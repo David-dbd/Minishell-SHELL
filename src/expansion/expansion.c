@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:57:33 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 21:17:35 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:12:52 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	aux_mem_alloc(t_shell *data, t_token *token, char **key_to_find)
 	return (SUCCESS);
 }
 
-int	expansion(t_shell *data, t_token *token, t_env *env, int phase)
+int	expansion(t_shell *data, t_token *token, int phase)
 {
 	char	*key_to_find;
 	int		number_of_dollars;

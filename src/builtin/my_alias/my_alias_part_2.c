@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:48:42 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/25 19:08:29 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 02:07:17 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 	Asi que se libera y se asigna a cd.
 */
 
-static void	check_if_already_assing(t_shell *data, t_cmd *cmd, char *alias)
+static void	check_if_already_assing(t_cmd *cmd, char *alias)
 {
 	while (cmd)
 	{
@@ -40,7 +40,7 @@ static void	check_if_already_assing(t_shell *data, t_cmd *cmd, char *alias)
 	Revisa que el alias no sea un comando o built_in existente.
 */
 
-static int	check_alias_conflicts(t_shell *data, char *alias, char *cmd_to_find)
+static int	check_alias_conflicts(t_shell *data, char *alias)
 {
 	if (is_built_in(NULL, alias)
 		|| get_path(data, alias, data->env.envp)) //leak porque no se libera alias y cmd_to_find. Quitar el return exit de alli o duplicar la funcion pero sin el return.
@@ -57,8 +57,8 @@ int	find_cmd(t_shell *data, t_cmd *cmd, char *to_find, char *alias)
 	{
 		if (ft_strcmp(cmd->value, to_find) == 0)
 		{
-			check_if_already_assing(data, cmd, alias); //si ya esta asignado a otro cmd entonces se libera para ese cmd. Preguntar que se prefiere. Personalmente me da igual.
-			if (check_alias_conflicts(data, alias, to_find) == TRUE) //Si el alias que intenta asignarse es un cmd existente
+			check_if_already_assing(cmd, alias); //si ya esta asignado a otro cmd entonces se libera para ese cmd. Preguntar que se prefiere. Personalmente me da igual.
+			if (check_alias_conflicts(data, alias) == TRUE) //Si el alias que intenta asignarse es un cmd existente
 			{
 				free (alias);
 				free (to_find);

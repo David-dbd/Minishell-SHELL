@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   apply_temp_asig.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:05:58 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/16 12:14:27 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:51:56 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 	en export obviamnete).
 */
 
-void	apply_temp_asig(t_shell *dat, t_token *tokens, t_node *node, t_env *env)
+void	apply_temp_asig(t_shell *dat, t_token *tokens, t_node *node)
 {
 	int	i;
 

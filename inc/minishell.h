@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/29 18:08:27 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 02:05:42 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ extern const char				*g_type_names[];
 /* ************************************************************************** */
 void	init_minishell(t_shell *data, int argc, char **argv, char **envp);
 void	init_data(t_shell *data, char **envp);
-void	init_enviroment(t_shell *data, char **envp);
 void	init_arg(t_shell *data, int ac, char **av);
 void	init_exec(t_exec *exec, t_env *env);
+void	init_enviroment(t_shell *data, t_env *env, char **envp);
 void	init_ic_readline(void);
 
 /* ************************************************************************** */
@@ -61,7 +61,7 @@ int		add_token(t_shell *data, t_prompt *prompt, char *value, int type);
 /* ************************************************************************** */
 /*                               Expansion                                    */
 /* ************************************************************************** */
-int		expansion(t_shell *data, t_token *token, t_env *env, int phase);
+int		expansion(t_shell *data, t_token *token, int phase);
 int		asignation(t_shell *data, t_token *token, int type);
 
 /* ************************************************************************** */
@@ -86,7 +86,7 @@ void	exec_and(t_shell *data, t_node *node, t_exec *exec, int mode);
 void	exec_or(t_shell *data, t_node *node, t_exec *exec, int mode);
 void	exec_pipe(t_shell *data, t_node *node, t_exec *exec, int mode);
 void	exec_subshell(t_shell *data, t_node *node, t_exec *exec, int mode);
-void	exec_builtin(t_shell *data, t_node *node, t_exec *exec, int mode);
+void	exec_builtin(t_shell *data, t_node *node, int mode);
 void	exec_command(t_shell *data, t_node *node, t_exec *exec, int mode);
 
 /* ************************************************************************** */
@@ -100,7 +100,7 @@ void	my_exit(t_shell *data, char **args);
 int		my_alias(t_shell *data, t_cmd *cmd, char **args);
 int		my_unset(t_shell *data, t_env *env, char **args);
 int		my_cd(t_shell *data, char **args);
-int		my_unalias(t_shell *data, t_cmd	*cmd, char **args);
+int		my_unalias(t_cmd	*cmd, char **args);
 int		my_export(t_shell *data, t_token *tokens, t_env *env, t_node *node);
 
 /* ************************************************************************** */
@@ -215,8 +215,8 @@ void	transform_word_to_asignation(t_shell *data, t_token *tokens, int phase);
 void	transform_tokens_logic(t_shell *data, t_prompt *promp, t_token *tokens);
 void	transform_word_to_file(t_prompt *prompt, t_token *tokens);
 void	transform_command_built_lowercase(t_prompt *prompt, t_token *tokens);
-void	transform_asig_to_temp(t_shell *dat, t_prompt *prompt, t_token *tokens);
-void	transform_cmd_to_built_in(t_shell *d, t_prompt *p, t_token *tokens);
+void	transform_asig_to_temp(t_prompt *prompt, t_token *tokens);
+void	transform_cmd_to_built_in(t_prompt *prompt, t_token *tokens);
 
 //AST
 int		get_heredoc(t_shell *data, t_redir *redir, char *delimiter);
@@ -231,9 +231,9 @@ t_redir	*get_redirs(t_shell *data, t_token *tokens, int *i, int mode);
 //EXECUTOR
 char	*get_path(t_shell *data, char *cmd, char **envp);
 void	which_builtin(t_shell *data, t_token *token, t_node *node);
-int		apply_properties(t_shell *data, t_node *node, t_env *env, int mode);
+int		apply_properties(t_shell *data, t_node *node, int mode);
 int		apply_redirs(t_shell *data, t_node *node, int mode);
-void	apply_temp_asig(t_shell *da, t_token *tokens, t_node *node, t_env *env);
+void	apply_temp_asig(t_shell *da, t_token *tokens, t_node *node);
 
 //EXPANSION
 int		copy_key(char *buffer, char **key_to_find);
@@ -246,7 +246,7 @@ int		copy_value(t_shell *d, char **t_val, char *key_value, char *key_to_f);
 int		check_asignation_syntax(t_token *token, int type);
 void	eliminate_temp_asig(t_prompt *prompt, t_token *tokens);
 int		send_tokens_for_asig(t_shell *data, t_token *tokens, int phase);
-int		is_it_asig(t_shell *data, t_token *token, t_env *env, int type);
+int		is_it_asig(t_shell *data, t_token *token, int type);
 int		verify_if_already_set(t_shell *data, char *key, char **value, int t);
 int		check_externs_syntax(t_shell *d, t_token *tkens, t_token *token, int t);
 

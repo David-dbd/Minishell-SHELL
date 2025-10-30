@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 19:24:46 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/29 17:53:58 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:50:40 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ char *build_and_check_path(t_shell *data, const char *dir, const char *cmd)
 static char	*search_in_path(t_shell *data, char *cmd, char **envp)
 {
 	char	**paths;
-	char	*part_path;
 	char	*path;
 	int		i;
 

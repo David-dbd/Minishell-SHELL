@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 16:36:02 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/29 17:36:36 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:22:02 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@
 
 void	ast_builder(t_shell *data, t_token *tokens, int n_tokens)
 {
-	t_node	*temp;
-	int		i;
+	int	i;
 
 	i = 0;
 	if (n_tokens == 0)

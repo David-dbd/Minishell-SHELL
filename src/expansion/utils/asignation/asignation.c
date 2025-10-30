@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asignation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:35:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/28 13:39:11 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:20:13 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	aux_key_asig(t_token *token, char **key, int *i)
 	//printf("key: %s\n\n", *key);
 }
 
-static void	aux_value_asig(t_token *token, char **value, int *i, int type)
+static void	aux_value_asig(t_token *token, char **value, int *i)
 {
 	int	j;
 
@@ -129,7 +129,7 @@ int	asignation(t_shell *data, t_token *token, int type)
 	if (aux_mem_alloc(&key, &value, ft_strlen(token->value)) == ERROR)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 	aux_key_asig(token, &key, &i);
-	aux_value_asig(token, &value, &i, type);
+	aux_value_asig(token, &value, &i);
 	result = verify_if_already_set(data, key, &value, type);
 	if (result == TRUE)
 	{

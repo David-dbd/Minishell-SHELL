@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_empty_str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:57:46 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/14 22:58:49 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:19:46 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,23 @@ static void	aux_alloc_mem(t_shell *data, char **str, char **new_str, int len)
 	lo reemplaza por escpacio e ignora el resto de "$".
 */
 
-static int	is_quoted(char *str)
-{
-	int	i;
-	int	quote_counter;
+// static int	is_quoted(char *str) // NO SE USA
+// {
+// 	int	i;
+// 	int	quote_counter;
 
-	i = 0;
-	quote_counter = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '"')
-			quote_counter++;
-		i++;
-	}
-	if (quote_counter % 2 != 0)
-		return (FALSE);
-	return (SUCCESS);
-}
+// 	i = 0;
+// 	quote_counter = 0;
+// 	while (str[i] != '\0')
+// 	{
+// 		if (str[i] == '"')
+// 			quote_counter++;
+// 		i++;
+// 	}
+// 	if (quote_counter % 2 != 0)
+// 		return (FALSE);
+// 	return (SUCCESS);
+// }
 
 static void	ignore_words(t_shell *data, t_token *token, char **str, int len)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:29:52 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 22:59:33 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/30 01:23:55 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ t_node	*special_cases(t_shell *data, t_token *tokens, int *i, int n_tokens)
 
 	if (*i == n_tokens)
 		return (NULL);
-	while ((*i) < n_tokens && tokens[*i].type == TEMP_ASIGNATION
-		|| tokens[*i].type == TEMP_PLUS_ASIGNATION)
+	while ((*i) < n_tokens && (tokens[*i].type == TEMP_ASIGNATION
+		|| tokens[*i].type == TEMP_PLUS_ASIGNATION))
 	{
 		(*i)++;
 	}
 	if ((*i + 1 == n_tokens && is_redir_type(tokens[*i].type))
-		|| (*i + 2 == n_tokens && is_redir_type(tokens[*i].type)
+		|| (*i + 2 == n_tokens && is_redir_type(tokens[*i].type))
 		|| (*i + 2 < n_tokens && is_redir_type(tokens[*i].type)
-		&& !is_cmd_builtin_type(tokens[*i + 2].type))))
+		&& !is_cmd_builtin_type(tokens[*i + 2].type)))
 	{
 		left = create_true_node(data, COMMAND);
 		left->redir = get_redirs(data, tokens, i, TRUE);
@@ -77,7 +77,7 @@ int	get_information(t_shell *data, t_token *tokens, int *i, t_node *left)
 	int		start;
 
 	start = *i;
-	// expansion(data, tokens, &data->env, FINAL_PHASE);
+	// expansion(data, tokens, FINAL_PHASE);
 	left->assig_tmp = get_temp_asignations(data, tokens, *i);
 	left->redir = get_redirs(data, tokens, i, COMMAND);
 	left->args = get_args_for_binary(data, tokens, i);
