@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 16:37:20 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:08:27 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ int		syntax_error(t_shell *data, const char *error, int exit_code, ...);
 void	allocate_tokens(t_shell *data, t_prompt *prompt, char *input);
 
 // GET TOKENS
-void	is_cmd(t_shell *d, t_prompt *p, t_token *t, char *s);
+void	is_cmd(t_shell *data, t_token *token, char *str);
 void	is_word(t_shell *data, t_prompt *prompt, const char *str, int *i);
 void	is_dolar(t_shell *data, t_prompt *prompt, const char *str, int *i);
 void	is_single_quote(t_shell *d, t_prompt *prompt, const char *s, int *i);
@@ -297,7 +297,7 @@ int		check_arg_syntax(char *arg, const char *built_in_err);
 /* ************************************************************************** */
 /*                                  extras                                    */
 /* ************************************************************************** */
-void	print_session_end(time_t start, char *user_name);
+void	print_session_end(time_t start);
 void	print_time_of_day(time_t start, char *user_name);
 void	print_session_start(t_shell *data, time_t start, char **user_name);
 void	add_node_rule(t_shell *data, char *value, char *alias, int state);

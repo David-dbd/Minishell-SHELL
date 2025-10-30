@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 02:13:28 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/29 02:00:15 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 17:56:47 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ char *find_user(t_shell *data, t_var *vars)
 
 void	print_session_start(t_shell *data, time_t start, char **user_name)
 {
-	char		*name;
 	struct tm	*local;
 
 	local = localtime(&start);

@@ -26,6 +26,7 @@ export or='||' && export and='&&' && echo 42 $and echo 43 $or echo 43
 ls | cat << stop | ls -la | cat << stop1 | ls | cat << stop2 | ls -la > > out | cat << stop3
 echo $USER$HOME
 echo $USE"R"$HOME
+~
 lc
 echo $a && a=1
 echo $SHLVL
@@ -61,14 +62,10 @@ clar
 HELLO
 42
  lim
-test
 limm
 lim
-echo $?
 <<lim cat
 make
-./min
-./minishell
 sd
 << LM cat
 cat << LM file
@@ -82,17 +79,62 @@ echo hola como estas? $USER
 $$
 $!
 clea
-$0
-sleep 10 &
-kill $!
-echo $!
-~/documents
-~ 
-~
-~/
-~documents
-`
-`ls
-`ls`
-clear
+unset PATH
+true && false || echo "deber\xC3\xADa salir"
+echo hola > /dev/null > /dev/null > /dev/null
+cat < /dev/null
+cat << EOF > /dev/null
+esto desaparece
+en el vacio
+cat /dev/null | cat | cat | cat | cat
+/dev/null
+echo "test" > /dev/null < /dev/null
+head -c 1 /dev/urandom > /tmp/random_byte
+head -c 100 /dev/urandom | wc -c
+head -c 10 /dev/zero | wc -c
+echo "test" > /dev/full 2>&1
+cat < /proc/self/fd/0 << EOF
+meta recursion
+echo "a" | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+false | echo "esto se ejecuta?"
+cat << EOF1 | cat << EOF2
+outer
+EOF1
+innet
+EOF2
+echo "env | /usr/bin/wc -l" | env -i ./minishell
+echo "env | /usr/bin/wc -l" | ./minishell
+export VACIA=""
+false | true
+echo $?
+(   )
+(cat << EOF)
+dentro subshell
+cat <<    EOF
+test
+EOF
+< /dev/null > /dev/null
+grep hola < /dev/random | wc -l
+timeout 1 grep "hola" < /dev/urandom | head -n 1
+timeout 1 cat /dev/urandom | wc -l
+timeout 1 grep "PATRON" /dev/urandom
+cat
+grep hola < /dev/urandom | wc -l
+head -c 100 /dev/urandom | base64 | wc -c
+head -c 50 /dev/urandom | hexdump | head -n 5
+head -c 1000 /dev/urandom | strings | head -n 5
+head -c 1000 /dev/urandom | cat | cat | base64 | head -n 10 | wc -l
+(head -c 100 /dev/urandom | base64 > /tmp/combo && cat /tmp/combo | wc -c) || echo "failed"
+(echo 1) & (echo 2) & (echo 3) & (echo 4) & (echo 5) & wait
+(echo 1) & ;  (echo 2) & ; (echo 3) & ; (echo 4) & ; (echo 5) & ; wait
+(echo 1); (echo 2); (echo 3); (echo 4); (echo 5)
+(echo 1) & ; (echo 2) & ; (echo 3) & ; (echo 4) & ; (echo 5) & ; wait
+./min
+./minishell
+|echo|
 ls
+clear
+export TEST=
+> test
+echo $$
+pwd

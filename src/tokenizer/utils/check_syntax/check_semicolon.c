@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:16:45 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/10 21:16:48 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:10:31 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 int	check_semicolon(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 {
+	(void)prompt;
 	if (tokens[i].type == SEMICOLON)
 	{
 		if (i == 0)
@@ -33,9 +34,11 @@ int	check_semicolon(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 		if (!(tokens[i - 1].type == COMMAND
 				|| tokens[i - 1].type == WORD
 				|| tokens[i - 1].type == BUILT_IN
-				|| tokens[i + 1].type == EXPANSION
+				|| tokens[i - 1].type == EXPANSION
 				|| tokens[i - 1].type == WILDCAR
-				|| tokens[i - 1].type == DOUBLE_QUOTE))
+				|| tokens[i - 1].type == DOUBLE_QUOTE
+				|| tokens[i - 1].type == SINGLE_QUOTE
+				|| tokens[i - 1].type == PAREN_CLOSE))
 		{
 			syntax_error(data, ERR_SYNTAX, EXIT_USE, tokens[i - 1].value);
 			return (SYNTAX_ERROR);

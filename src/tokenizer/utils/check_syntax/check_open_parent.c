@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_open_parent.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 22:40:41 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/13 20:04:07 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:10:45 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int	is_valid_before_open(t_token *tokens, int i)
 int	check_open_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 {
 	int	content_flag;
-	int	result;
 
 	content_flag = 0;
 	if (tokens[i].type != PAREN_OPEN)

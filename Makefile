@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
+#    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/10/28 10:55:46 by davdiaz-         ###   ########.fr        #
+#    Updated: 2025/10/29 18:53:02 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,6 +98,7 @@ SRCS =				main/main.c \
 					init/utils/env/update_shlvl.c \
 					init/utils/env/update_var.c \
 					init/utils/env/delete_var.c \
+					init/utils/env/update_envp.c \
 					init/utils/highlighther/highlighter.c \
 					init/utils/highlighther/is_highlighter_I.c \
 					init/utils/highlighther/is_highlighter_II.c \
@@ -194,7 +195,6 @@ SRCS =				main/main.c \
 					executor/utils/apply_properties.c \
 					executor/utils/apply_redirs.c \
 					executor/utils/apply_temp_asig.c \
-					executor/utils/update_envp.c \
 					signals/setup_signals.c \
 					signals/handler_signals.c \
 					signals/check_signals.c \

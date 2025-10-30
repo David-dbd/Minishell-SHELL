@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 02:11:39 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/12 22:02:27 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 17:57:01 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 	formateado y con color en la salida estándar (STDOUT).
 */
 
-void	print_session_end(time_t start, char *user_name)
+void	print_session_end(time_t start)
 {
 	int		minutes;
 	int		seconds;

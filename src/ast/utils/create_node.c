@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:41:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/29 01:33:43 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:48:17 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,7 @@ t_node	*create_true_node(t_shell *data, t_type type)
 	node->args = ft_calloc(2, sizeof(char *));
 	if (!node->args)
 		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
-	node->args[0] = ft_strdup("true");
-	if (!node->args[0])
-		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
+	node->args[0] = "true";
 	node->redir = NULL;
 	node->assig_tmp = NULL;
 	node->arg_types = NULL;

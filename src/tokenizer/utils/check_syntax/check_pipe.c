@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 22:40:33 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/11 18:55:12 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:37:20 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_pipe(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 {
 	if (tokens[i].type == PIPE)
 	{
-		if ((i > 0 && i < prompt->n_tokens) && tokens[i + 1].type
+		if ((i > 0 && i + 1< prompt->n_tokens) && tokens[i + 1].type
 			&& tokens[i - 1].type && ((tokens[i + 1].type == COMMAND
 					|| tokens[i + 1].type == WORD
 					|| tokens[i + 1].type == BUILT_IN
@@ -40,8 +40,8 @@ int	check_pipe(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 					|| tokens[i - 1].type == WORD
 					|| tokens[i - 1].type == BUILT_IN
 					|| tokens[i - 1].type == PAREN_CLOSE
-					|| tokens[i - 1].type == EXPANSION)
-					||  is_quote_type(tokens[i - 1].type))
+					|| tokens[i - 1].type == EXPANSION
+					|| is_quote_type(tokens[i - 1].type)))
 		{
 			prompt->n_pipes++;
 			return (SUCCESS);

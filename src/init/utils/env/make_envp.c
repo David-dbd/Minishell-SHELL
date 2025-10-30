@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 20:43:35 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 16:33:50 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:01:51 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 char	**make_envp(t_shell *data, t_env *env, t_var *vars)
 {
 	int		i;
-	int		substring_len;
 	char	**envp;
 
 	i = 0;
@@ -46,7 +45,6 @@ char	**make_envp(t_shell *data, t_env *env, t_var *vars)
 char	**upadte_envp(t_shell *data, t_env *env, t_var *vars)
 {
 	int		i;
-	int		substring_len;
 	char	**envp;
 
 	i = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_closed_parent.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 22:40:47 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/02 19:57:38 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/29 18:10:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,8 @@ int	check_close_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 int	check_close_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 {
 	int	content_flag;
-	int	j;
 
 	content_flag = 0;
-	j = i;
 	if (tokens[i].type != PAREN_CLOSE)
 		return (SUCCESS);
 	prompt->n_parentesis++;

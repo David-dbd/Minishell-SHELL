@@ -6,11 +6,11 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 10:08:33 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/28 16:36:56 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 16:31:06 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/minishell.h"
+#include "../../../../inc/minishell.h"
 
 void	update_envp(t_shell *data)
 {

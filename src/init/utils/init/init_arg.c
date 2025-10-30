@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:46:42 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 21:56:00 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/29 16:41:46 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	init_arg(t_shell *data, int ac, char **av)
 				exit_error(data, NULL, EXIT_USE);
 			ast_builder(data, data->prompt.tokens, data->prompt.n_tokens);
 			executor_recursive(data, data->ast_root, &data->exec, FATHER);
-			clean_prompt(&data->prompt);
+			clean_cycle(data, &data->prompt, &data->ast_root);
 			line = get_next_line(fd);
 		}
 		get_next_line(RESET);
