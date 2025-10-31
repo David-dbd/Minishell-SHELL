@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/30 01:53:43 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 16:39:06 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	wait_cmd_background(t_shell *data, t_node *node, pid_t pid)
 		else if (WIFSIGNALED(status))
 			data->exit_code = 128 + WTERMSIG(status);
 	}
+	g_signal[0] = SIG_INTERACTIVE;
 	if (node->background)
 	{
 		// exit_code para padre es 0 porque el fork fue exitoso
@@ -86,14 +87,14 @@ void	execute_cmd_from_father(t_shell *data, t_node *node, t_env *env)
 	pid = fork();
 	if (pid == ERROR)
 		exit_error(data, ERR_FORK, EXIT_FAILURE);
+	g_signal[0] = SIG_CHILD;
 	if (pid == 0)
 	{
 		setup_signals_child();
 		apply_properties(data, node, CHILD);
 		path = get_path(data, node->token->value, env->envp);
-		add_var_and_envp(data, "_", path, ENV);
+		add_var_and_envp(data, ft_strdup("_"), path, ENV);
 		execve(path, node->args, env->envp);
-		free(path);
 		exit_error(data, ERR_EXEC, EXIT_CMD_NOT_EXEC, node->token->value);
 		//el hijo retorna su exit_code para el padre
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_macros.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:23:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 14:22:52 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/31 01:59:35 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@
 # define VOID						0
 # define RECIVED_SIGNAL				1
 # define FAIL						1
+# define BALANCE					0
+# define UNBALANCE					-1
+# define NONE						0
+# define CMD_BALANCE				1
+# define QUOTE_BALANCE				1
+# define PAREN_BALANCE				1
+# define GLOBAL_BALANCE				3
+# define CANT_CONTINUE				-1
+# define KEEP_TRYING				1
 
 /* ************************************************************************** */
 /*                               Global Flag                                  */

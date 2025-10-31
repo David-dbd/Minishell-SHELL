@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:43 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/29 17:40:35 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 16:26:55 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@
 int	main(int argc, char **argv, char **envp)
 {
 	t_shell	data;
-	char	*input;
 
 	init_minishell(&data, argc, argv, envp);
-	while (receive_input(&input, &data) != NULL)
+	while (receive_input(&data, &data.prompt) != NULL)
 	{
-		if (!tokenizer(&data, &data.prompt, input))
+		if (!tokenizer(&data, &data.prompt, data.prompt.input))
 			continue ;
 		ast_builder(&data, data.prompt.tokens, data.prompt.n_tokens);
 		executor_recursive(&data, data.ast_root, &data.exec, FATHER);

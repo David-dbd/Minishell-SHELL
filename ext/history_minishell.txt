@@ -1,46 +1,8 @@
-echo
-echo $A
-mikel
-dlc
-cs
-clds
-((echo 1))
-((echo 1) | (echo 2))
-(echo 1 | echo 2)
-(echo 1 | echo 2) | cat
-(ls | ls)
-(ls | ls) | cat
-cat | cat | cat | cat | cat
-/bin/echo 42 | /bin/echo 42 && (/bin/echo 42)
-(echo)
-> $m.s ls
-(echo) hi
-cleare
-ls\n
-echo 1 | (grep 1) | cat | (wc -l)
-minishell> (echo hi && ((echo hi && (echo hi) && echo hi)))
-(echo hi && ((echo hi && (echo hi) && echo hi)))
-echo 42 < in | wc -l && ( /bin/echo 1 2 3 4 > tmp_out || /bin/echo 2 > tmp_out >> tmp_out tmp_out )
-echo 42 < in | wx -l && (/bin/echo 1 2 3 4 > tmp_out || /bin/echo 2 >tmp-out >> tmp_out tmp_out) 
-export or='||' && export and='&&' && echo 42 $and echo 43 $or echo 43
-ls | cat << stop | ls -la | cat << stop1 | ls | cat << stop2 | ls -la > > out | cat << stop3
-echo $USER$HOME
-echo $USE"R"$HOME
-~
-lc
-echo $a && a=1
-echo $SHLVL
-export A=1 =
-export A=" Hola como estas = BIEN"
-(v=1) var=2
-token: =1
-export A+=" como estas"
 export  A+=1
 export  A=1
 export USER+=1
 export USER+=\x23\x23\x23
 export USER+=---
-env
 export USER+=@@@
 env | grep "USER"
 << LM ls
@@ -57,7 +19,6 @@ cat LM jaja
 scd
 cds
 cd
-clar
  "lim"
 HELLO
 42
@@ -65,7 +26,6 @@ HELLO
 limm
 lim
 <<lim cat
-make
 sd
 << LM cat
 cat << LM file
@@ -79,7 +39,6 @@ echo hola como estas? $USER
 $$
 $!
 clea
-unset PATH
 true && false || echo "deber\xC3\xADa salir"
 echo hola > /dev/null > /dev/null > /dev/null
 cat < /dev/null
@@ -106,7 +65,6 @@ echo "env | /usr/bin/wc -l" | env -i ./minishell
 echo "env | /usr/bin/wc -l" | ./minishell
 export VACIA=""
 false | true
-echo $?
 (   )
 (cat << EOF)
 dentro subshell
@@ -118,7 +76,6 @@ grep hola < /dev/random | wc -l
 timeout 1 grep "hola" < /dev/urandom | head -n 1
 timeout 1 cat /dev/urandom | wc -l
 timeout 1 grep "PATRON" /dev/urandom
-cat
 grep hola < /dev/urandom | wc -l
 head -c 100 /dev/urandom | base64 | wc -c
 head -c 50 /dev/urandom | hexdump | head -n 5
@@ -129,13 +86,115 @@ head -c 1000 /dev/urandom | cat | cat | base64 | head -n 10 | wc -l
 (echo 1) & ;  (echo 2) & ; (echo 3) & ; (echo 4) & ; (echo 5) & ; wait
 (echo 1); (echo 2); (echo 3); (echo 4); (echo 5)
 (echo 1) & ; (echo 2) & ; (echo 3) & ; (echo 4) & ; (echo 5) & ; wait
-./min
-./minishell
 |echo|
-ls
 export TEST=
-echo $$
-pwd
-clear
 (ls) ls
 > test
+cleaer
+ls &
+echo $!
+echo $
+ /usr/bin/env /bin/sh /tmp/Microsoft-MIEngine-Cmd-o1sytxmn.gkn 
+echo $$
+echo $$$
+echo $$$$
+echo $$$$$
+echo hola
+|| ls
+ls ()
+ls (
+(
+echo "hola
+como estas"
+ls "
+src"
+echo "
+hola"
+echo "hola como estas"
+echo && ("
+echo && (" " )
+echo && )
+||
+()
+ls ("
+ls (" ) " )
+&&
+ls; &&
+ls; ||
+ls ||
+ /usr/bin/env /bin/sh /tmp/Microsoft-MIEngine-Cmd-4aiwi00u.qak 
+ /usr/bin/env /bin/sh /tmp/Microsoft-MIEngine-Cmd-1jxrhljm.ifr 
+ls &&
+ls && ls
+ls && ("
+ls && (" " )
+ls && (" ||
+ls && (" || ls " )
+echo " hola
+como 
+estas
+que guay
+echo " hola como  estas que guay "
+echo segfault < " < < < " < < amazing
+.
+amazing
+echo test |  <<lala
+lala
+echo | > la
+echo <<< echo seegf
+echo < << echo seegf
+unset $PATH
+echo -n
+touch "
+touch " "
+echo 
+echo ~/documents
+cd 123
+cd -
+\x1C\x1C\x1C\x1C\x1C
+\x1C\x1C\x1C
+dsd
+''
+""
+\x1C
+sdsdsf
+cleara
+cat 
+cleare
+clar
+vat
+cta
+cat
+./minishell_tester/
+./minishell_tester/test
+./minishell_tester/tester
+cd minishell_tester/
+cd .
+cd minishell/
+env | grep $USER
+grep
+echo $?
+cd /////
+pwd
+/bin/ls
+cd /home/mikel/documents/cursus/rank03/minishell/
+cd "cmds/"
+cd ..
+echo $\x23
+cd /
+./min
+./minishell
+unset path
+make
+echo &
+env
+df
+d
+f
+unset HOME
+unset PATH
+cd /bin
+ls
+ps
+clear
+cd /notsuchdir

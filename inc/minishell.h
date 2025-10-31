@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/30 02:05:42 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:06:36 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	init_ic_readline(void);
 /* ************************************************************************** */
 /*                               Tokenizer                                    */
 /* ************************************************************************** */
-char	*receive_input(char **input, t_shell *data);
+char	*receive_input(t_shell *data, t_prompt *prompt);
 int		tokenizer(t_shell *data, t_prompt *prompt, char *input);
 void	get_tokens(t_shell *data, t_prompt *prompt, char *input);
 int		add_token(t_shell *data, t_prompt *prompt, char *value, int type);
@@ -144,10 +144,15 @@ int		syntax_error(t_shell *data, const char *error, int exit_code, ...);
 /* ************************************************************************** */
 /*                                 utils                                      */
 /* ************************************************************************** */
-// INIT
-void	allocate_tokens(t_shell *data, t_prompt *prompt, char *input);
+
+// BALANCE
+int		get_or_and_balance(t_prompt *prompt, t_token *tokens);
+int		get_single_quotes_balance(t_prompt *prompt, t_token *tokens);
+int		get_double_quotes_balance(t_prompt *prompt, t_token *tokens);
+int		get_paren_balance(t_prompt *prompt, t_token *tokens);
 
 // GET TOKENS
+void	allocate_tokens(t_shell *data, t_prompt *prompt);
 void	is_cmd(t_shell *data, t_token *token, char *str);
 void	is_word(t_shell *data, t_prompt *prompt, const char *str, int *i);
 void	is_dolar(t_shell *data, t_prompt *prompt, const char *str, int *i);
@@ -226,7 +231,6 @@ int		*get_arg_types(t_shell *data, t_node *node, int i, int j);
 char	**get_args_for_binary(t_shell *data, t_token *token, int *i);
 char	**get_temp_asignations(t_shell *data, t_token *tokens, int i);
 t_redir	*get_redirs(t_shell *data, t_token *tokens, int *i, int mode);
-
 
 //EXECUTOR
 char	*get_path(t_shell *data, char *cmd, char **envp);

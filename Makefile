@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/10/30 02:09:37 by migarrid         ###   ########.fr        #
+#    Updated: 2025/10/31 02:58:05 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -139,6 +139,7 @@ SRCS =				main/main.c \
 					tokenizer/utils/check_syntax/check_cmd_syntaxis.c \
 					tokenizer/utils/check_syntax/check_parent_balance.c \
 					tokenizer/utils/check_syntax/check_cmd_externs.c \
+					tokenizer/utils/check_syntax/check_full_line_syntax.c \
 					tokenizer/utils/simplify_tokens/simplify_tokens.c \
 					tokenizer/utils/simplify_tokens/reorganize_tokens.c \
 					tokenizer/utils/simplify_tokens/adjust_range_tokens.c \

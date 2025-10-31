@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 02:32:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/30 01:51:29 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:08:40 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	apply_redirs(t_shell *data, t_node *node, int mode)
 	t_redir	*curr;
 
 	curr = node->redir;
-	while(curr)
+	while (curr)
 	{
 		if (curr->type == REDIR_INPUT)
 			if (handle_redir_input(data, curr->filename, curr->fd_redir, mode))
@@ -98,7 +98,7 @@ int	apply_redirs(t_shell *data, t_node *node, int mode)
 			if (handle_redir_append(data, curr->filename, curr->fd_redir, mode))
 				return (FAILURE);
 		if (curr->type == REDIR_HEREDOC)
-				handle_redir_heredoc(curr->fd_heredoc);
+			handle_redir_heredoc(curr->fd_heredoc);
 		curr = curr->next;
 	}
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/29 01:51:25 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:06:52 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct s_prompt
 	int			n_and;
 	int			n_tokens;
 	int			n_alloc_tokens;
-	char		*prompt;
+	char		*input;
 	t_token		*tokens;
 }	t_prompt;
 
@@ -142,7 +142,7 @@ struct s_node
 struct s_cmd
 {
 	char	*value;
-	char 	*alias;
+	char	*alias;
 	int		active;
 	t_cmd	*prev;
 	t_cmd	*next;

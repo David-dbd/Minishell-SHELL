@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/30 01:18:59 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 14:55:21 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void	sym_expa(t_shell *d, t_token *token, char **key_to_f, int sym_value)
 
 static int	is_it_symbol(t_shell *data, t_token *token, char **key_to_find)
 {
+
 	if (key_to_find[0][0] == '!' && key_to_find[0][1] == '\0')
 	{
 		if (data->last_background_pid)

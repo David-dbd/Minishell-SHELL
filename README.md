@@ -4,29 +4,25 @@ Minishell - Bash
 🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
 🏁                                     BONUS                                                       🏁
 🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
-            TOTAL TEST COUNT: 63  TESTS PASSED: 41  LEAKING: 0
-                     STD_OUT: 20  STD_ERR: 15  EXIT_CODE: 8
+             TOTAL TEST COUNT: 65  TESTS PASSED: 43  LEAKING: 0
+                     STD_OUT: 20  STD_ERR: 14  EXIT_CODE: 7
                          TOTAL FAILED AND PASSED CASES:
-                                     ❌ 43
-                                     ✅ 146
+                                     ❌ 41
+                                     ✅ 154
 
 🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
 🏁                                    MANDATORY                                                    🏁
 🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
-             TOTAL TEST COUNT: 889  TESTS PASSED: 757  LEAKING: 0
-                     STD_OUT: 82  STD_ERR: 56  EXIT_CODE: 82
+             TOTAL TEST COUNT: 890  TESTS PASSED: 761  LEAKING: 0
+                     STD_OUT: 81  STD_ERR: 52  EXIT_CODE: 78
                          TOTAL FAILED AND PASSED CASES:
-                                     ❌ 220
-                                     ✅ 2447
+                                     ❌ 211
+                                     ✅ 2459
 
 ## POR HACER:
 
 ## MIKEL:
 - cd
-- Secondary:
-- Bash te abra línea para que completes el comando ver → Modificar balance de ' " ( || && |
-  - https://github.com/rogerdevworld/minishell/blob/main/src/bonus/loop_processing.c
-  - https://github.com/rogerdevworld/minishell/blob/main/src/bonus/syntax/ft_lexer_2.c#L93
 
 ## DAVID:
 - Important:
@@ -39,6 +35,7 @@ Minishell - Bash
 - get_arg_types funciona y sin leaks
 - get_temp_asig funciona y sin leaks -> con export y con cualquier otro comando
 - Expandir ~
+- Expandir $$
 - Expandir el Heredoc
 - get_temp_asig debe funcionar correctamente y sin leaks -> con export y con cualquier otro comando
 - bugs de tempasignations bien catalogadas

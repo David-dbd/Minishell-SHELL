@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handler_signals.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:47:09 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 12:37:42 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/31 02:14:10 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 void	handle_sigint_interative(int sig)
 {
 	(void)sig;
+	if (g_signal[0] == SIG_INTERACTIVE)
+		write(1, "^C", 2);
 	g_signal[1] = SIGINT;
 }
 

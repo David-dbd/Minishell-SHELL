@@ -60,7 +60,7 @@ char	*cleanner_exp(t_shell *data, char *expansion, int len, char trash)
 	- Devuelve 0 si el carácter puede seguir formando parte de la variable.
 */
 
-static int	isn_exp(const char *str, int *i, int *flag)
+static int	isn_exp(const char *str, int *i, int str_len, int *flag)
 {
 	char	c;
 
@@ -81,7 +81,8 @@ static int	isn_exp(const char *str, int *i, int *flag)
 	else if (str[*i - 1] == '$' && str[*i] == '$')
 	{
 		(*i)++;
-		*flag = TRUE;
+		if (*i < str_len && !ft_isspace(str[*i + 1]))
+			*flag = TRUE;
 		return (1);
 	}
 	return (0);
@@ -162,7 +163,7 @@ void	is_dolar(t_shell *data, t_prompt *prompt, const char *str, int *i)
 			return ;
 		}
 		while (str[*i] != '\0' && !ft_isspace(str[*i])
-			&& !isn_exp(str, i, &flag))
+			&& !isn_exp(str, i, ft_strlen(str), &flag))
 			(*i)++;
 		make_expan_token(data, str, start, i);
 		if (flag == TRUE)

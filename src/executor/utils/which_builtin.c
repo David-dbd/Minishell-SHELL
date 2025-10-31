@@ -6,12 +6,11 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:58:35 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/30 02:05:35 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:07:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
-
 
 static void	extras(t_shell *data, t_token *token, t_node *node)
 {

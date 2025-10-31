@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 19:24:46 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/30 01:50:40 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 16:43:00 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char	*search_in_path(t_shell *data, char *cmd, char **envp)
 	while (envp[i] && ft_strncmp(envp[i], "PATH=", 5) != 0)
 		i++;
 	if (!envp[i])
-		return (NULL);
+		return (build_and_check_path(data, ".", cmd));
 	paths = ft_split(envp[i] + 5, ':');
 	if (!paths)
 		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
