@@ -1,25 +1,3 @@
-export  A+=1
-export  A=1
-export USER+=1
-export USER+=\x23\x23\x23
-export USER+=---
-export USER+=@@@
-env | grep "USER"
-<< LM ls
-cat << LM
-scs
-dlms 
-cat << LM ls
-file
-se
-csd
-vsv
-cat << LM jaja
-cat LM jaja
-scd
-cds
-cd
- "lim"
 HELLO
 42
  lim
@@ -108,7 +86,6 @@ echo "hola
 como estas"
 ls "
 src"
-echo "
 hola"
 echo "hola como estas"
 echo && ("
@@ -131,7 +108,6 @@ ls && (" " )
 ls && (" ||
 ls && (" || ls " )
 echo " hola
-como 
 estas
 que guay
 echo " hola como  estas que guay "
@@ -164,7 +140,6 @@ cleare
 clar
 vat
 cta
-cat
 ./minishell_tester/
 ./minishell_tester/test
 ./minishell_tester/tester
@@ -194,7 +169,31 @@ f
 unset HOME
 unset PATH
 cd /bin
-ls
 ps
-clear
 cd /notsuchdir
+cd "
+hola
+como 
+estas?
+echo " hola como  estas?    "
+echo "     s              a b i a s q u e
+echo "
+echo " s a b i a s   "
+que cool
+c;ear
+fasdfsagasgasbgv as sf g
+ vsv
+echo $HOLA
+var=HOLA
+echo $VAR
+export A=HOLA
+echo $A
+scds
+dvs
+s
+dc
+cat
+cat | cat
+(cat)
+ls
+clear

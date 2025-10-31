@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:20 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 18:13:37 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:53:31 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	check_if_background(t_shell *data, t_node *node, pid_t *pid, int mode)
 	}
 	if (mode == CHILD)
 		exit_succes(data, NULL, data->exit_code);
+	g_signal[0] = SIG_INTERACTIVE;
 	return (data->exit_code);
 }
 
@@ -90,6 +91,7 @@ void	exec_pipe(t_shell *data, t_node *node, t_exec *exec, int mode)
 	pid_t	pid[2];
 
 	(void)exec;
+	g_signal[0] = SIG_CHILD;
 	if (pipe(pipefd) == ERROR)
 		exit_error(data, ERR_PIPE, EXIT_FAILURE);
 	pid[0] = fork();

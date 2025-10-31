@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 16:42:21 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/31 17:09:01 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:54:54 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	exec_subshell(t_shell *data, t_node *node, t_exec *exec, int mode)
 	pid = fork();
 	if (pid == ERROR)
 		exit_error(data, ERR_FORK, FAIL);
+	g_signal[0] = SIG_CHILD;
 	if (pid == 0)
 	{
 		setup_signals_child();
@@ -35,4 +36,5 @@ void	exec_subshell(t_shell *data, t_node *node, t_exec *exec, int mode)
 		data->exit_code = 128 + WTERMSIG(status);
 	if (mode == CHILD)
 		exit_succes(data, NULL, data->exit_code);
+	g_signal[0] = SIG_INTERACTIVE;
 }

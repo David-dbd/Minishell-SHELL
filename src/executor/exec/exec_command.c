@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/31 16:39:06 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:51:17 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,8 @@ void	execute_cmd_from_child(t_shell *data, t_node *node, t_env *env)
 
 	apply_properties(data, node, CHILD);
 	path = get_path(data, node->token->value, env->envp);
-	add_var_and_envp(data, "_", path, ENV);
+	add_var_and_envp(data, ft_strdup("_"), path, ENV);
 	execve(path, node->args, env->envp);
-	free(path);
 	exit_error(data, ERR_EXEC, EXIT_CMD_NOT_EXEC, node->token->value);
 	//si es child solo se retorna el exit_code ya que el subshell o pipe
 	//haran el waitpid
