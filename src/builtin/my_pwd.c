@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:17:17 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/07 16:21:54 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/01 20:23:35 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	my_pwd(void)
 
 	pwd = getcwd(NULL, 0);
 	if (!pwd)
-		ft_printf_fd(STDERR, "%s", ERR_PWD);
+	{
+		ft_printf_fd(STDOUT, ERR_PWD);
+		return (EXIT_FAILURE);
+	}
 	printf("%s\n", pwd);
 	free(pwd);
 	return (0);

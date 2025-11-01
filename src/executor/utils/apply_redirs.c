@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 02:32:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/31 17:08:40 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/01 22:23:03 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	handle_redir_output(t_shell *data, char *filename, int fd_redir, int mode)
 			ft_printf_fd(STDERR, ERR_FILE_NOT_FOUND, filename);
 		if (errno == EACCES)
 			ft_printf_fd(STDERR, ERR_PERM_DENIED, filename);
+		if (errno == EISDIR)
+			ft_printf_fd(STDERR, ERR_IS_DIR, filename);
 		if (mode == CHILD)
 			return (exit_error(data, NULL, EXIT_FAILURE));
 		if (mode == FATHER)
@@ -44,6 +46,8 @@ int	handle_redir_append(t_shell *data, char *filename, int fd_redir, int mode)
 			ft_printf_fd(STDERR, ERR_FILE_NOT_FOUND, filename);
 		if (errno == EACCES)
 			ft_printf_fd(STDERR, ERR_PERM_DENIED, filename);
+		if (errno == EISDIR)
+			ft_printf_fd(STDERR, ERR_IS_DIR, filename);
 		if (mode == CHILD)
 			return (exit_error(data, NULL, EXIT_FAILURE));
 		if (mode == FATHER)
@@ -65,6 +69,8 @@ int	handle_redir_input(t_shell *data, char *filename, int fd_redir, int mode)
 			ft_printf_fd(STDERR, ERR_FILE_NOT_FOUND, filename);
 		if (errno == EACCES)
 			ft_printf_fd(STDERR, ERR_PERM_DENIED, filename);
+		if (errno == EISDIR)
+			ft_printf_fd(STDERR, ERR_IS_DIR, filename);
 		if (mode == CHILD)
 			return (exit_error(data, NULL, EXIT_FAILURE));
 		if (mode == FATHER)

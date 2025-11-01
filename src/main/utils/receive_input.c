@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:42:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/31 02:18:58 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/01 16:18:57 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	check_global_balance(t_prompt *prompt, t_token *tokens)
 	global_balance = CMD_BALANCE + PAREN_BALANCE + QUOTE_BALANCE;
 	if (global_balance == GLOBAL_BALANCE)
 		return (BALANCE);
+	return (KEEP_TRYING);
 }
 
 int	join_lines_until_balanced(t_shell *data, t_prompt *prompt, char **full_line)
@@ -69,7 +70,6 @@ int	join_lines_until_balanced(t_shell *data, t_prompt *prompt, char **full_line)
 
 static char	*read_until_balanced(t_shell *data, char *initial_line)
 {
-	char	*trimmed_full_line;
 	char	*full_line;
 
 	full_line = ft_strdup(initial_line);

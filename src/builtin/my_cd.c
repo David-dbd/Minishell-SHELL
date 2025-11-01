@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 17:12:22 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/27 21:33:03 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/01 22:11:16 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,106 +25,60 @@ static int	has_one_arg(char **args)
 	return (FALSE);
 }
 
-//EN OBRAS...no esta listo
-
-static char	*find_home_value_in_env(t_env *env)
-{
-	t_var	*var;
-
-	var = env->vars;
-	while (var)
-	{
-		if (ft_strcmp(var->key, "HOME") == 0)
-		{
-			if (var->value && var->value[0] != '\0')
-				return (var->value);
-		}
-		var = var->next;
-	}
-	return (NULL);
-}
-
-static int	figure_out_information(char *ptr)
-{
-	struct	stat info;
-
-	if (stat(ptr, &info) == ERROR) //STAT?
-	{
-		ft_printf_fd(STDERR, ERR_FILE_NOT_FOUND);
-		return (EXIT_FAILURE);
-	}
-	if (!S_ISDIR(info.st_mode)) //S_ISDIR debe ser para saber si es un directorio o no. Seguramente ahi entra stat y el struct
-	{
-		ft_printf_fd(STDERR, ERR_NOT_DIR);
-		return (ENOTDIR);
-	}
-	if (access(ptr, X_OK) == ERROR) //Para saber si se puede leer o no. Si se tiene permiso o no
-	{
-		ft_printf_fd(STDERR, ERR_PERM_DENIED);
-		return (EACCES);
-	}
-	if (chdir(ptr) == ERROR) //Para cambiar de directorio
-	{
-		perror("minishell: chdir: ");
-		return (EXIT_FAILURE);
-	}
-	return (SUCCESS);
-}
-
-static int	find_home(t_shell *data)
+static int	validate_and_move(t_shell *data, t_var *vars, char *new_dir)
 {
 	char	new_cwd[PATH_MAX];
-	char	cwd[PATH_MAX];
-	char	*ptr;
+	char	old_cwd[PATH_MAX];
+	struct	stat info;
+
+	if (ft_strcmp(new_dir, "-") == 0)
+	{	// expandir real OLD_PWD
+		new_dir = get_var_value(vars, "OLDPWD");
+		ft_printf_fd(STDOUT, "%s\n", new_dir);
+	}
+	if (!getcwd(old_cwd, sizeof(old_cwd))) // actual dir para OLDPWD
+		return (perror("minishell: cd: "), EXIT_FAILURE);
+	if (stat(new_dir, &info) == ERROR) // Para saber si existe
+		return (ft_printf_fd(STDERR, ERR_FILE_NOT_FOUND, new_dir), EXIT_FAILURE);
+	if (!S_ISDIR(info.st_mode)) // Para saber si es un dir
+		return (ft_printf_fd(STDERR, ERR_NOT_DIR, new_dir), ENOTDIR);
+	if (access(new_dir, X_OK) == ERROR) //Para saber si tiene permiso o no
+		return (ft_printf_fd(STDERR, ERR_PERM_DENIED, new_dir), EACCES);
+	if (chdir(new_dir) == ERROR) //Para cambiar de directorio
+		return (perror("minishell: cd: "), EXIT_FAILURE);
+	if (!getcwd(new_cwd, sizeof(new_cwd))) // nuevo dir para PWD
+		return (perror("minishell: cd: "), EXIT_FAILURE);
+	update_var(data, old_cwd, "OLDPWD");
+	update_var(data, new_cwd, "PWD");
+	return (OK);
+}
+
+static int	find_home_and_move(t_shell *data)
+{
+	char	*home;
 	int		result;
 
-	result = 0; 	//obtener el home y su valor para sabe si existe primero, si no se da por malo. Luego se hace stat para saber si el usuario lo cambio a un enlace o un archivo, es decir, ya no es valido.
-	ptr = find_home_value_in_env(&data->env); //Se busca en el env primero. si no se encuentra se da error directamente
-	if (!ptr)
-	{
-		ft_printf_fd(STDERR, ERR_HOME_NOT_SET); //O EL ERROR QUE SEA MEJOR
-		return (EXIT_FAILURE); //ERROR?
-	}
-	result = figure_out_information(ptr);
-	if (result != SUCCESS)
-		return (result);
-	if (!getcwd(new_cwd, sizeof(new_cwd)))
-	{
-		perror("minishell: cd");
-		return (EXIT_FAILURE);
-	}
-	update_var(data, cwd, "OLDPWD");
-	update_var(data, new_cwd, "PWD");
+	result = 0;
+	home = get_var_value(data->env.vars, "HOME");
+	if (!home)
+		return (ft_printf_fd(STDERR, ERR_HOME_NOT_SET), EXIT_FAILURE);
+	result = validate_and_move(data, data->env.vars, home);
 	return (SUCCESS);
 }
 
 int	my_cd(t_shell *data, char **args)
 {
-	char	new_cwd[PATH_MAX];
-	char	cwd[PATH_MAX];
 	int		result;
 
 	if (!args || !*args)
 	{
-		result = find_home(data);
-		return (result); //Se retorna int codigo que haya sido
-	}
-	if (!getcwd(cwd, sizeof(cwd))) // get "current_working_directory". Puede fallar con error 0. Esto puede ser para obtener el OLDPWD
-	{
-		perror("minishell: cd: ");
-		return (EXIT_FAILURE);
-	}
-	if (!has_one_arg(args))
-		return (EXIT_FAILURE);
-	result = figure_out_information(*args);
-	if (result != SUCCESS)
+		result = find_home_and_move(data);
 		return (result);
-	if (!getcwd(new_cwd, sizeof(new_cwd)))
-	{
-		perror("minishell: cd: ");
-		return (EXIT_FAILURE);
 	}
-	update_var(data, cwd, "OLDPWD");
-	update_var(data, new_cwd, "PWD");
-	return (0);
+	if (has_one_arg(args))
+	{
+		result = validate_and_move(data, data->env.vars, args[0]);
+		return (result);
+	}
+	return (FAIL);
 }

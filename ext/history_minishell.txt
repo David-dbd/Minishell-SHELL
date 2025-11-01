@@ -1,56 +1,3 @@
-HELLO
-42
- lim
-limm
-lim
-<<lim cat
-sd
-<< LM cat
-cat << LM file
-sl
-LM
-echo hola como estas?
-Export A=1 B=2 C=3 D=4
-A=1
-> file ls
-echo hola como estas? $USER
-$$
-$!
-clea
-true && false || echo "deber\xC3\xADa salir"
-echo hola > /dev/null > /dev/null > /dev/null
-cat < /dev/null
-cat << EOF > /dev/null
-esto desaparece
-en el vacio
-cat /dev/null | cat | cat | cat | cat
-/dev/null
-echo "test" > /dev/null < /dev/null
-head -c 1 /dev/urandom > /tmp/random_byte
-head -c 100 /dev/urandom | wc -c
-head -c 10 /dev/zero | wc -c
-echo "test" > /dev/full 2>&1
-cat < /proc/self/fd/0 << EOF
-meta recursion
-echo "a" | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
-false | echo "esto se ejecuta?"
-cat << EOF1 | cat << EOF2
-outer
-EOF1
-innet
-EOF2
-echo "env | /usr/bin/wc -l" | env -i ./minishell
-echo "env | /usr/bin/wc -l" | ./minishell
-export VACIA=""
-false | true
-(   )
-(cat << EOF)
-dentro subshell
-cat <<    EOF
-test
-EOF
-< /dev/null > /dev/null
-grep hola < /dev/random | wc -l
 timeout 1 grep "hola" < /dev/urandom | head -n 1
 timeout 1 cat /dev/urandom | wc -l
 timeout 1 grep "PATRON" /dev/urandom
@@ -126,7 +73,6 @@ touch " "
 echo 
 echo ~/documents
 cd 123
-cd -
 \x1C\x1C\x1C\x1C\x1C
 \x1C\x1C\x1C
 dsd
@@ -145,16 +91,12 @@ cta
 ./minishell_tester/tester
 cd minishell_tester/
 cd .
-cd minishell/
 env | grep $USER
 grep
-echo $?
 cd /////
-pwd
 /bin/ls
 cd /home/mikel/documents/cursus/rank03/minishell/
 cd "cmds/"
-cd ..
 echo $\x23
 cd /
 ./min
@@ -195,5 +137,63 @@ dc
 cat
 cat | cat
 (cat)
+cd ./sd
+cd .sdfs
+cd ./sddfs
+cd ./dsde
+cd minishell/
+cd "doesntexist" 2>/dev/null
+cd "doesntexist"
+cd 64526
+cd 286
+cd +
+cd sdc scd
+cd ls
+cd ../../
+cd -
+cd ""
+cd 45
+export PATH=" "
+echo asd
+asd
+/bin/rm -f out
+ls|cat Makefile|>> out|cd ..
+echo $?
+cd -tmp
+pwd
+cd ..
+env --
+env 
+echo --
+echo -- ls
+exit --
+cd --
+;
+bash
+> $HOME
+>> $HOME
+cd $NOEXISTE
 ls
+export T=E E=c S=h L=o
+$T$E$S$L -nn
+$T$E$S$L hola
+export T="-n test1 -n test 2"
 clear
+export T="echo segfault | grep segfault"
+$T
+export T=-"n                    "
+echo $T
+export --TEST=123
+export -TEST=100
+export TES\x23T=123
+unset TES-T
+unset ============
+unset "="
+export X="  A  B  "
+/bin/echo "1"$X'2'
+export USER=
+export PATH=""
+export PATH=$HOME
+echo $PATH
+> $NOEXISTE.file
+export $VAR=file
