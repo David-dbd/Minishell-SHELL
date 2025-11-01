@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_structs.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 22:28:21 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 13:30:34 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef enum e_type
 	CMD_SUBSTITUTION,
 	PAREN_OPEN,
 	PAREN_CLOSE,
-	WILDCAR,
+	WILDCARD,
 	EXPANSION,
 	ASIGNATION,
 	BACKGROUND,
@@ -68,6 +68,7 @@ typedef enum e_type
 struct s_token
 {
 	int			id;
+	int			hash;
 	t_type		type;
 	char		*value;
 	bool		single_quoted;
@@ -86,6 +87,7 @@ typedef struct s_prompt
 	int			n_tokens;
 	int			n_alloc_tokens;
 	char		*prompt;
+	int			*before_tokens_type;
 	t_token		*tokens;
 }	t_prompt;
 
@@ -128,6 +130,7 @@ struct s_node
 	int			id;
 	t_type		type;
 	t_token		*token;
+	int			token_hash;
 	char		**args;
 	int			*arg_types;
 	char		**assig_tmp;

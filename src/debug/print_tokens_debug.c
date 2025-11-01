@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_tokens_debug.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 17:50:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 18:50:49 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 12:56:44 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ const char	*g_type_names[] = {
 	"CMD_SUBSTITUTION",
 	"PAREN_OPEN",
 	"PAREN_CLOSE",
-	"WILDCAR",
+	"WILDCARD",
 	"EXPANSION",
 	"ASIGNATION",
 	"BACKGROUND",

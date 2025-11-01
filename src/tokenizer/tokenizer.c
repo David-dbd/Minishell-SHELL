@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 14:29:01 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/31 22:29:34 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,25 +101,23 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	//print_tokens_debug(prompt);
 	is_it_quoted(prompt, prompt->tokens); // Se puede hacer mas eficiente
 
-	expansion(data, prompt->tokens, &data->env, FINAL_PHASE);
+	expansion(data, prompt->tokens, 0, INITIAL_PHASE);
 	simplify_tokens(data, prompt, prompt->tokens);
 
-	print_tokens_debug(prompt);
+	//print_tokens_debug(prompt);
 
 	transform_tokens_logic(data, prompt, prompt->tokens);
 
-	print_tokens_debug(prompt);
-
-	if (!check_if_valid_tokens_end(data, prompt, prompt->tokens))
-		return (SYNTAX_ERROR);
-
+	//print_tokens_debug(prompt);
 	// print_tokens_debug(prompt);
-
 	if (!cmd_correction(data, prompt->tokens, prompt->n_tokens))
 		return (FAILURE);
 	else
 		transform_tokens_logic(data, prompt, prompt->tokens);
-
+	if (!check_if_valid_tokens_end(data, prompt, prompt->tokens))
+		return (SYNTAX_ERROR);
+	expand_wildcards(data, prompt, prompt->tokens);
 	print_tokens_debug(prompt);
+	//printf("After TOKENIZER\n\n");
 	return (SUCCESS);
 }

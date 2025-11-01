@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_I.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:47:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 22:02:17 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/01 17:47:38 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	clean_prompt(t_prompt *prompt)
 {
 	if (prompt->prompt)
 		free(prompt->prompt);
+	if (prompt->before_tokens_type)
+		free(prompt->before_tokens_type);
 	clean_tokens(&prompt);
 	*prompt = (t_prompt){0};
 }
@@ -60,6 +62,7 @@ void	clean_env(t_env *env, t_var *vars)
 	t_var	*next;
 
 	var = vars;
+	next = NULL;
 	while (var)
 	{
 		next = var->next;
@@ -77,6 +80,8 @@ void	clean_env(t_env *env, t_var *vars)
 		var = next;
 	}
 	ft_free_str_array(env->envp);
+	env->envp = NULL;
+	env->vars = NULL;
 }
 
 /*

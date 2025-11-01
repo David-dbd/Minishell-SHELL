@@ -6,7 +6,7 @@
 #    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 19:51:37 by migarrid          #+#    #+#              #
-#    Updated: 2025/09/29 19:56:26 by davdiaz-         ###   ########.fr        #
+#    Updated: 2025/10/31 16:44:01 by davdiaz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ SRCS =	libft/ft_isalpha.c \
 		libft/ft_calloc.c \
 		libft/ft_realloc.c \
 		libft/ft_strdup.c \
+		libft/ft_strndup.c \
 		libft/ft_substr.c \
 		libft/ft_strjoin.c \
 		libft/ft_strjoin_multi.c \

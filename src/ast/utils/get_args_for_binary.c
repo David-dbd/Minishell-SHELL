@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 23:03:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 21:41:32 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/01 18:40:03 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,14 @@ static void	aux_alloc_mem(t_shell *data, char ***args, int n_args)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 }
 
-static void	extract_bin_arg(t_shell *d, char **arg_extract, char *word)
+static int	extract_bin_arg(t_shell *d, char **arg_extract, char *word)
 {
+	if (!word || word[0] == '\0')
+		return (FAILURE);
 	*arg_extract = ft_strdup(word);
 	if (!*arg_extract)
 		exit_error(d, ERR_MALLOC, EXIT_FAILURE);
+	return (SUCCESS);
 }
 
 static void	arg_count(t_token *tokens, int n_tokens, int *i, int *n_args)
@@ -58,7 +61,9 @@ static void	arg_count(t_token *tokens, int n_tokens, int *i, int *n_args)
 				(*i)++;
 			}
 		}
-		if (is_arg_type(tokens[*i].type) || tokens[*i].type == COMMAND)
+		if ((is_arg_type(tokens[*i].type) || tokens[*i].type == COMMAND
+			|| tokens[*i].type == NO_SPACE || tokens[*i].type == INDIFERENT)
+			&& tokens[*i].value && tokens[*i].value[0] != '\0')
 			(*n_args)++;
 		if (is_delimiter_type(tokens[*i].type))
 			break ;
@@ -91,9 +96,17 @@ char	**get_args_for_binary(t_shell *data, t_token *tokens, int *i)
 			j++;
 			continue ;
 		}
-		extract_bin_arg(data, &args[k], tokens[j].value);
-		k++;
+		if (tokens[j].value && tokens[j].value[0] != '\0')
+		{
+			if (extract_bin_arg(data, &args[k], tokens[j].value) == SUCCESS)
+				k++;
+		}
 		j++;
+	}
+	if (k == 0)
+	{
+		free(args);
+		return (NULL);
 	}
 	return (args);
 }

@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:48:00 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/28 14:22:11 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/29 20:21:18 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static int	is_yes_or_no(const char *str)
 static	int	parse_answer(t_shell *d, t_token *token, char *str, char *built_in)
 {
 	int	result;
-	//funciones pequeñas para reconocer yes/y no/n
 	result = is_yes_or_no(str);
 	if (result == YES)
 	{
@@ -116,6 +115,37 @@ static int	find_match(const char *s1, const char *s2)
 	return (FALSE);
 }
 
+/*
+	Esta función revisa el len del value. si su len == 1 se verifica que no sea
+	un espacio, de modo que si el usuario hace " " el programa ofrezca una
+	sugerencia que peude ser fastidiosa.
+	También se revisa que sea diferente de "c" y "d" ya que "cd" es el cmd
+	mas corto de todos, con lo cual solo quiero ofrecer una sugerencia si
+	el usaurio hace c o d en lugar de ofrecerla siempre que introduzca
+	caulquier otra letra, lo cual, de nuevo, es fastidioso.
+*/
+
+static int	is_valid_value(char *str)
+{
+	int	len;
+
+	if (!str || !*str)
+		return (FALSE);
+	len = ft_strlen (str);
+	if (len == 1 && str[0] == ' ')
+		return (FALSE);
+	else if (len == 1 && str[0] != 'c' && str[0] != 'd')
+		return (FALSE);
+	len = 0;
+	while (str[len] != '\0')
+	{
+		if (is_symbol(str[len]) || str[len] == ' ')
+			return (FALSE);
+		len++;
+	}
+	return (TRUE);
+}
+
 int	cmd_correction(t_shell *data, t_token *tokens, int n_tokens)
 {
 	char	*built_in[10];
@@ -142,7 +172,7 @@ int	cmd_correction(t_shell *data, t_token *tokens, int n_tokens)
 			j = 0;
 			while (j < 9)
 			{
-				if (ft_strlen(tokens[i].value) >= 1
+				if (is_valid_value(tokens[i].value)
 					&& find_match(tokens[i].value, built_in[j])) //si solo hay un caracter diferente
 				{ //mayor que 1 porque el el built_in mas corto es cd y es de 1
 					result = ask_confirmation(data, &tokens[i], built_in[j]);

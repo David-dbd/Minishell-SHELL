@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/28 13:11:06 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/01 19:07:41 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ int		add_token(t_shell *data, t_prompt *prompt, char *value, int type);
 /* ************************************************************************** */
 /*                               Expansion                                    */
 /* ************************************************************************** */
-int		expansion(t_shell *data, t_token *token, t_env *env, int phase);
 int		asignation(t_shell *data, t_token *token, int type);
+int		expansion(t_shell *data, t_token *tokens, int i, int phase);
+int		expand_wildcards(t_shell *data, t_prompt *prompt, t_token *tokens);
 
 /* ************************************************************************** */
 /*                                  AST                                       */
@@ -231,23 +232,34 @@ t_redir	*get_redirs(t_shell *data, t_token *tokens, int *i, int mode);
 
 //EXECUTOR
 char	*get_path(t_shell *data, char *cmd, char **envp);
+int		apply_redirs(t_shell *data, t_node *node, int mode);
+void	expansion_final_process(t_shell *data, t_node *node);
 void	which_builtin(t_shell *data, t_token *token, t_node *node);
 int		apply_properties(t_shell *data, t_node *node, t_env *env, int mode);
-int		apply_redirs(t_shell *data, t_node *node, int mode);
 void	apply_temp_asig(t_shell *da, t_token *tokens, t_node *node, t_env *env);
+
 
 //EXPANSION
 int		copy_key(char *buffer, char **key_to_find);
 int		find_key_in_lst(t_shell *d, t_token *t, char **key_to_f);
+int		is_it_symbol(t_shell *data, t_token *token, char **key_to_find);
 int		extract_key(t_shell *d, t_token *t, char **key_to_f, int phase);
 int		expand_empty_str(t_shell *data, t_token *token, char **key_to_find);
 int		copy_value(t_shell *d, char **t_val, char *key_value, char *key_to_f);
+
+//EXPANSION_WILDCARDS
+void	process_wildcard(t_shell *data, t_token *token);
+int		count_matches(t_shell *data, char *key_to_find);
+int		extract_wildcard(t_shell *data, char *str, char **ptr);
+char	**find_matches(t_shell *data, char *key_to_find, int n_dirs);
+void	reorder_tokens(t_shell *d, t_token *oritoken, int orisize, char **dirs);
+void	rebuild_tokens(t_shell *data, t_token *token, char **dirs, int n_dirs);
+
 
 //ASIGNATION
 int		check_asignation_syntax(t_token *token, int type);
 void	eliminate_temp_asig(t_prompt *prompt, t_token *tokens);
 int		send_tokens_for_asig(t_shell *data, t_token *tokens, int phase);
-int		is_it_asig(t_shell *data, t_token *token, t_env *env, int type);
 int		verify_if_already_set(t_shell *data, char *key, char **value, int t);
 int		check_externs_syntax(t_shell *d, t_token *tkens, t_token *token, int t);
 
@@ -279,19 +291,20 @@ void	print_ast(t_node *root);
 void	print_tokens_debug(t_prompt *prompt);
 
 //UTILS
-char	*cleanner_slash_quotes_d(t_shell *data, char *word, int len, int *flag);
-char	*clean_slash_expan_d(t_shell *data, char *word, int len, char slash);
-void	clean_quote_until_slash_d(char *word, char *clean_word, char quote);
-void	void_tokens_at_the_end(t_token *tokens, int n_alloc, int n_tokens);
-void	eliminate_token(t_prompt *prompt, t_token *tokens, int index);
-int		cmd_correction(t_shell *data, t_token *tokens, int n_tokens);
 void	update_envp(t_shell *data);
-void	safe_index_plus(int *i, int n_tokens);
 void	normalize_token_to_lower(char *str);
+void	check_buffer(t_shell *data, t_prompt *prompt);
+void	safe_index_plus(int *i, int n_tokens);
+int		cmd_correction(t_shell *data, t_token *tokens, int n_tokens);
+void	eliminate_token(t_prompt *prompt, t_token *tokens, int index);
+void	void_tokens_at_the_end(t_token *tokens, int n_alloc, int n_tokens);
+void	clean_quote_until_slash_d(char *word, char *clean_word, char quote);
+char	*clean_slash_expan_d(t_shell *data, char *word, int len, char slash);
+char	*cleanner_slash_quotes_d(t_shell *data, char *word, int len, int *flag);
 
-//BUILD_IN
-int		find_cmd(t_shell *data, t_cmd *cmd, char *to_find, char *alias);
+//BUILT_IN
 int		check_arg_syntax(char *arg, const char *built_in_err);
+int		find_cmd(t_shell *data, t_cmd *cmd, char *to_find, char *alias);
 
 /* ************************************************************************** */
 /*                                  extras                                    */

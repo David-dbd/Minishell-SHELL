@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:57:46 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/14 22:58:49 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/30 09:24:55 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,6 @@ static void	aux_alloc_mem(t_shell *data, char **str, char **new_str, int len)
 	lo reemplaza por escpacio e ignora el resto de "$".
 */
 
-static int	is_quoted(char *str)
-{
-	int	i;
-	int	quote_counter;
-
-	i = 0;
-	quote_counter = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '"')
-			quote_counter++;
-		i++;
-	}
-	if (quote_counter % 2 != 0)
-		return (FALSE);
-	return (SUCCESS);
-}
-
 static void	ignore_words(t_shell *data, t_token *token, char **str, int len)
 {
 	char	*new_str;
@@ -86,7 +68,7 @@ static void	ignore_words(t_shell *data, t_token *token, char **str, int len)
 			{// en lugar de new_str[j++] = (*str)[i++]
 			//porque(*str)[i++]puede ser cualquier otro simbolo que no sea alnum
 				new_str[j++] = ' ';
-				i++;
+				//i++;
 			}
 		}
 		else
@@ -108,6 +90,8 @@ int	expand_empty_str(t_shell *data, t_token *token, char **key_to_find)
 		if (token->double_quoted)
 		{
 			ft_memset(token->value, 0, token_len);
+			token->value[0] = 32;
+			token->value[1] = '\0';
 			return (REPLACED);
 		}
 		else

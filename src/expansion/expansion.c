@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:57:33 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 21:17:35 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/31 23:17:12 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,24 +72,38 @@ static int	aux_mem_alloc(t_shell *data, t_token *token, char **key_to_find)
 	return (SUCCESS);
 }
 
-int	expansion(t_shell *data, t_token *token, t_env *env, int phase)
+static int	get_symbol_to_expand_count(char *str, int type)
+{
+	int	number_of_symbols;
+
+	if (type == '$')
+	{
+		number_of_symbols = ft_count_char(str, '$');
+		//number_of_symbols += ft_count_char(str, '~');
+	}
+	else if (type == '*')
+		number_of_symbols = ft_count_char(str, '*');
+	return (number_of_symbols);
+}
+
+int	expansion(t_shell *data, t_token *tokens, int i, int phase)
 {
 	char	*key_to_find;
 	int		number_of_dollars;
 	int		found;
-	int		i;
 
-	i = 0;
 	found = FALSE;
 	while (i < data->prompt.n_tokens)
 	{
-		if (token[i].type == EXPANSION)
+		if (phase == FINAL_PHASE && is_delimiter_type(tokens[i].type))
+			return (SUCCESS);
+		if (tokens[i].type == EXPANSION)
 		{
-			aux_mem_alloc(data, &token[i], &key_to_find);
-			number_of_dollars = ft_count_char(token[i].value, '$');
+			aux_mem_alloc(data, &tokens[i], &key_to_find);
+			number_of_dollars = get_symbol_to_expand_count(tokens[i].value, '$');
 			while (number_of_dollars > 0)
 			{
-				found = extract_key(data, &token[i], &key_to_find, phase);
+				found = extract_key(data, &tokens[i], &key_to_find, phase);
 				number_of_dollars--;
 			}
 			free (key_to_find);
@@ -100,4 +114,25 @@ int	expansion(t_shell *data, t_token *token, t_env *env, int phase)
 	return (found);
 }
 
-//En empty str esta borrando todo hasta el punto "$USE.txt" VS "$USER.txt"
+int	expand_wildcards(t_shell *data, t_prompt *prompt, t_token *tokens)
+{
+	int	i;
+	int	nbr_of_wildcards;
+
+	i = 0;
+	nbr_of_wildcards = 0;
+	while (i < prompt->n_tokens)
+	{
+		if (tokens[i].type == WILDCARD)
+		{
+			nbr_of_wildcards = get_symbol_to_expand_count(tokens[i].value, '*');
+			while (nbr_of_wildcards > 0)
+			{
+				process_wildcard(data, &tokens[i]);
+				nbr_of_wildcards--;
+			}
+		}
+		i++;
+	}
+	return (SUCCESS);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:41:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/12 18:39:53 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 08:14:25 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_node	*create_true_node(t_shell *data, t_type type)
 		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
 	node->type = type;
 	node->token = true_token;
+	node->token_hash = data->prompt.n_tokens + 1;;
 	node->args = ft_calloc(2, sizeof(char *));
 	if (!node->args)
 		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
@@ -85,6 +86,7 @@ t_node	*create_node(t_shell *data, t_token *token, t_type type)
 		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
 	node->type = type;
 	node->token = token;
+	node->token_hash = token->hash;
 	node->args = NULL;
 	node->redir = NULL;
 	node->arg_types = NULL;

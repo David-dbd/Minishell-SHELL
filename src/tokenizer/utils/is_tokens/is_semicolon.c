@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_semicolon.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:48:30 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/13 22:42:13 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 21:33:48 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 #    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/10/28 10:55:46 by davdiaz-         ###   ########.fr        #
+#    Updated: 2025/10/31 16:43:02 by davdiaz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,9 +158,15 @@ SRCS =				main/main.c \
 					expansion/utils/find_swap/extract_key.c \
 					expansion/utils/find_swap/find_key_in_list.c \
 					expansion/utils/find_swap/expand_empty_str.c \
+					expansion/utils/find_swap/is_it_symbol.c \
+					expansion/utils/find_swap/wildcards/process_wildcards.c \
+					expansion/utils/find_swap/wildcards/count_matches.c \
+					expansion/utils/find_swap/wildcards/find_matches.c \
+					expansion/utils/find_swap/wildcards/rebuild_tokens.c \
+					expansion/utils/find_swap/wildcards/extract_wildcard.c \
+					expansion/utils/find_swap/wildcards/reorder_tokens.c \
 					expansion/utils/asignation/asignation.c \
 					expansion/utils/asignation/verify_if_already_set.c \
-					expansion/utils/asignation/is_it_asig.c \
 					expansion/utils/asignation/check_externs_syntax.c \
 					expansion/utils/asignation/check_asignation_syntax.c \
 					ast/ast_builder.c \
@@ -195,6 +201,7 @@ SRCS =				main/main.c \
 					executor/utils/apply_redirs.c \
 					executor/utils/apply_temp_asig.c \
 					executor/utils/update_envp.c \
+					executor/utils/expansion_final_process.c \
 					signals/setup_signals.c \
 					signals/handler_signals.c \
 					signals/check_signals.c \

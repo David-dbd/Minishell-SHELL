@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 17:12:22 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/27 21:33:03 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/01 18:10:49 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,23 @@ static int	has_one_arg(char **args)
 	i = 0;
 	while (args[i] != NULL)
 		i++;
-	if (i == 1)
-		return (TRUE);
-	ft_printf_fd(STDERR, ERR_CD_TOO_MANY);
-	return (FALSE);
+	if (i > 1)
+	{
+		ft_printf_fd(STDERR, ERR_CD_TOO_MANY);
+		return (FAIL);
+	}
+	i = 0;
+	while (args[0][i])
+	{
+		if (ft_isdigit(args[0][i]) && args[0][0] != '/')
+		{
+			ft_printf_fd(STDERR, ERR_FILE_NOT_FOUND);
+			return (ERROR);
+		}
+		i++;
+	}
+	return (TRUE);
 }
-
-//EN OBRAS...no esta listo
 
 static char	*find_home_value_in_env(t_env *env)
 {
@@ -51,7 +61,7 @@ static int	figure_out_information(char *ptr)
 	if (stat(ptr, &info) == ERROR) //STAT?
 	{
 		ft_printf_fd(STDERR, ERR_FILE_NOT_FOUND);
-		return (EXIT_FAILURE);
+		return (FAILURE);
 	}
 	if (!S_ISDIR(info.st_mode)) //S_ISDIR debe ser para saber si es un directorio o no. Seguramente ahi entra stat y el struct
 	{
@@ -66,7 +76,7 @@ static int	figure_out_information(char *ptr)
 	if (chdir(ptr) == ERROR) //Para cambiar de directorio
 	{
 		perror("minishell: chdir: ");
-		return (EXIT_FAILURE);
+		return (FAILURE);
 	}
 	return (SUCCESS);
 }
@@ -83,7 +93,12 @@ static int	find_home(t_shell *data)
 	if (!ptr)
 	{
 		ft_printf_fd(STDERR, ERR_HOME_NOT_SET); //O EL ERROR QUE SEA MEJOR
-		return (EXIT_FAILURE); //ERROR?
+		return (FAIL); //ERROR?
+	}
+	if (!getcwd(cwd, sizeof(cwd)))
+	{
+		perror("minishell: cd");
+		return (FAIL);
 	}
 	result = figure_out_information(ptr);
 	if (result != SUCCESS)
@@ -91,38 +106,47 @@ static int	find_home(t_shell *data)
 	if (!getcwd(new_cwd, sizeof(new_cwd)))
 	{
 		perror("minishell: cd");
-		return (EXIT_FAILURE);
+		return (FAIL);
 	}
 	update_var(data, cwd, "OLDPWD");
 	update_var(data, new_cwd, "PWD");
-	return (SUCCESS);
+	return (0);
 }
 
 int	my_cd(t_shell *data, char **args)
 {
 	char	new_cwd[PATH_MAX];
 	char	cwd[PATH_MAX];
+	char	*ptr;
 	int		result;
 
+	result = 0;
 	if (!args || !*args)
 	{
 		result = find_home(data);
 		return (result); //Se retorna int codigo que haya sido
 	}
+	if (ft_strlen(*args) == 0)
+	{
+		ft_printf_fd(STDERR, "minishell: cd: variable no definida o vacía\n");
+		return (FAIL);
+	}
 	if (!getcwd(cwd, sizeof(cwd))) // get "current_working_directory". Puede fallar con error 0. Esto puede ser para obtener el OLDPWD
 	{
 		perror("minishell: cd: ");
-		return (EXIT_FAILURE);
+		return (FAIL);
 	}
-	if (!has_one_arg(args))
-		return (EXIT_FAILURE);
+	if (has_one_arg(args) == ERROR)
+		return (FAIL);
+	else if (!has_one_arg(args))
+		return (FAIL);
 	result = figure_out_information(*args);
 	if (result != SUCCESS)
 		return (result);
 	if (!getcwd(new_cwd, sizeof(new_cwd)))
 	{
 		perror("minishell: cd: ");
-		return (EXIT_FAILURE);
+		return (FAIL);
 	}
 	update_var(data, cwd, "OLDPWD");
 	update_var(data, new_cwd, "PWD");

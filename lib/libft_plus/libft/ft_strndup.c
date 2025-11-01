@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_or.c                                            :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 19:43:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/31 21:39:09 by davdiaz-         ###   ########.fr       */
+/*   Created: 2025/10/31 13:03:16 by davdiaz-          #+#    #+#             */
+/*   Updated: 2025/10/31 16:44:56 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../inc/minishell.h"
+#include "../libft_plus.h"
 
-/*
-	Detecta el operador lógico '||' y añade un token de tipo OR.
-	Avanza el índice para no volver a procesar el token.
-*/
-
-void	is_or(t_shell *data, t_prompt *prompt, const char *str, int *i)
+char	*ft_strndup(const char *str, size_t n)
 {
-	if (!ft_strncmp(str + *i, "||", 2))
+	size_t	i;
+	char	*new_str;
+
+	if (!str)
+		return (NULL);
+	new_str = (char *)malloc((n + 1) * sizeof(char));
+	if (!new_str)
+		return (NULL);
+	i = 0;
+	while (i < n && str[i])
 	{
-		add_token(data, prompt, "||", OR);
-		(*i)++;
-		(*i)++;
+		new_str[i] = str[i];
+		i++;
 	}
+	new_str[i] = '\0';
+	return (new_str);
 }

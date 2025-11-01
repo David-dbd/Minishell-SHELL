@@ -1,101 +1,3 @@
-unset va12r
-unset $""
-unset "$"
-unset $
-unset "?"
-unset ?
-unset =""
-unset ""=
-unset doesntexist
-unset OLDPWD
-unset PATH
-unset TERM
-unset MAIL
-unset SHLVL
-unset TES;T
-unset TES.T
-unset TES}T
-ECHO $?
-unset TEST_
-unset TES@T
-unset ============
-unset export
-unset unset
-unset sudo
-unset TES\\~T
-ECHO SHLVL
-ECHO $SHLVL
-export TE1ST=100
-echo $jaja
-export jaja+=12
-export jaja=jiji=jaja=jiji
-jaja+=12
-unset jaja
-export TEST-=100
-export ____TEST=!23
-export TES\x23T=123
-export TES!T123
-export TES{T=123}
-export TES^T=123
-export HELLO42=T=""
-export ?=hallo
-export test=42 | echo 99
-echo mini_test
-echo $mini
-echo $UAE
-export p
-echo $p
-unset mini_test
-export mini_test=
-echo $mini_test
-echo $USE
-export aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa+=222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
-echo $aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-alias
-alias ls hola
-alias hola cd
->>>>>>> origin/david
-clcear
-git status
-cd
-cd 123453
-echo $USER
-echo "$USER"
-echo '$USER'
-echo "Hola $USER"
-echo "Hola $USER como vas?"
-echo "Hola $USE como vas?"
-echo Hola $USE como vas?
-echo "Hola $USE como vas?""Hola perro'' hola"
-echo '"$USER"'
-echo ""'$USER'""
-echo """"""""$USER""""""""
-echo '$='
-echo "$?"
-echo \\\\\\\\\\\\\\\\\\$USER
-echo \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\$USER \\$PATH \\\\$PWD
-echo '$USER' "$USER" "text  ' text"
-echo text"$USER"
-echo $USER.txt
-echo $USE.txt
-echo "Hello $USE.txt"
-cler
-echo Hello $USER.txt
-echo Hello $USER
-echo Hello $USE.txt
-va=1 && echo $var
-var=1 && echo $var
-echo $var
-var=$USER
-var=$USE
-cd minishell_tester
-echo "ello $USE como vas?
-echo "Hello $USE como vas?"
-echo Hello $USE como vas?
-echo test$h "$h"
-echo test$h"$h"
-cls
 echo < infile
 echo < infile hola
 echo hola < infile como estas?
@@ -131,7 +33,6 @@ ls | cat << stop | ls -la | cat << stop1 | ls | cat << stop2 | ls -la > > out | 
 ls|cat Makefile|>> out|cd ..
 /bin/rm -f out
 asd
-pwd
 echo $"42$"
 echo \\$
 echo \\$USER
@@ -143,7 +44,6 @@ echo .
 env && ls
 env s
 env | grep "_
-env
 /bin/env | grep "_="
 (echo hola)
 (echo)
@@ -159,17 +59,14 @@ env | grep "_="
 echo $h "$h" | cat -e
 echo "$h" | cat -e
 echo test $h "$h" | cat -e
-echo "hello $USE"
 echo "hello $USE" | cat -e
 echo "hola $H como estas" | cat -e
-echo test$h "$h" | cat -e
 <<<<<<< HEAD
 export=Hello World
 export hello world
 export Hello david
 export
 export var=1
-hola
 export hola
 export a
 unset a
@@ -183,10 +80,8 @@ var=1 var+=2 ls
 var=1 var+=2 ls && echo $var
 var=1 var+=2 ls && env
 (var=1 var+=2 ls && env)
-ls
 ./minishell
 exit
-ech
 ech hola
 export 123var123=hola
 expot 123var123=hola
@@ -196,4 +91,109 @@ yes
 echa hola
 (ech hola && ls)
 echo $?
+echo hello''$USE.txt
+echo hello $USE.txt
+echo"".txt
+""
+"   "
+"  "
+''
+' '
+echa 
+ech
+echa
+" "
+ec
+cp
+epor
+expor
+b
+m\xC3\xA7
+m
+cp expor pws
+cp expor pws && pwa
+q
+w
+e
+r
+t
+u
+i
+echo""$USE.txt
+echo Hello $USE.txt
+echo Hello$USE.txt
+echo $USE.txt" "hola
+echo $USE.txt""hola
+echo "hola"""como estas
+ech+
+echo" ".txt
+echo" "$USE.txthola
+echo" "txt
+echo test$h "$h"
+echo hola $USE como estas
+echo "hola $USER como estas"
+echo "hola $USE como estas"
+echo test$h "$h" | cat -e
+hola
+d
+eport
+pw
+pwe
+a
+echo hola
+ex
+c
+echo $USE
+echo $USE hola
+echo "hello $USE"
+echo "hello $USE como vas"?
+echo hello $USE como vas?
+echo "Hello $USER.txt"
+echo $USER" "hello" ".txt
+echo $USE" "hello" ".txt
+echo "Hello $USE.txt"
+cler
+echo" "$USE.txt
+echo $var
+va=1 && echo $va && ls && grep "pdf"
+va=1 && echo $va && ls && grep "Makefile"
+la
+unset var
+echo $USE.txt
+va=1 && echo $va && ls && pwd
+var=1 && echo $var
+vas=1 echo hola && echo $vas
+~
+echo ~
+echo $USER ~
+echo $USER~
+lear
+pwd
+cd 123
+l
+clea
+make
+echo $$
+cd $PWD hi
+cd $PWD
+echo $USER
+ls *file
+ls *file*
+ls *md
+ls *.md
+var=1 echo hola && echo $var
+echo "Hola $USER, tu home es $HOME"
+echo $HOME
+echo "Ruta: $PATH/bin"
+export BASE_DIR=$HOME/projects
+export BASE_DIR=$HOME
+env
+cd $BASE_DIR && ls
+cd $NO_exist
+cd $no_exist
+cd $noexist
+ls
 clear
+echo *pdf
+echo
+ls *pdf

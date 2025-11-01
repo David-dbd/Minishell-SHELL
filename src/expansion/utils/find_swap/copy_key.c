@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:23:28 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 12:47:32 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/30 11:04:42 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,38 +21,91 @@
 	válida).
 */
 
+static int	if_find_dollar(char *str, char **key_to_find, int i)
+{
+	int	j;
+	int	flag;
+
+	j = 0;
+	flag = FALSE;
+	if (str[i] == '$')
+	{
+		i++;
+		if (!ft_isalpha(str[i]) && !is_symbol(str[i]))
+			return (FALSE);
+		while ((ft_isalnum(str[i]) || is_symbol(str[i]))
+			&& flag == FALSE)
+		{
+			if (str[i] == '$' || str[i] == '~')
+			{
+				flag = TRUE;
+				break ;
+			}
+			(*key_to_find)[j++] = str[i];
+			i++;
+		}
+		(*key_to_find)[j] = '\0';
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+static void aux_copy_tilde(char *str, char **key_to_find, int i)
+{
+	int	j;
+	int	flag;
+
+	j = 0;
+	flag = FALSE;
+	while ((str[i] == '+' || str[i] == '/') && flag == FALSE)
+	{
+		if (str[i] == '$' || str[i] == '~')
+		{
+			flag = TRUE;
+			break ;
+		}
+		(*key_to_find)[j++] = str[i];
+		i++;
+	}
+	(*key_to_find)[j] = '\0';
+}
+
+static int	if_find_tilde(char *str, char **key_to_find, int i)
+{
+	int	j;
+
+	j = 0;
+	if (str[i] == '~')
+	{
+		if (str[i + 1] == '\0' || str[i + 1] == ' ')
+		{
+			(*key_to_find)[j++] = str[i];
+			(*key_to_find)[j] = '\0';
+			return (TRUE);
+		}
+		i++;
+		if (str[i] != '+' && str[i] != '/')
+			return (FALSE) ;
+		if (str[i] == '+' && str[i + 1]
+			&& ((str[i + 1] == '+') || (str[i + 1] != '/')))
+			return (FALSE);
+		aux_copy_tilde(str, key_to_find, i);
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
 int	copy_key(char *str, char **key_to_find)
 {
 	int	i;
-	int	j;
-	int	start;
-	int	flag;
 
 	i = 0;
-	j = 0;
-	flag = FALSE;
 	while (str[i] != '\0')
 	{
-		if (str[i] == '$')
-		{
-			i++;
-			if (!ft_isalpha(str[i]) && !is_symbol(str[i]))
-				continue ;
-			start = i;
-			while ((ft_isalnum(str[start]) || is_symbol(str[start]))
-				&& flag == FALSE)
-			{
-				if (str[start] == '$')
-				{
-					flag = TRUE;
-					break ;
-				}
-				(*key_to_find)[j++] = str[start];
-				start++;
-			}
-			(*key_to_find)[j] = '\0';
+		if (if_find_dollar(str, key_to_find, i))
 			return (SUCCESS);
-		}
+		if (if_find_tilde(str, key_to_find, i))
+			return (SUCCESS);
 		i++;
 	}
 	return (FAILURE);

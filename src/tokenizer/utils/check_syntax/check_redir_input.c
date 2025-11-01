@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_redir_input.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 18:39:51 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/12 18:03:33 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 12:55:08 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_redir_input(t_shell *data, t_prompt *p, t_token *tokens, int i)
 				|| tokens[i + 1].type == WORD
 				|| tokens[i + 1].type == BUILT_IN
 				|| tokens[i + 1].type == EXPANSION
-				|| tokens[i + 1].type == WILDCAR
+				|| tokens[i + 1].type == WILDCARD
 				|| tokens[i + 1].type == SINGLE_QUOTE
 				|| tokens[i + 1].type == DOUBLE_QUOTE))
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_semicolon.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:16:45 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/10 21:16:48 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 12:57:21 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_semicolon(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 				|| tokens[i - 1].type == WORD
 				|| tokens[i - 1].type == BUILT_IN
 				|| tokens[i + 1].type == EXPANSION
-				|| tokens[i - 1].type == WILDCAR
+				|| tokens[i - 1].type == WILDCARD
 				|| tokens[i - 1].type == DOUBLE_QUOTE))
 		{
 			syntax_error(data, ERR_SYNTAX, EXIT_USE, tokens[i - 1].value);

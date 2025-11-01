@@ -3,63 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   find_key_in_list.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 21:10:27 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 12:42:54 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
-
-static void	sym_expa(t_shell *d, t_token *token, char **key_to_f, int sym_value)
-{
-	char	*value_of_symbol_expansion;
-
-	value_of_symbol_expansion = ft_itoa(sym_value);
-	if (!value_of_symbol_expansion)
-	{
-		free (*key_to_f);
-		exit_error(d, ERR_MALLOC, EXIT_FAILURE);
-	}
-	copy_value(d, &token->value, value_of_symbol_expansion, *key_to_f);
-	if (value_of_symbol_expansion)
-		free (value_of_symbol_expansion);
-}
-
-/*
-	Detecta si la clave representa una variable especial del shell.
-	Si es así, la expande usando su valor correspondiente:
-
-	$$ → PID del shell actual (shell padre)
-	$! → PID del último proceso en segundo plano (hijo)
-	$? → Código de salida del último proceso ejecutado
-*/
-
-static int	is_it_symbol(t_shell *data, t_token *token, char **key_to_find)
-{
-	if (key_to_find[0][0] == '!' && key_to_find[0][1] == '\0')
-	{
-		if (data->ast_root->pid)
-		{
-			sym_expa(data, token, key_to_find, data->ast_root->pid);
-			return (TRUE);
-		}
-		else
-			return (FALSE);
-	}
-	else if (key_to_find[0][0] == '?' && key_to_find[0][1] == '\0')
-	{
-		sym_expa(data, token, key_to_find, data->exit_code);
-		return (TRUE);
-	}
-	else if (key_to_find[0][0] == '$' && key_to_find[0][1] == '\0')
-	{
-		sym_expa(data, token, key_to_find, data->shell_pid);
-		return (TRUE);
-	}
-	return (FALSE);
-}
 
 /*
 	Intenta hayar la clave de la expansión en el env. Si la encuentra, llama a

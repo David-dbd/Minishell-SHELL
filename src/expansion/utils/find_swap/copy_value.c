@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:22:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 16:24:04 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/30 12:27:39 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,6 @@ int	copy_value(t_shell *d, char **token_val, char *key_value, char *key_to_find)
 
 static int	calculate_total_length(char *token, char *value, char *key_to_find)
 {
-	char	*dollar;
 	int		len_of_key;
 	int		len_of_token;
 	int		len_of_key_value;
@@ -243,6 +242,8 @@ int	copy_value(t_shell *d, char **token_val, char *key_value, char *key_to_find)
 	int		total_len;
 
 	total_len = calculate_total_length(*token_val, key_value, key_to_find);
+	if (total_len <= 0)
+		return (ERROR);
 	new_buffer = ft_calloc(total_len + 1, sizeof(char));
 	if (!new_buffer)
 		exit_error(d, ERR_MALLOC, EXIT_FAILURE);

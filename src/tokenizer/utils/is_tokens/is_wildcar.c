@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_wildcar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:41 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/07 21:31:34 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 12:54:22 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	is_wildcar(t_shell *data, t_prompt *prompt, const char *str, int *i)
 				exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 			wildcar = cleanner_wildcar(data, wildcar, len, ';');
 			wildcar = cleanner_wildcar(data, wildcar, len, '?');
-			add_token(data, prompt, wildcar, WILDCAR);
+			add_token(data, prompt, wildcar, WILDCARD);
 		}
 	}
 }

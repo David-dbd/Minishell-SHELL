@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_or.c                                            :+:      :+:    :+:   */
+/*   rebuild_tokens.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/11 19:43:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/31 21:39:09 by davdiaz-         ###   ########.fr       */
+/*   Created: 2025/10/30 18:43:47 by davdiaz-          #+#    #+#             */
+/*   Updated: 2025/11/01 19:11:07 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../inc/minishell.h"
+#include "../../../../../inc/minishell.h"
 
-/*
-	Detecta el operador lógico '||' y añade un token de tipo OR.
-	Avanza el índice para no volver a procesar el token.
-*/
-
-void	is_or(t_shell *data, t_prompt *prompt, const char *str, int *i)
+void	rebuild_tokens(t_shell *data, t_token *token, char **dirs, int n_dirs)
 {
-	if (!ft_strncmp(str + *i, "||", 2))
+	int	i;
+	int	id;
+	int	original_size;
+
+	i = 0;
+	id = 0;
+	original_size = data->prompt.n_tokens;
+	while (i < n_dirs)
 	{
-		add_token(data, prompt, "||", OR);
-		(*i)++;
-		(*i)++;
+		add_token(data, &data->prompt, dirs[i], WORD);
+		i++;
 	}
+	reorder_tokens(data, token, original_size, dirs);
 }

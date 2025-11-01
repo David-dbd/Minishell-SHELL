@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_parenten.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:52 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/03 17:03:03 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/31 21:33:29 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

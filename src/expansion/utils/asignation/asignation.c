@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:35:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/28 13:39:11 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/29 21:20:22 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ int	asignation(t_shell *data, t_token *token, int type)
 	if (result == TRUE)
 	{
 		free (key);
-		return (SUCCESS);
+		return (0);
 	}
 	else if (result == IGNORE)
 	{
@@ -147,5 +147,5 @@ int	asignation(t_shell *data, t_token *token, int type)
 			is_it_env_or_local(data, &type, token->id);
 		add_var(data, key, value, type);
 	}
-	return (SUCCESS);
+	return (0);
 }
