@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 16:35:21 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/30 18:32:06 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 01:51:11 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	get_double_quotes_balance(t_prompt *prompt, t_token *tokens)
 {
 	int	i;
 	int	counter;
-	int balance;
+	int	balance;
 
 	i = 0;
 	counter = 0;

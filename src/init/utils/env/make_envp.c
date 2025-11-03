@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 20:43:35 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/29 18:01:51 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 01:49:18 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,3 @@ char	**upadte_envp(t_shell *data, t_env *env, t_var *vars)
 	}
 	return (envp);
 }
-

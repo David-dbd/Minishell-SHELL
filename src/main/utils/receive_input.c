@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:42:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/01 16:18:57 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 01:37:31 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_global_balance(t_prompt *prompt, t_token *tokens)
 {
-	int unbalance;
+	int	unbalance;
 	int	global_balance;
 
 	global_balance = NONE;
@@ -45,7 +45,7 @@ int	join_lines_until_balanced(t_shell *data, t_prompt *prompt, char **full_line)
 	char	*tmp;
 	int		unbalance;
 
-	while(42)
+	while (42)
 	{
 		allocate_tokens(data, prompt);
 		get_tokens(data, prompt, *full_line);
@@ -74,10 +74,39 @@ static char	*read_until_balanced(t_shell *data, char *initial_line)
 
 	full_line = ft_strdup(initial_line);
 	if (!full_line)
-		return(free(initial_line), NULL);
+		return (free(initial_line), NULL);
 	if (join_lines_until_balanced(data, &data->prompt, &full_line) != OK)
 		return (free(full_line), initial_line);
 	return (free(initial_line), full_line);
+}
+
+int	terminal_readline(t_shell *data, t_prompt *prompt, t_var *vars, char *line)
+{
+	char	*pwd[2];
+	char	*user;
+	char	*home;
+	char	host[HOST_NAME_MAX + 1];
+	char	*display_shell;
+
+	home = get_var_value(vars, "HOME");
+	pwd[0] = get_var_value(vars, "PWD");
+	user = get_var_value(vars, "USER");
+	gethostname(host, HOST_NAME_MAX + 1);
+	if (home && pwd[0] && user && host)
+	{
+		pwd[1] = pwd[0] + ft_strlen(home);
+		display_shell = ft_strjoin_multi
+			(9, FUSER, user, "@", host, FRESET, FPATH, "~", pwd[1], FEND);
+		if (!display_shell)
+			exit_error(data, ERR_MALLOC, EXIT_FAILURE);
+		line = ic_readline(display_shell);
+		free(display_shell);
+	}
+	else
+		line = ic_readline(DEFAULT_PROMPT);
+	prompt->input = read_until_balanced(data, line);
+	if (prompt->input)
+		ic_history_add(prompt->input);
 }
 
 /*
@@ -92,13 +121,7 @@ char	*receive_input(t_shell *data, t_prompt *prompt)
 
 	line = NULL;
 	if (isatty(fileno(stdin)))
-	{
-		line = ic_readline("\033[1;34mminishell\033[1;34m> \033[0m");
-		prompt->input = read_until_balanced(data, line);
-		// prompt->input = line;
-		if (prompt->input)
-			ic_history_add(prompt->input);
-	}
+		terminal_readline(data, &data->prompt, data->env.vars, line);
 	else
 	{
 		line = get_next_line(fileno(stdin));

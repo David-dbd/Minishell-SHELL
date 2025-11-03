@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 17:12:22 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/02 21:04:56 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 01:41:01 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	cwd_has_been_deleted(t_var *vars, char *old_cwd, char **new_dir)
 
 static int	validate_and_move(t_shell *data, t_var *vars, char *new_dir)
 {
-	char	new_cwd[PATH_MAX];
-	char	old_cwd[PATH_MAX];
-	struct	stat info;
+	char		new_cwd[PATH_MAX];
+	char		old_cwd[PATH_MAX];
+	struct stat	info;
 
 	if (ft_strcmp(new_dir, "-") == 0) // expandir real OLD_PWD
 	{
@@ -60,7 +60,7 @@ static int	validate_and_move(t_shell *data, t_var *vars, char *new_dir)
 	if (!getcwd(old_cwd, sizeof(old_cwd))) // actual dir para OLDPWD
 		cwd_has_been_deleted(vars, old_cwd, &new_dir);
 	if (stat(new_dir, &info) == ERROR) // Para saber si existe
-		return (ft_printf_fd(STDERR, ERR_FILE_NOT_FOUND, new_dir), EXIT_FAILURE);
+		return (ft_printf_fd(STDERR, ERR_FILE_NOT_FOUND, new_dir), EXIT_FAIL);
 	if (!S_ISDIR(info.st_mode)) // Para saber si es un dir
 		return (ft_printf_fd(STDERR, ERR_NOT_DIR, new_dir), ENOTDIR);
 	if (access(new_dir, X_OK) == ERROR) //Para saber si tiene permiso o no
@@ -70,7 +70,7 @@ static int	validate_and_move(t_shell *data, t_var *vars, char *new_dir)
 	if (!getcwd(new_cwd, sizeof(new_cwd))) // nuevo dir para PWD
 		return (perror("minishell: cd: "), EXIT_FAILURE);
 	update_var(data, old_cwd, "OLDPWD");
-	update_var(data, new_cwd, "PWD"); // arreglar unset que provoca segfault cuando unset PWD y luego actualizo aqui PWD
+	update_var(data, new_cwd, "PWD");
 	return (OK);
 }
 

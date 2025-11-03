@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 02:13:28 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/29 17:56:47 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 01:38:31 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ static char	*is_valid_user_name(void)
 	return (name);
 }
 
-char *find_user(t_shell *data, t_var *vars)
+char	*find_user(t_shell *data, t_var *vars)
 {
 	char	*name;
-	t_var 	*var;
+	t_var	*var;
 
 	var = vars;
-	while(var)
+	while (var)
 	{
 		if (ft_strcmp(var->key, "USER") == 0)
 		{
@@ -98,7 +98,7 @@ char *find_user(t_shell *data, t_var *vars)
 			if (!name)
 				exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 			name = ft_capitalize(name);
-			return(name);
+			return (name);
 		}
 		var = var->next;
 	}
@@ -121,4 +121,3 @@ void	print_session_start(t_shell *data, time_t start, char **user_name)
 		local->tm_hour, local->tm_min, local->tm_sec,
 		local->tm_mday, local->tm_mon + 1, local->tm_year + 1900);
 }
-

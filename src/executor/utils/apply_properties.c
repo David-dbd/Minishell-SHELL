@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:02:23 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/30 01:52:16 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 01:46:19 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ int	apply_properties(t_shell *data, t_node *node, int mode)
 		apply_temp_asig(data, data->prompt.tokens, node);
 	}
 	if (node->redir)
+	{
 		if (!apply_redirs(data, node, mode))
 		{
 			data->exit_code = FAIL;
 			return (FAILURE);
 		}
+	}
 	return (SUCCESS);
 }

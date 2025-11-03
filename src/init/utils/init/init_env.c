@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:02:53 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/01 16:33:32 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 01:48:55 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@
  *	- NULL si no existe
  */
 
-char *get_var_value(t_var *vars, const char *key)
+char	*get_var_value(t_var *vars, const char *key)
 {
-	t_var *var;
+	t_var	*var;
 
 	if (!vars || !key)
-		return NULL;
-
+		return (NULL);
 	var = vars;
 	while (var)
 	{
@@ -36,7 +35,7 @@ char *get_var_value(t_var *vars, const char *key)
 		}
 		var = var->next;
 	}
-	return NULL;
+	return (NULL);
 }
 
 /*
