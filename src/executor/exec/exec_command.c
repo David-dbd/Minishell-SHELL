@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/02 21:42:08 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 23:50:27 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,27 @@
 
 void	wait_cmd_background(t_shell *data, t_node *node, pid_t pid)
 {
+	int	sig;
 	int	status;
 
-	status = 0;
 	if (!node->background) //si no tiene background se hace el waitpid
 	{
 		waitpid(pid, &status, 0);
 		if (WIFEXITED(status))
 			data->exit_code = WEXITSTATUS(status);
 		else if (WIFSIGNALED(status))
+		{
+			sig = WTERMSIG(status);
 			data->exit_code = 128 + WTERMSIG(status);
+			if (sig == SIGQUIT)
+				ft_printf_fd(STDERR, "Quit (core dumped)\n");
+			else if (sig == SIGINT)
+				ft_printf_fd(STDERR, "\n");
+		}
 	}
 	g_signal[0] = SIG_INTERACTIVE;
 	if (node->background)
 	{
-		// exit_code para padre es 0 porque el fork fue exitoso
 		data->last_background_pid = pid;
 		ft_printf_fd(STDOUT, "[&] %d\n", pid);
 		data->exit_code = OK;

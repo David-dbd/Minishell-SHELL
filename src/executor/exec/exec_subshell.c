@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 16:42:21 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/31 17:54:54 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 23:52:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	exec_subshell(t_shell *data, t_node *node, t_exec *exec, int mode)
 {
+	int		sig;
 	int		status;
 	pid_t	pid;
 
@@ -33,7 +34,14 @@ void	exec_subshell(t_shell *data, t_node *node, t_exec *exec, int mode)
 	if (WIFEXITED(status))
 		data->exit_code = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
+	{
+		sig = WTERMSIG(status);
 		data->exit_code = 128 + WTERMSIG(status);
+		if (sig == SIGQUIT)
+			ft_printf_fd(STDERR, "Quit (core dumped)\n");
+		else if (sig == SIGINT)
+			ft_printf_fd(STDERR, "\n");
+	}
 	if (mode == CHILD)
 		exit_succes(data, NULL, data->exit_code);
 	g_signal[0] = SIG_INTERACTIVE;

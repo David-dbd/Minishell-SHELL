@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:47:09 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/31 02:14:10 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 23:37:39 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ void	handle_sigint_interative(int sig)
 void	handle_sigint_heredoc(int sig)
 {
 	(void)sig;
+	if (g_signal[0] == SIG_HEREDOC)
+		write(1, "^C", 2);
 	g_signal[1] = SIGINT;
 }

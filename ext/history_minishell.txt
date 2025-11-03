@@ -1,9 +1,3 @@
-cd test2
-unset pwd
-rm -rf ../../../test
-cd ..
-cursus/rank03/minishell/
-cd cursus/rank03/minishell/
 mikel
 Mike;
 unset SHLVL
@@ -185,15 +179,21 @@ sdv
  $HOME
 /home
 cat << $HOME
-ls
 sd
 $HOME
 /home/migarrid
 << $USER cat
 celar
-./min
-./minishell
 env
 $PWD
+<< LM cat
+\x16\x16\x16
+./min
+./minishell
 bash
+ls
+make
+(sleep 10)
+sleep
+sleep 10
 clear
