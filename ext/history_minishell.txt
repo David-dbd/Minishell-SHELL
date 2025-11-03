@@ -1,7 +1,3 @@
-echo < << echo seegf
-unset $PATH
-echo -n
-touch "
 touch " "
 echo 
 echo ~/documents
@@ -191,9 +187,13 @@ exporrt PWD=hola
 export PWD=hola
 export PWD+="XXXX"
 sd
-ls
-cd ..
 echo hola*como estas
 make
-clear
 /bin/echo $USER =intergalaktikus miaf*szomez
+norminette
+clear
+cd ext
+ls
+cat history_minishell.txt
+cd ..
+export USER=Ainara-Linda
