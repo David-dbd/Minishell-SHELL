@@ -6,11 +6,16 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:47:09 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/03 23:37:39 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/05 00:37:49 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+/*
+ * Maneja Ctrl+C en modo interactivo: marca la señal
+ * recibida para ser procesada posteriormente
+*/
 
 // void	handle_sigint_interative(int sig)
 // {

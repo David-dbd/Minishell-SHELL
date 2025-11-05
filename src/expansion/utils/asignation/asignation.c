@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:35:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/30 01:20:13 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/05 00:17:53 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ int	asignation(t_shell *data, t_token *token, int type)
 	{
 		if (type == PLUS_ASIGNATION)
 			is_it_env_or_local(data, &type, token->id);
-		add_var(data, key, value, type);
+		add_var_and_envp(data, key, value, type);
 	}
 	return (SUCCESS);
 }

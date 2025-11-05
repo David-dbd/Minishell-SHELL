@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/02 21:52:38 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/05 00:24:08 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include "../lib/libft_plus/libft_plus.h"
 # include "minishell_structs.h"
 # include "minishell_macros.h"
+# include <readline/readline.h>
+# include <readline/history.h>
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <sys/stat.h>

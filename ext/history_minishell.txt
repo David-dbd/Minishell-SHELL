@@ -1,29 +1,3 @@
-echo < infile
-echo < infile hola
-echo hola < infile como estas?
-cd minishell_tester/
-cd ..
-ls >> ./outfile
-ls >> outfile1 >> outfile2
-echo <"./test_files/infile" <missing <"./test_files/infile"
-echo <"infile" <missing <"infile"
-ls <missing
-echo <missing
->| echo wtf
-exit ""
-exit something somethingv2
-exit A 2 3
-exit cd ..
-exit A 1
-exit 1 2 3
->| file wtf
->| file wtf hola
->| file wtf hola como estas
-()>| file wtf hola como estas
-(echo hola) >| file wtf hola como estas
-(ls) > file cmd
-infile
-ls infile
 cat < file infile
 echo < file hola
 > ">" cmd
@@ -61,7 +35,6 @@ echo "$h" | cat -e
 echo test $h "$h" | cat -e
 echo "hello $USE" | cat -e
 echo "hola $H como estas" | cat -e
-<<<<<<< HEAD
 export=Hello World
 export hello world
 export Hello david
@@ -70,9 +43,7 @@ export var=1
 export hola
 export a
 unset a
-=======
 echo test"$h" | cat -e
->>>>>>> mikel
 echo "$USER.txt"
 echo "$USE.txt"
 >>>>>>> bd88b8461bf801d7326754aa1c691558f078c1c5
@@ -94,12 +65,10 @@ echo $?
 echo hello''$USE.txt
 echo hello $USE.txt
 echo"".txt
-""
 "   "
 "  "
 ''
 ' '
-echa
 ech
 echa
 " "
@@ -187,13 +156,44 @@ echo $HOME
 echo "Ruta: $PATH/bin"
 export BASE_DIR=$HOME/projects
 export BASE_DIR=$HOME
-env
 cd $BASE_DIR && ls
 cd $NO_exist
 cd $no_exist
 cd $noexist
-ls
-clear
 echo *pdf
 echo
 ls *pdf
+stop
+STOP
+celar
+$PWD
+export CMD=(ls)
+export CMD="(ls)"
+export CMD=ls
+$CMD
+""
+env 
+env | grep PATH
+export PATH=/home/mikel/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/libnvvp:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64/compiler:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64_win/compiler:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/iCLS/:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/iCLS/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/QuickTime/QTSystem/:/mnt/c/Program Files/NVIDIA Corporation/Nsight Compute 2020.3.1/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA app/NvDLISR:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/WezTerm:/mnt/c/Users/mikel/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/mikel/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/mikel/.lmstudio/bin:/mnt/c/Users/mikel/AppData/Local/Microsoft/WindowsApps:/home/mikel/.local/bin:/home/mikel/.bin:/home/mikel/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/mikel/.bin
+export PATH=/home/mikel/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/libnvvp:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64/compiler:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64_win/compiler:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/iCLS/:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/iCLS/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/QuickTime/QTSystem/:/mnt/c/Program Files/NVIDIA Corporation/Nsight Compute 2020.3.1/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA app/NvDLISR:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/WezTerm:/mnt/c/Users/mikel/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/mikel/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/mikel/.lmstudio/bin:/mnt/c/Users/mikel/AppData/Local/Microsoft/WindowsApps:/home/mikel/.local/bin:/home/mikel/.bin:/home/mikel/.vsc
+export PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+env
+export PATH=/bin
+unset PATH
+export PATH=/bin/
+echo -n sd
+echo -n lala
+claer
+<< STOP
+\x1C\x1C\x1C\x1C\x1C\x1C\x1C
+\x1C\x1C\x1C\x1C\x1Cls
+\x1C\x1Cclear
+\x1Cls
+<< STOp
+sleep 10
+cat
+\x1C
+clar
+sdl
+clear
+ls

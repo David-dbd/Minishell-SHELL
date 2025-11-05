@@ -77,6 +77,7 @@ SUMMARY: AddressSanitizer: 10 byte(s) leaked in 1 allocation(s).
 ## Errores:
 - En is_double_quote -> no se pueden hacer dos expansiones seguidas cuando hay `\` antes del `$` funciona para expansiones
   individuales pero la flag seteada evita las demas expansiones
+- Al expandir una variable que tenga () deberia volverse a tokenizar
 - Deberia rehacerse todo la tokenizacion y expansion para que se consiga que cada token solo tenga una sola funcion argumento, operador(varios), Filename, heredoc comando o builtin, solo esas funciones. Nada de tokens de expansion deben marcarse antes con un bool pero no como un tipo y asi todo sera mas sencillo de gestionar.
 
 ## ARQUITECTURA GENERAL

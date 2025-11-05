@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:42:44 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/04 16:33:36 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/05 00:51:19 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	exit_error(t_shell *data, const char *error, int exit_code, ...)
 
 int	exit_succes(t_shell *data, char *msg, int exit_code)
 {
-	if (msg)
-	{
-		print_session_end(data->extras.session_start);
-		if (data->extras.user_name)
-			ft_printf_fd(STDOUT, msg, data->extras.user_name);
-		else
-			ft_printf_fd(STDOUT, MSG_GOODBYE_V2);
-	}
+	// if (msg)
+	// {
+	// 	print_session_end(data->extras.session_start);
+	// 	if (data->extras.user_name)
+	// 		ft_printf_fd(STDOUT, msg, data->extras.user_name);
+	// 	else
+	// 		ft_printf_fd(STDOUT, MSG_GOODBYE_V2);
+	// }
 	if (data)
 		clean_all(data);
 	exit(exit_code);

@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/11/03 17:10:09 by migarrid         ###   ########.fr        #
+#    Updated: 2025/11/05 00:50:27 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CC					= cc
 #WFLAGS				= -Wall -Wextra -Werror
 DFLAGS				= -g
 #OFLAGS				= -Ofast -march=native -flto
-SFLAGS				= -fsanitize=address,leak
+SFLAGS				= -fsanitize=address,undefined
 DEPFLAGS			= -MMD -MP
 
 # **************************************************************************** #
