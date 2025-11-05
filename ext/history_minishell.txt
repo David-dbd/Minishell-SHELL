@@ -1,11 +1,3 @@
-echa
-" "
-ec
-cp
-epor
-expor
-b
-m\xC3\xA7
 m
 cp expor pws
 cp expor pws && pwa
@@ -195,5 +187,14 @@ lcea
 export PATH="/home/migarrid/Documents/cursus/rank03/minishell"
 minishell
 sd
-ls
 clear
+ls ls ls ls ls ls ls ls ls ls ls ls sl sls s svs dds vs  sv sd vs v sv svsdv
+vasv v v a vsa b asb aa  e va e  v e  e  e  ee e  e  e e e  ee  ee  e  e e e e e e  e e e e e e  e e ee
+ s s s s s s s s s s s s s
+s  s s s s sd s c  e VQ WV A VE SV A GEAS G AG E AG AEG
+s s 
+a a a a a a a a a a a a a  a a a a a a a a a a a 
+ls ls
+ls
+sas
+acsa acas
