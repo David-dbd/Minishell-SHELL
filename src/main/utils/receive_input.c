@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:42:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/05 00:38:03 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/06 17:21:39 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,10 @@ void	terminal_readline(t_shell *data, t_var *vars, char *line)
 	gethostname(host, HOST_NAME_MAX + 1);
 	if (home && pwd[0] && user)
 	{
-		pwd[1] = pwd[0] + ft_strlen(home);
+		if (ft_strncmp(pwd[0], home, ft_strlen(home)) == 0)
+			pwd[1] = pwd[0] + ft_strlen(home);
+		else
+			pwd[1] = pwd[0];
 		display_shell = ft_strjoin_multi(9, FUSER, user, "@",
 			ft_strcut(host, '.'), FRESET, FPATH, "~", pwd[1], FEND);
 		if (!display_shell)

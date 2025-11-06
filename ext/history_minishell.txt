@@ -1,49 +1,3 @@
-echo "hello $USE como vas"?
-echo hello $USE como vas?
-echo "Hello $USER.txt"
-echo $USER" "hello" ".txt
-echo $USE" "hello" ".txt
-echo "Hello $USE.txt"
-cler
-echo" "$USE.txt
-echo $var
-va=1 && echo $va && ls && grep "pdf"
-va=1 && echo $va && ls && grep "Makefile"
-la
-unset var
-echo $USE.txt
-va=1 && echo $va && ls && pwd
-var=1 && echo $var
-vas=1 echo hola && echo $vas
-~
-echo ~
-echo $USER ~
-echo $USER~
-lear
-pwd
-cd 123
-l
-clea
-echo $$
-cd $PWD hi
-cd $PWD
-echo $USER
-ls *file
-ls *file*
-ls *md
-ls *.md
-var=1 echo hola && echo $var
-echo "Hola $USER, tu home es $HOME"
-echo $HOME
-echo "Ruta: $PATH/bin"
-export BASE_DIR=$HOME/projects
-export BASE_DIR=$HOME
-cd $BASE_DIR && ls
-cd $NO_exist
-cd $no_exist
-cd $noexist
-echo *pdf
-echo
 ls *pdf
 stop
 STOP
@@ -56,7 +10,6 @@ env
 export PATH=/home/mikel/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/libnvvp:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64/compiler:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64_win/compiler:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/iCLS/:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/iCLS/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/QuickTime/QTSystem/:/mnt/c/Program Files/NVIDIA Corporation/Nsight Compute 2020.3.1/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA app/NvDLISR:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/WezTerm:/mnt/c/Users/mikel/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/mikel/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/mikel/.lmstudio/bin:/mnt/c/Users/mikel/AppData/Local/Microsoft/WindowsApps:/home/mikel/.local/bin:/home/mikel/.bin:/home/mikel/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/mikel/.bin
 export PATH=/home/mikel/.vscode-server/bin/7d842fb85a0275a4a8e4d7e040d2625abbf7f084/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/bin:/mnt/c/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.2/libnvvp:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64/compiler:/mnt/c/Program Files (x86)/Common Files/Intel/Shared Libraries/redist/intel64_win/compiler:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/iCLS/:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/iCLS/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/IPT:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/QuickTime/QTSystem/:/mnt/c/Program Files/NVIDIA Corporation/Nsight Compute 2020.3.1/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA app/NvDLISR:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/WezTerm:/mnt/c/Users/mikel/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/mikel/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/mikel/.lmstudio/bin:/mnt/c/Users/mikel/AppData/Local/Microsoft/WindowsApps:/home/mikel/.local/bin:/home/mikel/.bin:/home/mikel/.vsc
 export PATH=/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-env
 export PATH=/bin
 export PATH=/bin/
 echo -n sd
@@ -89,16 +42,12 @@ ds
 LM
 << '
 << ' '
-ls &&
-ls && ""
 ls && 
 ls &&  ""
 (> ls)
 (a=1)
-cd /bin
 env | grep PATH
 clar
-cear
 cls
 grep hola < /dev/random | wc -l
 \\"
@@ -138,7 +87,6 @@ ls\nlsclear
 lcea
 export PATH="/home/migarrid/Documents/cursus/rank03/minishell"
 minishell
-sd
 ls ls ls ls ls ls ls ls ls ls ls ls sl sls s svs dds vs  sv sd vs v sv svsdv
 vasv v v a vsa b asb aa  e va e  v e  e  e  ee e  e  e e e  ee  ee  e  e e e e e e  e e e e e e  e e ee
  s s s s s s s s s s s s s
@@ -159,19 +107,16 @@ cat
 cleare
 (sleep 10)
 cat 
-ls
 sleep 10
 echo "hola"" ""como''""' '""estas
 echo "hola"" ""como''""' '""estas ' "
 echo "hola"" ""como"''""' '""estas
 ls ''
 ''
-""
 << ""
 export A=""
 exit ""
 exit sd
-celar
 ls | "" | ls | ""
 export test=
 export test=""
@@ -184,7 +129,6 @@ unset $""
 export mini_test=" "
 /bin/echo $mini_test
 env | grep mini_test
-clear
 export TES$?T=123
 export TEST=
 echo 1
@@ -197,3 +141,59 @@ export tmp_test="ls"
 export tmp_test="ls a"
 export tmp_test="/bin/ls"
 $tmp_test
+sd
+/bin/
+where /../bin/ls
+a=1
+a
+a+=
+a+=1
+export a+=12
+./tester/
+/tester/
+cd 
+;s
+cear
+cleas
+export var="'"
+echo $var
+export 
+(echo a && exit 1) && (echo b && exit 1) || (echo c && exit 0)(echo a && exit 1) && (echo b && exit 1) || (echo c && exit 0)
+ls &&        ls
+ls &&
+ls && ""
+/bin
+./minishell
+whereis /../bin/ls
+whereis /bin/ls
+/bin/ls
+""
+whereis ls
+/../bin
+(echo a && exit 1) && (echo b && exit 1) || (echo c && exit 0)
+b=
+unseth PATh
+unseth PATH
+where is /bin/
+where is /../bin/
+ls |
+a="'"
+echo $a
+export a=1 b=2 c=3
+echo $a$b$c
+export a=1 1b=2 c=3
+export a=a 1b=2 c=c
+env
+cd /bin
+cd /../bin
+export A="'"
+export
+export a=""
+exit 99999999999999999999999999999999999999999999999999999999999999999999999999999
+exit 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+exit 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+celar
+exit 99999999999999999999999999999999999999999999
+clear
+ls
+cd /
