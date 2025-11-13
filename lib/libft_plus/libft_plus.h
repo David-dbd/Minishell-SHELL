@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_plus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:10:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/03 14:35:42 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:19:40 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		ft_tolower(int c);
 int		ft_atoi(const char *nptr);
 long	ft_atol(const char *nptr);
 bool	ft_atoi_range(const char *nptr);
+bool	ft_atol_range(const char *nptr);
 long	ft_strtol(const char *nptr, int base);
 float	ft_strtof(const char *nptr);
 float	ft_square(float x);
@@ -72,6 +73,7 @@ char	*ft_strndup(const char *s, size_t n);
 char	*ft_str_match(char *str, char *word_to_find);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+char	*ft_strcut(char *str, int c);
 char	**ft_split(const char *s, char c);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strjoin_multi(int count, ...);
@@ -80,6 +82,8 @@ char	*ft_strfilter_c(const char *str, char c);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
+char	*ft_capitalize(char *str);
+void	ft_free_multi(int counter, ...);
 
 // ------------ Bonus (Listas enlazadas) ------------
 typedef struct s_list

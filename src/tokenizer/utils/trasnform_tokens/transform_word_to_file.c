@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform_word_to_file.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:43:29 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/12 18:16:03 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:53:29 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@
 static int	search_for_paren(t_token *tokens, int i)
 {
 	while (i > 0 && (is_redir_type(tokens[i].type)
-		|| tokens[i].type == FILENAME || tokens[i].type == WORD))
+			|| tokens[i].type == FILENAME || tokens[i].type == DELIMITER
+			|| tokens[i].type == WORD))
 		i--;
 	if (tokens[i].type == PAREN_CLOSE)
 		return (TRUE);
@@ -40,7 +41,8 @@ static int	search_for_paren(t_token *tokens, int i)
 static int	search_for_cmd(t_token *tokens, int i)
 {
 	while (i > 0 && (is_redir_type(tokens[i].type)
-		|| tokens[i].type == FILENAME || tokens[i].type == WORD))
+			|| tokens[i].type == FILENAME || tokens[i].type == DELIMITER
+			|| tokens[i].type == WORD))
 		i--;
 	if (is_cmd_builtin_type(tokens[i].type))
 		return (TRUE);
@@ -52,7 +54,7 @@ void	transform_word_to_file(t_prompt *prompt, t_token *tokens)
 	int	i;
 
 	i = -1;
-	while (i++ < prompt->n_tokens)
+	while (++i < prompt->n_tokens)
 	{
 		if (i > 0 && (tokens[i].type == WORD || tokens[i].type == EXPANSION)
 			&& is_redir_type(tokens[i - 1].type))
@@ -63,13 +65,13 @@ void	transform_word_to_file(t_prompt *prompt, t_token *tokens)
 				tokens[i].type = FILENAME;
 		}
 		if (i > 0 && is_cmd_builtin_type(tokens[i].type)
-			&& tokens[i - 1].type == FILENAME
-			&& search_for_paren(tokens, i))
+			&& (tokens[i -1].type == FILENAME || tokens[i -1].type == DELIMITER)
+			&& !search_for_paren(tokens, i))
 		{
 			tokens[i].type = WORD;
 		}
-		else if (i > 0 && tokens[i].type == WORD
-			&& tokens[i - 1].type == FILENAME
+		if (i > 0 && tokens[i].type == WORD
+			&& (tokens[i -1].type == FILENAME || tokens[i -1].type == DELIMITER)
 			&& (!search_for_cmd(tokens, i) || search_for_paren(tokens, i)))
 			tokens[i].type = COMMAND;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 21:35:11 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/03 11:04:50 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:50:43 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int	is_built_in(t_shell *data, t_token *token, char *str)
 	- Maneja errores de memoria con set_free y exit_error.
 */
 
-void	is_cmd(t_shell *data, t_prompt *prompt, t_token *token, char *str)
+void	is_cmd(t_shell *data, t_token *token, char *str)
 {
 	char	**path_arr;
 	char	*path_slash;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 21:56:06 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/11 20:16:18 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:27:50 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	my_unset(t_shell *data, t_env *env, char **args)
 			ft_printf_fd(STDERR, ERR_UNSET, args[i]);
 			exit_flag = EXIT_FAIL;
 		}
-		delete_var(env, args[i]);
+		delete_var(data, env, args[i]);
 		i++;
 	}
 	return (exit_flag);
@@ -121,8 +121,7 @@ void	my_clean_unset(t_shell *data, t_env *env, t_token *tokens, int *index)
 		if (char_to_find)
 			len = char_to_find - tokens[index[i]].value;
 		ft_memcpy(ptr, tokens[index[i]].value, len);
-		//printf("my_clean_unset ptr: %s\n\n", ptr);
-		delete_var(env, ptr);
+		delete_var(data, env, ptr);
 		free (ptr);
 		ptr = NULL;
 		char_to_find = NULL;

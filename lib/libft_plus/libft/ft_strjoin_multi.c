@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 21:11:15 by migarrid          #+#    #+#             */
-/*   Updated: 2025/09/17 19:13:14 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/02 21:27:39 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,16 @@ int	concatenate_strings(int count, va_list args, char *result, size_t total_len)
 	return (1);
 }
 
-char	*ft_strjoin_multi(int count, ...)
+char	*ft_strjoin_multi(int counter, ...)
 {
 	va_list	args;
 	char	*result;
 	size_t	total_len;
 
-	if (count <= 0)
+	if (counter <= 0)
 		return (NULL);
-	va_start(args, count);
-	if (!validate_and_calculate_length(count, args, &total_len))
+	va_start(args, counter);
+	if (!validate_and_calculate_length(counter, args, &total_len))
 		return (va_end(args), NULL);
 	va_end(args);
 	if (total_len == 0)
@@ -69,8 +69,8 @@ char	*ft_strjoin_multi(int count, ...)
 	if (!result)
 		return (NULL);
 	result[0] = '\0';
-	va_start(args, count);
-	if (!concatenate_strings(count, args, result, total_len))
+	va_start(args, counter);
+	if (!concatenate_strings(counter, args, result, total_len))
 		return (va_end(args), free(result), NULL);
 	va_end(args);
 	return (result);

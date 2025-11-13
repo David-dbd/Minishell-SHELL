@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform_word_to_wildcard.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:49:40 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/09 21:12:57 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 01:25:52 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,12 @@ void	transform_word_to_wildcard(t_shell *d, t_prompt *promp, t_token *tokens)
 	{
 		if (tokens[i].type == WORD)
 		{
-			len = ft_strlen(tokens[i].value);
-			if (tokens[i].value[len - 1] == '*')
-				tokens[i].type = WILDCARD;
+			if (tokens[i].value)
+			{
+				len = ft_strlen(tokens[i].value);
+				if (len > 0 && tokens[i].value[len - 1] == '*')
+					tokens[i].type = WILDCARD;
+			}
 		}
 		i++;
 	}

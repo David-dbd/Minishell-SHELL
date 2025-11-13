@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 20:19:28 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/11 04:03:46 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 01:45:39 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,3 @@ void	safe_index_plus(int *i, int n_tokens)
 	if (*i < n_tokens)
 		(*i)++;
 }
-
-

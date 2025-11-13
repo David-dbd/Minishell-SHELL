@@ -243,7 +243,7 @@ int	reorder_tokens(t_shell *d, t_token *orig_token, int n_dirs, char **dirs)
 		return (ERROR);
 	if (copy_last_token(d, tmp, &i, wildcard + 1) == ERROR)
 		return (ERROR);
-	print_tokens_debug(&d->prompt);
+	// print_tokens_debug(&d->prompt);
 	j = d->prompt.n_alloc_tokens;
 	free_tokens(&d->prompt);
 	d->prompt.tokens = tmp;

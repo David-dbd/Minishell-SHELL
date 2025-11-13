@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_open_parent.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 22:40:41 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/13 20:04:07 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/05 22:26:03 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static int	is_valid_before_open(t_token *tokens, int i)
 		return (FALSE);
 	type = tokens[i - 1].type;
 	if (type == PAREN_CLOSE || type == COMMAND || type == WORD
-		|| type == BUILT_IN || type == EXPANSION)
+		|| type == BUILT_IN || type == EXPANSION || is_redir_type(type)
+		|| is_asignation_type(type))
 		return (TRUE);
 	return (FALSE);
 }
@@ -33,7 +34,6 @@ static int	is_valid_before_open(t_token *tokens, int i)
 int	check_open_parent(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 {
 	int	content_flag;
-	int	result;
 
 	content_flag = 0;
 	if (tokens[i].type != PAREN_OPEN)

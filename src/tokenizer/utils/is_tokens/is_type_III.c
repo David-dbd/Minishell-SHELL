@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 17:23:51 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 19:00:50 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 01:50:50 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,3 @@ int	is_redir_input_type(int type)
 		return (1);
 	return (0);
 }
-

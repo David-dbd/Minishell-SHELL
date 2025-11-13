@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   apply_temp_asig.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:05:58 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/11 17:10:53 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:11:44 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 	cualquier otro numero, qu es valido.
 */
 
-void	apply_temp_asig(t_shell *dat, t_token *tokens, t_node *node, t_env *env)
+void	apply_temp_asig(t_shell *data, t_token *tokens, t_node *node)
 {
 	int	i;
 
@@ -48,9 +48,9 @@ void	apply_temp_asig(t_shell *dat, t_token *tokens, t_node *node, t_env *env)
 			if (is_real_assignation_type(tokens[node->arg_types[i]].type))
 				return ;
 			if (tokens[node->arg_types[i]].type == TEMP_ASIGNATION)
-				asignation(dat, &tokens[node->arg_types[i]], LOCAL);
+				asignation(data, &tokens[node->arg_types[i]], LOCAL);
 			else if (tokens[node->arg_types[i]].type == TEMP_PLUS_ASIGNATION)
-				asignation(dat, &tokens[node->arg_types[i]], PLUS_ASIGNATION);
+				asignation(data, &tokens[node->arg_types[i]], PLUS_ASIGNATION);
 			i++;
 		}
 	}
@@ -62,9 +62,9 @@ void	apply_temp_asig(t_shell *dat, t_token *tokens, t_node *node, t_env *env)
 			if (is_real_assignation_type(tokens[node->arg_types[i]].type))
 				return ;
 			if (tokens[node->arg_types[i]].type == TEMP_ASIGNATION)
-				asignation(dat, &tokens[node->arg_types[i]], ENV);
+				asignation(data, &tokens[node->arg_types[i]], ENV);
 			else if (tokens[node->arg_types[i]].type == TEMP_PLUS_ASIGNATION)
-				asignation(dat, &tokens[node->arg_types[i]], PLUS_ASIGNATION);
+				asignation(data, &tokens[node->arg_types[i]], PLUS_ASIGNATION);
 			i++;
 		}
 	}

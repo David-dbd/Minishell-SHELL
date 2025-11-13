@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 17:51:53 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/25 20:33:00 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/10/30 02:07:49 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,6 @@ static void	print_args(char **args)
 		return;
 	}
 	printf(" [Args: ");
-	i = 0;
-	while (args[i])
-	{
-		printf("%s", args[i]);
-		if (args[i + 1])
-			printf(", ");
-		i++;
-	}
-	printf("]");
-}
-static void	print_temp(char **args)
-{
-	int	i;
-
-	if (!args || !args[0] || !args[1])
-		return;
-	printf(" [Temps: ");
 	i = 0;
 	while (args[i])
 	{

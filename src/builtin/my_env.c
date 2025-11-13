@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:09:26 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 16:19:16 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/13 01:00:24 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	my_env(t_var *vars, char **args)
 	while (var)
 	{
 		if (var->type == ENV)
-			printf("%s=%s\n", var->key, var->value);
+			ft_printf_fd(STDOUT, "%s=%s\n", var->key, var->value);
 		var = var->next;
 	}
 	return (0);

@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_free_multi.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 13:38:05 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/30 18:02:28 by migarrid         ###   ########.fr       */
+/*   Created: 2025/11/02 21:25:13 by migarrid          #+#    #+#             */
+/*   Updated: 2025/11/04 16:47:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft_plus.h"
 
-char	*ft_strdup(const char *s)
+void	ft_free_multi(int counter, ...)
 {
-	size_t	len;
-	char	*new_str;
+	int		i;
+	va_list	args;
+	void	**pointer_address;
 
-	if (s == NULL)
-		return (NULL);
-	len = ft_strlen(s);
-	new_str = (char *)malloc(len + 1);
-	if (!new_str)
-		return (NULL);
-	ft_memcpy(new_str, s, len + 1);
-	return (new_str);
-}
-/*#include <stdio.h>
-
-int	main(int ac, char **av)
-{
-	if (ac == 2)
+	if (counter <= 0)
+		return ;
+	i = 0;
+	va_start(args, counter);
+	while (i < counter)
 	{
-		printf("Original: %s\n", av[1]);
-		printf("Copied: %s\n", ft_strdup(av[1]));
-		return (0);
+		pointer_address = va_arg(args, void **);
+		if (pointer_address != NULL && *pointer_address != NULL)
+		{
+			free(*pointer_address);
+			*pointer_address = NULL;
+		}
+		i++;
 	}
-	return (1);
-}*/
+	va_end(args);
+}

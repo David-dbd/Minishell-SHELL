@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ast_builder.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 16:36:02 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/12 10:27:06 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:25:01 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,12 @@
 
 void	ast_builder(t_shell *data, t_token *tokens, int n_tokens)
 {
-	t_node	*temp;
-	int		i;
+	int	i;
 
 	i = 0;
 	if (n_tokens == 0)
 		return ;
 	// print_tokens_debug(&data->prompt);
 	data->ast_root = parse_sequence(data, tokens, &i, n_tokens);
-	print_ast(data->ast_root);
+	// print_ast(data->ast_root);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_single_quote.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/31 21:33:53 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:51:55 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	make_word_s(t_shell *data, t_prompt *p, const char *s, int range[2])
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 	word = cleanner_word(data, word, range[1] - range[0], '\'');
 	token_id = add_token(data, p, word, WORD);
-	is_cmd(data, &data->prompt, &p->tokens[token_id], word);
+	is_cmd(data, &p->tokens[token_id], word);
 }
 
 /*
@@ -112,17 +112,15 @@ int	ft_is_dead_s(const char *s, int *i, char quote, int *flag)
 int	is_special_word_s(t_shell *data, t_prompt *prompt, const char *str, int *i)
 {
 	int		flag;
-	int		len;
 	int		start_end[2];
 
 	flag = FALSE;
-	if (*i + 1 < ft_strlen(str) && ft_strchr(str + *i, '\''))
+	if (*i + 1 <= (int)ft_strlen(str) && ft_strchr(str + *i, '\''))
 	{
 		start_end[0] = *i;
 		while (str[*i] != '\0' && !ft_is_dead_s(str, i, '\'', &flag))
 			(*i)++;
 		start_end[1] = *i;
-		len = start_end[1] - start_end[0];
 		make_word_s(data, prompt, str, start_end);
 		if (flag)
 			return (NO_SPACE);

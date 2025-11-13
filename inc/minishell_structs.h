@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_structs.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/06 17:22:13 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 02:35:23 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef enum e_type
 	SHELL,
 	TEMP_PLUS_ASIGNATION,
 	NEW_TOKEN_TO_ORGANIZE,
+	DONT_ELIMINATE,
 }	t_type;
 
 struct s_token
@@ -88,7 +89,7 @@ typedef struct s_prompt
 	int			n_and;
 	int			n_tokens;
 	int			n_alloc_tokens;
-	char		*prompt;
+	char		*input;
 	int			*before_tokens_type;
 	t_token		*tokens;
 }	t_prompt;
@@ -137,20 +138,17 @@ struct s_node
 	int			*arg_types;
 	char		**assig_tmp;
 	t_redir		*redir;
-	pid_t		pid;
-	int			exit_code;
 	t_node		*left;
 	t_node		*right;
 	bool		fake;
 	bool		background;
 	bool		executed;
-	bool		mode;
 };
 
 struct s_cmd
 {
 	char	*value;
-	char 	*alias;
+	char	*alias;
 	int		active;
 	t_cmd	*prev;
 	t_cmd	*next;
@@ -178,7 +176,8 @@ typedef struct s_shell
 	t_exec		exec;
 	t_node		*ast_root;
 	pid_t		shell_pid;
-	t_extras	extra_features;
+	pid_t		last_background_pid;
+	t_extras	extras;
 	int			exit_code;
 }	t_shell;
 

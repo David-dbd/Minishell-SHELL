@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
+#    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/11/10 12:25:05 by davdiaz-         ###   ########.fr        #
+#    Updated: 2025/11/13 00:58:47 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CC					= cc
 #WFLAGS				= -Wall -Wextra -Werror
 DFLAGS				= -g
 #OFLAGS				= -Ofast -march=native -flto
-##SFLAGS				= -fsanitize=address,leak
+SFLAGS				= -fsanitize=address,undefined
 DEPFLAGS			= -MMD -MP
 
 # **************************************************************************** #
@@ -80,7 +80,8 @@ CLEAR 				= \r\033[K
 #                               Source File                                    #
 # **************************************************************************** #
 SRCS =				main/main.c \
-					main/utils/receive_input.c \
+					main/utils/input/receive_input.c \
+					main/utils/input/read_until_balanced.c \
 					main/utils/time/print_session_start.c \
 					main/utils/time/print_session_end.c \
 					main/utils/time/print_time_of_day.c \
@@ -99,6 +100,7 @@ SRCS =				main/main.c \
 					init/utils/env/update_shlvl.c \
 					init/utils/env/update_var.c \
 					init/utils/env/delete_var.c \
+					init/utils/env/update_envp.c \
 					init/utils/highlighther/highlighter.c \
 					init/utils/highlighther/is_highlighter_I.c \
 					init/utils/highlighther/is_highlighter_II.c \
@@ -139,6 +141,7 @@ SRCS =				main/main.c \
 					tokenizer/utils/check_syntax/check_cmd_syntaxis.c \
 					tokenizer/utils/check_syntax/check_parent_balance.c \
 					tokenizer/utils/check_syntax/check_cmd_externs.c \
+					tokenizer/utils/check_syntax/check_full_line_syntax.c \
 					tokenizer/utils/simplify_tokens/simplify_tokens.c \
 					tokenizer/utils/simplify_tokens/reorganize_tokens.c \
 					tokenizer/utils/simplify_tokens/adjust_range_tokens.c \
@@ -204,7 +207,6 @@ SRCS =				main/main.c \
 					executor/utils/apply_properties.c \
 					executor/utils/apply_redirs.c \
 					executor/utils/apply_temp_asig.c \
-					executor/utils/update_envp.c \
 					executor/utils/expansion_final_process.c \
 					signals/setup_signals.c \
 					signals/handler_signals.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_macros.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:23:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/04 15:54:10 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:02:05 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,16 @@
 # define VOID						0
 # define RECIVED_SIGNAL				1
 # define FAIL						1
+# define BALANCE					0
+# define UNBALANCE					-1
+# define NONE						0
+# define AND_OR_BALAN				1
+# define PIPE_BALAN					1
+# define QUOTE_BALAN				1
+# define PAREN_BALAN				1
+# define GLOBAL_BALANCE				4
+# define CANT_CONTINUE				-1
+# define KEEP_TRYING				1
 
 /* ************************************************************************** */
 /*                               Global Flag                                  */
@@ -113,9 +123,9 @@
 /*                              Default Values                                */
 /* ************************************************************************** */
 # define DEFAULT_PATH				"/usr/local/bin:/usr/bin:/bin"
-# define DEFAULT_PROMPT				"\033[1;34mminishell\033[1;34m> \033[0m"
-# define DEFAULT_HISTORY			"./ext/history_minishell.txt"
-# define DEFAULT_HOME
+# define DEFAULT_HISTORY_FILE		"./ext/history_minishell.txt"
+# define DEFAULT_HYSTORY_DIR		"./ext"
+# define DEFAULT_HOME				"/home/"
 
 /* ************************************************************************** */
 /*                                   ARGS                                     */
@@ -135,6 +145,7 @@
 /*                              Error Messages                                */
 /* ************************************************************************** */
 //General Errors
+# define ERRNO			"Errno: %s\n"
 # define ERR_MALLOC		"minishell: memory allocation failed\n"
 # define MALLOC			"minishell: memory allocation failed\n"
 # define ERR_FORK		"minishell: fork: Resource temporarily unavailable\n"
@@ -142,7 +153,8 @@
 # define ERR_DUP		"minishell: dup2: Bad file descriptor\n"
 # define ERR_SIGNAL		"minishell: signals state failed\n"
 # define ERR_MAX_TOKENS "minishell: error: maximum number of tokens exceeded\n"
-# define ERRNO			"Errno: %s\n"
+# define ERR_STDIN		"minishell: error: no input outside a terminal is \
+allowed\n"
 
 //File Directory Errors
 # define ERR_FILE_NOT_FOUND	"minishell: %s: No such file or directory\n"
@@ -164,6 +176,7 @@ Exec format error\n"
 # define ERR_EXPORT			"minishell: export: `%s': not a valid identifier\n"
 # define ERR_UNSET			"minishell: unset: `%s': not a valid identifier\n"
 # define ERR_EXIT_NUMERIC	"minishell: exit: %s: numeric argument required\n"
+# define ERR_LIMIT_LONG		"minishell: exit: %s: long argument required\n"
 # define ERR_EXIT_TOO_MANY	"minishell: exit: too many arguments\n"
 # define ERR_ENV		"minishell: env: does not accept arguments\n"
 # define ERR_PWD		"minishell: pwd: error retrieving current directory\n"
@@ -193,40 +206,96 @@ is negative resetting to 1\033[0m\n"
 # define ERR_REDIR_DENIED		"minishell: Permission denied\n"
 
 /* ************************************************************************** */
+/*                              Display Shell                                 */
+/* ************************************************************************** */
+// # define FUSER				"\033[97;44m"
+// # define FPATH				" \033[1;32m"
+// # define FEND				"\033[1;32m ❯ \033[0m"
+// # define FRESET				"\033[0m"
+// # define DEFAULT_PROMPT		"\033[1;34mminishell\033[1;34m> \033[0m"
+
+/* ************************************************************************** */
+/*                              Display Shell                                 */
+/* ************************************************************************** */
+# define FUSER					"\033[38;2;245;235;180;48;5;61m"
+# define FPATH					" \033[1;38;2;110;130;240m"
+# define FEND					"\033[1;38;2;110;130;240m ❯ \033[0m"
+# define FRESET					"\033[0m"
+# define DEFAULT_PROMPT			"\033[1;38;2;110;130;240mminishell> \033[0m"
+
+/* ************************************************************************** */
+/*                          Time messsage                                     */
+/* ************************************************************************** */
+// # define MSG_TIME_START "\
+// \033[0;36m Your session started \
+// at: %02d:%02d:%02d on %02d/%02d/%04d\033[0m\n\n"
+// # define MSG_TIME_END "\
+// \n\033[0;36m Your session ended. \
+// Duration: %d minutes and %d seconds ⏳\033[0m\n\n"
+
+/* ************************************************************************** */
 /*                          Time messsage                                     */
 /* ************************************************************************** */
 # define MSG_TIME_START "\
-\033[0;36m Your session started \
+\033[1;38;2;210;215;245m Your session started \
 at: %02d:%02d:%02d on %02d/%02d/%04d\033[0m\n\n"
+
 # define MSG_TIME_END "\
-\n\033[0;36m Your session ended. \
+\n\033[1;38;2;210;215;245m Your session ended. \
 Duration: %d minutes and %d seconds ⏳\033[0m\n\n"
 
 /* ************************************************************************** */
-/*                          Prompt & Success Messages                         */
+/*                               Success Messages                             */
 /* ************************************************************************** */
-# define MSG_WELCOME			"\
-\033[1m\033[1;32m────────── Welcome %s! ──────────\033[0m\n"
-# define MSG_WELCOME_EARLY		"\
-\033[1;32m ────────────── You're up early, %s! 🌅 ──────────\033[0m\n\n"
-# define MSG_WELCOME_MORNING	"\
-\033[1;32m ───────────── Good morning, %s! ☀️ ──────────\033[0m\n\n"
-# define MSG_WELCOME_AFTER		"\
-\033[1;32m ───────────── Good afternoon, %s! 🌤️ ──────────\033[0m\n\n"
-# define MSG_WELCOME_NIGHT		"\
-\033[1;32m ───────────── Good evening, %s! 🌙 ─────────────\033[0m\n\n"
-# define MSG_WELCOME_MIDNIGHT	"\
-\033[1;32m ────────── %s, Burning the midnight oil? 🔥 ──────────\033[0m\n\n"
-# define MSG_GOODBYE			"\
-\033[1m\033[1m\033[38;5;99m────────────── Goodbye %s! ──────────────\033[0m\n"
-# define MSG_GOODBYE_V2			"\
-\033[1m\033[1m\033[38;5;99m────────────── Goodbye! ──────────────\033[0m\n"
-# define MINISHELL				"\
-\033[1;34mminishell>\033[0m "
+// # define MSG_WELCOME			"\
+// \033[1m\033[1;32m────────── Welcome %s! ──────────\033[0m\n"
+// # define MSG_WELCOME_EARLY		"\
+// \033[1;32m ────────────── You're up early, %s! 🌅 ──────────\033[0m\n\n"
+// # define MSG_WELCOME_MORNING	"\
+// \033[1;32m ───────────── Good morning, %s! ☀️ ──────────\033[0m\n\n"
+// # define MSG_WELCOME_AFTER		"\
+// \033[1;32m ───────────── Good afternoon, %s! 🌤️ ──────────\033[0m\n\n"
+// # define MSG_WELCOME_NIGHT		"\
+// \033[1;32m ───────────── Good evening, %s! 🌙 ─────────────\033[0m\n\n"
+// # define MSG_WELCOME_MIDNIGHT	"\
+// \033[1;32m ────────── %s, Burning the midnight oil? 🔥 ──────────\033[0m\n\n"
+// # define MSG_GOODBYE			"\
+// \033[1m\033[1m\033[38;5;99m────────────── Goodbye %s! ──────────────\033[0m\n\n"
+// # define MSG_GOODBYE_V2			"\
+// \033[1m\033[1m\033[38;5;99m────────────── Goodbye! ──────────────\033[0m\n\n"
+
+/* ************************************************************************** */
+/*                               Success Messages                             */
+/* ************************************************************************** */
+# define MSG_WELCOME			"\033[1;38;2;110;130;240m\
+────────── Welcome %s! ──────────\033[0m\n"
+# define MSG_WELCOME_EARLY		"\033[1;38;2;110;130;240m\
+ ────────────── You're up early, %s! 🌅 ──────────\033[0m\n\n"
+# define MSG_WELCOME_MORNING	"\033[1;38;2;110;130;240m\
+ ───────────── Good morning, %s! ☀️ ──────────\033[0m\n\n"
+# define MSG_WELCOME_AFTER		"\033[1;38;2;110;130;240m\
+ ───────────── Good afternoon, %s! 🌤️ ──────────\033[0m\n\n"
+# define MSG_WELCOME_NIGHT		"\033[1;38;2;110;130;240m\
+ ───────────── Good evening, %s! 🌙 ─────────────\033[0m\n\n"
+# define MSG_WELCOME_MIDNIGHT	"\033[1;38;2;110;130;240m\
+ ────────── %s, Burning the midnight oil? 🔥 ──────────\033[0m\n\n"
+# define MSG_GOODBYE			"\033[1;38;2;110;130;240m\
+────────────── Goodbye %s! ──────────────\033[0m\n\n"
+# define MSG_GOODBYE_V2			"\033[1;38;2;110;130;240m\
+────────────── Goodbye! ──────────────\033[0m\n\n"
+
+// /* ************************************************************************** */
+// /*                          Error User_name Messages                          */
+// /* ************************************************************************** */
+// # define ENTRY_USER "\033[1m\033[1;32mIntroduce your login: \033[0m"
+// # define MSG_INVALID_NAME "\
+// \033[1m\033[1;31mInvalid loggin: It must be alphanumeric, \
+// please try again \033[0m\n\n"
 
 /* ************************************************************************** */
 /*                          Error User_name Messages                          */
 /* ************************************************************************** */
+# define ENTRY_USER "\033[1;38;2;210;215;245mIntroduce your login: \033[0m"
 # define MSG_INVALID_NAME "\
 \033[1m\033[1;31mInvalid loggin: It must be alphanumeric, \
 please try again \033[0m\n\n"
@@ -234,7 +303,18 @@ please try again \033[0m\n\n"
 /* ************************************************************************** */
 /*                          Entry Message                                     */
 /* ************************************************************************** */
-# define TITLE_COLOR "\033[0;34m"
+// # define TITLE_COLOR "\033[0;34m"
+// # define T1 "███    ███ ██ ███    ██ ██ ███████ ██   ██ ███████ ██      ██     "
+// # define T2 "████  ████ ██ ████   ██ ██ ██      ██   ██ ██      ██      ██     "
+// # define T3 "██ ████ ██ ██ ██ ██  ██ ██ ███████ ███████ █████   ██      ██     "
+// # define T4 "██  ██  ██ ██ ██  ██ ██ ██      ██ ██   ██ ██      ██      ██     "
+// # define T5 "██      ██ ██ ██   ████ ██ ███████ ██   ██ ███████ ███████ ███████"
+// # define RESET_COLOR "\033[0m"
+
+/* ************************************************************************** */
+/*                          Entry Message                                     */
+/* ************************************************************************** */
+# define TITLE_COLOR "\033[1;38;2;100;85;200m"
 # define T1 "███    ███ ██ ███    ██ ██ ███████ ██   ██ ███████ ██      ██     "
 # define T2 "████  ████ ██ ████   ██ ██ ██      ██   ██ ██      ██      ██     "
 # define T3 "██ ████ ██ ██ ██ ██  ██ ██ ███████ ███████ █████   ██      ██     "

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asignation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:35:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/29 21:20:22 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:42:04 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	aux_key_asig(t_token *token, char **key, int *i)
 	//printf("key: %s\n\n", *key);
 }
 
-static void	aux_value_asig(t_token *token, char **value, int *i, int type)
+static void	aux_value_asig(t_token *token, char **value, int *i)
 {
 	int	j;
 
@@ -129,7 +129,7 @@ int	asignation(t_shell *data, t_token *token, int type)
 	if (aux_mem_alloc(&key, &value, ft_strlen(token->value)) == ERROR)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 	aux_key_asig(token, &key, &i);
-	aux_value_asig(token, &value, &i, type);
+	aux_value_asig(token, &value, &i);
 	result = verify_if_already_set(data, key, &value, type);
 	if (result == TRUE)
 	{
@@ -145,7 +145,7 @@ int	asignation(t_shell *data, t_token *token, int type)
 	{
 		if (type == PLUS_ASIGNATION)
 			is_it_env_or_local(data, &type, token->id);
-		add_var(data, key, value, type);
+		add_var_and_envp(data, key, value, type);
 	}
 	return (0);
 }

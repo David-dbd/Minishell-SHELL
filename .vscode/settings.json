@@ -41,7 +41,8 @@
 		"functional": "c",
 		"utility": "c",
 		"typeinfo": "c",
-		"ranges": "c"
+		"ranges": "c",
+		"compare": "c"
 	},
 
 	// Configuración C/C++

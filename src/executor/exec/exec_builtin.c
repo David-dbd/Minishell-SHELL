@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:12 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/12 13:02:33 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:30:06 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,18 @@
 	ejecución secuencial como en estructuras complejas.
 */
 
-void	exec_builtin(t_shell *data, t_node *node, t_exec *exec, int mode)
+void	exec_builtin(t_shell *data, t_node *node, int mode)
 {
 	pid_t	pid;
 
-	printf("llego\n\n");
+	// printf("llego\n\n");
 	if (mode == FATHER)
 	{
-		printf("Antes de final_expansion\n\n");
-		print_tokens_debug(&data->prompt);
+		// printf("Antes de final_expansion\n\n");
+		// print_tokens_debug(&data->prompt);
 		expansion_final_process(data, node);
-		printf("Depues de expansion_final_proces\n\n");
-		print_tokens_debug(&data->prompt);
+		// printf("Depues de expansion_final_proces\n\n");
+		// print_tokens_debug(&data->prompt);
 	}
 	if (node->background) //si es por background
 	{
@@ -64,38 +64,18 @@ void	exec_builtin(t_shell *data, t_node *node, t_exec *exec, int mode)
 		if (pid == 0)
 		{
 			setup_signals_child();
-			apply_properties(data, node, exec->env, CHILD);
+			apply_properties(data, node, CHILD);
 			which_builtin(data, node->token, node);
 			exit_succes(data, NULL, data->exit_code);
 		}
+		data->last_background_pid = pid;
 		ft_printf_fd(STDOUT, "[&] %d\n", pid);
 		data->exit_code = OK; //da 0 porque el fork en si fue exitoso
 		return ;
 	}
-	if (apply_properties(data, node, exec->env, mode) == SUCCESS)
+	if (apply_properties(data, node, mode) == SUCCESS)
 		which_builtin(data, node->token, node);
-	/*t_var *current;
-		current = data->env.vars;
-		printf("\n\nDuring execution\n\n");
-		while (current)
-		{
-			printf("Key: %s, Value: %s, Type: %d\n\n",
-				current->key,
-				current->value,
-				current->type);
-			current = current->next;
-		}*/
-	clean_temp_variables(data, exec->env, data->prompt.tokens, node);
-		/*current = data->env.vars;
-		printf("\n\nAFTER CLEAN TEMP_VARIABLES\n\n");
-		while (current)
-		{
-			printf("Key: %s, Value: %s, Type: %d\n\n",
-				current->key,
-				current->value,
-				current->type);
-			current = current->next;
-		}*/
+	clean_temp_variables(data, &data->env, data->prompt.tokens, node);
 	if (mode == CHILD) // si era child de un pipe se sale con su exit_code
 		exit_succes(data, NULL, data->exit_code);
 	return ;

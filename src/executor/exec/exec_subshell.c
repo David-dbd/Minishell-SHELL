@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 16:42:21 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/25 22:01:49 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 23:52:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	exec_subshell(t_shell *data, t_node *node, t_exec *exec, int mode)
 {
+	int		sig;
 	int		status;
 	pid_t	pid;
 
@@ -21,16 +22,27 @@ void	exec_subshell(t_shell *data, t_node *node, t_exec *exec, int mode)
 	pid = fork();
 	if (pid == ERROR)
 		exit_error(data, ERR_FORK, FAIL);
+	g_signal[0] = SIG_CHILD;
 	if (pid == 0)
 	{
 		setup_signals_child();
-		apply_properties(data, node, &data->env, FATHER);
-		executor_recursive(data, node->left, exec, FATHER); //tiene que ser fhater ya que si es child en cuanto ejecuta el primer cmd, hace exit y se queda sin ejecutar el resto
+		apply_properties(data, node, FATHER);
+		executor_recursive(data, node->left, exec, FATHER);
 		exit_succes(data, NULL, data->exit_code);
 	}
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
 		data->exit_code = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
+	{
+		sig = WTERMSIG(status);
 		data->exit_code = 128 + WTERMSIG(status);
+		if (sig == SIGQUIT)
+			ft_printf_fd(STDERR, "Quit (core dumped)\n");
+		else if (sig == SIGINT)
+			ft_printf_fd(STDERR, "\n");
+	}
+	if (mode == CHILD)
+		exit_succes(data, NULL, data->exit_code);
+	g_signal[0] = SIG_INTERACTIVE;
 }

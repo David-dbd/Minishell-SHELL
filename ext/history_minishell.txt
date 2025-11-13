@@ -1,199 +1,199 @@
-echo ~ hola
-echo ~+ hola
-~ko
-echo "hello ~ adios"
-echo "hello ~+ adios"
-~ hola
-~+ hola
-~+ && ls
-/Users/DAVID:
-/Users/DAVID
-ls && ~
-/root
-lkn
-unset HOME
-cl
-cd ..
-cd $HOME
-echo *mini*
-echo *shell hola
-echo *pdf hola
-echo *pdf hola como estas manito
-echo *pdf hola como estas *file manito
-echo *pdf hola como estas
-ls mini*
-unset PWD
-echo *pdf
-echo *tmp*
-cd tmp_out_bash
-ls tmp_err_bash
-lear
-ls *.pdf
-ls *pdf
-ls *t
-ls*
-lshola*
-echo $PWD
-ls t*
-echo */home/david/42/minishell
-ls */home/david/42/minishell
-ls *$PWD
-ls**
-clea
-claer
-dlear
-echo *
-echo *$PWD && echo hola
-echo hola &&echo adios
-ls $USER
-var=1 && ls $var
-ls $PW
-ls *$PW
-ls * || echo hola
-ls * | grep "tmp"
-ls
-echo $USER && ls *
-* || *
-* hola
-var=1 * hola
-ls *lllplp
-ls tmp*
-ls *tmp
-ls *tmp*
-export var=tmp*
-ls *
-echo * hola que tal
-ls tmp* && echo $USER
-echo * && echo hola que tal
-ls *tmp && echo $USER
-ls *tmp && echo $USE
-* | ls
-cat "$HOME"
-echo $USER.txt
-echo *tmp
-echo *$PW
-echo *$USE
-echo $EXT
-ls * && echo $USER
-echo *$USER$EXT
-cat *$USER | grep "error"
-echo *$USER > result.txt
-echo *$USER && echo $EXT
-cat $HOME/*.txt
-* | *
-export va=*$USER
-unset va
-echo hola && echo * && ls && pwd && echo $USER
-vas=1 echo hola && echo $vas
-echo ~
-echo ~ como estas
-echo '~ como estas'
-echo ~+ como estas
-echo ~+' a'
-echo hola' a'"como estas"
-echo $USER' '"como estas"
-echo ~' '"como estas"
-echo ~+' '"como estas"
-echo ~+' a'"como estas"
-echo "'~' como estas"
-echo ~+ ' a'
-echo ~+"como estas"
-echo "~ como estas"
-echo ~+'a '"como estas"
-echo tmp*
-vas=1 echo $USER && ls $vas && var=21
-vas=1 echo $USER && echo $vas
-vas=1 echo $USER && var=1 echo $vas && echo $vas $var
-vas=1 echo $USER && ls | ls $vas
-vas=1 echo $USER && ls $vas
-echo $USERborrar$USER$USER
-cler
-*$pw
-echo *$pw
-echo *$hola
-echo *$USER
-*$PWD && ls
-cleaar
-ls && *$P
-*tmp
-*$PWD
-*$P
-echo *$pw && ls
-tmp*
-*$pw && ls
-ls *$pw && ls
-ls *$pw && ls && ls *$pw && echo hola
-vas=1 vas+=2 echo $USER && ls $vas
-echo $USER
-echo
+"$USER"
+echo "\\echo"
+echo "\\'echo"
+echo "\\"echo"
+echo "\\$USER"
 echo "$USER"
-cat "$HOME"/*.txt
-echo "'$USER'"
-echo '$USER'
-ECHO HOLA
-ecg
-echo $USER" A B C"$USER
-echo $USER"A  $  C"$USERmak
-$
-$ && ls
-echo $ && ls
-echo '$ a b' && ls
-echo "$ a b" && ls
-echo $USER"A  $  C"$USER
-echo $USER" A  $  C "$USER
-echo $USER"   A   $  C    "$USER
-export a
-a=1
-unset a
-nev
-export b
-export "a"
-echo $!
-$$
-echo $$
-echo $?
-export $$USER
-~
-~+
-echo ~+
-echo "~+"
-echo *~+
-echo ~+*
-echo '~+'
-unset PWD SHLVL PATH
-unset PATH SHLVL PWD
-env
-pwd
-echo $asda
-a
-d
-c
-e
-exiwt
-exir
-echo "a $ b"
-~+'a '"como estas"
-*
-echo *$pwd
-echo *$PWD
-a=file
-echo *$file
-echo *$a
-echo make *
-var=1 echo hola && echo $var
-va=1 vas=3 vas+=3 echo hola && echo $va $vas
-export "$$USER"
-secho $USER"A   $   C"$USER
+" LS "
 CLEAR
-echo $USER"A   $   C"$USER
-echo $USER" A   $   C "$USER
-export a="hola   pi"
-export
+LS
+export PATH=/home/migarrid/Documents/cursus/rank03/minishell
+<< LM
+\x1C\x1C\x1C\x1C\x1C
+\x1C\x1C\x1C\x1C
+\x1C\x1C
+make
+export pipe_var=1 | echo $pipe_var
+env | grep USER
+export $USER=" "
+/bin/echo $USER
+export USER=" "
+\x1C\x1C\x1C\x1Cclear
+ls\nls
+ls\nlsclear
+lcea
+export PATH="/home/migarrid/Documents/cursus/rank03/minishell"
+minishell
+ls ls ls ls ls ls ls ls ls ls ls ls sl sls s svs dds vs  sv sd vs v sv svsdv
+vasv v v a vsa b asb aa  e va e  v e  e  e  ee e  e  e e e  ee  ee  e  e e e e e e  e e e e e e  e e ee
+ s s s s s s s s s s s s s
+s  s s s s sd s c  e VQ WV A VE SV A GEAS G AG E AG AEG
+s s
+a a a a a a a a a a a a a  a a a a a a a a a a a
+ls ls
+sas
+acsa acas
+sdvcs
+vsdvsd
+sdvs
+\x1C
+\x1C\x1C\x1C
+(sleep 10)
+cat
+sleep 10
+echo "hola"" ""como''""' '""estas
+echo "hola"" ""como''""' '""estas ' "
+echo "hola"" ""como"''""' '""estas
+ls ''
+''
+<< ""
+export A=""
+exit ""
+exit sd
+ls | "" | ls | ""
+export test=
+export test=""
+baash
+export -TEST=123
+/bin/echo $HOME
+unset $HOME
+unset $""
+export mini_test=" "
+/bin/echo $mini_test
+env | grep mini_test
+export TES$?T=123
+export TEST=
+echo 1
+echo $PATH
+export PATH=" "
+echo $PATH | /bin/cat -e
+export tmp_test="/bin/echo 42"
+export tmp_test="ls"
+export tmp_test="ls a"
+export tmp_test="/bin/ls"
+$tmp_test
+/bin/
+where /../bin/ls
+a=1
+a
+a+=
+a+=1
+export a+=12
+./tester/
+/tester/
+cd
+;s
+cear
+cleas
+export var="'"
+echo $var
+(echo a && exit 1) && (echo b && exit 1) || (echo c && exit 0)(echo a && exit 1) && (echo b && exit 1) || (echo c && exit 0)
+ls &&        ls
+ls && ""
+/bin
+./minishell
+whereis /../bin/ls
+whereis /bin/ls
+/bin/ls
+""
+whereis ls
+/../bin
+(echo a && exit 1) && (echo b && exit 1) || (echo c && exit 0)
+b=
+unseth PATh
+unseth PATH
+where is /bin/
+where is /../bin/
+a="'"
 echo $a
+export a=1 b=2 c=3
+echo $a$b$c
+export a=1 1b=2 c=3
+export a=a 1b=2 c=c
+env
+cd /bin
+cd /../bin
+export A="'"
+export
+export a=""
+exit 99999999999999999999999999999999999999999999999999999999999999999999999999999
+exit 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+exit 9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+exit 99999999999999999999999999999999999999999999
+dc
+cleare
+matriz
+matrix
+xmatriz
+btop
+ncdu ~
+fernanda
+lsls
+cd minishell/
+pwd
+cd ..
+cloc Makefile
+ncdu
+cmatriz
+cmatrix
+cmd
+make leaks
+\xC0Z\xA9\x04
+sds
+cs
+sdc
+d
+va
+ev
+v
+cd /
+(ls && echo hola | echo "
+nada"
+(ls && echo hola | echo " nada" )
+(ls && echo hola | echo " nada" ) ||
+(ls && echo hola | echo " nada" ) || ls
+ls |
+ls | ls
+ls &&  s
+echo '"
+echo '" " '
+lls
+ls ||
+ls || ls
+sd
+ls &&  sd
+()
+ls &&  ()
+ls &&
+echo "
+hola"
+wc -l
+ls &&  ( echo " hola" | wc -l )
+c;ear
+(echo a && exit 1) && (echo b && exit 1) || (echo c && exit 1)
+(echo a && exit 1) && (echo b && exit 1) || (echo c && exit 1) || (echo d && exit 1)
+celar
+ls && ls
+$PWD
+echo ''
+bash
+echo $?
+/bin/echo "exit_code ->$? user ->$USER home -> $HOME"
+cat < Makefile > out >> out1 | wc -l out1 > out2
+echo $/ $/
+cat << "$US"E"R"
+$USER
+mikel
+ls
+echo "$"U"SER
+echo "$"U"SER "
+echo "$"U""S"ER
+echo "$"U""S"ER "
+echo "$"U""S"ER"
+echo $USER" A    $     B "$USER
+/bin/echo "''$USER''"
 clear
-mkdir -p /tmp/testdir/real
-ln -s /tmp/testdir/real /tmp/testdir/link
-cd /tmp/testdir/link
-mkdir -p /tmp/real/dir
-ln -s /tmp/real /tmp/link
-cd /tmp/link/dir
+/bin/echo "'$USER'"
+echo $USER"A    $     B"$USER
+~
+echo $missing "$missing"

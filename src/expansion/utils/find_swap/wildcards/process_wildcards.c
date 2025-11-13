@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_wildcards.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 16:18:03 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/10 12:54:36 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 01:03:27 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	matches(t_shell *d, char **key_to_find, int wildc_type, int *n_dirs)
 {
 
 	*n_dirs = count_matches(d, *key_to_find, wildc_type);
-	printf("matches: %d\n\n", *n_dirs);
+	// printf("matches: %d\n\n", *n_dirs);
 	if (*n_dirs == 0)
 	{
 		free(*key_to_find);

@@ -6,11 +6,23 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 20:37:34 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/13 19:08:31 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/04 23:47:24 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
+
+void ensure_dir(const char *path)
+{
+	struct stat	st;
+
+	st = (struct stat){0};
+	if (stat(path, &st) == ERROR)
+	{
+		if (mkdir(path, DIR_PERMS) == ERROR)
+			perror("minishell: mkdir:");
+	}
+}
 
 /*
  * Configura readline interactivo: establece historial ilimitado,
@@ -20,7 +32,9 @@
 
 void	init_ic_readline(void)
 {
-	ic_set_history(DEFAULT_HISTORY, ILIMITED);
+	ensure_dir(DEFAULT_HYSTORY_DIR);
+	open(DEFAULT_HISTORY_FILE, O_WRONLY | O_CREAT | O_APPEND, FILE_PERMS);
+	ic_set_history(DEFAULT_HISTORY_FILE, ILIMITED);
 	ic_set_prompt_marker("", "");
 	ic_enable_multiline_indent(false);
 	ic_style_def("ic-prompt", "#4A90E2");

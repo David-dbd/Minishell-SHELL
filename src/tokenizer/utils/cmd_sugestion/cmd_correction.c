@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_correction.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:48:00 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/03 11:28:01 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:50:36 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	find_match(const char *s1, const char *s2)
 	}
 	if ((s1[j] == '\0' && s2[i + 1] == '\0')
 		|| (s1[j + 1] == '\0' && s2[i] == '\0')
-		|| s1[j] == '\0' && s2[i] == '\0')//si s1 esta contendio en s2 o si son iguales en len o si s1 se pasa por una letra
+		|| (s1[j] == '\0' && s2[i] == '\0'))//si s1 esta contendio en s2 o si son iguales en len o si s1 se pasa por una letra
 		return (SUCCESS);
 	else if ((j + 1 == len_1 && i == len_2) || (i + 1 == len_2 && j == len_1)) //Seguir logica de abc vs axc
 		return (SUCCESS);

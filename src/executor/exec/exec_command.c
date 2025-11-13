@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:23:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/12 12:56:57 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 02:33:59 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,28 @@
 
 void	wait_cmd_background(t_shell *data, t_node *node, pid_t pid)
 {
+	int	sig;
 	int	status;
 
-	status = 0;
 	if (!node->background) //si no tiene background se hace el waitpid
 	{
 		waitpid(pid, &status, 0);
 		if (WIFEXITED(status))
 			data->exit_code = WEXITSTATUS(status);
 		else if (WIFSIGNALED(status))
+		{
+			sig = WTERMSIG(status);
 			data->exit_code = 128 + WTERMSIG(status);
+			if (sig == SIGQUIT)
+				ft_printf_fd(STDERR, "Quit (core dumped)\n");
+			else if (sig == SIGINT)
+				ft_printf_fd(STDERR, "\n");
+		}
 	}
+	g_signal[0] = SIG_INTERACTIVE;
 	if (node->background)
 	{
-		// exit_code para padre es 0 porque el fork fue exitoso
+		data->last_background_pid = pid;
 		ft_printf_fd(STDOUT, "[&] %d\n", pid);
 		data->exit_code = OK;
 	}
@@ -67,11 +75,10 @@ void	execute_cmd_from_child(t_shell *data, t_node *node, t_env *env)
 {
 	char	*path;
 
-	apply_properties(data, node, env, CHILD);
+	apply_properties(data, node, CHILD);
 	path = get_path(data, node->token->value, env->envp);
-	add_var(data, "_", path, ENV);
+	add_var_and_envp(data, ft_strdup("_"), path, ENV);
 	execve(path, node->args, env->envp);
-	free(path);
 	exit_error(data, ERR_EXEC, EXIT_CMD_NOT_EXEC, node->token->value);
 	//si es child solo se retorna el exit_code ya que el subshell o pipe
 	//haran el waitpid
@@ -85,14 +92,14 @@ void	execute_cmd_from_father(t_shell *data, t_node *node, t_env *env)
 	pid = fork();
 	if (pid == ERROR)
 		exit_error(data, ERR_FORK, EXIT_FAILURE);
+	g_signal[0] = SIG_CHILD;
 	if (pid == 0)
 	{
 		setup_signals_child();
-		apply_properties(data, node, env, CHILD);
+		apply_properties(data, node, CHILD);
 		path = get_path(data, node->token->value, env->envp);
-		add_var(data, "_", path, ENV);
+		add_var_and_envp(data, ft_strdup("_"), path, ENV);
 		execve(path, node->args, env->envp);
-		free(path);
 		exit_error(data, ERR_EXEC, EXIT_CMD_NOT_EXEC, node->token->value);
 		//el hijo retorna su exit_code para el padre
 	}
@@ -101,12 +108,11 @@ void	execute_cmd_from_father(t_shell *data, t_node *node, t_env *env)
 
 void	exec_command(t_shell *data, t_node *node, t_exec *exec, int mode)
 {
-
+	expansion_final_process(data, node);
 	if (mode == CHILD)
 		execute_cmd_from_child(data, node, exec->env);
 	if (mode == FATHER)
 	{
-		expansion_final_process(data, node);
 		execute_cmd_from_father(data, node, exec->env);
 	}
 	clean_temp_variables(data, exec->env, data->prompt.tokens, node);

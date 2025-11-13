@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform_tokens_logic.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 21:33:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/12 23:06:16 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 01:12:04 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	transform_tokens_logic(t_shell *data, t_prompt *prompt, t_token *tokens)
 	transform_cmd_to_word(data, tokens, FINAL_PHASE);
 	transform_invalid_asig_to_word(prompt, tokens);
 	transform_asig_to_asig_plus(prompt, tokens);
-	transform_asig_to_temp(data, prompt, tokens);
+	transform_asig_to_temp(prompt, tokens);
 	transform_word_to_wildcard(data, prompt, tokens);
 	transform_word_to_file(prompt, tokens);
 	transform_command_built_lowercase(prompt, tokens);

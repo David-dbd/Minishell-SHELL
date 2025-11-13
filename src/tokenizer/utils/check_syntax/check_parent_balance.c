@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_parent_balance.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 22:39:51 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/04 13:37:14 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:49:16 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,34 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   clean_II.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 01:53:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/11 13:16:39 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 01:40:29 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
 /*
-	Libera toda la memoria de una lista enlazada a un nodo
-	redirs, args y tokens falsos, luego setea el puntero a NULL
+	Libera un token en conreto que sea alojado dinamicamente
+	se preve utilizar en los true o fake nodes.
 */
 
-void	clean_node(t_node **node)
+void	clean_token(t_token **token)
 {
-	if ((*node)->args)
-		ft_free_str_array((*node)->args);
-	if ((*node)->arg_types)
-		free((*node)->arg_types);
-	if ((*node)->redir)
-		clean_redirs(&(*node)->redir);
-	if ((*node)->assig_tmp)
-		ft_free_str_array((*node)->assig_tmp);
-	if ((*node)->fake)
-		clean_token(&(*node)->token);
-	free(*node);
-	*node = NULL;
+	if ((*token)->value)
+	{
+		free((*token)->value);
+		(*token)->value = NULL;
+	}
+	if (*token)
+	{
+		free(*token);
+		*token = NULL;
+	}
 }
 
 /*
@@ -56,45 +54,36 @@ void	clean_redirs(t_redir **lst)
 }
 
 /*
-	Libera un token en conreto que sea alojado dinamicamente
-	se preve utilizar en los true o fake nodes.
+	Libera toda la memoria de una lista enlazada a un nodo
+	redirs, args y tokens falsos, luego setea el puntero a NULL
 */
 
-void	clean_token(t_token **token)
+void	clean_node(t_node **node)
 {
-	if ((*token)->value)
-	{
-		free((*token)->value);
-		(*token)->value = NULL;
-	}
-	if (*token)
-	{
-		free(*token);
-		*token = NULL;
-	}
+	if ((*node)->args)
+		ft_free_str_array((*node)->args);
+	if ((*node)->arg_types)
+		free((*node)->arg_types);
+	if ((*node)->redir)
+		clean_redirs(&(*node)->redir);
+	if ((*node)->assig_tmp)
+		ft_free_str_array((*node)->assig_tmp);
+	if ((*node)->fake)
+		clean_token(&(*node)->token);
+	free(*node);
+	*node = NULL;
 }
 
 /*
-	Libera la memoria reservada para `user_name` en `t_extras`
-	y lo deja apuntando a NULL para evitar accesos inválidos.
+	Restaura los fd originales cuando hay redirecciones en el
+	proceso del padre al ejecutarse builtins.
 */
-
-void	clean_extras(t_extras *extra_features)
-{
-	if (extra_features->user_name)
-	{
-		free(extra_features->user_name);
-		extra_features->user_name = NULL;
-	}
-	*extra_features = (t_extras){0};
-}
 
 void	restore_fd(t_exec *exec)
 {
 	dup2(exec->original_stdin, STDIN_FILENO);
 	dup2(exec->original_stdout, STDOUT_FILENO);
 }
-
 
 /*
 	Libera la memoria reservada para `prompt` y los nodos del `ast`

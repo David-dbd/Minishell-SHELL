@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:48:38 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/25 22:29:33 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/13 01:02:07 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ static void	print_alias(t_cmd *cmd)
 		i++;
 		cmd = cmd->next;
 	}
-	printf("Total of assinged alias: %d:\n", i);
+	// printf("Total of assinged alias: %d:\n", i);
 	while (cmd)
 	{
 		if (cmd->alias)
-			printf("%s=%s\n", cmd->value, cmd->alias);
+			ft_printf_fd(STDOUT, "%s=%s\n", cmd->value, cmd->alias);
 		cmd = cmd->next;
 	}
 }
@@ -71,10 +71,12 @@ int	process_pair_of_args(t_shell *d, t_cmd *cmd, char *cmd_arg, char *alias_arg)
 
 	cmd_value_copy = ft_strdup(cmd_arg);
 	alias_arg_copy = ft_strdup(alias_arg);
-	if (!alias_arg_copy)
+	if (!alias_arg_copy || !cmd_value_copy)
 	{
 		if (cmd_value_copy)
 			free (cmd_value_copy);
+		if (alias_arg_copy)
+			free (alias_arg_copy);
 		exit_error(d, ERR_MALLOC, EXIT_FAILURE);
 	}
 	normalize_token_to_lower(cmd_value_copy);

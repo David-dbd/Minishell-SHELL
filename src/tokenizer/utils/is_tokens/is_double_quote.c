@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_double_quote.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/12 16:32:37 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 02:20:59 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	make_word_d(t_shell *data, t_prompt *promp, const char *s, int range[2])
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 	word = cleanner_word(data, word, range[1] - range[0], '\"');
 	word = cleanner_slash_quotes_d(data, word, range[1] - range[0], &flag);
-	if (word[0] == '$' && word[1] != '\0' && !ft_isspace(word[1])) //antes simplemente se verificaba si existia un '$' pero hay que ser mas específico
+	ptr = ft_strchr(word, '$');
+	if (ptr && *ptr == '$' && (*(ptr + 1)) != '\0' && !ft_isspace(*(ptr + 1))) //antes simplemente se verificaba si existia un '$' pero hay que ser mas específico
 	{//ya que "a $ b" ->expansion esta mal. De este modo podemos ver si i + 1 es valido o no
 		if (flag == TRUE)
 			token_id = add_token(data, promp, word, WORD);
@@ -67,7 +68,7 @@ void	make_word_d(t_shell *data, t_prompt *promp, const char *s, int range[2])
 	}
 	else
 		token_id = add_token(data, promp, word, WORD);
-	is_cmd(data, &data->prompt, &promp->tokens[token_id], word);
+	is_cmd(data, &promp->tokens[token_id], word);
 }
 
 /*
@@ -119,17 +120,15 @@ int	ft_is_dead_d(const char *s, int *i, char quote, int *flag)
 int	is_special_word_d(t_shell *data, t_prompt *prompt, const char *str, int *i)
 {
 	int		flag;
-	int		len;
 	int		start_end[2];
 
 	flag = FALSE;
-	if (*i + 1 < ft_strlen(str) && ft_strchr(str + *i, '\"'))
+	if (*i + 1 <= (int)ft_strlen(str) && ft_strchr(str + *i, '\"'))
 	{
 		start_end[0] = *i;
 		while (str[*i] != '\0' && !ft_is_dead_d(str, i, '\"', &flag))
 			(*i)++;
 		start_end[1] = *i;
-		len = start_end[1] - start_end[0];
 		make_word_d(data, prompt, str, start_end);
 		if (flag)
 			return (NO_SPACE);

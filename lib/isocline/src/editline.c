@@ -939,10 +939,7 @@ static char* edit_line( ic_env_t* env, const char* prompt_text )
       if (eb.pos == 0 && editor_pos_is_at_end(&eb)) break; // ctrl+D on empty quits with NULL
       edit_delete_char(env,&eb);     // otherwise it is like delete
     }
-    // else if (c == KEY_EVENT_STOP) {
-    //   break; // ctrl+C or STOP event quits with NULL
-    // }
-    else if (c == KEY_CTRL_C || c == KEY_EVENT_STOP) {
+    else if (c == KEY_EVENT_STOP) {
       break; // ctrl+C or STOP event quits with NULL
     }
     else if (c == KEY_ESC) {
@@ -950,9 +947,10 @@ static char* edit_line( ic_env_t* env, const char* prompt_text )
       edit_delete_all(env,&eb);      // otherwise delete the current input
       // edit_delete_line(env,&eb);  // otherwise delete the current line
     }
-    else if (c == KEY_BELL /* ^G */) {
+    else if (c == KEY_BELL /* ^G */ || c == KEY_CTRL_C) {
       edit_delete_all(env,&eb);
-      break; // ctrl+G cancels (and returns empty input)
+	  raise(SIGINT);
+      break; // ctrl+G or ctrl+Ccancels (and returns empty input)
     }
 
     // Editing Operations
@@ -1079,6 +1077,8 @@ static char* edit_line( ic_env_t* env, const char* prompt_text )
       case KEY_CTRL_T:
         edit_swap_char(env,&eb);
         break;
+      case KEY_CTRL_BS:
+        break;
 
       // Editing
       case KEY_SHIFT_TAB:
@@ -1119,13 +1119,7 @@ static char* edit_line( ic_env_t* env, const char* prompt_text )
 //   if ((c == KEY_CTRL_D && sbuf_len(eb.input) == 0) || c == KEY_CTRL_C || c == KEY_EVENT_STOP) {
 //     res = NULL;
 //   }
-  if ((c == KEY_CTRL_D && sbuf_len(eb.input) == 0) || c == KEY_CTRL_C || c == KEY_EVENT_STOP) {
-    if (c == KEY_CTRL_C)
-    {
-      res = ic_strdup("");
-      raise(SIGINT);
-    }
-    else
+  if ((c == KEY_CTRL_D && sbuf_len(eb.input) == 0) || c == KEY_EVENT_STOP) {
       res = NULL;
   }
   else if (!tty_is_utf8(env->tty)) {

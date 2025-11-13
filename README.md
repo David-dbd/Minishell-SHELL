@@ -2,28 +2,39 @@
 Minishell - Bash
 
 🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
-🏁                                    RESULT                                    🏁
+🏁                                     BONUS                                                       🏁
 🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
-             TOTAL TEST COUNT: 881  TESTS PASSED: 742  LEAKING: 0
-                     STD_OUT: 90  STD_ERR: 53  EXIT_CODE: 83
+             TOTAL TEST COUNT: 68  TESTS PASSED: 47  LEAKING: 0
+                     STD_OUT: 19  STD_ERR: 12  EXIT_CODE: 6
                          TOTAL FAILED AND PASSED CASES:
-                                     ❌ 226
-                                     ✅ 2417
+                                     ❌ 37
+                                     ✅ 167
+
+🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
+🏁                                    MANDATORY                                                    🏁
+🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁🏁
+             TOTAL TEST COUNT: 894  TESTS PASSED: 813  LEAKING: 0
+                     STD_OUT: 50  STD_ERR: 42  EXIT_CODE: 37
+                         TOTAL FAILED AND PASSED CASES:
+                                     ❌ 129
+                                     ✅ 2553
 
 ## POR HACER:
 
 ## MIKEL:
--
-- Secondary:
-- Bash te abra línea para que completes el comando ver → Modificar balance de ' " ( || && |
-  - https://github.com/rogerdevworld/minishell/blob/main/src/bonus/loop_processing.c
-  - https://github.com/rogerdevworld/minishell/blob/main/src/bonus/syntax/ft_lexer_2.c#L93
 
 ## DAVID:
 - Important:
+- Export
+- Unset
+- Variables
+- Wildcars
+- Expansiones
+
 - get_arg_types funciona y sin leaks
 - get_temp_asig funciona y sin leaks -> con export y con cualquier otro comando
 - Expandir ~
+- Expandir $$
 - Expandir el Heredoc
 - get_temp_asig debe funcionar correctamente y sin leaks -> con export y con cualquier otro comando
 - bugs de tempasignations bien catalogadas
@@ -31,26 +42,48 @@ Minishell - Bash
 - bugs de expansiones
 
 - Secondary:
-- Hacer built-in CD
 - `echo $a && a=1`
-- invalid read `echo $SHLVL`
-- invalid read `token: =1`
-- invalid read y no asignacion correcta `export A=" Hola como estas = BIEN"`
-- Explota en `export A=1 =`
-- Memory leak `export A+=" como estas"`
+- leaks en `export USER+=@@@`
 - Expansion ha de soportar los wildcards *
 - Norminette
 - Comentarios
-- (v=1) var=2 bash: syntax error near unexpected token `var=2'
+
+mikel@MSI ~/documents/cursus/rank03/minishell ❯ export PWD+="XXXX"
+mikel@MSI ~/documents/cursus/rank03/minishellXXXX ❯ sd
+minishell: sd: command not found
+=================================================================
+==1549155==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 10 byte(s) in 1 object(s) allocated from:
+    #0 0x7fca0fb209c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0x557ca4241787 in ft_calloc libft/ft_calloc.c:28
+    #2 0x557ca422c320 in aux_mem_alloc src/expansion/utils/asignation/asignation.c:31
+    #3 0x557ca422d097 in asignation src/expansion/utils/asignation/asignation.c:129
+    #4 0x557ca423b6fc in asignation_type src/builtin/my_export.c:164
+    #5 0x557ca423bb8b in my_export src/builtin/my_export.c:197
+    #6 0x557ca4237aba in env_cmds src/executor/utils/which_builtin.c:34
+    #7 0x557ca4237fe1 in which_builtin src/executor/utils/which_builtin.c:56
+    #8 0x557ca4237613 in exec_builtin src/executor/exec/exec_builtin.c:70
+    #9 0x557ca42356d7 in executor_recursive src/executor/executor.c:32
+    #10 0x557ca420fe53 in main src/main/main.c:32
+    #11 0x7fca0f7a51c9 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #12 0x7fca0f7a528a in __libc_start_main_impl ../csu/libc-start.c:360
+    #13 0x557ca420fb84 in _start (/home/mikel/documents/cursus/rank03/minishell/minishell+0xcb84) (BuildId: ad722d2bb59b5508c96c8035214b2b410d7914aa)
+
+SUMMARY: AddressSanitizer: 10 byte(s) leaked in 1 allocation(s).
 
 ## Errores:
-- En is_double_quote -> no se pueden hacer dos expansiones seguidas cuando hay `\` antes del `$` funciona para expansiones
-  individuales pero la flag seteada evita las demas expansiones
-
-Entonces, ¿cuál es la regla?
-Paréntesis crean un subshell, y todo lo que está fuera de él (después del redireccionamiento) se trata como comandos independientes.
-
-Sin paréntesis, todo se analiza como parte del mismo comando, y los argumentos se agrupan hasta que aparece una redirección o un operador lógico (&&, ||, ;).
+- En is_double_quote -> no se pueden hacer dos expansiones seguidas cuando hay `\` antes del `$` funciona para expansiones individuales pero la flag seteada evita las demas expansiones
+- export no acepta todas las posibilidades de entrada por la menera en la que tokenizamos, tampoco export esta remplazando su variable de la misma manera porque a veces una variabel la entraga en varios argumentos.
+- Al expandir una variable que tenga () deberia volverse a tokenizar, sucede que cuando tenemos una subshell en una variable y la expande no ha pasado por su proceso de tokenizacion y no es capaz de realizar el comando.
+- Deberia rehacerse todo la tokenizacion y expansion para que se consiga que cada token solo tenga una sola funcion argumento, operador(varios), Filename, heredoc comando o builtin, solo esas funciones. Nada de tokens de expansion deben marcarse antes con un bool pero no como un tipo y asi todo sera mas sencillo de gestionar.
+- tokenizamos los saltos de linea como ";" cuando bash depende del contexto lo hace de otra manera, en archivos si en linea de comando no
+- funciones prohibidas que usamos:
+localtime
+difftime
+mkdir
+gethostname
+getpid
 
 ## ARQUITECTURA GENERAL
 

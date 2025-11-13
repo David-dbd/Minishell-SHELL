@@ -3,33 +3,33 @@
 <img align="left" src="doc/isocline-inline.svg"/>
 
 # Isocline: a portable readline alternative.
- 
+
 Isocline is a pure C library that can be used as an alternative to the GNU readline library (latest release v1.0.9, 2022-01-15).
 
-- Small: less than 8k lines and can be compiled as a single C file without 
+- Small: less than 8k lines and can be compiled as a single C file without
   any dependencies or configuration (e.g. `gcc -c src/isocline.c`).
-  
+
 - Portable: works on Unix, Windows, and macOS, and uses a minimal
   subset of ANSI escape sequences.
-    
-- Features: extensive multi-line editing mode (`shift-tab`), (24-bit) color, history, completion, unicode, 
+
+- Features: extensive multi-line editing mode (`shift-tab`), (24-bit) color, history, completion, unicode,
   undo/redo, incremental history search, inline hints, syntax highlighting, brace matching,
   closing brace insertion, auto indentation, graceful fallback, support for custom allocators, etc.
-  
-- License: MIT. 
+
+- License: MIT.
 
 - Comes with a Haskell binding ([`System.Console.Isocline`][hdoc].
 
 Enjoy,
   Daan
-  
+
 <!--  <img align="right" width="350px" src="doc/history-win.png"/> -->
-  
+
 # Demo
 
-![recording](doc/record-macos.svg)  
+![recording](doc/record-macos.svg)
 
-Shows in order: unicode, syntax highlighting, brace matching, jump to matching brace, auto indent, multiline editing, 24-bit colors, inline hinting, filename completion, and incremental history search.  
+Shows in order: unicode, syntax highlighting, brace matching, jump to matching brace, auto indent, multiline editing, 24-bit colors, inline hinting, filename completion, and incremental history search.
 <sub>(screen capture was made with [termtosvg] by Nicolas Bedos)</sub>
 
 # Usage
@@ -42,9 +42,9 @@ Include the isocline header in your C or C++ source:
 and call `ic_readline` to get user input with rich editing abilities:
 ```C
 char* input;
-while( (input = ic_readline("prompt")) != NULL ) { // ctrl+d/c or errors return NULL
+while( (input = ic_readline("prompt")) != NULL ) { // ctrl+d or errors return NULL
   printf("you typed:\n%s\n", input); // use the input
-  free(input);  
+  free(input);
 }
 ```
 
@@ -84,7 +84,7 @@ Isocline tries to be as compatible as possible with standard [GNU Readline] key 
        ctrl-u                          ctrl-k
 ```
 
-<sub>Note: on macOS, the meta (alt) key is not directly available in most terminals. 
+<sub>Note: on macOS, the meta (alt) key is not directly available in most terminals.
 Terminal/iTerm2 users can activate the meta key through
 `Terminal` &rarr; `Preferences` &rarr; `Settings` &rarr; `Use option as meta key`.</sub>
 
@@ -108,7 +108,7 @@ These are also shown when pressing `F1` on a Isocline prompt. We use `^` as a sh
 | `^p           `   | go back in the history |
 | `^n           `   | go forward in the history |
 | `^r`,`^s      `   | search the history starting with the current word |
-  
+
 
 | Deletion        |                                                 |
 |-------------------|-------------------------------------------------|
@@ -120,7 +120,7 @@ These are also shown when pressing `F1` on a Isocline prompt. We use `^` as a sh
 | `^u           `   | delete to the start of the current line |
 | `^k           `   | delete to the end of the current line |
 | `esc          `   | delete the current input, or done with empty input |
-  
+
 
 | Editing           |                                                 |
 |-------------------|-------------------------------------------------|
@@ -131,7 +131,7 @@ These are also shown when pressing `F1` on a Isocline prompt. We use `^` as a sh
 | `^z`,`^_      `   | undo |
 | `^y           `   | redo |
 | `tab          `   | try to complete the current input |
-  
+
 
 | Completion menu   |                                                 |
 |-------------------|-------------------------------------------------|
@@ -141,7 +141,7 @@ These are also shown when pressing `F1` on a Isocline prompt. We use `^` as a sh
 | `shift-tab, up`   | select the previous completion |
 | `esc          `   | exit menu without completing |
 | `pgdn`,`^enter`,`^j`   | show all further possible completions |
-  
+
 
 | Incremental history search        |                                                 |
 |-------------------|-------------------------------------------------|
@@ -160,7 +160,7 @@ Copy the sources (in `include` and `src`) into your project, or add the library 
 ```
 $ git submodule add https://github.com/daanx/isocline
 ```
-and add `isocline/src/isocline.c` to your build rules -- no configuration is needed. 
+and add `isocline/src/isocline.c` to your build rules -- no configuration is needed.
 
 ### Build with CMake
 
@@ -193,24 +193,24 @@ See the Haskell [readme][Haskell] for instructions to build and use the Haskell 
 
 # Motivation
 
-Isocline was created for use in the [Koka] interactive compiler. 
-This required: pure C (no dependency on a C++ runtime or other libraries), 
-portable (across Linux, macOS, and Windows), unicode support, 
+Isocline was created for use in the [Koka] interactive compiler.
+This required: pure C (no dependency on a C++ runtime or other libraries),
+portable (across Linux, macOS, and Windows), unicode support,
 a BSD-style license, and good functionality for completion and multi-line editing.
 
 Some other excellent libraries that we considered:
 [GNU readline],
 [editline](https://github.com/troglobit/editline),
 [linenoise](https://github.com/antirez/linenoise),
-[replxx](https://github.com/AmokHuginnsson/replxx), and 
+[replxx](https://github.com/AmokHuginnsson/replxx), and
 [Haskeline](https://github.com/judah/haskeline).
 
 
 # Formatted Output
 
 Isocline also exposes functions for rich terminal output
-as `ic_print` (and `ic_println` and `ic_printf`). 
-Inspired by the (Python) [Rich][RichBBcode] library, 
+as `ic_print` (and `ic_println` and `ic_printf`).
+Inspired by the (Python) [Rich][RichBBcode] library,
 this supports a form of [bbcode]'s to format the output:
 ```c
 ic_println( "[b]bold [red]and red[/red][/b]" );
@@ -279,11 +279,11 @@ and some builtin styles for syntax highlighting:
 Predefined styles used by Isocline itself are:
 
 - `ic-prompt`: prompt style, e.g. `ic_style_def("ic-prompt", "yellow on blue")`.
-- `ic-info`: information (like the numbers in a completion menu).    
+- `ic-info`: information (like the numbers in a completion menu).
 - `ic-diminish`: dim text (used for example in history search).
 - `ic-emphasis`: emphasized text (also used in history search).
 - `ic-hint`: color of an inline hint.
-- `ic-error`: error color (like an unmatched brace).   
+- `ic-error`: error color (like an unmatched brace).
 - `ic-bracematch`: color of matching parenthesis.
 
 ### Properties
@@ -305,12 +305,12 @@ Color properties can be assigned a _color_:
 A color value can be specified in many ways:
 
 - any standard HTML [color name][htmlcolors].
-- any of the 16 standard ANSI [color names][ansicolors] by prefixing `ansi-` 
-  (like `ansi-black` or `ansi-maroon`).   
+- any of the 16 standard ANSI [color names][ansicolors] by prefixing `ansi-`
+  (like `ansi-black` or `ansi-maroon`).
   The actual color value of these depend on the a terminal theme.
 - `#`_rrggbb_ or `#`_rgb_ for a specific 24-bit color.
 - `ansi-color=`_idx_ or `ansi-bgcolor=`_idx_, where _idx_ specifies an entry in the
-  standard ANSI 256 [color palette][ansicolor256] (between 0 and 255). 
+  standard ANSI 256 [color palette][ansicolor256] (between 0 and 255).
   Use _idx_ 256 for the ANSI default color.
 
 The `width` property makes the text at least _width_ long:
@@ -321,8 +321,8 @@ where _width_ is the column with, _align_ is `left`, `center`, or `right`,
 and _fill_ the fill character (`' '`).
 
 The _maxwidth_ property makes text at most _width_ long; when the content
-it is wider, the left- or right side (depending on the alignment) 
-will have three dots (`...`) to visualize that content is cut off. 
+it is wider, the left- or right side (depending on the alignment)
+will have three dots (`...`) to visualize that content is cut off.
 
 - `maxwidth=`_width_ [`;`_align_]
 
@@ -343,17 +343,17 @@ support true color. Detection of full color support
 is not always possible to do automatically and you can
 set the `COLORTERM` environment variable expicitly to force Isocline to use
 a specific palette:
-- `COLORTERM=truecolor`: use 24-bit colors.  
+- `COLORTERM=truecolor`: use 24-bit colors.
   <img width="500px" src="doc/color/ansi-truecolor.png"/>
-- `COLORTERM=256color`: use the ANSI 256 color palette.  
+- `COLORTERM=256color`: use the ANSI 256 color palette.
   <img width="500px" src="doc/color/ansi-256color.png"/>
-- `COLORTERM=16color` : use the regular ANSI 16 color 
-   palette (8 normal and 8 bright colors).  
+- `COLORTERM=16color` : use the regular ANSI 16 color
+   palette (8 normal and 8 bright colors).
    <img width="500px" src="doc/color/ansi-16color.png"/>
 - `COLORTERM=8color`: use bold for bright colors.
 - `COLORTERM=monochrome`: use no color.
 
-The above screenshots are made with the 
+The above screenshots are made with the
 [`test_colors.c`](https://github.com/daanx/isocline/blob/main/test/test_colors.c) program. You can test your own
 terminal as:
 ```
@@ -373,12 +373,12 @@ supported:
 - `ESC[`_n_`m` for colors, with _n_ one of: 0 (reset), 1,22 (bold), 3,23 (italic),
    4,24 (underline), 7,27 (reverse), 30-37,40-47,90-97,100-107 (color),
    and 39,49 (select default color).
-- `ESC[38;5;`_n_`m`, `ESC[48;5;`_n_`m`, `ESC[38;2;`_r_`;`_g_`;`_b_`m`, `ESC[48;2;`_r_`;`_g_`;`_b_`m`: 
-  on terminals that support it, select 
+- `ESC[38;5;`_n_`m`, `ESC[48;5;`_n_`m`, `ESC[38;2;`_r_`;`_g_`;`_b_`m`, `ESC[48;2;`_r_`;`_g_`;`_b_`m`:
+  on terminals that support it, select
   entry _n_ from the
   256 color ANSI palette (used with `XTERM=xterm-256color` for example), or directly specify
   any 24-bit _rgb_ color (used with `COLORTERM=truecolor`) for the foreground or background.
-    
+
 On Windows the above functionality is implemented using the Windows console API
 (except if running in the new Windows Terminal which supports these escape
 sequences natively).
@@ -405,20 +405,20 @@ To map full RGB colors to an ANSI 256 or 16-color palette
 Isocline finds a palette color with the minimal "color distance" to
 the original color. There are various
 ways of calculating this: one way is to take the euclidean distance
-in the sRGB space (_simple-rgb_), a slightly better way is to 
+in the sRGB space (_simple-rgb_), a slightly better way is to
 take a weighted distance where the weight distribution is adjusted
 according to how big the red component is ([redmean](https://en.wikipedia.org/wiki/Color_difference),
-denoted as _delta-rgb_ in the figure), 
+denoted as _delta-rgb_ in the figure),
 this is used by Isocline),
 and finally, we can first translate into a perceptually uniform color space
 (CIElab) and calculate the distance there using the [CIEDE2000](https://en.wikipedia.org/wiki/Color_difference)
 algorithm (_ciede2000_). Here are these three methods compared on
-some colors: 
+some colors:
 
 ![color space comparison](doc/color/colorspace-map.png)
 
 Each top row is the true 24-bit RGB color. Surprisingly,
-the sophisticated CIEDE2000 distance seems less good here compared to the 
+the sophisticated CIEDE2000 distance seems less good here compared to the
 simpler methods (as in the upper left block for example)
 (perhaps  because this algorithm was created to find close
 perceptual colors in images where lightness differences may be given
@@ -444,16 +444,16 @@ Contact me if you are interested in doing any of these :-)
 
 # Releases
 
-* `2022-01-15`: v1.0.9: fix missing `ic_completion_arg` (issue #6), 
+* `2022-01-15`: v1.0.9: fix missing `ic_completion_arg` (issue #6),
    fix null ptr check in ic_print (issue #7), fix crash when using /dev/null as both input and output.
-* `2021-09-05`: v1.0.5: use our own wcwidth for consistency; 
+* `2021-09-05`: v1.0.5: use our own wcwidth for consistency;
   thanks to Hans-Georg Breunig for helping with testing on NetBSD.
 * `2021-08-28`: v1.0.4: fix color query on Ubuntu/Gnome
-* `2021-08-27`: v1.0.3: fix duplicates in completions 
+* `2021-08-27`: v1.0.3: fix duplicates in completions
 * `2021-08-23`: v1.0.2: fix windows eol wrapping
 * `2021-08-21`: v1.0.1: fix line-buffering
-* `2021-08-20`: v1.0.0: initial release  
-  
+* `2021-08-20`: v1.0.0: initial release
+
 
 
 [GNU readline]: https://tiswww.case.edu/php/chet/readline/rltop.html

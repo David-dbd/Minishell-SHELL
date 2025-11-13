@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 02:13:28 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/17 22:23:11 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/13 01:04:01 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,23 @@
 
 void	print_minishell_title(void)
 {
-	printf(TITLE_COLOR "\n\n");
-	printf(T1 "\n");
-	printf(T2 "\n");
-	printf(T3 "\n");
-	printf(T4 "\n");
-	printf(T5 "\n");
-	printf("\n\n" RESET_COLOR);
+	ft_printf_fd(STDOUT, TITLE_COLOR "\n\n");
+	ft_printf_fd(STDOUT, T1 "\n");
+	ft_printf_fd(STDOUT, T2 "\n");
+	ft_printf_fd(STDOUT, T3 "\n");
+	ft_printf_fd(STDOUT, T4 "\n");
+	ft_printf_fd(STDOUT, T5 "\n");
+	ft_printf_fd(STDOUT, "\n\n" RESET_COLOR);
 }
 
-static void	check_user_name_syntax(char *user_name, int *validation)
+static void	check_user_name_syntax(char *name, int *validation)
 {
 	int	i;
 
 	i = 0;
-	while (user_name[i] != '\0')
+	while (name[i] != '\0')
 	{
-		if (!ft_isprint(user_name[i]) || ft_isspace(user_name[i]))
+		if (!ft_isprint(name[i]) || ft_isspace(name[i]))
 		{
 			*validation = FAILURE;
 			return ;
@@ -49,56 +49,75 @@ static void	check_user_name_syntax(char *user_name, int *validation)
 	*validation = SUCCESS;
 }
 
-static char	*get_user_name(char **user_name, int *validation)
+static char	*get_user_name(char **name, int *validation)
 {
-	*user_name = ic_readline("\033[1m\033[1;32mIntroduce your login: \033[0m");
-	printf("\n\n");
-	if (!*user_name) // Ctrl+D detectado
+	*name = ic_readline(ENTRY_USER);
+	ft_printf_fd(STDOUT, "\n\n");
+	if (!*name)
 	{
 		*validation = FAILURE;
 		return (NULL);
 	}
-	if (!**user_name) // Cadena vacía
+	if (!**name)
 	{
 		*validation = FAILURE;
-		return (*user_name);
+		return (*name);
 	}
-	check_user_name_syntax(*user_name, validation);
-	return (*user_name);
+	check_user_name_syntax(*name, validation);
+	return (*name);
 }
 
 static char	*is_valid_user_name(void)
 {
-	char	*user_name;
+	char	*name;
 	int		validation;
 
-	user_name = NULL;
+	name = NULL;
 	while (1)
 	{
-		if (!get_user_name(&user_name, &validation))
+		if (!get_user_name(&name, &validation))
 			return (NULL);
 		if (validation == SUCCESS)
 			break ;
-		free(user_name);
+		free(name);
 	}
-	return (user_name);
+	return (name);
 }
 
-void	print_session_start(t_shell *data, time_t start, char *name)
+char	*find_user(t_shell *data, t_var *vars)
+{
+	char	*name;
+	t_var	*var;
+
+	var = vars;
+	while (var)
+	{
+		if (ft_strcmp(var->key, "USER") == 0)
+		{
+			name = ft_strdup(var->value);
+			if (!name)
+				exit_error(data, ERR_MALLOC, EXIT_FAILURE);
+			name = ft_capitalize(name);
+			return (name);
+		}
+		var = var->next;
+	}
+	name = is_valid_user_name();
+	name = ft_capitalize(name);
+	if (!name)
+		exit_succes(data, MSG_GOODBYE_V2, EXIT_SUCCESS);
+	return (name);
+}
+
+void	print_session_start(t_shell *data, time_t start, char **user_name)
 {
 	struct tm	*local;
 
 	local = localtime(&start);
 	print_minishell_title();
-	// name = is_valid_user_name();
-	// if (!name)
-	// 	exit_succes(data, MSG_GOODBYE_V2, EXIT_SUCCESS);
-	// data->extra_features.user_name = ft_strdup(name);
-	// if (!data->extra_features.user_name)
-	// 	return (free(name), exit_error(data, ERR_MALLOC, EXIT_FAIL), (void)0);
-	// print_time_of_day(start, data->extra_features.user_name);
-	printf(MSG_TIME_START,
+	*user_name = find_user(data, data->env.vars);
+	print_time_of_day(start, data->extras.user_name);
+	ft_printf_fd(STDOUT, MSG_TIME_START,
 		local->tm_hour, local->tm_min, local->tm_sec,
 		local->tm_mday, local->tm_mon + 1, local->tm_year + 1900);
-	free(name);
 }

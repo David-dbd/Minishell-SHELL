@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_I.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 21:47:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/03 11:41:22 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:39:15 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	clean_tokens(t_prompt **prompt)
 
 void	clean_prompt(t_prompt *prompt)
 {
-	if (prompt->prompt)
-		free(prompt->prompt);
+	if (prompt->input)
+		free(prompt->input);
 	if (prompt->before_tokens_type)
 		free(prompt->before_tokens_type);
 	clean_tokens(&prompt);
@@ -109,6 +109,6 @@ void	clean_all(t_shell *data)
 	clean_env(&data->env, data->env.vars);
 	clean_ast(data->ast_root);
 	clean_fd(&data->exec);
-	clean_extras(&data->extra_features);
+	clean_extras(&data->extras);
 	clean_builtins_selection(data);
 }

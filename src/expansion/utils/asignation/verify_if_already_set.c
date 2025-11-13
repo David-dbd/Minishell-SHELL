@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_if_already_set.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 15:36:26 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/09/30 19:24:20 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/05 22:38:31 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
  	variable existente o se crea una nueva.
 */
 
-static int	assign_or_ignore_or_replace_value(t_var *var, char **value, int t)
+static int	assign_or_ignore_or_replace_value(t_shell *data, t_var *var, char **value, int t)
 {
 	if (t == EXP && var->type == EXP)
 	{// si solo es una palabra sin ""="" -> hola
@@ -47,9 +47,13 @@ static int	assign_or_ignore_or_replace_value(t_var *var, char **value, int t)
 		if (var->value)
 			free (var->value);
 		var->value = *value;
+		update_envp(data);
 	}
-	if (!var->value && var->type == EXP && t != EXP) //Si no existe su valor, solo hay que agregarse
+	if (!var->value && var->type == EXP && t != EXP)//Si no existe su valor, solo hay que agregarse
+	{
 		var->value = *value;
+		update_envp(data);
+	}
 	return (0);
 }
 
@@ -70,13 +74,14 @@ static void	handle_plus_assignation(t_shell *d, t_var *var, char **value, int t)
 		}
 		free (var->value);
 		var->value = tmp;
+		update_envp(d);
 		//printf("var->value: %s\n\n", var->value);
 	}
 }
 
 static int	handle_existing_value(t_shell *dat, t_var *var, char **value, int t)
 {
-	if (assign_or_ignore_or_replace_value(var, value, t) == IGNORE)
+	if (assign_or_ignore_or_replace_value(dat, var, value, t) == IGNORE)
 		return (IGNORE);
 	handle_plus_assignation(dat, var, value, t);
 	return (0);

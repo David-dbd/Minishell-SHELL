@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 22:20:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/03/18 15:22:15 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/08 18:27:50 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		ptr = malloc(0);
 		return (ptr);
 	}
-	if (size != 0 && nmemb * size > __SIZE_MAX__)
+	if (size != 0 && nmemb > __SIZE_MAX__ / size)
 		return (NULL);
 	total_size = (nmemb * size);
 	ptr = malloc(total_size);

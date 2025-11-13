@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_it_symbol.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 12:42:41 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/12 16:55:20 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 01:13:41 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ static void	sym_expa(t_shell *d, t_token *token, char **key_to_f, int sym_value)
 
 int	is_it_symbol(t_shell *data, t_token *token, char **key_to_find)
 {
-	printf("key_to_find: %s\n\n", *key_to_find);
+	// printf("key_to_find: %s\n\n", *key_to_find);
 	if (key_to_find[0][0] == '!' && key_to_find[0][1] == '\0')
 	{
-		if (data->ast_root->pid)
+		if (data->shell_pid)
 		{
-			sym_expa(data, token, key_to_find, data->ast_root->pid);
+			sym_expa(data, token, key_to_find, data->shell_pid);
 			return (TRUE);
 		}
 		return (FALSE);

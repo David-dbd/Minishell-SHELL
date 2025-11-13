@@ -175,7 +175,6 @@ void	handle_tilde_expansion(t_shell *d, t_prompt *p, const char *str, int *i)
 	}
 }
 
-
 /*
 	Procesa un token que comienza con '$':
 	- Salta si está seguido de un dígito ($1), que no se expande.
@@ -211,5 +210,5 @@ void	is_dolar(t_shell *data, t_prompt *prompt, const char *str, int *i)
 	&& (((str[*i + 1] && ft_isspace(str[*i + 1])) || str[*i + 1] == '\0')
 		|| (str[*i + 1] && str[*i + 1] == '/')
 		|| (str[*i + 1] && (str[*i + 1] == '+'))))
-	handle_tilde_expansion(data, prompt, str, i);
+		handle_tilde_expansion(data, prompt, str, i);
 }

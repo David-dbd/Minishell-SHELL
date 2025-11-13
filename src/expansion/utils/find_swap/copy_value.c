@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:22:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/04 21:42:00 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:42:37 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,12 @@ static int	calculate_total_length(char *token, char *value, char *key_to_find)
 static char	*find_dollar(char *token_val)
 {
 	char	*dollar;
-	int		dollar_count;
 
 	dollar = ft_strchr(token_val, '$');
 	while (dollar)
 	{
 		if (*(dollar + 1)
-			&& ft_isalpha(*(dollar + 1)) || is_symbol(*(dollar + 1)))
+			&& (ft_isalpha(*(dollar + 1)) || is_symbol(*(dollar + 1))))
 			return (dollar);
 		dollar = ft_strchr(dollar + 1, '$');
 	}

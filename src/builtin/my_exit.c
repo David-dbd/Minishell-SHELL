@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 23:55:15 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/26 19:45:45 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/08 16:55:00 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ static int	check_exit(t_shell *data, char **args)
 	{
 		if (is_numeric(args[0]))
 		{
+			if (!ft_atol_range(args[0]))
+				return (ft_printf_fd(STDERR, ERR_LIMIT_LONG, args[0]), EXIT_USE);
 			num = ft_atol(args[0]);
 			status = ((num % 256) + 256) % 256;
 			return (status);

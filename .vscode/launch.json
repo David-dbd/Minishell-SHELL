@@ -54,7 +54,7 @@
 				"engineLogging": false
 			}
 		},
-		// Configuración para entrada de archivo como prompt
+		// Configuración para entrada de archivo como prompt sin env
 		{
 			"name": "Debug Minishell with File",
 			"type": "cppdbg",

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_correction_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 21:34:18 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/03 10:34:59 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 01:04:32 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ask_confirmation(t_shell *data, t_token *token, char *built_in)
 
 	while (1)
 	{
-		printf("\033[1;32mDid you mean %s? y/n\033[0m\n", built_in);
+		ft_printf_fd(STDOUT, "\033[1;32mDid you mean %s? y/n\033[0m\n", built_in);
 		ptr = ic_readline("\033[1;32m->\033[0m");
 		if (!ptr)
 			exit_error(data, NULL, EXIT_FATAL_SIGNAL);

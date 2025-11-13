@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_capitalize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 13:38:05 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/30 18:02:28 by migarrid         ###   ########.fr       */
+/*   Created: 2025/10/28 16:47:15 by migarrid          #+#    #+#             */
+/*   Updated: 2025/11/04 16:47:51 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft_plus.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_capitalize(char *str)
 {
-	size_t	len;
-	char	*new_str;
+	size_t	i;
+	int		start;
 
-	if (s == NULL)
+	if (!str)
 		return (NULL);
-	len = ft_strlen(s);
-	new_str = (char *)malloc(len + 1);
-	if (!new_str)
-		return (NULL);
-	ft_memcpy(new_str, s, len + 1);
-	return (new_str);
-}
-/*#include <stdio.h>
-
-int	main(int ac, char **av)
-{
-	if (ac == 2)
+	i = 0;
+	start = true;
+	while (str[i] != '\0')
 	{
-		printf("Original: %s\n", av[1]);
-		printf("Copied: %s\n", ft_strdup(av[1]));
-		return (0);
+		if (ft_isalnum(str[i]))
+		{
+			if (start && ft_isalpha(str[i]))
+				str[i] = ft_toupper(str[i]);
+			if (!start && ft_isalpha(str[i]))
+				str[i] = ft_tolower(str[i]);
+			start = false;
+		}
+		else
+			start = true;
+		i++;
 	}
-	return (1);
-}*/
+	return (str);
+}

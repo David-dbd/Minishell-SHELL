@@ -6,12 +6,11 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 18:22:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/27 18:25:11 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/03 01:49:12 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
-
 
 static void	aux_delete(t_var **node, t_env *env)
 {
@@ -30,7 +29,7 @@ static void	aux_delete(t_var **node, t_env *env)
 	env->size--;
 }
 
-void	delete_var(t_env *env, char *key)
+void	delete_var(t_shell *data, t_env *env, char *key)
 {
 	t_var	*node;
 	t_var	*next;
@@ -53,4 +52,5 @@ void	delete_var(t_env *env, char *key)
 		}
 		node = node->next;
 	}
+	update_envp(data);
 }

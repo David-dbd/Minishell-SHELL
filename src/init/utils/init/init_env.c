@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:02:53 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/12 19:14:27 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:45:43 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,21 @@
  *	- NULL si no existe
 */
 
-char *get_var_value(t_var *vars, const char *key)
+char	*get_var_value(t_var *vars, const char *key)
 {
-	t_var *current;
+	t_var	*var;
 
 	if (!vars || !key)
 		return (NULL);
-	current = vars;
-	while (current)
+	var = vars;
+	while (var)
 	{
-		if (current->key && ft_strcmp(current->key, key) == 0)
-			return (current->value);
-		current = current->next;
+		if (var->key && ft_strcmp(var->key, key) == 0)
+		{
+			if (var->value && var->value[0] != '\0')
+				return var->value;
+		}
+		var = var->next;
 	}
 	return (NULL);
 }
@@ -56,6 +59,7 @@ static void	init_no_env(t_shell *data)
 	add_var(data, var[0], var[1], ENV);
 	add_var(data, var[2], var[3], ENV);
 	add_var(data, var[4], var[5], ENV);
+	free(var);
 }
 
 /*
@@ -87,7 +91,7 @@ static void	init_env(t_shell *data, char **envp)
 		add_var(data, key, value, ENV);
 		i++;
 	}
-	delete_var(&data->env, "_");
+	delete_var(data, &data->env, "_");
 	update_shlvl(data->env.vars);
 }
 
@@ -95,11 +99,11 @@ static void	init_env(t_shell *data, char **envp)
 	Inicializa el entorno del shell: usa 'envp' si existe o crea uno básico.
 */
 
-void	init_enviroment(t_shell *data, char **envp)
+void	init_enviroment(t_shell *data, t_env *env, char **envp)
 {
 	if (!envp || !*envp)
 		init_no_env(data);
 	else
 		init_env(data, envp);
-	data->env.envp = make_envp(data, &data->env, data->env.vars);
+	env->envp = make_envp(data, env, env->vars);
 }

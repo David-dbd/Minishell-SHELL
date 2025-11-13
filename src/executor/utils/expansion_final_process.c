@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_final_process.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 19:04:23 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/12 13:21:07 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 02:36:05 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ static void	prepare_simplify(t_shell *data, t_prompt *prompt, t_token *tokens)
 				if (is_cmd_builtin_type(tokens[i - 1].type)
 					&& tokens[i + 1].type != NO_SPACE)
 				{
-					tokens[i].type = INDIFERENT;
+					tokens[i].type = DONT_ELIMINATE;
 				}
 				else if (tokens[i - 1].type == WORD
 					&& tokens[i + 1].type == WORD)
 				{
-					tokens[i].type = INDIFERENT;
+					tokens[i].type = DONT_ELIMINATE;
 				}
 			}
 		}
@@ -179,8 +179,8 @@ void expansion_final_process(t_shell *data, t_node *node)
 		//printf("node->token.value: %s\n\n", node->token->value);
 		create_before_tokens(data, data->prompt.tokens, &data->prompt);
 		expansion(data, data->prompt.tokens, node->token->id, FINAL_PHASE);
-		printf("AFTER EXPANSION\n\n");
-		print_tokens_debug(&data->prompt);
+		// printf("AFTER EXPANSION\n\n");
+		// print_tokens_debug(&data->prompt);
 		prepare_simplify(data, &data->prompt, data->prompt.tokens);
 		//printf("AFTER PREPARE_SIMPLY\n\n");
 		//print_tokens_debug(&data->prompt);

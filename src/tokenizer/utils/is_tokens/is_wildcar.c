@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_wildcar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:41 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/10 15:39:37 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 01:08:41 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,11 @@ char	*cleanner_wildcar(t_shell *data, char *wildcar, int len, char trash)
 	- Si es ';', lo incorpora al token y termina la wildcard.
 */
 
-static int	isn_wild(int c, int *i)
+static int	isn_wild(int c)
 {
 	if (c == '|' || c == '<' || c == '>' || c == '&' || c == '(' || c == ')'
-		|| c == '$' || c == '\'' || c == '\"' )
+		|| c == '$' || c == '\'' || c == '\"' || c == ';')
 		return (1);
-	else if (c == ';')
-	{
-		(*i)++;
-		return (TRUE);
-	}
 	return (FALSE);
 }
 
@@ -100,11 +95,11 @@ void	is_wildcar(t_shell *data, t_prompt *prompt, const char *str, int *i)
 	{
 		start = *i;
 		(*i)++;
-		while (str[*i] != '\0' && !ft_isspace(str[*i]) && !isn_wild(str[*i], i))
+		while (str[*i] != '\0' && !ft_isspace(str[*i]) && !isn_wild(str[*i]))
 			(*i)++;
-		len = *i - start;
-		if (len > 0)
+		if (*i > 0 && str[start] != '\0')
 		{
+			len = *i - start;
 			wildcar = ft_substr(str, start, len);
 			if (!wildcar)
 				exit_error(data, ERR_MALLOC, EXIT_FAILURE);

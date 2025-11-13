@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_unalias.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:48:09 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/23 12:46:17 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/10/30 02:05:22 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 	unalias hola -> Se encuentra hola en la lista enlazada y se libera.
 */
 
-static void	aux_delete(t_cmd **node, t_cmd *env)
+static void	aux_delete(t_cmd **node)
 {
 	if ((*node)->value)
 	{
@@ -57,7 +57,7 @@ static void	delete_alias_node(t_cmd *cmd, char *value)
 			if (node->next)
 				node->next->prev = node->prev;
 			next = node->next;
-			aux_delete(&node, cmd);
+			aux_delete(&node);
 			node = next;
 			continue ;
 		}
@@ -84,7 +84,7 @@ static void	find_built_in(t_cmd *cmd, char *arg)
 	}
 }
 
-int	my_unalias(t_shell *data, t_cmd	*cmd, char **args)
+int	my_unalias(t_cmd *cmd, char **args)
 {
 	int	i;
 	int	exit_flag;

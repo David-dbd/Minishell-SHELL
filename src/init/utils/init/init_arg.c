@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_arg.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:46:42 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/04 13:39:52 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:44:18 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,21 @@ static void	open_error(t_shell *data, char *file)
 void	init_arg(t_shell *data, int ac, char **av)
 {
 	int		fd;
-	char	*line;
 
 	if (ac >= 2)
 	{
 		fd = open(av[1], O_RDONLY);
 		if (fd < 0)
 			open_error(data, av[1]);
-		line = get_next_line(fd);
-		while (line)
+		data->prompt.input = get_next_line(fd);
+		while (data->prompt.input)
 		{
-			if (!tokenizer(data, &data->prompt, line))
+			if (!tokenizer(data, &data->prompt, data->prompt.input))
 				exit_error(data, NULL, EXIT_USE);
 			ast_builder(data, data->prompt.tokens, data->prompt.n_tokens);
 			executor_recursive(data, data->ast_root, &data->exec, FATHER);
-			clean_prompt(&data->prompt);
-			line = get_next_line(fd);
+			clean_cycle(data, &data->prompt, &data->ast_root);
+			data->prompt.input = get_next_line(fd);
 		}
 		get_next_line(RESET);
 		exit_succes(data, NULL, data->exit_code);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:41:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/10/31 08:14:25 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/13 01:45:11 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,25 @@
 	de modo que que siempre pueda ejecutarse (no hace nada).
 */
 
-static t_node	*allocate_true_node(t_shell *data, t_token **true_token)
+static t_node	*allocate_true_node(t_shell *data)
 {
 	t_node	*node;
 
-	*true_token = ft_calloc(1, sizeof(t_token));
-	if (!(*true_token))
-		return (NULL);
 	node = ft_calloc(1, sizeof(t_node));
 	if (!node)
+		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
+	node->token = ft_calloc(1, sizeof(t_token));
+	if (!node->token)
 	{
-		free(*true_token);
-		return (NULL);
-	}
-	(*true_token)->value = ft_strdup("true");
-	if (!(*true_token)->value)
-	{
-		free(*true_token);
 		free(node);
-		return (NULL);
+		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
+	}
+	node->token->value = ft_strdup("true");
+	if (!node->token->value)
+	{
+		free(node->token);
+		free(node);
+		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
 	}
 	return (node);
 }
@@ -45,29 +45,24 @@ static t_node	*allocate_true_node(t_shell *data, t_token **true_token)
 t_node	*create_true_node(t_shell *data, t_type type)
 {
 	t_node	*node;
-	t_token	*true_token;
 
-	node = allocate_true_node(data, &true_token);
-	if (!node)
-		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
+	node = allocate_true_node(data);
+	node->fake = TRUE;
 	node->type = type;
-	node->token = true_token;
 	node->token_hash = data->prompt.n_tokens + 1;;
 	node->args = ft_calloc(2, sizeof(char *));
-	if (!node->args)
-		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
 	node->args[0] = ft_strdup("true");
-	if (!node->args[0])
+	if (!node->args || !node->args[0])
+	{
+		clean_node(&node);
 		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
+	}
 	node->redir = NULL;
 	node->assig_tmp = NULL;
 	node->arg_types = NULL;
 	node->left = NULL;
 	node->right = NULL;
-	node->pid = 0;
-	node->exit_code = 0;
 	node->executed = FALSE;
-	node->fake = TRUE;
 	node->background = FALSE;
 	return (node);
 }
@@ -85,6 +80,8 @@ t_node	*create_node(t_shell *data, t_token *token, t_type type)
 	if (!node)
 		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
 	node->type = type;
+	if (node->type == WILDCARD)
+		node->type = COMMAND;
 	node->token = token;
 	node->token_hash = token->hash;
 	node->args = NULL;
@@ -93,8 +90,6 @@ t_node	*create_node(t_shell *data, t_token *token, t_type type)
 	node->assig_tmp = NULL;
 	node->left = NULL;
 	node->right = NULL;
-	node->pid = 0;
-	node->exit_code = 0;
 	node->executed = FALSE;
 	node->fake = FALSE;
 	node->background = FALSE;
