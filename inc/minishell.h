@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/15 23:57:00 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/16 21:17:05 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,7 +252,6 @@ int		check_ambiguous_redir(t_shell *data, const char *filename, int mode);
 void	expansion_final_process(t_shell *data, t_node *node);
 void	which_builtin(t_shell *data, t_token *token, t_node *node);
 int		apply_properties(t_shell *data, t_node *node, int mode);
-int		apply_redirs(t_shell *data, t_node *node, int mode);
 void	apply_temp_asig(t_shell *data, t_token *tokens, t_node *node);
 
 //EXPANSION

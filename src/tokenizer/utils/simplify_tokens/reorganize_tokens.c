@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 22:44:45 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/14 23:12:29 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/16 21:27:56 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ static void	free_tokens_in_range(t_token *tokens, int *range)
 		if (is_alloc_type(tokens[i].type))
 		{
 			if (tokens[i].value)
+			{
 				free(tokens[i].value);
+				tokens[i] = (t_token){0};
+				tokens[i].value = NULL;
+			}
 		}
 		i++;
 	}

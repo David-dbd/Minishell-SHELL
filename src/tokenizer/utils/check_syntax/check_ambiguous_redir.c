@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 01:02:29 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/14 23:15:09 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/16 21:37:08 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	check_ambiguous_redir(t_shell *data, const char *filename, int mode)
 {
+	if (!filename)
+		return (FAIL);
 	if (filename[0] == '*' && filename[1] == '\0')
 	{
 		if (mode == CHILD)
@@ -21,4 +23,5 @@ int	check_ambiguous_redir(t_shell *data, const char *filename, int mode)
 		if (mode == FATHER)
 			return (FAIL);
 	}
+	return (OK);
 }

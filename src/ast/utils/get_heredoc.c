@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 04:19:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/15 23:25:59 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/16 21:33:22 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	save_heredoc_line(t_shell *data, t_redir *redir, char *line)
 	if (!heredoc_line)
 	{
 		free(line);
-		return (exit_error(data, ERR_MALLOC, EXIT_FAILURE));
+		return (exit_error(data, ERR_MALLOC, EXIT_FAILURE)); // leak no liberamos memoria anterior del arbol
 	}
 	ft_lstadd_back(&redir->heredoc_lines, heredoc_line);
 	return (SUCCESS);

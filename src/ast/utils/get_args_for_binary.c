@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 23:03:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/14 23:22:44 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/16 21:32:40 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	aux_alloc_mem(t_shell *data, char ***args, int n_args)
 {
 	*args = ft_calloc(n_args + 1, sizeof(char *));
 	if (!*args)
-		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
+		exit_error(data, ERR_MALLOC, EXIT_FAILURE); // tendremos leaks porque falta liberara todo el arbol anterior
 }
 
 static int	extract_bin_arg(t_shell *d, char **arg_extract, char *word)
@@ -41,7 +41,7 @@ static int	extract_bin_arg(t_shell *d, char **arg_extract, char *word)
 		return (FAILURE);
 	*arg_extract = ft_strdup(word);
 	if (!*arg_extract)
-		exit_error(d, ERR_MALLOC, EXIT_FAILURE);
+		exit_error(d, ERR_MALLOC, EXIT_FAILURE); // tendremos leaks porque falta liberara todo el arbol anterior
 	return (SUCCESS);
 }
 

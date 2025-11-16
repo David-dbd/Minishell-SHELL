@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 01:44:27 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/13 00:22:16 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/16 21:33:48 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	create_dinamic_arr(t_shell *data, int **arg_types, int i, int j)
 {
 	*arg_types = (int *)malloc((j - i) * sizeof(int));
 	if (!*arg_types)
-		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
+		exit_error(data, ERR_MALLOC, EXIT_FAILURE); // leak no liberamos memoria anterior del arbol
 	ft_memset(*arg_types, -1, (j - i) * sizeof(int));
 }
 

@@ -1,17 +1,3 @@
-cd ..
-cloc Makefile
-ncdu
-cmatriz
-cmatrix
-cmd
-make leaks
-\xC0Z\xA9\x04
-sds
-cs
-sdc
-va
-ev
-v
 cd /
 (ls && echo hola | echo "
 nada"
@@ -49,7 +35,6 @@ echo "$"U""S"ER "
 echo "$"U""S"ER"
 echo $USER" A    $     B "$USER
 /bin/echo "''$USER''"
-echo $USER"A    $     B"$USER
 /bin/echo "'$USER'"
 /bin/echo '' ""
 /bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
@@ -134,8 +119,6 @@ cd -
 pwd
 celar
 makee
-make
-./minishell
 d
 s
 cd ~+
@@ -154,7 +137,6 @@ cd ~-
 unset PWD
 ~+
 ls && ~-
-cat << LM
 cat << :M
 :m
 :M
@@ -168,11 +150,7 @@ $USER$USER$USER
 '$USER'
 export A=1 && cat << LM
 $A
-LM
 cat << 'lim' | cat -e
-$NOVAR
-$HOME
-lim
 bash
 echo $PATH
 echo $PATH | cat -e
@@ -186,14 +164,36 @@ clar
 cat <<  "$USER"
 why
 us
-$USER
-clear
-ls
 export a="asd" b="de" o= c="hellomi"
 export a="asd" b="de" c="hellomi"
 /bin/echo $HOME$NOTHING$USER$
 export T="echo segfault | grep segfault"
 export a="asd" b="de" o= c="hellomi" X
 export a="asd" b="de" c="hellomi" X
-export T="ls -l"
 $T
+mak
+make minishell
+make re
+./minishell
+exit
+exitls
+echo $USER"A    $     B"$USER
+export T="ls -l"
+cd ext/
+cd ..
+ls
+/
+echo /
+clear
+cat << LIM
+LIM
+make
+cat << LM
+lm
+LM
+cat << lim
+cat << lim | cat -e
+$USER
+$NOVAR
+$HOME
+lim

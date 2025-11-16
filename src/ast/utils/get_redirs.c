@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:59:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/16 14:35:07 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/16 21:07:11 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ t_redir	*lstlast_redir(t_redir *lst)
 	return (lst);
 }
 
+bool expand_heredoc(t_token *token)
+{
+	if (!token[+1].type)
+		return false;
+	return !(token[+1].single_quoted || token[+1].double_quoted);
+}
+
 /*
  * Añade redirección a lista: crea estructura con tipo, archivo
  * y descriptor, manejando números explícitos o valores por defecto
@@ -59,7 +66,7 @@ t_redir	*add_redir(t_shell *data, t_redir *lst, t_token *token, char *filename)
 			redir->fd_redir = STDOUT_FILENO;
 	}
 	if (redir->type == REDIR_HEREDOC)
-		get_heredoc(data, redir, filename, !(token[1].single_quoted || token[1].double_quoted));
+		get_heredoc(data, redir, filename, expand_heredoc(token));
 	if (!lst)
 		return (redir);
 	last = lstlast_redir(lst);
