@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/15 23:22:42 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/16 01:16:17 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ struct s_token
 	char		*value;
 	bool		single_quoted;
 	bool		double_quoted;
+	bool		heredoc;
 };
 
 typedef struct s_prompt

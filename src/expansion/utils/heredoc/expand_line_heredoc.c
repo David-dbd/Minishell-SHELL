@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 17:38:45 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/16 00:00:48 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/16 01:16:01 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	aux_mem_alloc(t_shell *data, t_token *token, char *line, char **key_to_find)
 	int	len;
 
 	token->value = ft_strdup(line);
-	token->double_quoted = TRUE; // lo hago asi porque empty string sino reoganiza tokens y no deeberia pero la logica es compleja help david
+	token->heredoc = TRUE; // lo hago asi porque empty string sino reoganiza tokens y no deeberia pero la logica es compleja help david
 	if (!token->value)
 		exit_error(data, ERR_MALLOC, EXIT_USE);
 	len = ft_strlen(token->value);

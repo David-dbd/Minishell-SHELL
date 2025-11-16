@@ -1,7 +1,3 @@
-ncdu ~
-fernanda
-lsls
-cd minishell/
 cd ..
 cloc Makefile
 ncdu
@@ -11,6 +7,7 @@ cmd
 make leaks
 \xC0Z\xA9\x04
 sds
+cs
 sdc
 va
 ev
@@ -61,15 +58,12 @@ echo "" "" "" -n -n -n -n
 echo '' -n
 export T="l"
 $Ts -a
-export T="echo segfault | grep segfault"
-$T
 echo $/"$/"
 /bin/echo $USER$TESTNOTFOUND$HOME$
 unset "?"
 /bin/echo $HOME
 unset $HOME
 echo "$HO ME"
-export a="asd" b="de" o= c="hellomi" X
 ls | cat << stop | ls -la | cat << stop1 | ls | cat << stop2 | ls -la | cat << stop3
 ls | << LM
 ls | << stop
@@ -80,9 +74,6 @@ echo $'HOM'E$USER | cat -e
 echo $"42$"
 export pipe_var=1 | echo $pipe_var
 ls | cat << stop
-export PATH=" "
-echo $PATH
-echo 1
 export A=" "
 echo $A | cat -e
 export TEST=
@@ -103,14 +94,15 @@ ls 'test'*
 ls "test"*
 ls dfbvdf
 ls > file > * > file2
-clar
 grep hi <./test_files/infile
 echo  $US"ER"
  cat << $US"ER"
 <<
 cat << $US"ER"
+<< LM
 cat << "$US"E"R"
 << $USER
+sd
 scv
 scd
 $US
@@ -142,6 +134,8 @@ cd -
 pwd
 celar
 makee
+make
+./minishell
 d
 s
 cd ~+
@@ -160,6 +154,7 @@ cd ~-
 unset PWD
 ~+
 ls && ~-
+cat << LM
 cat << :M
 :m
 :M
@@ -169,31 +164,36 @@ $USER$df$USER
 'SUSER'
 '$USER"
 $USER$USER$USER
-'$USER'
-cat << 'lim' | cat -e
-$NOVAR
-lim
-bash
-make
-./minishell
-export A=1 && cat << 'LM'
-$HOMEE
-export A=1 && cat << LM''
-$HoME
-export A=1 && cat << LM
-<< LM
-cat << LM
-cat << 'LM'
-$sdvs
-$HOMe
-sd
-ls
-$sd
-cs
-$USER
 << LM CAT
-$svds
-$HOME
+'$USER'
+export A=1 && cat << LM
 $A
 LM
+cat << 'lim' | cat -e
+$NOVAR
+$HOME
+lim
+bash
+echo $PATH
+echo $PATH | cat -e
+echo $PATH | usr/bin/cat -e
+export PATH=" "
+echo $PATH | /bin/cat -e
+echo 1
+not
+migarrid
+clar
+cat <<  "$USER"
+why
+us
+$USER
 clear
+ls
+export a="asd" b="de" o= c="hellomi"
+export a="asd" b="de" c="hellomi"
+/bin/echo $HOME$NOTHING$USER$
+export T="echo segfault | grep segfault"
+export a="asd" b="de" o= c="hellomi" X
+export a="asd" b="de" c="hellomi" X
+export T="ls -l"
+$T

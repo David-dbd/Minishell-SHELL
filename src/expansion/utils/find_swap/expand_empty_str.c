@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:57:46 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/15 23:56:57 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/16 01:15:21 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ int	expand_empty_str(t_shell *data, t_token *token, char **key_to_find, int type
 			handle_double_quoted_token(token, token_len);
 			return (REPLACED);
 		}
+		else if (token->heredoc)
+			ft_memset(token->value, 0, token_len);
 		else
 			eliminate_token(&data->prompt, data->prompt.tokens, token->id);
 	}

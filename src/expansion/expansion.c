@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:57:33 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/15 17:24:21 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/16 15:34:21 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int expansion(t_shell *data, t_token *tokens, int i, int phase)
 			return (SUCCESS);
 		if (tokens[i].type == EXPANSION)
 		{
-			if (i > 0 && tokens[i - 1].type == REDIR_HEREDOC)
+			if ((i > 1 && tokens[i - 1].type == REDIR_HEREDOC) || (i >= 2 && is_quote_type(tokens[i - 1].type) && tokens[i - 2].type == REDIR_HEREDOC))
 			{
 				i++;
 				continue ;
