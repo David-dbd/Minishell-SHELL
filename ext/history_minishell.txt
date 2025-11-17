@@ -1,106 +1,3 @@
-(ls && echo hola | echo " nada" ) ||
-(ls && echo hola | echo " nada" ) || ls
-ls |
-ls | ls
-ls &&  s
-echo '"
-echo '" " '
-lls
-ls ||
-ls || ls
-ls &&  sd
-()
-ls &&  ()
-ls &&
-echo "
-hola"
-wc -l
-ls &&  ( echo " hola" | wc -l )
-c;ear
-(echo a && exit 1) && (echo b && exit 1) || (echo c && exit 1)
-(echo a && exit 1) && (echo b && exit 1) || (echo c && exit 1) || (echo d && exit 1)
-echo ''
-/bin/echo "exit_code ->$? user ->$USER home -> $HOME"
-cat < Makefile > out >> out1 | wc -l out1 > out2
-echo $/ $/
-mikel
-echo "$"U"SER
-echo "$"U"SER "
-echo "$"U""S"ER
-echo "$"U""S"ER "
-echo "$"U""S"ER"
-echo $USER" A    $     B "$USER
-/bin/echo "''$USER''"
-/bin/echo "'$USER'"
-/bin/echo '' ""
-/bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
-/bin/echo test$MISSING "$MISSING"
-echo "" "" "" -n -n -n -n
-echo '' -n
-export T="l"
-$Ts -a
-echo $/"$/"
-/bin/echo $USER$TESTNOTFOUND$HOME$
-unset "?"
-/bin/echo $HOME
-unset $HOME
-echo "$HO ME"
-ls | cat << stop | ls -la | cat << stop1 | ls | cat << stop2 | ls -la | cat << stop3
-ls | << LM
-ls | << stop
-echo "$HO ME" | cat -e
-echo $USE"R"$HOME
-echo $'HOM'E$USER
-echo $'HOM'E$USER | cat -e
-echo $"42$"
-export pipe_var=1 | echo $pipe_var
-ls | cat << stop
-export A=" "
-echo $A | cat -e
-export TEST=
-ls * | ls
-clea
-touch "*1"
-/usr/bin/printf "%s\\n" "*"* | sort
-rm "*1"
-touch tmp_out
-/bin/echo 42 >tmp_o*t*
-rm -f "tmp_out*"
-ls > file * file2
-ls > *
-ls && ls > *
-/usr/bin/printf "%s\\n" * | sort
-ls *
-ls 'test'*
-ls "test"*
-ls dfbvdf
-ls > file > * > file2
-grep hi <./test_files/infile
-echo  $US"ER"
- cat << $US"ER"
-<<
-cat << $US"ER"
-<< LM
-cat << "$US"E"R"
-<< $USER
-scv
-scd
-$US
-echo $US"ER"
->> $US"ER"
-<< $US"ER"
-> $NOEXISTE.file
-echo -nnnn 2> stderrormini
-unset _
-unset sd
-unset 1sd
-unset $PATH 2> stderrormini
-unset PATH 2> stderrormini
-unset s
-unset d
-unset A
-unset hola
-unset $PATH
 $PWD
 unset OLDPWD
 echo $HOME$NOTHING$USER$
@@ -114,8 +11,6 @@ cd -
 pwd
 celar
 makee
-d
-s
 cd ~+
 cmd && nothing if (tokens[i - 1].type && !tokens[i - 1].type)
 cmd && cmd
@@ -178,22 +73,127 @@ cd ..
 echo /
 cat << LIM
 LIM
-make
 cat << LM
 lm
-LM
 cat << lim
 cat << lim | cat -e
 $NOVAR
 $HOME
 lim
 clar
-$USER
  $HOME
-EOF
-ls && cat << EOF
 ./minishell
-clear
-ls
 vs
+make
+ls; ls
+ls | ls ; ls | ls 
+ls | ls ; ls || ls 
+ls && ls ; ls || ls 
+echo A | echo B && echo C; echo A | echo B || echo C 
+(echo A | echo B) && echo C; (echo A | echo B) || echo C 
+A=1; ls 
+A=1; ls && echo A | echo b
+ ls && echo A | echo b; A=1
+A=1; ls && (echo A | echo b)
+(cat << EOF)
+ls; A=1; ls && echo A | echo b
+< ls; A=1; ls && echo A | echo b
+> testfile; A=1; ls && echo A | echo b
+< ls > A > B > C; A=1; ls && echo A | echo b
+ls; cat << EOF
+sva
+fs
+< ls > A > B > C; A=1; ls && echo A | echo b; cat << EOF
+zs
+ echo A | echo b; cat << EOF
+sads
+echo b; cat << EOF
+sadf
+ls; echo b; cat << EOF
+echo b; cat << EOF; ls
+cat << EOF; ls; echo b
+ssdv
+cat << EOF; (ls | ls)
+ls && ls && cat << EOF; 
+vasv
+dv
+ls && ls && << EOF
+df
+sdcv
+ssc
+as
+ads
+cg
+ls && ls && cat << EOF; sd
+sdvs
+dsv
+svds
+fvs
+svd
+ls && cat << EOF
+ls && ls && cat << EOF
+svsdds
+ls && ls && ls && ls
+cvsdv
+vsd
+ls && ls && cat << EOF && ls
+sdsfv
+ls && ls && cat << EOF 
+svs
+vds
+A=1; B="dos"; C=$((3+4)); echo "$A-$B-$C" | tr 'o' 'O' ; (echo x; echo y) | grep x || echo "no_x" ; D=$(echo sub_$(echo ok)); echo "$D" ; E="mix $(echo z)"; echo "$E" ; echo test | sed 's/t/T/' ; false || echo "fallback" ; echo done
+A=1; B="dos"; echo "$A-$B-$C" | tr 'o' 'O' ; (echo x; echo y) | grep x && echo "no_x"; echo test | sed 's/t/T/' ; false || echo "fallback" ; echo done ;
+A=1; B="dos"; echo "$A-$B-$C"
+A=1; B="dos"
+A=1; B="dos";
+ls;
+ls ;
+A=1; B="dos"; echo "$A-$B-$C" | tr 'o' 'O'
+A=1; B="dos"; echo "$A-$B-$C" | tr 'o' 'O' ; (echo x; echo y) | grep x && echo "no_x"; echo test | sed 's/t/T/' ; false || echo "fallback" ; echo done ; << EOF
+A=1; B="dos"; echo "$A-$B-$C" | tr 'o' 'O' ; (echo x; echo y) | grep x && echo "no_x"; echo test | sed 's/t/T/' ; false || echo "fallback" ; echo done
+sc
+A=1; B="dos"; echo "$A-$B-$C" | tr 'o' 'O' ; (echo x; echo y) | grep x && echo "no_x"; echo test | sed 's/t/T/' ; false || echo "fallback" ; echo done; << EOF
+sdc
+scd
+A=1; B="dos"; echo "$A-$B-$C" | tr 'o' 'O' ; (echo x; echo y) | grep x && echo "no_x"; echo test | sed 's/t/T/' ; false || echo "fallback" ; echo done;
+A=1; B="dos"; echo "$A-$B-$C" | tr 'o' 'O' ; (echo x; echo y) | grep x && echo "no_x"; echo test | sed 's/t/T/' ; false || echo "fallback" ; echo done; > test
+sdv
+sv
+sdvsdv
+sds
+sdfs
+sdga
+csd
+csad
+svdsa
+echo A || ls; ls && (echo done); ls | wc -l; << LM
+echo A || ls; ls && (echo done); ls | wc -l; << LMscds
+echo A || ls; ls && (echo A || ls; ls && (echo done); ls | wc -l; << LM); ls | wc -l; << LMscds
+sdcs
+ds
+echo A || ls
+echo A || ls; ls && (echo A; A=1); ls | wc -l; << LM
+cs
 sd
+Hola
+(cat) << LM
+echo A B C D || ls; ls && (echo A; A=1); ls | wc -l; << LM
+LM
+echo A B C D || ls; ls && (echo A; A=1); ls | wc -l
+<< LM
+<< EOF
+> ls
+$USER
+como 
+estas?
+EOF
+hola
+comoe
+(cat) << EOF
+hola como estas
+ls
+clear
+cat << 1 | cat 2
+inner
+cat << 1 | cat << 2
+outer

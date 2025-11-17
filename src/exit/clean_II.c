@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 01:53:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/17 01:09:21 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:37:57 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 void	clean_token(t_token **token)
 {
+	if (!token || !*token)
+		return ;
 	if ((*token)->value)
 	{
 		free((*token)->value);
@@ -47,6 +49,8 @@ void	clean_redirs(t_redir **lst)
 	while (current)
 	{
 		next = current->next;
+		if (current->filename)
+			ft_free((void **)&current->filename);
 		if (current->heredoc_lines)
 			ft_lstclear(&current->heredoc_lines, ft_free);
 		ft_free((void **)&current);
@@ -62,6 +66,8 @@ void	clean_redirs(t_redir **lst)
 
 void	clean_node(t_node **node)
 {
+	if (!node || !*node)
+		return ;
 	if ((*node)->args)
 		ft_free_str_array(&(*node)->args);
 	if ((*node)->arg_types)

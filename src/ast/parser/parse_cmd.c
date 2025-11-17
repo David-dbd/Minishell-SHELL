@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:29:52 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/13 22:26:39 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 15:42:17 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	index_redir_input(int type, int *i, int n_tokens)
 
 t_node	*special_cases(t_shell *data, t_token *tokens, int *i, int n_tokens)
 {
-	t_node	*left;
+	t_node	*central;
 
 	if (*i == n_tokens)
 		return (NULL);
@@ -63,24 +63,26 @@ t_node	*special_cases(t_shell *data, t_token *tokens, int *i, int n_tokens)
 		|| (*i + 2 < n_tokens && is_redir_type(tokens[*i].type)
 			&& !is_cmd_builtin_type(tokens[*i + 2].type)))
 	{
-		left = create_true_node(data, COMMAND);
-		left->redir = get_redirs(data, tokens, i, TRUE);
-		left->background = get_background(tokens, n_tokens, i);
-		return (left);
+		central = create_true_node(data, COMMAND);
+		if (!central)
+			return (NULL);
+		central->redir = get_redirs(data, tokens, i, TRUE);
+		central->background = get_background(tokens, n_tokens, i);
+		return (central);
 	}
 	return (NULL);
 }
 
-int	get_information(t_shell *data, t_token *tokens, int *i, t_node *left)
+int	get_information(t_shell *data, t_token *tokens, int *i, t_node *central)
 {
 	int		start;
 
 	start = *i;
-	left->assig_tmp = get_temp_asignations(data, tokens, *i);
-	left->redir = get_redirs(data, tokens, i, COMMAND);
-	left->args = get_args_for_binary(data, tokens, i);
-	left->arg_types = get_arg_types(data, left, start, *i);
-	left->background = get_background(tokens, data->prompt.n_tokens, i);
+	central->assig_tmp = get_temp_asignations(data, tokens, *i);
+	central->redir = get_redirs(data, tokens, i, COMMAND);
+	central->args = get_args_for_binary(data, tokens, i);
+	central->arg_types = get_arg_types(data, central, start, *i);
+	central->background = get_background(tokens, data->prompt.n_tokens, i);
 	return (SUCCESS);
 }
 
@@ -103,12 +105,12 @@ int	get_information(t_shell *data, t_token *tokens, int *i, t_node *left)
 
 t_node	*parse_cmd(t_shell *data, t_token *tokens, int *i, int n_tokens)
 {
-	t_node	*left;
+	t_node	*central;
 
-	left = NULL;
-	left = special_cases(data, tokens, i, n_tokens);
-	if (left)
-		return (left);
+	central = NULL;
+	central = special_cases(data, tokens, i, n_tokens);
+	if (central)
+		return (central);
 	if (*i < n_tokens && tokens[*i].type
 		&& (is_cmd_builtin_type(tokens[*i].type)
 			|| is_real_assignation_type(tokens[*i].type)
@@ -116,16 +118,15 @@ t_node	*parse_cmd(t_shell *data, t_token *tokens, int *i, int n_tokens)
 	{
 		index_redir_input(tokens[*i].type, i, n_tokens);
 		//expand_alias(data, tokens, *i); //verificar si el cmd es un alias o no, ver si se puede colocar en transform tokens
-		left = create_node(data, &tokens[*i], tokens[*i].type);
-		if (is_asignation_type(tokens[*i].type))
-		{
-			safe_index_plus(i, data->prompt.n_tokens);
-			return (left);
-		}
-		get_information(data, tokens, i, left);
-		if (left->redir && check_signal_node_heredoc(left, left->redir))
+		central = create_node(data, &tokens[*i], tokens[*i].type);
+		if (!central)
 			return (NULL);
-		return (left);
+		if (is_asignation_type(tokens[*i].type))
+			return (safe_index_plus(i, data->prompt.n_tokens), central);
+		get_information(data, tokens, i, central);
+		if (data->error_state == TRUE || check_signal_node_heredoc(central))
+			return (clean_node(&central), NULL);
+		return (central);
 	}
-	return (left);
+	return (central);
 }

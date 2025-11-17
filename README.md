@@ -21,6 +21,8 @@ Minishell - Bash
 ## POR HACER:
 
 ## MIKEL:
+- leaks -> (cat) << LM
+- No funciona
 
 ## DAVID:
 - Important:

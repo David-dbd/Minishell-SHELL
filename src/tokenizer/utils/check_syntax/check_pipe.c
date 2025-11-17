@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 22:40:33 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/14 01:18:01 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:47:50 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_pipe(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
 	if (tokens[i].type == PIPE)
 	{
 		if ((i > 0 && i + 1< prompt->n_tokens) && tokens[i + 1].type
-			&& tokens[i - 1].type && ((tokens[i + 1].type == COMMAND
+				&& tokens[i - 1].type && ((tokens[i + 1].type == COMMAND
 					|| tokens[i + 1].type == WORD
 					|| tokens[i + 1].type == BUILT_IN
 					|| tokens[i + 1].type == PAREN_OPEN

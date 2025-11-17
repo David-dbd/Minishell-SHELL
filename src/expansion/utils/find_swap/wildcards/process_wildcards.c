@@ -6,12 +6,11 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 16:18:03 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/17 01:09:31 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:42:43 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../../inc/minishell.h"
-
 
 static int	extract(t_shell *d, t_token *t, int *wildc_type, char **key_to_find)
 {

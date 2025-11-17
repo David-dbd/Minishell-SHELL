@@ -6,12 +6,11 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 19:54:17 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/17 01:32:27 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:39:02 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft_plus.h"
-
 
 int	ft_strmatch_cmp(const char *s1, const char *s2)
 {

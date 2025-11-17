@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:51:54 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/16 01:16:17 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:39:57 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ typedef struct s_builtin
 {
 	char	**builtins_selection;
 	int		n_builtins;
-}t_builtin;
+}	t_builtin;
 
 typedef struct s_extras
 {
@@ -180,6 +180,7 @@ typedef struct s_shell
 	pid_t		last_background_pid;
 	t_extras	extras;
 	int			exit_code;
+	bool		error_state;
 }	t_shell;
 
 #endif

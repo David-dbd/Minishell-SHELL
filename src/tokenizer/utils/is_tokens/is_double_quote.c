@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/13 02:20:59 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:46:32 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	make_word_d(t_shell *data, t_prompt *promp, const char *s, int range[2])
 	word = cleanner_slash_quotes_d(data, word, range[1] - range[0], &flag);
 	ptr = ft_strchr(word, '$');
 	if (ptr && *ptr == '$' && (*(ptr + 1)) != '\0' && !ft_isspace(*(ptr + 1))) //antes simplemente se verificaba si existia un '$' pero hay que ser mas específico
-	{//ya que "a $ b" ->expansion esta mal. De este modo podemos ver si i + 1 es valido o no
+	{ //ya que "a $ b" ->expansion esta mal. De este modo podemos ver si i + 1 es valido o no
 		if (flag == TRUE)
 			token_id = add_token(data, promp, word, WORD);
 		else

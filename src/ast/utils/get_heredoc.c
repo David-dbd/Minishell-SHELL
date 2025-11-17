@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 04:19:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/17 00:51:27 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:43:30 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	save_heredoc_line(t_shell *data, t_redir *redir, char *line)
 	if (!heredoc_line)
 	{
 		free(line);
-		return (exit_error(data, ERR_MALLOC, EXIT_FAILURE));
+		return (data->error_state = TRUE, ERROR);
 	}
 	ft_lstadd_back(&redir->heredoc_lines, heredoc_line);
 	return (SUCCESS);
@@ -54,9 +54,10 @@ int	loop_heredoc(t_shell *data, t_redir *redir, char *delimiter)
 			free(line);
 			break ;
 		}
-		if (check_signals(data, redir, line))
+		if (check_signals(data, redir, line) == RECIVED_SIGNAL)
+			return (RECIVED_SIGNAL);
+		if (save_heredoc_line(data, redir, line) == ERROR)
 			return (ERROR);
-		save_heredoc_line(data, redir, line);
 		n_line++;
 	}
 	return (OK);
@@ -64,7 +65,7 @@ int	loop_heredoc(t_shell *data, t_redir *redir, char *delimiter)
 
 int	get_heredoc(t_shell *data, t_redir *redir, char *delimiter, int expansion)
 {
-	t_list *heredoc_lines;
+	t_list	*heredoc_lines;
 
 	if (expansion == TRUE)
 		redir->expand = TRUE;

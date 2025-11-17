@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:47:16 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/15 21:50:48 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 15:43:32 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,14 @@ int	check_signals(t_shell *data, t_redir *redir, char *line)
  * evita la ejecucion del nodo por CTRL+C
 */
 
-int	check_signal_node_heredoc(t_node *node, t_redir *redir)
+int	check_signal_node_heredoc(t_node *node)
 {
-	if (redir)
+	if (!node)
+		return (FALSE);
+	if (node->redir)
 	{
-		if (redir->signal == RECIVED_SIGNAL)
+		if (node->redir->signal == RECIVED_SIGNAL)
 		{
-			clean_node(&node);
 			return (TRUE);
 		}
 	}

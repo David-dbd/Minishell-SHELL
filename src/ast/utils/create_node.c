@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:41:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/14 23:21:55 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 14:15:47 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,14 @@ static t_node	*allocate_true_node(t_shell *data)
 
 	node = ft_calloc(1, sizeof(t_node));
 	if (!node)
-		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
+		return (error_status_node(data, NULL, ERR_MALLOC));
+	node->fake = TRUE;
 	node->token = ft_calloc(1, sizeof(t_token));
 	if (!node->token)
-	{
-		free(node);
-		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
-	}
+		return (error_status_node(data, &node, ERR_MALLOC));
 	node->token->value = ft_strdup("true");
 	if (!node->token->value)
-	{
-		free(node->token);
-		free(node);
-		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
-	}
+		return (error_status_node(data, &node, ERR_MALLOC));
 	return (node);
 }
 
@@ -47,16 +41,17 @@ t_node	*create_true_node(t_shell *data, t_type type)
 	t_node	*node;
 
 	node = allocate_true_node(data);
+	if (!node)
+		return (NULL);
 	node->fake = TRUE;
 	node->type = type;
 	node->token_hash = data->prompt.n_tokens + 1;
 	node->args = ft_calloc(2, sizeof(char *));
+	if (!node->args)
+		return (error_status_node(data, &node, ERR_MALLOC));
 	node->args[0] = ft_strdup("true");
-	if (!node->args || !node->args[0])
-	{
-		clean_node(&node);
-		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
-	}
+	if (!node->args[0])
+		return (error_status_node(data, &node, ERR_MALLOC));
 	node->redir = NULL;
 	node->assig_tmp = NULL;
 	node->arg_types = NULL;
@@ -78,7 +73,7 @@ t_node	*create_node(t_shell *data, t_token *token, t_type type)
 
 	node = ft_calloc(1, sizeof(t_node));
 	if (!node)
-		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
+		return (error_status_node(data, &node, ERR_MALLOC));
 	node->type = type;
 	if (node->type == WILDCARD)
 		node->type = COMMAND;

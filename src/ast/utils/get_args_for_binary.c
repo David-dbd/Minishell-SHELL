@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 23:03:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/17 01:08:52 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:43:16 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,16 @@
 		y redirs ya que ninguno de estos deberian contarse como un nodo.
 */
 
-static void	aux_alloc_mem(t_shell *data, char ***args, int n_args)
+static int	aux_alloc_mem(t_shell *data, char ***args, int n_args)
 {
 	*args = ft_calloc(n_args + 1, sizeof(char *));
 	if (!*args)
-		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
+	{
+		ft_printf_fd(STDERR, ERR_MALLOC);
+		data->error_state = TRUE;
+		return (FAILURE);
+	}
+	return (SUCCESS);
 }
 
 static int	extract_bin_arg(t_shell *d, char **arg_extract, char *word)
@@ -41,7 +46,11 @@ static int	extract_bin_arg(t_shell *d, char **arg_extract, char *word)
 		return (FAILURE);
 	*arg_extract = ft_strdup(word);
 	if (!*arg_extract)
-		exit_error(d, ERR_MALLOC, EXIT_FAILURE);
+	{
+		ft_free_str_array(&arg_extract);
+		d->error_state = TRUE;
+		return (ERROR);
+	}
 	return (SUCCESS);
 }
 
@@ -86,7 +95,8 @@ char	**get_args_for_binary(t_shell *data, t_token *tokens, int *i)
 	arg_count(tokens, data->prompt.n_tokens, i, &n_args);
 	if (n_args == 0)
 		return (NULL);
-	aux_alloc_mem(data, &args, n_args);
+	if (!aux_alloc_mem(data, &args, n_args))
+		return (NULL);
 	while (k < n_args && j < data->prompt.n_tokens)
 	{
 		if (is_delimiter_type(tokens[j].type))
@@ -101,6 +111,8 @@ char	**get_args_for_binary(t_shell *data, t_token *tokens, int *i)
 		{
 			if (extract_bin_arg(data, &args[k], tokens[j].value) == SUCCESS)
 				k++;
+			if (data->error_state == TRUE)
+				return (NULL);
 		}
 		j++;
 	}

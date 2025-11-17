@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_asignations.c                                :+:      :+:    :+:   */
+/*   parse_assignations.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 23:12:05 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/14 23:12:38 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/17 13:32:06 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,18 @@ t_node	*parse_assignations(t_shell *dat, t_token *tokens, int *i, int n_tokens)
 	if (*i >= n_tokens || !is_real_assignation_type(tokens[*i].type))
 		return (NULL);
 	left = create_node(dat, &tokens[*i], tokens[*i].type);
+	if (!left)
+		return (NULL);
 	safe_index_plus(i, n_tokens);
 	while (*i < n_tokens && is_real_assignation_type(tokens[*i].type))
 	{
 		central = create_node(dat, NULL, SEMICOLON);
+		if (!central)
+			return (clean_node(&left), NULL);
 		central->left = left;
 		right = create_node(dat, &tokens[*i], tokens[*i].type);
+		if (!right)
+			return (clean_node(&central), clean_ast(&left), NULL);
 		safe_index_plus(i, n_tokens);
 		central->right = right;
 		left = central;

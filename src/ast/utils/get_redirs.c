@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:59:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/16 21:07:11 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:36:27 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ t_redir	*add_redir(t_shell *data, t_redir *lst, t_token *token, char *filename)
 
 	redir = ft_calloc(1, sizeof(t_redir));
 	if (!redir)
-		return (exit_error(data, ERR_MALLOC, EXIT_FAIL), NULL);
+		return (error_status_redirs(data, &lst, ERR_MALLOC));
 	redir->type = token->type;
-	redir->filename = filename;
+	redir->filename = ft_strdup(filename);
+	if (!redir->filename)
+		return (free(redir), error_status_redirs(data, &lst, ERR_MALLOC));
 	if (ft_isdigit(token->value[0]))
 		redir->fd_redir = token->value[0] - '0';
 	else
@@ -66,7 +68,8 @@ t_redir	*add_redir(t_shell *data, t_redir *lst, t_token *token, char *filename)
 			redir->fd_redir = STDOUT_FILENO;
 	}
 	if (redir->type == REDIR_HEREDOC)
-		get_heredoc(data, redir, filename, expand_heredoc(token));
+		if (get_heredoc(data, redir, filename, expand_heredoc(token)) == ERROR)
+			return (free(redir), error_status_redirs(data, &lst, ERR_MALLOC));
 	if (!lst)
 		return (redir);
 	last = lstlast_redir(lst);
@@ -91,6 +94,8 @@ t_redir	*get_redirs(t_shell *data, t_token *tokens, int *i, int mode)
 		if (is_redir_type(tokens[j].type))
 		{
 			head = add_redir(data, head, &tokens[j], tokens[j + 1].value);
+			if (!head)
+				return (NULL);
 		}
 		j++;
 	}

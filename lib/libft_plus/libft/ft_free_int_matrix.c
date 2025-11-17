@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 00:22:37 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/17 01:08:30 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:39:09 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_free_int_matrix(int ***matrix_ptr, int rows)
 {
 	int	i;
-	int **matrix;
+	int	**matrix;
 
 	if (!matrix_ptr)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 01:44:27 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/17 00:51:24 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 15:47:16 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,17 @@
 	Si arg_index no se movio es porque no hay args o no son validos
 */
 
-static void	create_dinamic_arr(t_shell *data, int **arg_types, int i, int j)
+static int	create_dinamic_arr(t_shell *data, int **arg_types, int i, int j)
 {
 	*arg_types = (int *)malloc((j - i) * sizeof(int));
 	if (!*arg_types)
-		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
+	{
+		data->error_state = TRUE;
+		ft_printf_fd(STDERR, ERR_MALLOC);
+		return (FAILURE);
+	}
 	ft_memset(*arg_types, -1, (j - i) * sizeof(int));
+	return (SUCCESS);
 }
 
 static int	*alloc_arg_types(t_shell *dat, t_node *node, int start_i, int end_j)
@@ -65,7 +70,8 @@ static int	*alloc_arg_types(t_shell *dat, t_node *node, int start_i, int end_j)
 	{
 		while (node->assig_tmp[tmp_counter])
 			tmp_counter++;
-		create_dinamic_arr(dat, &arg_types, start_i, (end_j + tmp_counter));
+		if (!create_dinamic_arr(dat, &arg_types, start_i, (end_j + tmp_counter)))
+			return (NULL);
 		len = tmp_counter;
 		//printf("%d", tmp_counter);
 		tmp_token_index = tmp_counter;
@@ -79,7 +85,8 @@ static int	*alloc_arg_types(t_shell *dat, t_node *node, int start_i, int end_j)
 		}
 	}
 	else
-		create_dinamic_arr(dat, &arg_types, start_i, end_j);
+		if (!create_dinamic_arr(dat, &arg_types, start_i, end_j))
+			return (NULL);
 	return (arg_types);
 }
 
@@ -132,9 +139,11 @@ int	*get_arg_types(t_shell *data, t_node *node, int start_i, int end_j)
 	tokens = data->prompt.tokens;
 	//printf("get_arg_types: %s\n\n", data->prompt.tokens[start_i].value);
 	arg_types = alloc_arg_types(data, node, start_i, end_j);
-	if (ft_strcmp(tokens[start_i].value, BUILTIN_EXPORT) != 0 && node->assig_tmp == NULL)
+	if (!arg_types)
+		return (NULL);
+	if (!tokens[start_i].value || ft_strcmp(tokens[start_i].value, BUILTIN_EXPORT) != 0 && node->assig_tmp == NULL)
 		return (free (arg_types), NULL);
-	if (ft_strcmp(tokens[start_i].value, BUILTIN_EXPORT) != 0 && tokens[start_i + 1].type)
+	if (!tokens[start_i].value || ft_strcmp(tokens[start_i].value, BUILTIN_EXPORT) != 0 && tokens[start_i + 1].type)
 		return (arg_types);
 	if (start_i + 1 < data->prompt.n_tokens)
 		start_i += 1;
