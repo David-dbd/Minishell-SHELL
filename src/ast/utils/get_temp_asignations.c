@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 18:54:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/17 17:50:54 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 17:51:57 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	aux_alloc_mem(t_shell *data, char ***args, int n_args)
 
 static int	extract_bin_arg(t_shell *data, char **arg_extract, char *word)
 {
-	*arg_extract = NULL; //ft_strdup(word);
+	*arg_extract = ft_strdup(word);
 	if (!*arg_extract)
 	{
 		ft_free_str_array(&arg_extract);
