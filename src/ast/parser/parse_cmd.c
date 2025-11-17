@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:29:52 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/17 15:42:17 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 17:49:42 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,17 @@ int	get_information(t_shell *data, t_token *tokens, int *i, t_node *central)
 
 	start = *i;
 	central->assig_tmp = get_temp_asignations(data, tokens, *i);
+	if (data->error_state == TRUE)
+		return (FAILURE);
 	central->redir = get_redirs(data, tokens, i, COMMAND);
+	if (data->error_state == TRUE || check_signal_node_heredoc(central))
+		return (FAILURE);
 	central->args = get_args_for_binary(data, tokens, i);
+	if (data->error_state == TRUE)
+		return (FAILURE);
 	central->arg_types = get_arg_types(data, central, start, *i);
+	if (data->error_state == TRUE)
+		return (FAILURE);
 	central->background = get_background(tokens, data->prompt.n_tokens, i);
 	return (SUCCESS);
 }

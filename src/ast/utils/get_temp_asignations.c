@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 18:54:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/16 21:34:38 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/17 17:50:54 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,28 @@
 	parte del contexto/metadata del comando que le sigue.
 */
 
-static void	aux_alloc_mem(t_shell *data, char ***args, int n_args)
+static int	aux_alloc_mem(t_shell *data, char ***args, int n_args)
 {
 	*args = ft_calloc(n_args + 1, sizeof(char *));
 	if (!*args)
-		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
+	{
+		ft_printf_fd(STDERR, ERR_MALLOC);
+		data->error_state = TRUE;
+		return (FAILURE);
+	}
+	return (SUCCESS);
 }
 
-static void	extract_bin_arg(t_shell *d, char **arg_extract, char *word)
+static int	extract_bin_arg(t_shell *data, char **arg_extract, char *word)
 {
-	*arg_extract = ft_strdup(word);
+	*arg_extract = NULL; //ft_strdup(word);
 	if (!*arg_extract)
-		exit_error(d, ERR_MALLOC, EXIT_FAILURE);
+	{
+		ft_free_str_array(&arg_extract);
+		data->error_state = TRUE;
+		return (FAILURE);
+	}
+	return (SUCCESS);
 }
 
 /*
@@ -73,12 +83,14 @@ char	**get_temp_asignations(t_shell *data, t_token *tokens, int i)
 	}
 	if (temp_count == 0)
 		return (NULL);
-	aux_alloc_mem(data, &args, temp_count);
+	if (!aux_alloc_mem(data, &args, temp_count))
+		return (NULL);
 	start = i - temp_count;
 	temp_count = 0;
 	while (start < i)
 	{
-		extract_bin_arg(data, &args[temp_count], tokens[start].value);
+		if (!extract_bin_arg(data, &args[temp_count], tokens[start].value))
+			return (NULL);
 		start++;
 		temp_count++;
 	}

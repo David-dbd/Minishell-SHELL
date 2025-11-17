@@ -1,13 +1,3 @@
-$PWD
-unset OLDPWD
-echo $HOME$NOTHING$USER$
-cd
-echo $?
-/bin/cat Makefile > out >>out1 >out2 | /bin/cat << stop > out3 | /bin/ls > > | /bin/cat << file
-unset PATH
-env
-cd ~
-cd -
 pwd
 celar
 makee
@@ -174,7 +164,6 @@ ds
 echo A || ls
 echo A || ls; ls && (echo A; A=1); ls | wc -l; << LM
 cs
-sd
 Hola
 (cat) << LM
 echo A B C D || ls; ls && (echo A; A=1); ls | wc -l; << LM
@@ -191,9 +180,20 @@ hola
 comoe
 (cat) << EOF
 hola como estas
-ls
-clear
 cat << 1 | cat 2
 inner
 cat << 1 | cat << 2
 outer
+ls
+echo A B C D || ls; a=1 ls && (echo A; A=1); ls | wc -l
+echo A B C D || ls; A=1 ls && (echo A; A=1); ls | wc -l
+echo A B C D || ls; ls && (echo A; A=1); a=1 ls | wc -l
+echo A B C D || ls; ls && (echo A; A=1); ls | a=1 wc -l
+a=1 || ls; ls && (echo A; A=1); ls | wc -l
+echo A B C D a=1 || ls; ls && (echo A; A=1); ls | wc -l
+11
+sd
+clear
+echo A B C D a=1 || ls; ls && (echo A; A=1); ls | wc -l; << 1
+a=1 echo A B C D || ls; ls && (echo A; A=1); ls | wc -l
+a=1 ls || ls; ls && (echo A; A=1); ls | wc -l
