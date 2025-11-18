@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 23:19:18 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/18 22:16:08 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/18 22:19:04 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	split_expansion_result(t_shell *data, t_prompt *prompt, t_token *tokens)
 		{
 			set_arr(data, &arr, tokens[i].value, &count);
 			result = reorder_tokens(data, &tokens[i], count, arr);
-			printf("\n\nen split, after reroder\n\n\n\n");
 			print_tokens_debug(&data->prompt);
 			if (result == ERROR)
 				return (ft_free_str_array(arr),
