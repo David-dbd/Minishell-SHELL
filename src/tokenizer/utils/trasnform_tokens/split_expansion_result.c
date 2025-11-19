@@ -6,29 +6,46 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 23:19:18 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/19 13:26:45 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/19 16:25:48 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
-static void	set_alternative_arr(t_shell *data, char ***arr, int add_space_index)
+static void	altern_arr(t_shell *d, char ***arr, int add_space, int multiple_str)
 {
 	char	*tmp;
 
-	if (add_space_index != 0)
+	tmp = NULL;
+	if (add_space != 0)
 	{
-		tmp = ft_strjoin((*arr)[add_space_index], " ");
+		tmp = ft_strjoin((*arr)[add_space], " ");
 		if (!tmp)
-			free ((*arr)[add_space_index]);
-		(*arr)[add_space_index] = tmp;
+		{
+			ft_free_str_array(*arr);
+			exit_error(d, ERR_MALLOC, EXIT_FAILURE);
+		}
+		(*arr)[add_space] = tmp;
 	}
-	if (add_space_index == 0)
+	if (add_space == 0 && !multiple_str)
 	{
-		tmp = ft_strjoin(" ", (*arr)[add_space_index]);
+		tmp = ft_strjoin((*arr)[add_space], " ");
 		if (!tmp)
-			free ((*arr)[add_space_index]);
-		(*arr)[add_space_index] = tmp;
+		{
+			ft_free_str_array(*arr);
+			exit_error(d, ERR_MALLOC, EXIT_FAILURE);
+		}
+		(*arr)[add_space] = tmp;
+	}
+	else if (add_space == 0 && multiple_str)
+	{
+		tmp = ft_strjoin(" ", (*arr)[add_space]);
+		if (!tmp)
+		{
+			ft_free_str_array(*arr);
+			exit_error(d, ERR_MALLOC, EXIT_FAILURE);
+		}
+		(*arr)[add_space] = tmp;
 	}
 }
 
@@ -72,18 +89,22 @@ static int	set_arr(t_shell *data, char ***arr, int i, int *count)
 		data->prompt.tokens[i].value[1] = '\0';
 		return (0);
 	}
-	len = ft_strlen(data->prompt.tokens[i].value);
 	*arr = ft_split(data->prompt.tokens[i].value, ' ');
 	if (!*arr)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
-	if (data->prompt.tokens[i].value[0] == ' '
+	if ( (data->prompt.tokens[i].value[0] == ' '
 		|| data->prompt.tokens[i].value[0] == '\t')
-		set_alternative_arr(data, arr, 0);
+		&& (i > 0 && data->prompt.tokens[i - 1].type == NO_SPACE) )
+		altern_arr(data, arr, 0, TRUE);
+	len = ft_strlen(data->prompt.tokens[i].value);
 	if (len > 0 && (data->prompt.tokens[i].value[len - 1] == ' '
 		|| data->prompt.tokens[i].value[len - 1] == '\t')
 		&& ((i + 1) < data->prompt.n_tokens
 		&& data->prompt.tokens[i + 1].type == NO_SPACE))
-		set_alternative_arr(data, arr, ft_count_str_in_arr(*arr) - 1);
+		if (ft_count_str_in_arr(*arr) > 1)
+			altern_arr(data, arr, ft_count_str_in_arr(*arr) - 1, TRUE);
+		else
+			altern_arr(data, arr, 0, FALSE);
 	*count = ft_count_str_in_arr(*arr);
 	return (1);
 }
