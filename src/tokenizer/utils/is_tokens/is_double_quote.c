@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 19:43:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/14 12:40:18 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/19 08:30:57 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	ft_is_dead_d(const char *s, int *i, char quote, int *flag)
 	{
 		if (s[*i + 1] && (ft_isalpha(s[*i + 1]) || s[*i + 1] == '\\'
 				|| s[*i + 1] == '$' || s[*i + 1] == '\'' || s[*i + 1] == '/'
-				|| s[*i + 1] == '?' || s[*i + 1] == '*'))
+				|| s[*i + 1] == '?' || s[*i + 1] == '*' || s[*i + 1] == '='))
 			*flag = TRUE;
 		return (1);
 	}

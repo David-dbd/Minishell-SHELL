@@ -1,56 +1,3 @@
-*file*
-**file
-**file****
-*"hola muncod"
-\\usr/bin/printf "%s\\n" ***"Mak"'e'** | sort
-pwd
-a
-touch "*1"
-rm "*1"
-echo $?
-echo "*1"
-/usr/bin/printf "%s\\n" "*"* | sort
-echo "*"*
-rm "a" "aa" "aaa"
-touch "a" "aa" "aaa"
-echo *l*
-echo *.
-echo .*
-* && ls
-make**
-make*
-echo *l
-echo make**
-**make
-/usr/bin/printf "%s\\n" "Mak"'e'** | sort
-/usr/bin/printf "%s\\n" "Mak"'e'*'*' | sort
-export test=" * "
-touch "?eHallo"
-touch tmp_out1
-touch tmp_out2
-/bin/echo 42 >tmp_out*
-touch tmp_out
-/bin/echo 42 >tmp_o*t*
-rm -f "tmp_out*"
-rm -f tmp_out*
-/usr/bin/printf "%s\\n" "*" | sort
-/usr/bin/printf "%s\\n" *"."* | sort
-echo $USER"HOLA"
-echo $bola"HOLA"
-/usr/bin/printf "%s\\n" *"." | sort
-echo "hola "$USER
-echo "hola """$USER
-touch "$USER * ?eHallo"
-/usr/bin/printf "%s\\n" *a*a | sort
-/usr/bin/printf "%s\\n" ***"Mak"'e'** | sort
-/usr/bin/printf "%s\\n" minishe*l | sort
-echo "hola"$USER
-touch "$USER * ?eHallol"
-touch "* ?eHallo"
-echo *$USER
-echo "*$bobo"
-export a=1
-export a=1 a+=1 a+=2 a+=abcde
 sd
 export PWD+="XXXX"
 export a=1 a+=1 a=2 a+=2 a+=abcde
@@ -110,7 +57,6 @@ jola | jola
 )
 $12334
 $112312
-claer
 $1a
 $1 && a
 && hola
@@ -160,7 +106,6 @@ $!
 echo hola &
 echo hola 
 export a var=1 sa=2 v= r=% pepe=1
-env
 ||
 export var=1 var+=2 r=1 r=2 r=3 word r+=1231
 ls && export var=1 var+=2 r=1 r=2 r=3 word r+=1231
@@ -175,7 +120,6 @@ ls && lola=1 lola+=2 export var=1 var+=2 r=1 r=2 r=3 word r+=1231
 * &&
 echo hola
 * && echo hola
-echo $USER
 ar="ls -l" && echo $ar
 * | *
 var="ls -l" && hola" "$var
@@ -192,8 +136,64 @@ l
 echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
 export ""
 ""
-unset ""
 export TEST=" "
-clear
 hola *
 export TE*ST=123
+unset TE*ST
+export "="="="
+/bin/echo $TESTNOTFOUND$HOME
+export T=a T=b T=c
+ECHO $T
+/bin/echo $HOME$NOTHING$USER$
+export '='='='
+/bin/echo $TESTNOTFOUND$HOME$
+/bin/echo '$'$
+unset o
+env
+export a="asd" b="de" o= c="hellomi" X
+unset o a X b c
+/bin/echo 'HELLO'$?:''"42"
+export tmp_test="/bin/echo 42"
+$tmp_test
+$tmp_test 42 42
+"tmp_test"
+claer
+echo $USER
+USER="   A     B    C    "
+USER="A    B    C"
+echo "hola"$USER
+echo $?$?
+/bin/echo "1"$X2?
+clear
+/bin/echo "1"$X?
+/bin/echo ?$X'2'
+X="   "
+ export X="   "
+export X="  A  B  "
+export X=" A  B  "
+export X="A  B  "
+export X="  A  B "
+export X="  A  B"
+export X="  A B  "
+export X="  AB  "
+/bin/echo "1"$X'2'
+export TEST=100
+unset doesntexist
+unset OLDPWD
+unset PATH 
+unset TES;T
+unset HOME
+unset $HOME
+export
+export export
+export TEST=
+export --TEST=123
+export mini_test=" "
+/bin/echo $mini_test
+env | grep mini_test
+unset
+unset ""
+unset =
+unset "="
+unset ""=
+echo $?

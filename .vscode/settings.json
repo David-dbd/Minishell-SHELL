@@ -42,7 +42,9 @@
 		"utility": "c",
 		"typeinfo": "c",
 		"ranges": "c",
-		"compare": "c"
+		"compare": "c",
+		"atomic": "c",
+		"cstddef": "c"
 	},
 
 	// Configuración C/C++

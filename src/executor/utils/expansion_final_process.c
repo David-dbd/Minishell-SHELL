@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 19:04:23 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/18 23:51:34 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/19 09:01:05 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,7 @@ void expansion_final_process(t_shell *data, t_node *node)
 	if (if_theres_an_expan(node->token, data->prompt.tokens, &data->prompt))
 	{
 		create_before_tokens(data, data->prompt.tokens, &data->prompt);
+		//print_tokens_debug(&data->prompt);
 		expansion(data, data->prompt.tokens, node->token->id, FINAL_PHASE);
 		prepare_simplify(data, &data->prompt, data->prompt.tokens);
 		simplify_tokens(data, &data->prompt, data->prompt.tokens);
@@ -203,9 +204,11 @@ void expansion_final_process(t_shell *data, t_node *node)
 		split_expansion_result(data, &data->prompt, data->prompt.tokens);
 		reconect_nodes_tokens(data, data->ast_root, data->prompt.tokens);
 		i = node->token->id;
+		//print_tokens_debug(&data->prompt);
 		if (node->args)
 			ft_free_str_array(node->args);
 		expand_wildcards(data, &data->prompt, data->prompt.tokens, FINAL_PHASE); //Las wildcards que no se hayan expandido llegado este punto es debido a que dependen de una expansion que no se ha podido hacer
 		node->args = get_args_for_binary(data, data->prompt.tokens, &i);
+		//print_ast(data->ast_root);
 	}
 }

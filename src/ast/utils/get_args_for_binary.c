@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 23:03:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/19 01:19:58 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/19 08:46:50 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +92,14 @@ char	**get_args_for_binary(t_shell *data, t_token *tokens, int *i)
 		if (is_delimiter_type(tokens[j].type))
 			break ;
 		if (is_redir_type(tokens[j].type)
-			|| tokens[j].type == FILENAME || tokens[j].type == DELIMITER)
+			|| tokens[j].type == FILENAME || tokens[j].type == DELIMITER
+			|| tokens[j].type == DONT_ELIMINATE)
 		{
 			j++;
 			continue ;
 		}
-		//if (tokens[j].value && tokens[j].value[0] != '\0')
-		//{
 		if (extract_bin_arg(data, &args[k], tokens[j].value) == SUCCESS)
 			k++;
-		//}
 		j++;
 	}
 	if (k == 0)

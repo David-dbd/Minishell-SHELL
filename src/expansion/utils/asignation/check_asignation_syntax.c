@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:34:34 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/19 01:28:38 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/19 08:50:50 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	count_syntax(t_token *token)
 			text_after_equal++;
 		i++;
 	}
-	if (!check_for_equal || !text_before_equal || !text_after_equal)
+	if (!check_for_equal || !text_before_equal)
 		return (FALSE);
 	return (TRUE);
 }
