@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform_invalid_asig_to_word.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 21:56:00 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/10/31 17:11:10 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/19 01:42:43 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 	en cuestion sea export.
 */
 
-static void	aux_if_word(t_prompt *prompt, t_token *tokens, int i)
+void	aux_if_word(t_prompt *prompt, t_token *tokens, int i)
 {
 	int	j;
 

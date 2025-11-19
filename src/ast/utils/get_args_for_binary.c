@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 23:03:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/17 00:38:31 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/19 01:19:58 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static void	aux_alloc_mem(t_shell *data, char ***args, int n_args)
 
 static int	extract_bin_arg(t_shell *d, char **arg_extract, char *word)
 {
-	if (!word || word[0] == '\0')
-		return (FAILURE);
+	//if (!word || word[0] == '\0')
+	//	return (FAILURE);
 	*arg_extract = ft_strdup(word);
 	if (!*arg_extract)
 		exit_error(d, ERR_MALLOC, EXIT_FAILURE);
@@ -63,8 +63,7 @@ static void	arg_count(t_token *tokens, int n_tokens, int *i, int *n_args)
 		}
 		if ((is_arg_type(tokens[*i].type) || tokens[*i].type == COMMAND
 			|| tokens[*i].type == NO_SPACE || tokens[*i].type == INDIFERENT
-			|| tokens[*i].type == WILDCARD)
-			&& tokens[*i].value && tokens[*i].value[0] != '\0')
+			|| tokens[*i].type == WILDCARD))//&& tokens[*i].value && tokens[*i].value[0] != '\0'
 			(*n_args)++;
 		if (is_delimiter_type(tokens[*i].type))
 			break ;
@@ -98,11 +97,11 @@ char	**get_args_for_binary(t_shell *data, t_token *tokens, int *i)
 			j++;
 			continue ;
 		}
-		if (tokens[j].value && tokens[j].value[0] != '\0')
-		{
-			if (extract_bin_arg(data, &args[k], tokens[j].value) == SUCCESS)
-				k++;
-		}
+		//if (tokens[j].value && tokens[j].value[0] != '\0')
+		//{
+		if (extract_bin_arg(data, &args[k], tokens[j].value) == SUCCESS)
+			k++;
+		//}
 		j++;
 	}
 	if (k == 0)

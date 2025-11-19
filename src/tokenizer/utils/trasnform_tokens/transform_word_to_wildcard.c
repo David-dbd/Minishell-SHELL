@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:49:40 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/15 22:40:55 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/19 01:43:36 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,22 @@ static int	has_middle_wildcard(char *value)
 	return (FALSE);
 }
 
+static int	aux_if_word(t_prompt *prompt, t_token *tokens, int i)
+{
+	int	j;
+
+	j = i - 1;
+	while (j >= 0 && j < prompt->n_tokens && tokens[j].type == WORD)
+		j--;
+	if (j >= 0 && (tokens[j].type == BUILT_IN
+			&& ft_strcmp(tokens[j].value, BUILTIN_EXPORT) != 0))
+	{
+		tokens[i].type = WORD;
+		return (1);
+	}
+	return (0);
+}
+
 void	transform_word_to_wildcard(t_shell *d, t_prompt *promp, t_token *tokens)
 {
 	int		i;
@@ -60,7 +76,7 @@ void	transform_word_to_wildcard(t_shell *d, t_prompt *promp, t_token *tokens)
 	len = 0;
 	while (i < promp->n_tokens)
 	{
-		if (tokens[i].type == WORD)
+		if (tokens[i].type == WORD && aux_if_word(promp, tokens, i))
 		{
 			if (tokens[i].value)
 			{

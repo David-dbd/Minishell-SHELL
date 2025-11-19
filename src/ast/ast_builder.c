@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 16:36:02 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/17 12:47:47 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/19 01:49:20 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ void	ast_builder(t_shell *data, t_token *tokens, int n_tokens)
 		return ;
 	// print_tokens_debug(&data->prompt);
 	data->ast_root = parse_sequence(data, tokens, &i, n_tokens);
-	print_ast(data->ast_root);
-	print_tokens_debug(&data->prompt);
+	//print_ast(data->ast_root);
+	//print_tokens_debug(&data->prompt);
 }

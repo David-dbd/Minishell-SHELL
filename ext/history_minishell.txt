@@ -1,11 +1,3 @@
-/usr/bin/printf "%s\\n" * | sort
-export ARG="*"
-/usr/bin/printf "%s\\n" $ARG | sort
-touch "   "
-ls * | grep "   "
-rm "   "
-/usr/bin/printf "%s\\n" *"Mak"'e'* | sort
-hola"como estas"bien y tu
 *file*
 **file
 **file****
@@ -192,8 +184,16 @@ var="ls -l" && $var
 $HOME$NOTHING$USER$
 export "$$USER"
 CLEAR
-clear
 echo $HOME$NOTHING$USER$
 echo "$USERBorrar$USER"$USER
 echo $USER"A   $   C"$USER
 echo test$h "$h" | cat -e
+l
+echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+export ""
+""
+unset ""
+export TEST=" "
+clear
+hola *
+export TE*ST=123

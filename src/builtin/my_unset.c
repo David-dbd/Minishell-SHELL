@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 21:56:06 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/16 00:04:56 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/19 01:20:35 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	my_unset(t_shell *data, t_env *env, char **args)
 
 	i = 0;
 	exit_flag = 0;
-	if (!args || !args[0])
+	if (!args || !*args)
 		return (0);
 	while (args[i] != NULL)
 	{
