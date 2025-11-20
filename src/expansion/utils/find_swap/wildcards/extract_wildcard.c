@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 16:15:42 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/19 16:58:03 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:52:09 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	handle_case2(char *str, char **ptr, int *wildcard_type, int i)
 	while (str[start] != '\0' && !ft_isspace(str[start]) && str[start] != '*')
 		start++;
 	if (str[start] == '*' && (str[start + 1] != '\0' || (str[start + 1] == '\0'
-			|| ft_isspace(str[start + 1]))))
+				|| ft_isspace(str[start + 1]))))
 	{
 		*wildcard_type = COMPLEX;
 		*ptr = ft_strdup(str);
@@ -51,9 +51,6 @@ static int	handle_case2(char *str, char **ptr, int *wildcard_type, int i)
 	}
 	if (str[start] != '*')
 		*wildcard_type = BEGINING;
-	//else if (str[start] == '*' && (str[start + 1] == '\0'
-	//	|| ft_isspace(str[start + 1])))
-	//	*wildcard_type = MIDDLE;
 	*ptr = ft_strndup(str + i + 1, start - (i + 1));
 	if (!*ptr)
 		return (ERROR);
@@ -83,7 +80,7 @@ static int	handle_case3(char *str, char **ptr, int *wildcard_type, int i)
 	Puede ser de tipo BEGGINIG/MIDDLE/END/ALL/COMPLEX
 */
 
-int extract_wildcard(t_shell *data, char *str, char **ptr, int *wildcard_type)
+int	extract_wildcard(t_shell *data, char *str, char **ptr, int *wildcard_type)
 {
 	int	i;
 	int	result;

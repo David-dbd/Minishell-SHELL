@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reorder_tokens_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 23:56:26 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/15 23:58:46 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:50:45 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	free_tmp_tokens(t_token *tmp, int count)
 	deberia de ser 1 2 3 4 5 6 7 8
 */
 
-int create_hash(t_shell *da, int n_dirs, int n_tokens, int starting_hash)
+int	create_hash(t_shell *da, int n_dirs, int n_tokens, int starting_hash)
 {
 	int	i;
 	int	collision;
@@ -68,7 +68,7 @@ int create_hash(t_shell *da, int n_dirs, int n_tokens, int starting_hash)
 			{
 				collision = TRUE;
 				hash_generator++;
-				break;
+				break ;
 			}
 			i++;
 		}
@@ -79,7 +79,7 @@ int create_hash(t_shell *da, int n_dirs, int n_tokens, int starting_hash)
 
 void	free_tokens(t_prompt *prompt)
 {
-	int i;
+	int	i;
 
 	if (!prompt || !prompt->tokens)
 		return ;

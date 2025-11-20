@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_externs_syntax.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:30:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/17 02:11:34 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:54:21 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
-static int check_case_both_sides_aux(t_token *tokens, t_token *token)
+static int	check_case_both_sides_aux(t_token *tokens, t_token *token)
 {
 	if ((tokens[token->id - 1].type == AND || tokens[token->id - 1].type == OR
 			|| tokens[token->id - 1].type == PAREN_OPEN
@@ -36,8 +36,8 @@ static int check_case_both_sides_aux(t_token *tokens, t_token *token)
 			|| tokens[token->id + 1].type == SEMICOLON
 			|| tokens[token->id + 1].type == WORD
 			|| (tokens[token->id + 1].type == BUILT_IN
-				&& ft_strcmp(tokens[token->id + 1].value,BUILTIN_EXPORT) == 0)))
-			return (1);
+				&& ft_strcmp(tokens[token->id + 1].value, "export") == 0)))
+		return (1);
 	return (0);
 }
 

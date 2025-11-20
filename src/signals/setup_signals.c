@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:02:04 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/20 21:47:06 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:56:35 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	setup_signals_heredoc(void)
 	signal(SIGINT, handle_sigint_heredoc);
 	signal(SIGQUIT, SIG_IGN);
 }
-
 
 // /*
 //  * Configura señales para modo interactivo: maneja Ctrl+C

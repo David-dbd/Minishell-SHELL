@@ -113,32 +113,6 @@ static void	make_expan_token(t_shell *data, const char *str, int start, int *i)
 			add_token(data, &data->prompt, expansion, EXPANSION);
 	}
 }
-/*
-void	handle_tilde_expansion(t_shell *d, t_prompt *p, const char *str, int *i)
-{
-	int		start; este da error con el comando echo tilde+' '"como estas"
-	int		len;
-	char	*word;
-
-	start = *i;
-	(*i)++;
-	if (str[*i] == '+')
-		(*i)++;
-	make_expan_token(d, str, start, i);
-	if (str[*i] != '\0' && !ft_isspace(str[*i]))
-	{
-		start = *i;
-		while (str[*i] != '\0' && !ft_isspace(str[*i]))
-			(*i)++;
-		if (*i > start)
-		{
-			len = *i - start;
-			add_token(d, p, "", NO_SPACE);
-			word = ft_substr(str, start, len);
-			add_token(d, p, word, WORD);
-		}
-	}
-}*/
 
 void	handle_tilde_expansion(t_shell *d, t_prompt *p, const char *str, int *i)
 {

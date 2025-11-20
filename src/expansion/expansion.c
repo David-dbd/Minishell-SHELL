@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:57:33 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/19 16:48:19 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:56:29 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static int	process_expansion_token(t_shell *data, t_token *token, int phase)
 	return (found);
 }
 
-int expansion(t_shell *data, t_token *tokens, int i, int phase)
+int	expansion(t_shell *data, t_token *tokens, int i, int phase)
 {
 	int	found;
 	int	original_size;

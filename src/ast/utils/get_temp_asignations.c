@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 18:54:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/19 16:47:39 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:57:19 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	get_correct_index(t_token *tokens, int n_tokens, int start)
 		while (start >= 0 && is_asignation_type(tokens[start].type)) //iterar sobre las temp_asig
 			start--;
 		if (start < 0 && (start < n_tokens
-			|| !is_asignation_type(tokens[start].type))) //sumar un indice si es que no se esta en 0
+				|| !is_asignation_type(tokens[start].type))) //sumar un indice si es que no se esta en 0
 			start++;
 	}
 	return (start);
@@ -67,7 +67,7 @@ static int	get_correct_index(t_token *tokens, int n_tokens, int start)
 static void	count_temps(t_token *tokens, int *start, int *temp_count, int i)
 {
 	while (*start < i && (tokens[*start].type == TEMP_ASIGNATION
-		|| tokens[*start].type == TEMP_PLUS_ASIGNATION))
+			|| tokens[*start].type == TEMP_PLUS_ASIGNATION))
 	{
 		(*temp_count)++;
 		(*start)++;
@@ -84,7 +84,7 @@ char	**get_temp_asignations(t_shell *data, t_token *tokens, int i)
 		return (NULL);
 	start = get_correct_index(tokens, data->prompt.n_tokens, i);
 	if (start == i)
-		return (NULL);//No hay temp_asig
+		return (NULL); //No hay temp_asig
 	temp_count = 0;
 	count_temps(tokens, &start, &temp_count, i);
 	if (temp_count == 0)
@@ -102,4 +102,3 @@ char	**get_temp_asignations(t_shell *data, t_token *tokens, int i)
 	}
 	return (args);
 }
-

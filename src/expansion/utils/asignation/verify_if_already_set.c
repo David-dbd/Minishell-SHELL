@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_if_already_set.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 15:36:26 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/17 23:44:26 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/21 00:06:09 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,12 @@
 
 static int	assign_igno_repla_val(t_shell *dat, t_var *var, char **value, int t)
 {
-	if (t == EXP && var->type == EXP)
-	{// si solo es una palabra sin ""="" -> hola
-		//printf("Ignore\n\n");
+	if (t == EXP && var->type == EXP) // si solo es una palabra sin ""="" -> hola
+	{
 		return (IGNORE);
 	}
-	if (var->value && (t == LOCAL || t == ENV || t == TEMP_ASIGNATION))
-	{// si existe su valor y es local o env, solo hay que cambiarlo
-		//printf("if t == LOCAL\n");
+	if (var->value && (t == LOCAL || t == ENV || t == TEMP_ASIGNATION)) // si existe su valor y es local o env, solo hay que cambiarlo
+	{
 		if (var->value)
 			free (var->value);
 		var->value = ft_strdup(*value);
@@ -51,7 +49,7 @@ static int	assign_igno_repla_val(t_shell *dat, t_var *var, char **value, int t)
 			return (ERROR);
 		update_envp(dat);
 	}
-	if (!var->value && var->type == EXP && t != EXP)//Si no existe su valor, solo hay que agregarse
+	if (!var->value && var->type == EXP && t != EXP) //Si no existe su valor, solo hay que agregarse
 	{
 		var->value = ft_strdup(*value);
 		if (!var->value)
@@ -65,10 +63,8 @@ static int	handle_plus_assignation(t_shell *d, t_var *var, char **value, int t)
 {
 	char	*tmp;
 
-	if (var->value && t == PLUS_ASIGNATION)
-	{//Si existe su valor y es PLUS_ASIGNATION entonces hay que sumarla
-		//printf("if t == PLUS_ASIG\n");
-		//printf("%s=%s\n\n", var->key, *value);
+	if (var->value && t == PLUS_ASIGNATION) //Si existe su valor y es PLUS_ASIGNATION entonces hay que sumarla
+	{
 		tmp = ft_strjoin(var->value, *value);
 		if (!tmp)
 		{
@@ -101,14 +97,6 @@ static void	update_variable_type(t_var *var, int t)
 		|| (var->type == EXP
 			&& (t == LOCAL || t == ENV || t == PLUS_ASIGNATION)))
 		var->type = ENV;
-	/*
-	if ((var->type == LOCAL || var->type == EXP)
-		&& (t == ENV || t == EXP)
-		|| (var->type == EXP && t == LOCAL))
-		var->type = ENV; //Si es var->type = EXP && t = EXP da igual porque ese
-		//caso se maneja mas arriba. Lo puse aqui apra no tnere tantos if
-	if (var->type == EXP && t == PLUS_ASIGNATION)
-		var->type = ENV;*/
 }
 
 int	verify_if_already_set(t_shell *data, char *key, char **value, int t)

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/20 22:12:44 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/21 00:02:55 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	if (!check_if_valid_tokens(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
 
-	// print_tokens_debug(prompt);
+	is_it_quoted(prompt, prompt->tokens);
+	//print_tokens_debug(prompt);
 
 	move_script_args_to_end(data, prompt, prompt->tokens);
 	create_before_tokens(data, prompt->tokens, prompt);
@@ -109,14 +110,9 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	simplify_tokens(data, prompt, prompt->tokens);
 
 	// print_tokens_debug(prompt);
-
-	// is_it_quoted(prompt, prompt->tokens);
-
 	transform_tokens_logic(data, prompt, prompt->tokens);
 
 	simplify_tokens(data, prompt, prompt->tokens);
-
-	// print_tokens_debug(prompt);
 
 	// if (!cmd_correction(data, prompt->tokens, prompt->n_tokens))
 	// 	return (FAILURE);
@@ -125,6 +121,7 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 
 	transform_tokens_logic(data, prompt, prompt->tokens);
 
+	//print_tokens_debug(prompt);
 	expand_wildcards(data, prompt, prompt->tokens, INITIAL_PHASE);
 
 	if (!check_if_valid_tokens(data, prompt, prompt->tokens))

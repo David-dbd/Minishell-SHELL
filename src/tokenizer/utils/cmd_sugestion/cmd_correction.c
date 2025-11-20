@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:48:00 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/14 22:41:43 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/21 00:02:35 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	find_match(const char *s1, const char *s2)
 	}
 	if ((s1[j] == '\0' && s2[i + 1] == '\0')
 		|| (s1[j + 1] == '\0' && s2[i] == '\0')
-		|| (s1[j] == '\0' && s2[i] == '\0'))//si s1 esta contendio en s2 o si son iguales en len o si s1 se pasa por una letra
+		|| (s1[j] == '\0' && s2[i] == '\0')) //si s1 esta contendio en s2 o si son iguales en len o si s1 se pasa por una letra
 		return (SUCCESS);
 	else if ((j + 1 == len_1 && i == len_2) || (i + 1 == len_2 && j == len_1)) //Seguir logica de abc vs axc
 		return (SUCCESS);
@@ -105,10 +105,10 @@ int	process_token(t_shell *data, t_token *tokens, char **builtins, int i)
 	while (j < data->builtins.n_builtins)
 	{
 		if (is_valid_value(tokens[i].value)
-			&& find_match(tokens[i].value, builtins[j])) //si solo hay un caracter diferente
-		{ //mayor que 1 porque el el built_in mas corto es cd y es de 1
+			&& find_match(tokens[i].value, builtins[j])) //si solo hay un caracter diferente mayor que 1 porque el el built_in mas corto es cd y es de 1
+		{
 			result = ask_confirmation(data, &tokens[i], builtins[j]);
-			return (result);//Solo corrige el el primero que encuentra mal escrito en lugar de intnetar corregir todos ya que sería fastidioso para el usuario
+			return (result); //Solo corrige el el primero que encuentra mal escrito en lugar de intnetar corregir todos ya que sería fastidioso para el usuario
 		}
 		j++;
 	}

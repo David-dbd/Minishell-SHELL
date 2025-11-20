@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 21:56:06 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/19 16:47:58 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 19:50:37 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	my_unset(t_shell *data, t_env *env, char **args)
 		if (arg_syntax(args[i]) == ERROR)
 		{
 			ft_printf_fd(STDERR, ERR_UNSET, args[i]);
-			exit_flag = EXIT_FAIL;
+			return (0);
 		}
 		delete_var(data, env, args[i]);
 		i++;
@@ -88,17 +88,30 @@ int	my_unset(t_shell *data, t_env *env, char **args)
 	lógico que no afecte el shell padre/global
 */
 
-void	my_clean_unset(t_shell *data, t_env *env, t_token *tokens, int *index)
+static void	process_unset_token(t_shell *data, t_token *token, char *ptr)
 {
 	char	*char_to_find;
-	char	*ptr;
 	int		len;
+
+	if (token->type == TEMP_ASIGNATION)
+		char_to_find = ft_strchr(token->value, '=');
+	else if (token->type == TEMP_PLUS_ASIGNATION)
+		char_to_find = ft_strchr(token->value, '+');
+	if (char_to_find)
+		len = char_to_find - token->value;
+	ft_memcpy(ptr, token->value, len);
+	delete_var(data, &data->env, ptr);
+	free(ptr);
+	ptr = NULL;
+}
+
+void	my_clean_unset(t_shell *data, t_env *env, t_token *tokens, int *index)
+{
+	char	*ptr;
 	int		i;
 
 	i = 0;
-	char_to_find = NULL;
 	ptr = NULL;
-	len = 0;
 	if (!index || index[0] == -1)
 		return ;
 	while (index[i] != -1)
@@ -112,17 +125,7 @@ void	my_clean_unset(t_shell *data, t_env *env, t_token *tokens, int *index)
 		ptr = ft_calloc(ft_strlen(tokens[index[i]].value) + 1, sizeof(char));
 		if (!ptr)
 			exit_error(data, ERR_MALLOC, EXIT_FAILURE);
-		if (tokens[index[i]].type == TEMP_ASIGNATION)
-			char_to_find = ft_strchr(tokens[index[i]].value, '=');
-		else if (tokens[index[i]].type == TEMP_PLUS_ASIGNATION)
-			char_to_find = ft_strchr(tokens[index[i]].value, '+');
-		if (char_to_find)
-			len = char_to_find - tokens[index[i]].value;
-		ft_memcpy(ptr, tokens[index[i]].value, len);
-		delete_var(data, env, ptr);
-		free (ptr);
-		ptr = NULL;
-		char_to_find = NULL;
+		process_unset_token(data, &tokens[index[i]], ptr);
 		i++;
 	}
 }

@@ -6,13 +6,13 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:41:59 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/17 21:13:43 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:48:45 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../../inc/minishell.h"
 
-int copy_token_members(t_token *tmp_index, t_token *src)
+int	copy_token_members(t_token *tmp_index, t_token *src)
 {
 	tmp_index->type = src->type;
 	tmp_index->id = src->id;
@@ -101,8 +101,8 @@ static int	copy_new_tokens(t_shell *data, t_token *tmp, int *i, char **dirs)
 }
 
 /*
-	FunciÃ³n para copiar el Ãºltimo token del old_arr al Ãºltimo index del new_arr
-	despuÃ©s de haber traido los new_tokens.
+	FunciÃ³n para copiar el Ãºltimo token del old_arr al Ãºltimo index del
+	new_arr despuÃ©s de haber traido los new_tokens.
 
 	Ejemplo:
 	prompt->tokens = a b c d e
@@ -132,8 +132,8 @@ static int	copy_last_token(t_shell *data, t_token *tmp, int *i, int j)
 /*
 	FunciÃ³n para reordenar los tokens de modo que los nuevos tokens que
 	salieron a partir de la expansiÃ³n del wildcard (y que estan de ultimo
-	en el arr) puedan cambiar posiciÃ³n con el token que se encuentra actualmente
-	de Ãºltimo.
+	en el arr) puedan cambiar posiciÃ³n con el token que se encuentra
+	actualmente de Ãºltimo.
 
 	La logica es copiar los tokens en un nuevo arr, teniendo en cuenta el orden.
 	Luego se elimina el old_arr y se actualizan ptrs y otros datos

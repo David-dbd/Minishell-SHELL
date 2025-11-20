@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 15:16:04 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/19 16:48:45 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:55:40 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,35 +31,6 @@
 	En tilde_plus pasa casi lo mismo. Excepto que si no se halla en el env,
 	se usa el getcwd. El mismo comportamiento de pwd
 */
-/*
-static int	if_tilde_error(t_shell *data, t_token *token, char *value, int type)
-{
-	int	flag;
-
-	flag = FALSE;
-	if (type == TILDE && ft_strlen(token->value) > 1
-		|| type == TILDE_PLUS && ft_strlen(token->value) > 2)
-	{
-		flag = TRUE;
-		ft_printf_fd(STDERR, ERR_IS_DIR, value);
-		return (TRUE);
-	}
-	if (token->id == 0)
-	{
-		if (!value)
-		{
-			value = ft_strdup("~+");
-			return (exit_error(data, ERR_MALLOC, EXIT_FAILURE)); //Cuando se elimina el PWD esto debe crear el command y dar la ref a token->value
-		}
-		if (!flag)
-			ft_printf_fd(STDERR, ERR_IS_DIR, value);
-		return (TRUE);
-	}
-	else if (token->id >= 1
-		&& !is_delimiter_type(data->prompt.tokens[token->id - 1].type))
-		ft_printf_fd(STDERR, ERR_IS_DIR, value);
-	return (FALSE);
-}*/
 
 static void	expand_tilde(t_shell *d, t_token *t, char *value_to_copy, char *key)
 {
@@ -73,7 +44,7 @@ static void	expand_tilde(t_shell *d, t_token *t, char *value_to_copy, char *key)
 	}
 }
 
-static int is_just_tilde(t_shell *data, t_token *token, char **key_to_find)
+static int	is_just_tilde(t_shell *data, t_token *token, char **key_to_find)
 {
 	char	*value;
 
@@ -89,13 +60,11 @@ static int is_just_tilde(t_shell *data, t_token *token, char **key_to_find)
 		ft_printf_fd(STDERR, ERR_HOME_NOT_SET); //Im not doung the whole USERS/name: Is a directory cuz I dont have the function to retrieve the Home value
 		return (ERROR);
 	}
-	//if (if_tilde_error(data, token, value, TILDE))
-	//	return (ERROR);
 	expand_tilde(data, token, value, *key_to_find);
 	return (TRUE);
 }
 
-static int is_tilde_plus(t_shell *data, t_token *token, char **key_to_find)
+static int	is_tilde_plus(t_shell *data, t_token *token, char **key_to_find)
 {
 	char	cwd[PATH_MAX];
 	char	*value;
@@ -105,16 +74,14 @@ static int is_tilde_plus(t_shell *data, t_token *token, char **key_to_find)
 	if (!*key_to_find)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 	value = get_var_value(data->env.vars, *key_to_find);
-	if (!value)//-Bash saca el PWD desde el env o lo saca con getcwd? el resultado varia porque se puede borrar en env
+	if (!value) //-Bash saca el PWD desde el env o lo saca con getcwd? el resultado varia porque se puede borrar en env
 	{
 		if (!getcwd(cwd, sizeof(cwd)))
 		{
 			free (*key_to_find);
 			*key_to_find = NULL;
-			return (perror("minishell: cd: "), ERROR);//codigo de error de getcwd?
+			return (perror("minishell: cd: "), ERROR); //codigo de error de getcwd?
 		}
-		//if (if_tilde_error(data, token, cwd, ft_strlen(token->value)))
-		//	return (ERROR);
 		expand_tilde(data, token, cwd, *key_to_find);
 		return (TRUE);
 	}
@@ -122,7 +89,7 @@ static int is_tilde_plus(t_shell *data, t_token *token, char **key_to_find)
 	return (TRUE);
 }
 
-static int is_tilde_minus(t_shell *data, t_token *token, char **key_to_find)
+static int	is_tilde_minus(t_shell *data, t_token *token, char **key_to_find)
 {
 	char	cwd[PATH_MAX];
 	char	*value;
@@ -132,7 +99,7 @@ static int is_tilde_minus(t_shell *data, t_token *token, char **key_to_find)
 	if (!*key_to_find)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 	value = get_var_value(data->env.vars, *key_to_find);
-	if (!value)//-Bash saca el PWD desde el env o lo saca con getcwd? el resultado varia porque se puede borrar en env
+	if (!value) //-Bash saca el PWD desde el env o lo saca con getcwd? el resultado varia porque se puede borrar en env
 	{
 		free (*key_to_find);
 		*key_to_find = NULL;
@@ -143,7 +110,7 @@ static int is_tilde_minus(t_shell *data, t_token *token, char **key_to_find)
 	return (TRUE);
 }
 
-int is_it_tilde(t_shell *data, t_token *token, char **key_to_find)
+int	is_it_tilde(t_shell *data, t_token *token, char **key_to_find)
 {
 	int	result;
 

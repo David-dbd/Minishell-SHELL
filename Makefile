@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/11/20 20:34:02 by migarrid         ###   ########.fr        #
+#    Updated: 2025/11/21 00:13:57 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CC					= cc
 #WFLAGS				= -Wall -Wextra -Werror
 DFLAGS				= -g
 #OFLAGS				= -Ofast -march=native -flto
-SFLAGS				= #-fsanitize=address,undefined
+SFLAGS				= -fsanitize=address,undefined
 DEPFLAGS			= -MMD -MP
 
 # **************************************************************************** #
@@ -159,6 +159,7 @@ SRCS =				main/main.c \
 					tokenizer/utils/trasnform_tokens/transform_cmd_to_built_in.c \
 					tokenizer/utils/trasnform_tokens/move_script_args_to_end.c \
 					tokenizer/utils/trasnform_tokens/split_expansion_result.c \
+					tokenizer/utils/trasnform_tokens/split_expansion_result_utils.c \
 					tokenizer/utils/cmd_sugestion/cmd_correction.c \
 					tokenizer/utils/cmd_sugestion/cmd_correction_utils.c \
 					expansion/expansion.c \
@@ -198,7 +199,6 @@ SRCS =				main/main.c \
 					ast/utils/get_background.c \
 					ast/utils/safe_index_plus.c \
 					ast/utils/get_heredoc.c \
-					ast/utils/expand_alias.c \
 					executor/executor.c \
 					executor/exec/exec_semicolon.c \
 					executor/exec/exec_and.c \
@@ -214,6 +214,7 @@ SRCS =				main/main.c \
 					executor/utils/apply_redirs.c \
 					executor/utils/apply_temp_asig.c \
 					executor/utils/expansion_final_process.c \
+					executor/utils/reconect_nodes_tokens.c \
 					signals/setup_signals.c \
 					signals/handler_signals.c \
 					signals/check_signals.c \
@@ -224,9 +225,6 @@ SRCS =				main/main.c \
 					builtin/my_pwd.c \
 					builtin/my_cd.c \
 					builtin/my_exit.c \
-					builtin/my_unalias.c \
-					builtin/my_alias/my_alias_part_1.c \
-					builtin/my_alias/my_alias_part_2.c \
 					debug/print_ast_tree.c \
 					debug/print_tokens_debug.c \
 					exit/exit.c \

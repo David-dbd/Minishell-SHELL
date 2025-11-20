@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_matches.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 19:15:26 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/17 23:43:19 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:48:07 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,13 @@ static int	if_theres_match(char *file, char *key, int wild_type)
 		if (ft_strncmp(file, key, key_len) == 0)
 			return (TRUE);
 	}
-	else if (wild_type == MIDDLE)
-	{
-		found = ft_charstr_match(file, key);
-		if (found)
-			return (TRUE);
-	}
 	return (FALSE);
 }
 
 static int	go_through_dir(t_shell *data, t_wild *wildc, DIR *dir)
 {
-	int		count;
-	struct 	dirent *entry;
+	int				count;
+	struct dirent	*entry;
 
 	count = 0;
 	while (1)
@@ -73,7 +67,7 @@ static int	go_through_dir(t_shell *data, t_wild *wildc, DIR *dir)
 		if (!entry)
 			break ;
 		if (should_ignore_file(entry->d_name, wildc))
-			continue;
+			continue ;
 		if (wildc->type == ALL)
 			count++;
 		if (handle_complex_case(data, entry->d_name, wildc->key, wildc->type))
@@ -87,7 +81,7 @@ static int	go_through_dir(t_shell *data, t_wild *wildc, DIR *dir)
 int	count_matches(t_shell *data, t_wild *wildcard)
 {
 	int		n_dirs;
-	DIR 	*directory;
+	DIR		*directory;
 
 	directory = opendir(".");
 	if (!directory)

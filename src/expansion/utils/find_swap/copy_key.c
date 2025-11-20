@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   copy_key.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:23:28 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/17 23:39:54 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:56:15 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	if_find_dollar(char *str, char **key_to_find, int i)
 	if (str[i] == '$')
 	{
 		i++;
-		if (is_symbol(str[i]))//tratar los simbolos de manera independiente. $$ $! $? y ademas el export "$$USER" ahora si funcionaria
+		if (is_symbol(str[i])) //tratar los simbolos de manera independiente. $$ $! $? y ademas el export "$$USER" ahora si funcionaria
 		{
 			(*key_to_find)[j++] = str[i];
 			(*key_to_find)[j] = '\0';
@@ -48,7 +48,7 @@ static int	if_find_dollar(char *str, char **key_to_find, int i)
 	return (FALSE);
 }
 
-static void aux_copy_tilde(char *str, char **key_to_find, int i)
+static void	aux_copy_tilde(char *str, char **key_to_find, int i)
 {
 	int	j;
 	int	flag;
@@ -84,11 +84,11 @@ static int	if_find_tilde(char *str, char **key_to_find, int i)
 		}
 		i++;
 		if (str[i] != '+' && str[i] != '/' && str[i] != '-')
-			return (FALSE) ;
+			return (FALSE);
 		if (str[i] == '+' && str[i + 1]
 			&& ((str[i + 1] == '+') || (str[i + 1] != '/'))
-				|| (str[i] == '-' && str[i + 1]
-					&& ((str[i + 1] == '-') || (str[i + 1] != '/'))))
+			|| (str[i] == '-' && str[i + 1]
+				&& ((str[i + 1] == '-') || (str[i + 1] != '/'))))
 			return (FALSE);
 		aux_copy_tilde(str, key_to_find, i);
 		return (TRUE);
