@@ -6,11 +6,15 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 17:12:22 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/14 17:02:58 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:40:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+/*
+ * Verifica que el comando 'cd' tenga exactamente un argumento.
+ */
 
 static int	has_one_arg(char **args)
 {
@@ -24,6 +28,13 @@ static int	has_one_arg(char **args)
 	ft_printf_fd(STDERR, ERR_CD_TOO_MANY);
 	return (FALSE);
 }
+
+/*
+ * Maneja el caso en que el directorio de trabajo actual fue borrado.
+ * Si `getcwd` falla, esta funcion asume que el directorio PWD ya
+ * no existe. Intenta restaurar el PWD a su directorio padre o a
+ * la raiz (`/`), actualizando el path en `old_cwd` y `new_dir`.
+ */
 
 void	cwd_has_been_deleted(t_var *vars, char *old_cwd, char **new_dir)
 {
@@ -45,6 +56,14 @@ void	cwd_has_been_deleted(t_var *vars, char *old_cwd, char **new_dir)
 	ft_strlcpy(old_cwd, cwd, PATH_MAX);
 	*new_dir = cwd;
 }
+
+/*
+ * Valida permisos, existencia y tipo del directorio, y cambia a el.
+ * Primero maneja el caso especial de `cd -` usando OLDPWD. Luego
+ * verifica si el directorio existe (`stat`), si es un directorio
+ * (`S_ISDIR`) y si se tiene permiso de ejecucion (`access`). Si todo
+ * es correcto, usa `chdir` para moverse y actualiza OLDPWD y PWD.
+ */
 
 static int	validate_and_move(t_shell *data, t_var *vars, char *new_dir)
 {
@@ -76,6 +95,13 @@ static int	validate_and_move(t_shell *data, t_var *vars, char *new_dir)
 	return (OK);
 }
 
+/*
+ * Busca el directorio HOME y ejecuta el cambio de directorio.
+ * Obtiene el valor de la variable de entorno HOME. Si existe,
+ * llama a `validate_and_move` para intentar moverse a esa ruta.
+ * Si HOME no esta definido, imprime un error y retorna fallo.
+ */
+
 static int	find_home_and_move(t_shell *data)
 {
 	char	*home;
@@ -88,6 +114,14 @@ static int	find_home_and_move(t_shell *data)
 	result = validate_and_move(data, data->env.vars, home);
 	return (SUCCESS);
 }
+
+/*
+ * Funcion principal del builtin `cd` (change directory).
+ * Si no se proporciona ningun argumento, llama a `find_home_and_move`
+ * para ir al directorio HOME. Si se proporciona un argumento, verifica
+ * que sea uno solo con `has_one_arg` y luego llama a
+ * `validate_and_move` para intentar el cambio de directorio.
+ */
 
 int	my_cd(t_shell *data, char **args)
 {

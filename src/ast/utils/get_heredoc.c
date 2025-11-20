@@ -6,11 +6,18 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 04:19:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/20 21:45:25 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:35:59 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+/*
+ *	Guarda una línea de texto capturada por el heredoc.
+ *	Toma la línea de entrada del usuario y la envuelve en un nuevo
+ *	nodo de lista. Luego, añade este nodo a la lista `heredoc_lines`
+ *	de la redireccion, acumulando asi todo el contenido del documento.
+ */
 
 int	save_heredoc_line(t_shell *data, t_redir *redir, char *line)
 {
@@ -25,6 +32,14 @@ int	save_heredoc_line(t_shell *data, t_redir *redir, char *line)
 	ft_lstadd_back(&redir->heredoc_lines, heredoc_line);
 	return (SUCCESS);
 }
+
+/*
+ *	Bucle principal para capturar la entrada de un heredoc.
+ *	Pide lineas al usuario con `ic_readline("> ")` hasta que la entrada
+ *	coincida con el `delimiter`. En cada iteracion, se configuran
+ *	las señales, se revisa la linea y se guarda. Si se recibe una
+ * 	eñal o EOF, el bucle se interrumpe y retorna el estado.
+ */
 
 int	loop_heredoc(t_shell *data, t_redir *redir, char *delimiter)
 {
@@ -62,6 +77,14 @@ int	loop_heredoc(t_shell *data, t_redir *redir, char *delimiter)
 	}
 	return (OK);
 }
+
+/*
+ *	Funcion de control principal para iniciar la captura del heredoc.
+ *	si el dilimitador no estaba entre comillas marca la redireccion
+ *	para que las variables se expandan luego. Llama a `loop_heredoc` para
+ *	recolectar las lineas y asegura que las señales se restauren
+ *	al modo interactivo al finalizar.
+ */
 
 int	get_heredoc(t_shell *data, t_redir *redir, char *delimiter, int expansion)
 {

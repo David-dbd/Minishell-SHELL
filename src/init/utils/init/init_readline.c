@@ -6,11 +6,17 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 20:37:34 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/14 23:23:27 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:07:21 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
+
+/*
+ *	Asegura que el directorio en 'DEFAULT_HISTORY_FILE' exista.
+ *	Si no está presente, lo crea con los permisos definidos
+ *	para garantizar la disponibilidad de rutas de archivo.
+*/
 
 void	ensure_dir(const char *path)
 {

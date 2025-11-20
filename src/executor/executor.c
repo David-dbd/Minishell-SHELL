@@ -6,11 +6,19 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:36:57 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/20 20:47:35 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:42:23 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+/*
+ * Ejecuta recursivamente el Arbol de Sintaxis Abstracta (AST).
+ * Esta es la funcion principal de **ejecucion**. Recorre el AST
+ * de forma recursiva, delegando la ejecucion a la funcion
+ * especifica segun el tipo de nodo (secuenciacion, logica, pipe,
+ * subshell, builtin o comando simple). Evita reejecutar nodos.
+ */
 
 void	executor_recursive(t_shell *data, t_node *node, t_exec *exec, int mode)
 {

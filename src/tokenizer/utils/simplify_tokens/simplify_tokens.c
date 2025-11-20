@@ -6,15 +6,15 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 20:37:22 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/17 21:14:54 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:19:48 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
 /*
-	Concatena los valores de tokens tipo COMMAND dentro de un rango
-	y reorganiza los tokens resultando en uno solo.
+ *	Concatena los valores de tokens tipo COMMAND dentro de un rango
+ *	y reorganiza los tokens resultando en uno solo.
 */
 
 void	join_tokens(t_shell *d, t_prompt *prompt, t_token *tokens, int *range)
@@ -41,10 +41,11 @@ void	join_tokens(t_shell *d, t_prompt *prompt, t_token *tokens, int *range)
 }
 
 /*
-	Comprueba si un rango de tokens puede simplificarse:
-	- Tiene al menos un NO_SPACE que indica unión pegada.
-	- Si tiene EXPANSION, no deja simplificar los tokens.
+ *	Comprueba si un rango de tokens puede simplificarse:
+ *	- Tiene al menos un NO_SPACE que indica unión pegada.
+ *	- Si tiene EXPANSION, no deja simplificar los tokens.
 */
+
 static int	is_possible_simplify(t_token *tokens, int *range)
 {
 	int	i;
@@ -64,8 +65,8 @@ static int	is_possible_simplify(t_token *tokens, int *range)
 }
 
 /*
-	Busca el siguiente bloque de tokens pegados (NO_SPACE)
-	y devuelve su rango (start/end).
+ *	Busca el siguiente bloque de tokens pegados (NO_SPACE)
+ *	y devuelve su rango (start/end).
 */
 
 int	get_no_space_range(t_token *tokens, int *range, int start_i, int n_tokens)
@@ -85,6 +86,10 @@ int	get_no_space_range(t_token *tokens, int *range, int start_i, int n_tokens)
 	}
 	return (FAILURE);
 }
+
+/*
+ *	Remueve todos los tokens de comillas ya que ya no nos seran utiles
+*/
 
 void	remove_quotes_tokens(t_prompt *prompt, t_token *tokens)
 {
@@ -112,8 +117,8 @@ void	remove_quotes_tokens(t_prompt *prompt, t_token *tokens)
 }
 
 /*
-	Recorre todos los tokens y une los que están pegados (NO_SPACE)
-	para simplificar la lista de tokens finales.
+ *	Recorre todos los tokens y une los que están pegados (NO_SPACE)
+ *	para simplificar la lista de tokens finales.
 */
 void	simplify_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 {

@@ -6,15 +6,15 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/20 20:13:06 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:12:44 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
 /*
-	Recorre el string `input` y llama a las funciones `is_*` para
-	detectar cada tipo de token. Avanza el índice según lo detectado.
+ *	Recorre el string `input` y llama a las funciones `is_*` para
+ *	detectar cada tipo de token. Avanza el índice según lo detectado.
 */
 
 void	get_tokens(t_shell *data, t_prompt *prompt, char *input)
@@ -46,8 +46,8 @@ void	get_tokens(t_shell *data, t_prompt *prompt, char *input)
 }
 
 /*
-	Revisa cada token del input y valida operadores como '|', '(', ')',
-	'&&' y '||'. Comprueba que estén correctamente colocados y emparejados.
+ *	Revisa cada token del input y valida operadores como '|', '(', ')',
+ *	'&&' y '||'. Comprueba que estén correctamente colocados y emparejados.
 */
 
 int	check_if_valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
@@ -77,6 +77,14 @@ int	check_if_valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
 		return (SYNTAX_ERROR);
 	return (SUCCESS);
 }
+
+/*
+ *	Convierte la entrada de texto cruda en una lista de tokens.
+ *	Este proceso de traducción incluye: obtener los tokens iniciales,
+ *	manejar la **expansión de variables** ($), aplicar las reglas
+ *	de syntaxis de bash y resolver los **wildcars** (*).
+ *	Asegura que la sintaxis sea correcta nuevamente antes continuar.
+ */
 
 int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 {

@@ -6,11 +6,17 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:42:00 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/20 21:47:53 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:04:23 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
+
+/*
+	Genera y muestra el prompt interactivo.
+	Usa el tilde (~) para abreviar la ruta del HOME,
+	dando una vista más limpia cuando el usuario está en su directorio personal.
+*/
 
 int	display_info_shell_home(char *user, char *host, char *pwd, char **line)
 {
@@ -23,6 +29,12 @@ int	display_info_shell_home(char *user, char *host, char *pwd, char **line)
 	return (SUCCESS);
 }
 
+/*
+	Genera y muestra el prompt interactivo.
+	Muestra la ruta de trabajo completa cuando el usuario
+	se encuentra fuera de su directorio personal (en la ruta del sistema).
+*/
+
 int	display_info_shell_system(char *user, char *host, char *pwd, char **line)
 {
 	char	*display_shell;
@@ -33,6 +45,13 @@ int	display_info_shell_system(char *user, char *host, char *pwd, char **line)
 	free(display_shell);
 	return (SUCCESS);
 }
+
+/*
+	Gestiona el display de shell en modo interactivo.
+	Obtiene la información del usuario (HOME, PWD, USER y host) y decide
+	si mostrar el prompt con la ruta abreviada (~ para HOME) o la ruta completa,
+	Finalmente, almacena la entrada en el historial de 'readline'.
+*/
 
 void	terminal_readline(t_shell *data, t_var *vars, char *line)
 {
@@ -61,10 +80,11 @@ void	terminal_readline(t_shell *data, t_var *vars, char *line)
 }
 
 /*
- * Lee entrada del usuario con readline personalizado: almacena
- * en historial, verifica señales y retorna NULL con Ctrl+D
- * terminando el programa al finalizar el while y saliendo del programa
- */
+	Controla la lectura de la entrada de comandos por el usuario.
+	Si está en un **TTY interactivo**, usa `terminal_readline` con un prompt.
+	Si no lo es (pipe/script), lee la entrada directamente con `ic_readline`.
+	Verifica el estado de las señales antes de devolver la entrada.
+*/
 
 char	*receive_input(t_shell *data, t_prompt *prompt)
 {

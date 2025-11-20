@@ -6,17 +6,17 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:43 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/20 20:36:44 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:13:09 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
 /*
-	Función principal `main` de Minishell. Inicializa la estructura `data`
-	con `init_minishell` y entra en el bucle principal. Lee la entrada del
-	usuario, tokeniza, construye el AST y ejecuta los comandos. Limpia la
-	memoria tras cada ciclo y termina con `exit_succes` al salir.
+ *	Función principal `main` de Minishell. Inicializa la estructura `data`
+ *	con `init_minishell` y entra en el bucle principal. Lee la entrada del
+ *	usuario, tokeniza, construye el AST y ejecuta los comandos. Limpia la
+ *	memoria tras cada ciclo y termina con `exit_succes` al salir.
 */
 
 int	main(int argc, char **argv, char **envp)

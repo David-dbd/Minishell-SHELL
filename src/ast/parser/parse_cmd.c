@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:29:52 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/19 16:41:16 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:32:17 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@
 	semántica y estructura de cada componente.
 */
 
+/*
+ *	Mueve el índice de tokens al saltar una redireccion y su argumento.
+ *	saltandose un operador de redireccion y el nombre de archivo que
+ *	le sigue, permitiendo al parser continuar con el siguiente token.
+ */
+
 void	index_redir_input(int type, int *i, int n_tokens)
 {
 	if (is_redir_type(type))
@@ -46,6 +52,12 @@ void	index_redir_input(int type, int *i, int n_tokens)
 		safe_index_plus(i, n_tokens);
 	}
 }
+
+/*
+ *	Maneja casos donde una linea tiene solo redirecciones o asignaciones
+ *	temporales, creando un nodo de comando TRUE para ejecutarlas. Este nodo
+ *	luego recopila las redirecciones y el operador background (&) si existe.
+ */
 
 t_node	*special_cases(t_shell *data, t_token *tokens, int *i, int n_tokens)
 {
@@ -73,6 +85,13 @@ t_node	*special_cases(t_shell *data, t_token *tokens, int *i, int n_tokens)
 	}
 	return (NULL);
 }
+
+/*
+ *	Recopila todos los detalles de un nodo de comando ya creado.
+ *	Su funcion es llenar el nodo con las asignaciones temporales,
+ *	las redirecciones, los argumentos del comando y sus tipos, y
+ *	finalmente, si el comando debe ir en segundo plano (`&`).
+ */
 
 int	get_information(t_shell *data, t_token *tokens, int *i, t_node *central)
 {
@@ -111,6 +130,15 @@ int	get_information(t_shell *data, t_token *tokens, int *i, t_node *central)
 	En definitiva, parse_cmd no solo es para commands, sino para wildcards,
 	asigs locales, redirs y cmd. Es una función versatil y muiltiuso.
 */
+
+/*
+ *	Punto de entrada del parser para construir nodos de comandos,
+ *	asignaciones locales, wildcards y redirecciones.
+ *	Primero llama a `special_cases` para manejar lineas con solo
+ *	redirecciones. Si es un comando valido o asignacion, crea el nodo
+ *	y llama a `get_information` para completarlo con sus argumentos
+ *	y redirecciones.
+ */
 
 t_node	*parse_cmd(t_shell *data, t_token *tokens, int *i, int n_tokens)
 {

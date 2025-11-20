@@ -6,11 +6,18 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:04:50 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/17 14:18:22 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:27:36 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+/*
+ *	Analiza secuencias de comandos separadas por punto y coma (;).
+ *	Esta funcion construye la parte superior del Arbol de Sintaxis,
+ *	siguiendo la regla de secuenciacion. Itera enlazando comandos
+ *	previos con el nuevo nodo de secuenciacion, de izquierda a derecha.
+ */
 
 t_node	*parse_sequence(t_shell *data, t_token *tokens, int *i, int n_tokens)
 {

@@ -6,11 +6,18 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 20:21:21 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/17 14:19:52 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:32:29 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+/*
+ *	Analiza la secuencia de comandos conectados por tuberias.
+ *	Esta funcion se encarga de agrupar los comandos o subshells
+ *	que estan unidos por el operador de tubería. Va construyendo
+ *	el arbol de ejecucion paso a paso, de izquierda a derecha.
+ */
 
 t_node	*parse_pipes(t_shell *data, t_token *tokens, int *i, int n_tokens)
 {

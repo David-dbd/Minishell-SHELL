@@ -6,11 +6,15 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:23:24 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/13 20:56:10 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:41:37 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+/*
+ * Revisa si el comando `echo` fue llamado sin argumentos.
+ */
 
 int	check_no_args(char **args)
 {

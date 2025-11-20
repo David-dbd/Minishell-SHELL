@@ -6,15 +6,15 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:02:53 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/17 01:09:51 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:13:41 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
 
 /*
- * Busca el valor de una variable en la lista de vars.
- * Devuelve:
+ *	Busca el valor de una variable en la lista de vars.
+ *	Devuelve:
  *	- value (char*) si se encuentra la variable
  *	- NULL si no existe
 */
@@ -39,8 +39,8 @@ char	*get_var_value(t_var *vars, const char *key)
 }
 
 /*
-	Inicializa variables de entorno básicas si no hay 'envp',
-	como PWD, SHLVL y PATH mínimo.
+ *	Inicializa variables de entorno básicas si no hay 'envp',
+ *	como PWD, SHLVL y PATH mínimo.
 */
 
 static void	init_no_env(t_shell *data)
@@ -63,8 +63,8 @@ static void	init_no_env(t_shell *data)
 }
 
 /*
-	Convierte cada cadena de 'envp' en key/value y las añade al entorno
-	del shell.
+ *	Convierte cada cadena de 'envp' en key/value y las añade al entorno
+ *	del shell.
 */
 
 static void	init_env(t_shell *data, char **envp)
@@ -92,11 +92,12 @@ static void	init_env(t_shell *data, char **envp)
 		i++;
 	}
 	delete_var(data, &data->env, "_");
+	delete_var(data, &data->env, "SHELL");
 	update_shlvl(data->env.vars);
 }
 
 /*
-	Inicializa el entorno del shell: usa 'envp' si existe o crea uno básico.
+ *	Inicializa el entorno del shell: usa 'envp' si existe o crea uno básico.
 */
 
 void	init_enviroment(t_shell *data, t_env *env, char **envp)

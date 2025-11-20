@@ -44,7 +44,8 @@
 		"ranges": "c",
 		"compare": "c",
 		"atomic": "c",
-		"cstddef": "c"
+		"cstddef": "c",
+		"cmath": "c"
 	},
 
 	// Configuración C/C++

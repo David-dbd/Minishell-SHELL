@@ -6,11 +6,18 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 10:55:44 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/19 16:49:52 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:15:05 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../inc/minishell.h"
+
+/*
+ *	Verifica si hubo un error de asignación de memoria (NULL)
+ *	en el array de strings 'builtins'.
+ *	Si encuentra un puntero nulo, libera toda la memoria del array
+ *	antes de retornar ERROR, previniendo fugas.
+ */
 
 static int	check_if_error(char **builtins, int len)
 {
@@ -28,6 +35,13 @@ static int	check_if_error(char **builtins, int len)
 	}
 	return (SUCCESS);
 }
+
+/*
+ *	Inicializa la lista de comandos internos (builtins) de la shell.
+ *	Asigna memoria para el array, duplica el nombre de cada builtin
+ *	(cd, echo, export, etc.) y verifica que todas las asignaciones
+ *	de memoria hayan sido exitosas antes de almacenarlas en `data`.
+ */
 
 void	init_builtins(t_shell *data)
 {

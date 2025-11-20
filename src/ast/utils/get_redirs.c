@@ -6,11 +6,17 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:59:47 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/20 20:40:10 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 22:38:41 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/minishell.h"
+
+/*
+ *	Define el punto de partida para buscar redirecciones.
+ *	Esta funcion ajusta el índice `j` para que apunte al inicio
+ *	de la secuencia de redirecciones.
+ */
 
 void	set_index(t_token *tokens, int *j, int *i)
 {
@@ -20,6 +26,13 @@ void	set_index(t_token *tokens, int *j, int *i)
 		*j = *i;
 }
 
+/*
+ *	Determina si las variables dentro de un heredoc deben expandirse.
+ *	Las variables solo se expanden si el delimitador del heredoc
+ *	no esta entre comillas, sean simples o dobles. Retorna true
+ *	si debe haber expansion.
+ */
+
 bool	expand_heredoc(t_token *token)
 {
 	if (!token[+1].type)
@@ -28,8 +41,8 @@ bool	expand_heredoc(t_token *token)
 }
 
 /*
- * Encuentra el último nodo en lista de redirecciones:
- * recorre la lista hasta el final para añadir nuevos elementos
+ *	Encuentra el último nodo en lista de redirecciones:
+ *	recorre la lista hasta el final para añadir nuevos elementos
 */
 
 t_redir	*lstlast_redir(t_redir *lst)
@@ -42,8 +55,8 @@ t_redir	*lstlast_redir(t_redir *lst)
 }
 
 /*
- * Añade redirección a lista: crea estructura con tipo, archivo
- * y descriptor, manejando números explícitos o valores por defecto
+ *	Añade redirección a lista: crea estructura con tipo, archivo
+ *	y descriptor, manejando números explícitos o valores por defecto
 */
 
 t_redir	*add_redir(t_shell *data, t_redir *lst, t_token *token, char *filename)
@@ -78,8 +91,8 @@ t_redir	*add_redir(t_shell *data, t_redir *lst, t_token *token, char *filename)
 }
 
 /*
- * Obtiene lista de redirecciones desde tokens: recorre tokens
- * recolectando operadores de redirección y sus archivos asociados
+ *	Obtiene lista de redirecciones desde tokens: recorre tokens
+ *	recolectando operadores de redirección y sus archivos asociados
 */
 
 t_redir	*get_redirs(t_shell *data, t_token *tokens, int *i, int mode)
