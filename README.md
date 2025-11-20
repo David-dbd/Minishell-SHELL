@@ -24,7 +24,6 @@ Minishell - Bash
 ### MIKEL:
 
 ### DAVID:
-- Splitting de Expansion genera un pequeño leak -> `export X="  A  B  "; /bin/echo "1"$X'2'`
 - Espacios entre expansiones pegadas cuando no exite la variable `echo $USER$TESTNOTFOUND$HOME$WTF$PWD` o `/bin/echo test"$MISSING"`
 - wildcards complejas in the middle no son 100% perfectas-> `touch minishelxxxl; /usr/bin/printf "%s\n" minishe*l | sort`
 
