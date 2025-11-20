@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 17:12:22 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/14 17:02:58 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 20:45:50 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,26 @@
 static int	has_one_arg(char **args)
 {
 	int	i;
+	int	words_flag;
 
 	i = 0;
+	words_flag = 0;
 	while (args[i] != NULL)
 		i++;
 	if (i == 1)
-		return (TRUE);
+	{
+		i = 0;
+		while (args[0][i] != '\0')
+		{
+			if (!ft_isspace(args[0][i]))
+				words_flag = TRUE;
+			i++;
+		}
+		if (words_flag)
+			return (TRUE);
+		else if (!words_flag)
+			return (IGNORE);
+	}
 	ft_printf_fd(STDERR, ERR_CD_TOO_MANY);
 	return (FALSE);
 }
@@ -98,10 +112,13 @@ int	my_cd(t_shell *data, char **args)
 		result = find_home_and_move(data);
 		return (result);
 	}
-	if (has_one_arg(args))
+	result = has_one_arg(args);
+	if (result == TRUE)
 	{
 		result = validate_and_move(data, data->env.vars, args[0]);
 		return (result);
 	}
+	else if (result == IGNORE)//pueden ser expansiones vacias
+		return (FAILURE);
 	return (FAIL);
 }

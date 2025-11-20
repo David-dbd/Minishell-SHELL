@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   eliminate_token.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 00:04:17 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/19 21:40:34 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 19:42:58 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int	is_expansion_cmd(t_node *node, t_token *tokens, int i)
 {
 	if (!node)
 		return (FALSE);
-	if (node->token->hash == tokens[i].hash && node->type == COMMAND && ft_count_str_in_arr(node->args) == 1)
+	if (node->token->hash == tokens[i].hash
+		&& node->type == COMMAND && ft_count_str_in_arr(node->args) == 1)
 		return (TRUE);
 	if (is_expansion_cmd(node->left, tokens, i))
 		return (TRUE);

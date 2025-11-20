@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
+#    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/11/19 16:55:55 by migarrid         ###   ########.fr        #
+#    Updated: 2025/11/20 21:04:39 by davdiaz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,6 +158,7 @@ SRCS =				main/main.c \
 					tokenizer/utils/trasnform_tokens/transform_cmd_to_built_in.c \
 					tokenizer/utils/trasnform_tokens/move_script_args_to_end.c \
 					tokenizer/utils/trasnform_tokens/split_expansion_result.c \
+					tokenizer/utils/trasnform_tokens/split_expansion_result_utils.c \
 					tokenizer/utils/cmd_sugestion/cmd_correction.c \
 					tokenizer/utils/cmd_sugestion/cmd_correction_utils.c \
 					expansion/expansion.c \
@@ -213,6 +214,7 @@ SRCS =				main/main.c \
 					executor/utils/apply_redirs.c \
 					executor/utils/apply_temp_asig.c \
 					executor/utils/expansion_final_process.c \
+					executor/utils/reconect_nodes_tokens.c \
 					signals/setup_signals.c \
 					signals/handler_signals.c \
 					signals/check_signals.c \

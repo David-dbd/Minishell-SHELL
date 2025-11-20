@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_final_process.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 19:04:23 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/19 21:40:34 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 20:46:10 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,33 @@ void	create_before_tokens(t_shell *d, t_token *tokens, t_prompt *prompt)
 	para cualquiera.
 */
 
+
+static int check_cases(t_shell *data, t_prompt *prompt, t_token *tokens, int i)
+{
+	if (i > 0 && (i + 1) < prompt->n_tokens)
+	{
+		if (is_cmd_builtin_type(tokens[i - 1].type)
+			&& tokens[i + 1].type != NO_SPACE)
+		{
+			tokens[i].type = DONT_ELIMINATE;
+		}
+		else if (tokens[i - 1].type == WORD
+			&& tokens[i + 1].type == WORD)
+		{
+			tokens[i].type = DONT_ELIMINATE;
+		}
+		else if (tokens[i - 1].type == NO_SPACE
+			|| tokens[i + 1].type == NO_SPACE)
+		{
+			eliminate_token(data, prompt, tokens, i);
+			reconect_nodes_tokens(data, data->ast_root, prompt->tokens);
+			return (1);
+		}
+	}
+	return (0);
+}
+
+
 static void	prepare_simplify(t_shell *data, t_prompt *prompt, t_token *tokens)
 {
 	int	i;
@@ -77,48 +104,11 @@ static void	prepare_simplify(t_shell *data, t_prompt *prompt, t_token *tokens)
 	{
 		if (tokens_before[i] == EXPANSION && tokens[i].type == NO_SPACE)
 		{
-			if (i > 0 && (i + 1) < prompt->n_tokens)
-			{
-				if (is_cmd_builtin_type(tokens[i - 1].type)
-					&& tokens[i + 1].type != NO_SPACE)
-				{
-					tokens[i].type = DONT_ELIMINATE;
-				}
-				else if (tokens[i - 1].type == WORD
-					&& tokens[i + 1].type == WORD)
-					tokens[i].type = DONT_ELIMINATE;
-				else if (tokens[i - 1].type == NO_SPACE
-					|| tokens[i + 1].type == NO_SPACE)
-				{
-					eliminate_token(data, &data->prompt, data->prompt.tokens, i);
-					reconect_nodes_tokens(data, data->ast_root, data->prompt.tokens);
-					continue ;
-				}
-			}
+			if (check_cases(data, prompt, tokens, i))
+				continue;
 		}
 		i++;
 	}
-}
-
-void	reconect_nodes_tokens(t_shell *data, t_node *node, t_token *tokens)
-{
-	int	i;
-
-	if (!node)
-		return ;
-	i = 0;
-	while (i < data->prompt.n_tokens)
-	{
-		if (tokens[i].hash == node->token_hash)
-		{
-			node->token = &tokens[i];
-			node->token->id = i;
-			break ; //ya encontro el token correcto, así que hay que seguir con los demás
-		}
-		i++;
-	}
-	reconect_nodes_tokens(data, node->left, tokens);
-	reconect_nodes_tokens(data, node->right, tokens);
 }
 
 static int	if_theres_an_expan(t_token *start_t, t_token *tokens, t_prompt *p)
@@ -206,7 +196,7 @@ int expansion_final_process(t_shell *data, t_node *node)
 		split_expansion_result(data, &data->prompt, data->prompt.tokens);
 		reconect_nodes_tokens(data, data->ast_root, data->prompt.tokens);
 		i = node->token->id;
-		// print_tokens_debug(&data->prompt);
+		//print_tokens_debug(&data->prompt);
 		if (node->args)
 			ft_free_str_array(&node->args);
 		expand_wildcards(data, &data->prompt, data->prompt.tokens, FINAL_PHASE); //Las wildcards que no se hayan expandido llegado este punto es debido a que dependen de una expansion que no se ha podido hacer

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_matches.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 17:42:56 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/19 16:57:44 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:20:58 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,6 @@ static int	if_theres_match(char *file, char *key, int wild_type)
 	else if (wild_type == END)
 	{
 		if (ft_strncmp(file, key, key_len) == 0)
-			return (TRUE);
-	}
-	else if (wild_type == MIDDLE)
-	{
-		found = ft_charstr_match(file, key);
-		if (found)
 			return (TRUE);
 	}
 	return (FALSE);

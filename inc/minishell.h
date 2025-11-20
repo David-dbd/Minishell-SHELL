@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/19 19:51:14 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 21:03:29 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,6 +257,7 @@ int		apply_properties(t_shell *data, t_node *node, int mode);
 void	apply_temp_asig(t_shell *data, t_token *tokens, t_node *node);
 
 //EXPANSION
+int		set_arr(t_shell *data, char ***arr, int i, int *count);
 int		copy_key(char *buffer, char **key_to_find, int *type);
 int		find_key_in_lst(t_shell *d, t_token *t, char **key_to_f);
 int		is_it_tilde(t_shell *data, t_token *token, char **key_to_find);
@@ -267,6 +268,7 @@ int		copy_value(t_shell *d, char **t_val, char *key_value, char *key_to_f);
 int		expand_empty_str(t_shell *d, t_token *to, char **key_to_find, int type);
 void	create_before_tokens(t_shell *d, t_token *tokens, t_prompt *prompt);
 void	move_script_args_to_end(t_shell *data, t_prompt *p, t_token *tokens);
+void	reconect_nodes_tokens(t_shell *data, t_node *node, t_token *tokens);
 
 //EXPANSION_WILDCARDS
 int		process_wildcard(t_shell *data, t_token *token);

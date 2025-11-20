@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_wildcard.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 16:15:42 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/19 16:58:03 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:20:50 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ static int	handle_case2(char *str, char **ptr, int *wildcard_type, int i)
 	}
 	if (str[start] != '*')
 		*wildcard_type = BEGINING;
-	//else if (str[start] == '*' && (str[start + 1] == '\0'
-	//	|| ft_isspace(str[start + 1])))
-	//	*wildcard_type = MIDDLE;
 	*ptr = ft_strndup(str + i + 1, start - (i + 1));
 	if (!*ptr)
 		return (ERROR);

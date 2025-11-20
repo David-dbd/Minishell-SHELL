@@ -12,7 +12,6 @@ $NOVAR $LSDF $svd && ls
  /usr/bin/env /bin/sh /tmp/Microsoft-MIEngine-Cmd-reiww5v2.fpd 
 ls && $NOVAR
 $NOVAR 
-echo $?
 Export T=LA
 echo $T
 echo $T | cat -e
@@ -50,9 +49,25 @@ $svsfdfvsa $vsfsdv $SvSDFV
 $svsfdfvsa -aascas
 $svsfdfvsa ls
 $csca ls
-clear
 $NOVAR
 $NOVAR ls
 $NOVAR && ls
 ls && $NOVAR && ls
 $vsdvasvss $vsvsdv $SVsdvs
+/bin/echo $HOME$NOTHING$USER$
+cd
+pwd
+cd "$doesntexist" 
+cd "$doesntexist"    
+cd "$doesntexist"
+cd "doesntexist"
+cd ../../
+cd -
+/usr/bin/printf "%s\\n" "Mak"'e'*'*' | sort
+echo hola
+/bin/echo 42 >tmp_out*
+echo $?
+mak
+clear
+/usr/bin/printf "%s\\n" minishe*l | sort
+cat Mak*

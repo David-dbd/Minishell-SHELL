@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform_word_to_file.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 20:43:29 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/14 01:59:11 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 21:25:26 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

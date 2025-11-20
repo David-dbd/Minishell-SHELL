@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 19:15:26 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/17 23:43:19 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:21:08 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,6 @@ static int	if_theres_match(char *file, char *key, int wild_type)
 	else if (wild_type == END)
 	{
 		if (ft_strncmp(file, key, key_len) == 0)
-			return (TRUE);
-	}
-	else if (wild_type == MIDDLE)
-	{
-		found = ft_charstr_match(file, key);
-		if (found)
 			return (TRUE);
 	}
 	return (FALSE);

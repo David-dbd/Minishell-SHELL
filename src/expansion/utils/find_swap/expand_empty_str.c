@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_empty_str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:57:46 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/19 20:01:34 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 20:27:38 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	aux_alloc_mem(t_shell *data, char **str, char **new_str, int len)
 	entonces no se pone espacio, pero si no hay mas entonces si se poner espacio
 */
 
-static int write_space_or_not(char *str, int quoted, int start)
+static int	write_space_or_not(char *str, int quoted, int start)
 {
 	int	ptr;
 	int	len;
@@ -53,7 +53,8 @@ static int write_space_or_not(char *str, int quoted, int start)
 	ptr = ft_intstr_match(str, "$", start);
 	if (!quoted)
 		(FALSE);
-	if (ptr && (ptr + 1) < len && ft_isalnum(str[ptr + 1]) || str[ptr + 1] == '_' )
+	if (ptr && (ptr + 1) < len && ft_isalnum(str[ptr + 1])
+		|| str[ptr + 1] == '_' )
 		return (FALSE);
 	return (TRUE);
 }
@@ -103,7 +104,7 @@ void	handle_double_quoted_token(t_token *token, int token_len)
 	token->value[1] = '\0';
 }
 
-int	expand_empty_str(t_shell *data, t_token *token, char **key_to_find, int type)
+int	expand_empty_str(t_shell *dat, t_token *token, char **key_to_find, int type)
 {
 	int	key_len;
 	int	token_len;
@@ -123,9 +124,9 @@ int	expand_empty_str(t_shell *data, t_token *token, char **key_to_find, int type
 		else if (token->heredoc)
 			ft_memset(token->value, 0, token_len);
 		else
-			eliminate_token(data, &data->prompt, data->prompt.tokens, token->id);
+			eliminate_token(dat, &dat->prompt, dat->prompt.tokens, token->id);
 	}
 	else
-		return (ignore_words(data, token, &token->value, token_len), REPLACED);
+		return (ignore_words(dat, token, &token->value, token_len), REPLACED);
 	return (SUCCESS);
 }

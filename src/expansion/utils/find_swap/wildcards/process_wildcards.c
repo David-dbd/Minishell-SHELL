@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   process_wildcards.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 16:18:03 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/19 16:57:17 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 23:20:30 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../../inc/minishell.h"
-
 
 static void	init_wildcard(t_shell *data, t_wild **wildcard)
 {
@@ -52,6 +51,12 @@ static int	matches(t_shell *dat, t_token *token, t_wild *wildcard, int *n_dirs)
 		free_wildcard(&token->wildcard_info);
 		return (FAILURE);
 	}
+	if (*n_dirs > 1 && token->id > 0 && is_redir_type(token[-1].type))
+	{
+		free_wildcard(&token->wildcard_info);
+		syntax_error(dat, ERR_AMBIGUOUS_REDIR, EXIT_FAILURE);
+		return (FAILURE);
+	}
 	return (SUCCESS);
 }
 
@@ -62,8 +67,8 @@ int	process_wildcard(t_shell *data, t_token *token)
 
 	new_tokens = NULL;
 	n_dirs = 0;
-	//if (token->double_quoted)
-	//	return (FAILURE);
+	if (token->double_quoted)
+		return (FAILURE);
 	init_wildcard(data, &token->wildcard_info);
 	if (!extract(data, token, token->wildcard_info))
 		return (FAILURE);
