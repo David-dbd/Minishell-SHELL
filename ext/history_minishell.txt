@@ -1,5 +1,3 @@
-ls $svsdsdsd&
-clar
 $novar
 $novar && ls
 true
@@ -191,9 +189,11 @@ echo A && echo B; echo C || echo D
 echo A && echo B; (echo C || echo D) > A 
 s
 sd
-ls
 /bin/echo "exit_code ->$? user ->$USER home -> $HOME"
 /bin/echo "$?"
 bash
-clear
 cat Mak*
+sleep 10
+<< LM
+clear
+ls

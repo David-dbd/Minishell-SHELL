@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/20 20:41:50 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 21:24:09 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ int		check_signal_node_heredoc(t_node *node);
 int		check_signals(t_shell *data, t_redir *redir, char *line);
 void	setup_signals_cmd_correction(void);
 int		check_signal_cmd_correction(t_shell *data);
+void	handle_sigint(int sig);
 
 /* ************************************************************************** */
 /*                                 Clean                                      */

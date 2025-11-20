@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:47:09 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/13 21:33:04 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/20 21:46:58 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * recibida para ser procesada posteriormente
 */
 
-// void	handle_sigint_interative(int sig)
+// void	handle_sigint(int sig)
 // {
 // 	(void)sig;
 // 	g_signal[1] = SIGINT;
