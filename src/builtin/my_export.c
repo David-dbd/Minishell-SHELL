@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:22:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/21 14:11:30 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/21 14:31:18 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,27 @@ static void	print_env_variables(t_env	*env)
 	}
 }
 
+static int	check_wildcard_asig(t_shell *data, t_token *tokens, int i)
+{
+	int	result;
+
+	result = 0;
+	expand_wildcards(data, &data->prompt, tokens, FINAL_PHASE);
+	result = check_asignation_syntax(&tokens[i], ENV);
+	if (result)
+		asignation(data, &tokens[i], ENV);
+	else
+	{
+		result = check_asignation_syntax(&tokens[i], EXP);
+		if (!result)
+		{
+			ft_printf_fd(STDERR, ERR_EXPORT, tokens[i].value);
+			return (ERROR);
+		}
+	}
+	return (SUCCESS);
+}
+
 /*
 	El caso edge supongo que sería que el hijo haga el export del temp_asig
 	y que luego se llame por el padre a export, al nunca eliminar
@@ -94,11 +115,8 @@ static int	asignation_type(t_shell *data, t_token *tokens, int i)
 		asignation(data, &tokens[i], PLUS_ASIGNATION);
 	else if (tokens[i].type == WILDCARD)
 	{
-		expand_wildcards(data, &data->prompt, tokens, FINAL_PHASE);
-		if (check_asignation_syntax(&tokens[i], EXP))
-			asignation(data, &tokens[i], EXP);
-		else if (check_asignation_syntax(&tokens[i], ENV))
-			asignation(data, &tokens[i], ENV);
+		if (check_wildcard_asig(data, tokens, i) == ERROR)
+			return (ERROR);
 	}
 	return (SUCCESS);
 }
