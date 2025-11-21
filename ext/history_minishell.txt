@@ -1,61 +1,3 @@
-"$"
-"$a"
-"$sdfasdf"
-"$SHELL
-echo $SHELL
-echo $SHLVL
-ls -lah --color /proc/504966/fd
-cd /proc/self/
-cd /tmp/
-ls &vsabe
-(yes | head -n 10)
-&(yes | head -n 10)
-(yes | head -n 10) &
-yes &
-exit
-env env
-env -i
-setopt
-exec
-/usr/bin/echo
-/usr/bin/echo a
-unset PATH
-/usr/bin/vim
-cd /usr/bin/vim
-cd /usr/bin/
-?
-$?
-$??
-echo "$??
-echo "$??"
-echo "$??????"
-echo "$--?"
-echo "$-"
-echo "$$$"
-echo "$_A"
-echo "$_??A"
-echo "$?_?A"
-echo "$]"
-echo "$[]"
-echo "$[a]"
-echo "$[?]"
-echo "$\\?"
-echo "$\\A?"
-echo "$!"
-echo "!!"
-export export
-export export export export export export
-export export export export export export -i
-export export export export export export ''
-export export export export export export '_'
-export export export export export export '_A FADFAKJDASJDKASJD KAJSD JKASDJK A"
-export export export export export export '_A FADFAKJDASJDKASJD KAJSD JKASDJK A" '
-echo 'a'
-echo 'a  ()) $() '
-echo 'a  ()a=sdf-asdf-as $() '
-echo "$USER"'' a
-echo "$"'' a
-echo "$hse"'' a
 echo "$-"'' a
 ckear
 echo A && echo B; echo C || echo D
@@ -158,13 +100,6 @@ bash
 export TEST1=123
 cat tmp_lol.c | cat > tmp_lol.c
 export t*est=hola
-<<<<<<< HEAD
-=======
-export make*
-$var
-export var=*file
-export T*EST=hola
->>>>>>> 57e082b5e747adc80a67a5920c4a64ac8689dae9
 eche hola
 sd
 eche
@@ -174,7 +109,6 @@ echa
 sl
 slds
 sdv
-s
 ""
 ss
 ava
@@ -185,25 +119,15 @@ sev
 sa
 hola
 echo ~
-a
-q
-w
 e
 r
 t
-y
 u
 i
 o
 p
 ;
 l
-k
-j
-h
-g
-f
-d
 z
 xx
 c
@@ -227,7 +151,6 @@ cat $var
 env
 va=*ll
 export var=*file
-export *file
 echo hola && *file
 echo hola && >> *file
 export T*EST=hola
@@ -236,7 +159,6 @@ export VAR=*src
 export VAR=*sr
 export VAR=*sr*
 echo $VAR
-export var=1
 var+=*file
 $var
 lear
@@ -248,10 +170,8 @@ $va
 export ba*
 echo $ba
 echo $b
-export
 export var=ba*
 echo $var
-clear
 <<<<<<< HEAD
 $eef*ef
 $*asfas
@@ -264,3 +184,16 @@ $test
 export *file
 export
 >>>>>>> 57e082b5e747adc80a67a5920c4a64ac8689dae9
+a
+iyu
+rty
+erth
+wtht
+export var=1
+w
+q
+d
+gg
+*d
+hola en
+clear

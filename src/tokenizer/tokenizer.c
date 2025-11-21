@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/21 20:02:01 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/21 20:13:38 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	transform_tokens_logic(data, prompt, prompt->tokens);
 	simplify_tokens(data, prompt, prompt->tokens);
 	transform_tokens_logic(data, prompt, prompt->tokens);
-	print_tokens_debug(prompt);
 	if (!cmd_correction(data, prompt->tokens, prompt->n_tokens))
 		return (FAILURE);
 	else
