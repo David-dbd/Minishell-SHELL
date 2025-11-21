@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_final_process.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 19:04:23 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/21 03:39:29 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/21 08:58:21 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,6 @@ static void	prepare_simplify(t_shell *data, t_prompt *prompt, t_token *tokens)
 				continue ;
 		}
 		i++;
-		// if (tokens_before[i] == NO_SPACE && tokens[i].type == NO_SPACE)
-		// {
-		// 	eliminate_token(data, prompt, tokens, i);
-		// 	// reconect_nodes_tokens(data, data->ast_root, prompt->tokens);
-		// }
 	}
 }
 
@@ -189,25 +184,21 @@ int expansion_final_process(t_shell *data, t_node *node)
 	if (if_theres_an_expan(node->token, data->prompt.tokens, &data->prompt))
 	{
 		create_before_tokens(data, data->prompt.tokens, &data->prompt);
-		// print_tokens_debug(&data->prompt);
 		expansion(data, data->prompt.tokens, node->token->id, FINAL_PHASE);
 		if (data->prompt.n_tokens == 0)
 			return (FAILURE);
-		// print_tokens_debug(&data->prompt);
+		 print_tokens_debug(&data->prompt);
 		prepare_simplify(data, &data->prompt, data->prompt.tokens);
-		// print_tokens_debug(&data->prompt);
+		 print_tokens_debug(&data->prompt);
 		simplify_tokens(data, &data->prompt, data->prompt.tokens);
-		// print_tokens_debug(&data->prompt);
 		reconect_nodes_tokens(data, data->ast_root, data->prompt.tokens);
 		split_expansion_result(data, &data->prompt, data->prompt.tokens);
 		reconect_nodes_tokens(data, data->ast_root, data->prompt.tokens);
 		i = node->token->id;
-		// print_tokens_debug(&data->prompt);
 		if (node->args)
 			ft_free_str_array(&node->args);
 		expand_wildcards(data, &data->prompt, data->prompt.tokens, FINAL_PHASE); //Las wildcards que no se hayan expandido llegado este punto es debido a que dependen de una expansion que no se ha podido hacer
 		node->args = get_args_for_binary(data, data->prompt.tokens, &i);
-		// print_ast(data->ast_root);
 	}
 	return (SUCCESS);
 }

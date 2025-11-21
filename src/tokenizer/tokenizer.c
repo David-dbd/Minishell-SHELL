@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/21 03:55:05 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/21 09:08:06 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 		return (FAILURE);
 
 	// printf("\n\nAFTER EXPANSION INITIAL_PHASE\n\n");
-	// print_tokens_debug(prompt);
+	//print_tokens_debug(prompt);
 
 	split_expansion_result(data, prompt, prompt->tokens);
 	simplify_tokens(data, prompt, prompt->tokens);
@@ -121,11 +121,11 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 
 	transform_tokens_logic(data, prompt, prompt->tokens);
 
-	// print_tokens_debug(prompt);
+	//print_tokens_debug(prompt);
 	expand_wildcards(data, prompt, prompt->tokens, INITIAL_PHASE);
 
 	if (!check_if_valid_tokens(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
-	// print_tokens_debug(prompt);
+	//print_tokens_debug(prompt);
 	return (SUCCESS);
 }

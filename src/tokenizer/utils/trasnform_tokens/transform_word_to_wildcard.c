@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform_word_to_wildcard.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:49:40 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/21 00:00:36 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/21 09:07:49 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,6 @@ static int	is_valid_wildcard(t_token *tokens, t_prompt *prompt, int i)
 		return (TRUE);
 	if (is_delimiter_type(tokens[j].type) || is_redir_type(tokens[j].type)) //podria no haber cmds
 		return (TRUE);
-	if (tokens[j].type == BUILT_IN
-		&& ft_strcmp(tokens[j].value, BUILTIN_EXPORT) == 0)
-		return (FALSE);
 	return (TRUE);
 }
 
@@ -95,10 +92,10 @@ void	transform_word_to_wildcard(t_shell *d, t_prompt *promp, t_token *tokens)
 	len = 0;
 	while (i < promp->n_tokens)
 	{
-		if ((tokens[i].type == WORD || tokens[i].type == FILENAME)
+		if ((tokens[i].type == WORD || tokens[i].type == FILENAME
+			|| tokens[i].type == COMMAND)
 			&& !tokens[i].single_quoted && !tokens[i].double_quoted
-			&& has_a_wildcard(tokens[i].value)
-			&& is_valid_wildcard(tokens, promp, i))
+			&& has_a_wildcard(tokens[i].value))
 		{
 			tokens[i].type = WILDCARD;
 		}

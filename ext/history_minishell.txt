@@ -1,21 +1,4 @@
-cat Makefile
-cat Makefile > out1.txt > out2.txt >> out3.txt
-cat out2.txt
-echo hola > out1.txt > out2.txt >> out3.txt
-cat << out3.txt
-cat < out3.txt
-echo hola >> out3.txt
-echo hola > out3.txt
-cat out3.txt
-cat < Makefile < out3.txt
-"\\$USER"
-false && echo A || echo B && echo C || false && echo D || (echo E && false || echo F) && echo G || (false && echo H) || echo I && (echo J | cat && false |\xE2\x86\x90)
-false && echo A || echo B && echo C || false && echo D || (echo E && false || echo F) && echo G || (false && echo H) || echo I && (echo J | cat && false || echo K) && echo L || (echo M && (false || echo N) && true) && echo O || echo P && (echo Q && echo R | grep R || echo S) && (false || echo T) || (echo U && false) || echo V && (echo $(false || echo W) && true) || echo X && (printf Y && false || true) && echo Z || echo END
-false && echo A || echo B && echo C || false && echo D || (echo E && false || echo F) && echo G || (false && echo H) || echo I && (echo J | cat && false || echo K) && echo L || (echo M && (false || echo N) && true) && echo O || echo P && (echo Q && echo R | grep R || echo S) && (false || echo T) || (echo U && false) || echo V && (echo $(false || echo W) && true)
-false && echo A || echo B && echo C || false && echo D || (echo E && false || echo F) && echo G || (false && echo H) || echo I && (echo J | cat && false || echo K) && echo L || (echo M && (false || echo N) && true) && echo O || echo P && (echo Q && echo R | grep R || echo S) && (false || echo T) || (echo U && false) || echo V && (echo $(false || echo W)
-false && echo A || echo B && echo C || false && echo D || (echo E && false || echo F) && echo G || (false && echo H) || echo I && (echo J | cat && false || echo K) && echo L || (echo M && (false || echo N) && true) && echo O || echo P && (echo Q && echo R | grep R || echo S) && (false || echo T) || (echo U && false) || echo V && (echo $(false || echo W) )
 false && echo A || echo B && echo C || false && echo D || (echo E && false || echo F) && echo G || (false && echo H) || echo I && (echo J | cat && false || echo K) && echo L || (echo M && (false || echo N) && true) && echo O || echo P && (echo Q && echo R | grep R || echo S) && (false || echo T) || (echo U && false) || echo V && (echo)
-""
 ls && ""
 ls &&  ls
 ls -
@@ -69,7 +52,6 @@ exec
 /usr/bin/echo
 /usr/bin/echo a
 unset PATH
-env
 /usr/bin/vim
 cd /usr/bin/vim
 cd /usr/bin/
@@ -126,7 +108,6 @@ cd -
 echo hola
 /bin/echo 42 >tmp_out*
 mak
-/usr/bin/printf "%s\\n" minishe*l | sort
 cat Mak*
 env | sort | grep -v SHLVL | grep -v ^_
 COLORTERM=truecolor
@@ -183,17 +164,36 @@ export tes$sd
 export TES$?T=123
 s
 /bin/echo ""$?""
-/bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
-/bin/echo test$MISSING "$MISSING"
 bash
 ./minishell
-/bin/echo test$MISSING "$MISSING" | cat -e
 ls
 celar
 echo $?
-echo $/ $/
 make
-clear
 echo $/"$<"
 echo $/"$/"
+echo" "$USE.txt
+echo $/ $/
+echo hola$noexiste$wtf$$como_estas
 echo $USER$TESTNOTFOUND$HOME$
+echo hola$noexiste-como_estas
+echo hola$noexiste$wtf-como_estas
+/bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
+""
+echo hola$noexiste""-como_estas
+/bin/echo test$MISSING "$MISSING"
+/bin/echo test$MISSING "$MISSING" | cat -e
+/usr/bin/printf "%s\\n" minishe*l | sort
+touch palala
+export va*r=hola
+export va*rrrr=hola
+export var=pa*ala
+$var
+export var=pal*la
+export va=pal*la
+env
+export va=pal*la pala*a
+export
+clear
+pa*ala=hola
+var=hola
