@@ -195,5 +195,5 @@ export *file
 $var
 export
 clear
-export T*EST=hola
 export var=*file
+export T*EST=hola
