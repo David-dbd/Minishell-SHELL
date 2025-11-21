@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ast_builder.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 16:36:02 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/21 14:12:45 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/21 14:57:46 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,5 @@ void	ast_builder(t_shell *data, t_token *tokens, int n_tokens)
 	data->ast_root = parse_sequence(data, tokens, &i, n_tokens);
 	if (data->error_state == TRUE)
 		exit_error(data, NULL, EXIT_FAILURE);
-	 print_ast(data->ast_root);
+	// print_ast(data->ast_root);
 }

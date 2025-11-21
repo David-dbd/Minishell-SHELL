@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/21 13:50:39 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/21 14:57:38 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 
 	// print_tokens_debug(prompt);
 	transform_tokens_logic(data, prompt, prompt->tokens);
- print_tokens_debug(prompt);
+	// print_tokens_debug(prompt);
 	simplify_tokens(data, prompt, prompt->tokens);
 
 	// if (!cmd_correction(data, prompt->tokens, prompt->n_tokens))
