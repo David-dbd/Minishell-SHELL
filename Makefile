@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
+#    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/11/21 15:46:01 by migarrid         ###   ########.fr        #
+#    Updated: 2025/11/21 17:11:14 by davdiaz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -166,6 +166,7 @@ SRCS =				main/main.c \
 					expansion/expansion.c \
 					expansion/utils/find_swap/copy_key.c \
 					expansion/utils/find_swap/copy_value.c \
+					expansion/utils/find_swap/process_expansion_token.c \
 					expansion/utils/find_swap/extract_key.c \
 					expansion/utils/find_swap/find_key_in_list.c \
 					expansion/utils/find_swap/expand_empty_str.c \
@@ -180,6 +181,7 @@ SRCS =				main/main.c \
 					expansion/utils/find_swap/wildcards/extract_wildcard.c \
 					expansion/utils/find_swap/wildcards/reorder_tokens.c \
 					expansion/utils/find_swap/wildcards/handle_complex_case.c \
+					expansion/utils/find_swap/wildcards/should_ignore_file.c \
 					expansion/utils/asignation/asignation.c \
 					expansion/utils/asignation/verify_if_already_set.c \
 					expansion/utils/asignation/check_externs_syntax.c \
@@ -200,6 +202,7 @@ SRCS =				main/main.c \
 					ast/utils/get_background.c \
 					ast/utils/safe_index_plus.c \
 					ast/utils/get_heredoc.c \
+					ast/utils/alloc_arg_types.c \
 					executor/executor.c \
 					executor/exec/exec_semicolon.c \
 					executor/exec/exec_and.c \

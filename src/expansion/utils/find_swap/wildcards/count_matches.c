@@ -3,34 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   count_matches.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 19:15:26 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/20 23:48:07 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/21 16:43:44 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../../inc/minishell.h"
-
-static int	should_ignore_file(char *filename, t_wild *wildcard)
-{
-	if (ft_strcmp(filename, ".") == 0 || ft_strcmp(filename, "..") == 0)
-		return (TRUE);
-	if (wildcard->starts_with_dot)
-	{
-		if (filename[0] == '.')
-			return (FALSE);
-		else
-			return (TRUE);
-	}
-	else
-	{
-		if (filename[0] == '.')
-			return (TRUE);
-		else
-			return (FALSE);
-	}
-}
 
 static int	if_theres_match(char *file, char *key, int wild_type)
 {

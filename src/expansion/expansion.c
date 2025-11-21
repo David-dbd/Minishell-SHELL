@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:57:33 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/21 15:08:13 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/21 17:11:41 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,23 +82,13 @@ static int	get_symbol_to_expand_count(char *str)
 	return (number_of_symbols);
 }
 
-static int	process_expansion_token(t_shell *data, t_token *token, int phase)
+static int	check_for_heredoc(t_token *tokens, int i)
 {
-	char	*key_to_find;
-	int		number_of_dollars;
-	int		found;
-
-	found = FALSE;
-	aux_mem_alloc(data, token, &key_to_find);
-	number_of_dollars = get_symbol_to_expand_count(token->value);
-	while (number_of_dollars > 0)
-	{
-		found = extract_key(data, token, &key_to_find, phase);
-		number_of_dollars--;
-	}
-	free(key_to_find);
-	key_to_find = NULL;
-	return (found);
+	if ((i > 1 && tokens[i - 1].type == REDIR_HEREDOC)
+		|| (i >= 2 && is_quote_type(tokens[i - 1].type)
+			&& tokens[i - 2].type == REDIR_HEREDOC))
+		return (TRUE);
+	return (FALSE);
 }
 
 int	expansion(t_shell *data, t_token *tokens, int i, int phase)
@@ -114,9 +104,7 @@ int	expansion(t_shell *data, t_token *tokens, int i, int phase)
 			return (SUCCESS);
 		if (tokens[i].type == EXPANSION)
 		{
-			if ((i > 1 && tokens[i - 1].type == REDIR_HEREDOC)
-				|| (i >= 2 && is_quote_type(tokens[i - 1].type)
-					&& tokens[i - 2].type == REDIR_HEREDOC))
+			if (check_for_heredoc(tokens, i))
 			{
 				i++;
 				continue ;

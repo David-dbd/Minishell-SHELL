@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/21 15:54:14 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/21 17:10:46 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,6 +242,7 @@ int		get_heredoc(t_shell *data, t_redir *redir, char *delimiter, int mode);
 int		get_background(t_token *tokens, int n_tokens, int *i);
 int		*get_arg_types(t_shell *data, t_node *node, int i, int j);
 char	**get_args_for_binary(t_shell *data, t_token *token, int *i);
+int		*alloc_arg_types(t_shell *d, t_node *node, int start_i, int end_j);
 char	**get_temp_asignations(t_shell *data, t_token *tokens, int i);
 t_redir	*get_redirs(t_shell *data, t_token *tokens, int *i, int mode);
 
@@ -256,6 +257,7 @@ void	apply_temp_asig(t_shell *data, t_token *tokens, t_node *node);
 
 //EXPANSION
 int		set_arr(t_shell *data, char ***arr, int i, int *count);
+int		process_expansion_token(t_shell *data, t_token *token, int phase);
 int		copy_key(char *buffer, char **key_to_find, int *type);
 int		find_key_in_lst(t_shell *d, t_token *t, char **key_to_f, int phase);
 int		is_it_tilde(t_shell *data, t_token *token, char **key_to_find);
@@ -275,9 +277,10 @@ char	**find_matches(t_shell *d, t_wild *wildcard_info, int n_dirs);
 void	rebuild_tokens(t_shell *data, t_token *token, char **dirs, int n_dirs);
 int		extract_wildcard(t_shell *d, char *str, char **ptr, int *wildcard_type);
 int		reorder_tokens(t_shell *d, t_token *oritoken, int orisize, char **dirs);
+int		should_ignore_file(char *filename, t_wild *wildcard);
 int		handle_complex_case(t_shell *d, char *file, char *key, int wild_type);
-void	free_tmp_tokens(t_token *tmp, int count);
 int		create_hash(t_shell *da, int n_dirs, int n_tokens, int starting_hash);
+void	free_tmp_tokens(t_token *tmp, int count);
 void	free_tokens(t_prompt *prompt);
 
 //ASIGNATION

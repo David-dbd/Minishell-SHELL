@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_arg_types.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 01:44:27 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/21 15:14:43 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/21 17:12:27 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,36 +58,6 @@ static int	create_dinamic_arr(t_shell *data, int **arg_types, int i, int j)
 	return (SUCCESS);
 }
 
-static int	*alloc_arg_types(t_shell *d, t_node *node, int start_i, int end_j)
-{
-	int	*arg_types;
-	int	tmp_counter;
-	int	tmp_token_index;
-	int	len;
-
-	tmp_counter = 0;
-	if (node->assig_tmp)
-	{
-		while (node->assig_tmp[tmp_counter])
-			tmp_counter++;
-		if (!create_dinamic_arr(d, &arg_types, start_i, (end_j + tmp_counter)))
-			return (NULL);
-		len = tmp_counter;
-		tmp_token_index = tmp_counter;
-		tmp_counter = 0;
-		while (tmp_counter < len)
-		{
-			arg_types[tmp_counter] = d->prompt.tokens[start_i - tmp_token_index].id;
-			tmp_counter++;
-			tmp_token_index--;
-		}
-	}
-	else
-		if (!create_dinamic_arr(d, &arg_types, start_i, end_j))
-			return (NULL);
-	return (arg_types);
-}
-
 static void	check_arg_index(int arg_index, int **arg_types)
 {
 	if (arg_index == 0)
@@ -127,32 +97,44 @@ static int	find_correct_index(t_token *tokens, int *arg_types)
 	return (i);
 }
 
+static int	check_valid(t_token *toks, t_node *nod, int *arg_types, int start_i)
+{
+	if (!toks[start_i].value
+		|| (ft_strcmp(toks[start_i].value, BUILTIN_EXPORT) != 0
+			&& nod->assig_tmp == NULL))
+	{
+		free(arg_types);
+		return (2);
+	}
+	if (!toks[start_i].value
+		|| (ft_strcmp(toks[start_i].value, BUILTIN_EXPORT) != 0
+			&& toks[start_i + 1].type))
+	{
+		return (1);
+	}
+	return (IGNORE);
+}
+
 int	*get_arg_types(t_shell *data, t_node *node, int start_i, int end_j)
 {
-	t_token	*tokens;
+	t_token	*toks;
 	int		*arg_types;
 	int		arg_index;
 
-	tokens = data->prompt.tokens;
+	toks = data->prompt.tokens;
 	arg_types = alloc_arg_types(data, node, start_i, end_j);
 	if (!arg_types)
 		return (NULL);
-	if (!tokens[start_i].value
-		|| ft_strcmp(tokens[start_i].value, BUILTIN_EXPORT) != 0
-		&& node->assig_tmp == NULL)
-		return (free (arg_types), NULL);
-	if (!tokens[start_i].value
-		|| ft_strcmp(tokens[start_i].value, BUILTIN_EXPORT) != 0
-		&& tokens[start_i + 1].type)
-		return (arg_types);
+	if (check_validation(toks, node, arg_types, start_i))
+		return (check_validation(toks, node, arg_types, start_i));
 	if (start_i + 1 < data->prompt.n_tokens)
 		start_i += 1;
 	arg_index = find_correct_index(data->prompt.tokens, arg_types);
 	while (start_i < data->prompt.n_tokens && start_i < end_j)
 	{
-		if (is_arg_type(tokens[start_i].type))
+		if (is_arg_type(toks[start_i].type))
 		{
-			arg_types[arg_index] = tokens[start_i].id;
+			arg_types[arg_index] = toks[start_i].id;
 			arg_index++;
 		}
 		start_i++;

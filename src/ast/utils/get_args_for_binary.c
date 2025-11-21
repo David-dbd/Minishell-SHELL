@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args_for_binary.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 23:03:38 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/21 15:06:08 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/21 17:24:15 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,32 @@ static void	arg_count(t_token *tokens, int n_tokens, int *i, int *n_args)
 	}
 }
 
+static int	assign_arg_value(t_shell *d, int j, int n_args, char ***args)
+{
+	int	k;
+
+	k = 0;
+	while (k < n_args && j < d->prompt.n_tokens)
+	{
+		if (is_delimiter_type(d->prompt.tokens[j].type))
+			break ;
+		if (is_redir_type(d->prompt.tokens[j].type)
+			|| d->prompt.tokens[j].type == FILENAME
+			|| d->prompt.tokens[j].type == DELIMITER
+			|| d->prompt.tokens[j].type == DONT_ELIMINATE)
+		{
+			j++;
+			continue ;
+		}
+		if (extract_bin_arg(d, &(*args)[k], d->prompt.tokens[j].value) == 1)
+			k++;
+		if (d->error_state == TRUE)
+			return (-1);
+		j++;
+	}
+	return (k);
+}
+
 char	**get_args_for_binary(t_shell *data, t_token *tokens, int *i)
 {
 	char	**args;
@@ -97,22 +123,9 @@ char	**get_args_for_binary(t_shell *data, t_token *tokens, int *i)
 		return (NULL);
 	if (!aux_alloc_mem(data, &args, n_args))
 		return (NULL);
-	while (k < n_args && j < data->prompt.n_tokens)
-	{
-		if (is_delimiter_type(tokens[j].type))
-			break ;
-		if (is_redir_type(tokens[j].type) || tokens[j].type == FILENAME
-			|| tokens[j].type == DELIMITER || tokens[j].type == DONT_ELIMINATE)
-		{
-			j++;
-			continue ;
-		}
-		if (extract_bin_arg(data, &args[k], tokens[j].value) == SUCCESS)
-			k++;
-		if (data->error_state == TRUE)
-			return (NULL);
-		j++;
-	}
+	k = assign_arg_value(data, j, n_args, &args);
+	if (k == -1)
+		return (NULL);
 	if (k == 0)
 	{
 		ft_free_str_array(&args);
