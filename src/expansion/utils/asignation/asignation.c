@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:35:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/23 11:13:10 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/23 14:51:29 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 	*Añade la variable al entorno con add_var().
 */
 
-static int	aux_mem_alloc(char **key, char **value, int len)
+int	aux_mem_alloc_asignation(char **key, char **value, int len)
 {
 	*key = ft_calloc(len + 1, sizeof(char));
 	*value = ft_calloc(len + 1, sizeof(char));
@@ -38,7 +38,7 @@ static int	aux_mem_alloc(char **key, char **value, int len)
 	return (SUCCESS);
 }
 
-static void	aux_key_asig(t_token *token, char **key, int *i)
+void	aux_key_asig(t_token *token, char **key, int *i)
 {
 	int	j;
 
@@ -57,7 +57,7 @@ static void	aux_key_asig(t_token *token, char **key, int *i)
 	(*key)[j] = '\0';
 }
 
-static void	aux_value_asig(t_token *token, char **value, int *i)
+void	aux_value_asig(t_token *token, char **value, int *i)
 {
 	int	j;
 
@@ -122,7 +122,7 @@ int	asignation(t_shell *data, t_token *token, int type)
 	key = NULL;
 	value = NULL;
 	i = 0;
-	if (aux_mem_alloc(&key, &value, ft_strlen(token->value)) == ERROR)
+	if (aux_mem_alloc_asignation(&key, &value, ft_strlen(token->value)) == ERROR)
 		exit_error(data, ERR_MALLOC, EXIT_FAILURE);
 	aux_key_asig(token, &key, &i);
 	aux_value_asig(token, &value, &i);

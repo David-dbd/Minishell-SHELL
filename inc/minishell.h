@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/23 11:16:50 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/23 17:01:20 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,6 +270,8 @@ int		expand_empty_str(t_shell *d, t_token *to, char **key_to_find, int type);
 void	create_before_tokens(t_shell *d, t_token *tokens, t_prompt *prompt);
 void	move_script_args_to_end(t_shell *data, t_prompt *p, t_token *tokens);
 void	reconect_nodes_tokens(t_shell *data, t_node *node, t_token *tokens);
+int		initial_expansion_process(t_shell *d, t_prompt *prompt);
+
 
 //EXPANSION_WILDCARDS
 int		process_wildcard(t_shell *data, t_token *token);
@@ -286,9 +288,11 @@ void	free_tokens(t_prompt *prompt);
 
 //ASIGNATION
 int		check_asignation_syntax(t_token *token, int type);
-void	eliminate_temp_asig(t_prompt *prompt, t_token *tokens);
+int		aux_mem_alloc_asignation(char **key, char **value, int len);
 int		verify_if_already_set(t_shell *data, char *key, char **value, int t);
 int		check_externs_syntax(t_shell *d, t_token *tkens, t_token *token, int t);
+void	aux_key_asig(t_token *token, char **key, int *i);
+void	aux_value_asig(t_token *token, char **value, int *i);
 
 //ENV
 int		add_var(t_shell *data, char *key, char *value, int type);
@@ -342,6 +346,8 @@ char	*clean_slash_expan_d(t_shell *data, char *word, int len, char slash);
 char	*cleanner_slash_quotes_d(t_shell *data, char *word, int len, int *flag);
 void	copy_escaped_and_advance(char *word, char *clean_word, int *j, int *k);
 int		is_escapable_char(char c);
+
+
 
 //BUILT_IN
 int		check_arg_syntax(char *arg, const char *built_in_err);

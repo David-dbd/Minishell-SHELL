@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:57:33 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/21 18:03:35 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/23 15:19:33 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	expansion(t_shell *data, t_token *tokens, int i, int phase)
 	{
 		if (phase == FINAL_PHASE && is_delimiter_type(tokens[i].type))
 			return (SUCCESS);
-		if (tokens[i].type == EXPANSION)
+		if (tokens[i].type == EXPANSION && tokens[i].expand)
 		{
 			if (check_for_heredoc(tokens, i))
 			{

@@ -1,27 +1,3 @@
-echo hola
-/bin/echo 42 >tmp_out*
-mak
-cat Mak*
-env | sort | grep -v SHLVL | grep -v ^_
-COLORTERM=truecolor
-osoft VS Code/bin:/mnt/c/Users/mikel/.lmstudio/bin:/mnt/c/Users/mikel/AppData/Local/Microsoft/WindowsApps:/home/mikel/.local/bin:/snap/bin:/home/mikel/.bin:/snap/bin:/home/mikel/.bin
- env | sort | grep -v SHLVL | grep -v ^_
-echo "$|"'' a
-echo "$scsd"'' a
-echo "$HOME"'' a
-echo "$_"'' a
-echo "$HO ME"
-bassh
-\nsd
-\n\n\n\n\n\n\n
-\n
-\n\n\n\n\n
-ls && ls
-echo && ls
-cat < file
-echo A > file && echo < file hola
-echo A  && echo b
-echo A && echo b
 echo A > file && echo < file b
 echo A && echo < file b
 echo A > a&& echo < file b
@@ -55,7 +31,6 @@ export TES0T=123
 export tes$HOME
 export tes$sd
 ./minishell
-echo $?
 echo $/"$<"
 echo $/"$/"
 echo" "$USE.txt
@@ -150,7 +125,6 @@ export ba*
 echo $ba
 echo $b
 export var=ba*
-echo $var
 <<<<<<< HEAD
 $eef*ef
 $*asfas
@@ -160,13 +134,11 @@ export test=hola*
 export test=*file
 $test
 export *file
-export
 >>>>>>> 57e082b5e747adc80a67a5920c4a64ac8689dae9
 iyu
 rty
 erth
 wtht
-export var=1
 w
 q
 gg
@@ -196,4 +168,32 @@ Make*
 a*
 *a*
 echo *a*
+../hola*
+hola*
+cho
+echo $?
+var=12; echo $var
+var+=a; echo $var
+export var=1
+export USER=2
+echo $var
+var=2 && echo $var
+echo $a
+var=1
+var=3 && echo $var && var=4 && echo $var
+export a=1
+export a=2 && echo $a
+export USER=2 && echo $USER
+export a=3 && echo $a
+ECHO HOLA
+echo hola
+export USER=1 && echo $USER
+echo $USER
+USER=3 && echo $USER
+echo $$
+clear &&echo "Starting monster test" && echo "Part 1: Basic Commands" && ls -la | grep "." && pwd && whoami && echo $? && echo $USER && echo "Part 2: Pipes and Redirections" && cat < Makefile | grep "gcc" | wc -l > output.txt && cat output.txt && rm output.txt && echo "Part 3: Multiple Commands" && echo hello > file1 && cat < file1 >> file2 && cat file2 && rm file1 file2 && echo "Part 4: Environment Variables" && export TEST=hello && echo $TEST && unset TEST && echo $TEST && echo "Part 5: Quotes and Special Characters" && echo "  spaces  " && echo '  single quotes  ' && echo "mixed 'quotes' here" && echo $"HOME" && echo $'HOME' && echo "Part 6: Exit Status" && false || echo $? && true && echo $? && echo "Part 7: Complex Pipes" && ls -la | grep "." | wc -l | xargs echo "Files:" && echo "Part 8: Signal Handling Test" && sleep 2 && echo "Part 9: Error Cases" && cd nonexistentdir 2>errorlog.txt || echo "dir not found $?" && ./nonexistentfile 2>/dev/null || echo "file not found $?" && echo "Part 10: AND/OR operators" && false || echo "OR works" && true && echo "AND works" && false || echo "Complex OR" && true && echo "Complex AND" || echo "Should not print" && echo "Monster test completed with exit status $?"
+USER=HOLA && echo $USER
 clear
+export A=1
+A=3; echo $A && A=4; echo $A; export A=0 && echo $A
+export

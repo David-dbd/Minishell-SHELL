@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 01:07:14 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/20 23:40:54 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/23 16:04:14 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	add_token(t_shell *data, t_prompt *prompt, char *value, int type)
 	tokens[i].hash = i;
 	tokens[i].value = value;
 	tokens[i].type = type;
+	tokens[i].expand = TRUE;
 	prompt->n_tokens++;
 	return (tokens[tokens[i].id].id);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/21 20:47:46 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/23 17:12:25 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	check_if_valid_tokens(t_shell *data, t_prompt *prompt, t_token *tokens)
  *	manejar la **expansión de variables** ($), aplicar las reglas
  *	de syntaxis de bash y resolver los **wildcars** (*).
  *	Asegura que la sintaxis sea correcta nuevamente antes continuar.
- */
+*/
 
 int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 {
@@ -91,10 +91,8 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 		return (SYNTAX_ERROR);
 	is_it_quoted(prompt, prompt->tokens);
 	move_script_args_to_end(data, prompt, prompt->tokens);
-	create_before_tokens(data, prompt->tokens, prompt);
-	if (expansion(data, prompt->tokens, 0, INITIAL_PHASE) == ERROR)
+	if (!initial_expansion_process(data, prompt))
 		return (FAILURE);
-	split_expansion_result(data, prompt, prompt->tokens);
 	simplify_tokens(data, prompt, prompt->tokens);
 	transform_tokens_logic(data, prompt, prompt->tokens);
 	simplify_tokens(data, prompt, prompt->tokens);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
+#    By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/11/21 20:52:51 by migarrid         ###   ########.fr        #
+#    Updated: 2025/11/23 16:54:22 by davdiaz-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,6 +146,7 @@ SRCS =				main/main.c \
 					tokenizer/utils/check_syntax/check_cmd_externs.c \
 					tokenizer/utils/check_syntax/check_full_line_syntax.c \
 					tokenizer/utils/check_syntax/check_ambiguous_redir.c \
+					tokenizer/utils/initial_expansion/initial_expansion_process.c \
 					tokenizer/utils/simplify_tokens/simplify_tokens.c \
 					tokenizer/utils/simplify_tokens/reorganize_tokens.c \
 					tokenizer/utils/simplify_tokens/adjust_range_tokens.c \
