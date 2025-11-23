@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   my_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 17:12:22 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/21 15:41:28 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/23 11:26:56 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
  * Verifica que el comando 'cd' tenga exactamente un argumento.
- */
+*/
 
 static int	has_one_arg(char **args)
 {
@@ -113,18 +113,16 @@ static int	validate_and_move(t_shell *data, t_var *vars, char *new_dir)
  * Obtiene el valor de la variable de entorno HOME. Si existe,
  * llama a `validate_and_move` para intentar moverse a esa ruta.
  * Si HOME no esta definido, imprime un error y retorna fallo.
- */
+*/
 
 static int	find_home_and_move(t_shell *data)
 {
 	char	*home;
-	int		result;
 
-	result = 0;
 	home = get_var_value(data->env.vars, "HOME");
 	if (!home)
 		return (ft_printf_fd(STDERR, ERR_HOME_NOT_SET), EXIT_FAILURE);
-	result = validate_and_move(data, data->env.vars, home);
+	validate_and_move(data, data->env.vars, home);
 	return (SUCCESS);
 }
 

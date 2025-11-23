@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:31:39 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/21 20:29:20 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/23 11:16:50 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,7 @@ void	reorganize_tokens(t_prompt *p, t_token *tokens, int *range, char *res);
 
 //TRANSFORM TOKENS
 void	transform_word_to_file(t_prompt *prompt, t_token *tokens);
-void	transform_asig_to_asig_plus(t_prompt *pro, t_token *tokens);
+void	transform_asig_to_asig_plus(t_prompt *prompt, t_token *tokens);
 void	transform_cmd_to_word(t_shell *data, t_token *tokens, int phase);
 void	transform_invalid_asig_to_word(t_prompt *prompt, t_token *tokens);
 void	transform_word_to_asignation(t_shell *data, t_token *tokens, int phase);
@@ -234,9 +234,9 @@ void	transform_tokens_logic(t_shell *data, t_prompt *promp, t_token *tokens);
 void	transform_word_to_file(t_prompt *prompt, t_token *tokens);
 void	transform_command_built_lowercase(t_prompt *prompt, t_token *tokens);
 void	transform_asig_to_temp(t_prompt *prompt, t_token *tokens);
-void	transform_cmd_to_built_in(t_shell *d, t_prompt *p, t_token *tokens);
-void	transform_word_to_wildcard(t_shell *d, t_prompt *p, t_token *t);
-void	split_expansion_result(t_shell *d, t_prompt *p, t_token *t);
+void	transform_cmd_to_built_in(t_shell *data, t_prompt *p, t_token *tokens);
+void	transform_word_to_wildcard(t_prompt *prompt, t_token *tokens);
+void	split_expansion_result(t_shell *data, t_prompt *promp, t_token *tokens);
 
 //AST
 int		get_heredoc(t_shell *data, t_redir *redir, char *delimiter, int mode);

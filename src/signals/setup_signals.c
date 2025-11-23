@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_signals.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 02:02:04 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/20 23:56:35 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/23 11:21:16 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	setup_signals_heredoc(void)
 
 // /*
 //  * Establece señales por defecto en hijos: permiten que los
-//  * procesos terminen normalmente con Ctrl+C y Ctrl+\\
+//  * procesos terminen normalmente con Ctrl+C y Ctrl+
 // */
 
 // void	setup_signals_child(void)

@@ -6,7 +6,7 @@
 /*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 22:35:11 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/15 23:42:55 by davdiaz-         ###   ########.fr       */
+/*   Updated: 2025/11/23 11:13:10 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ static void	aux_value_asig(t_token *token, char **value, int *i)
 		(*i)++;
 	while (token->value[*i] != '\0')
 	{
-		if (token->value[*i] != '\"' && token->value[*i] != '\''
-			&& token->value[*i] != ';')
+		if (token->value[*i] != ';')
 		{
 			(*value)[j++] = token->value[*i];
 		}

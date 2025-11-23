@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_empty_str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: davdiaz- <davdiaz-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:57:46 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/21 20:01:38 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/23 11:18:22 by davdiaz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	write_space_or_not(char *str, int quoted, int start)
 	len = ft_strlen(str);
 	ptr = ft_intstr_match(str, "$", start);
 	if (!quoted)
-		(FALSE);
+		return (FALSE);
 	if (ptr && (ptr + 1) < len && (ft_isalnum(str[ptr + 1])
 			|| str[ptr + 1] == '_' ))
 		return (FALSE);
