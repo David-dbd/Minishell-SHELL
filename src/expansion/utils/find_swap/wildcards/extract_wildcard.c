@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 16:15:42 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/23 23:15:24 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/24 22:48:37 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ static int	handle_case3(char *str, char **ptr, int *wildcard_type, int i)
 	int	start;
 
 	start = 0;
-	//while (start < i && !ft_isprint(str[start]) && ft_isspace(str[start]))
-	//	start++;
 	*wildcard_type = END;
 	*ptr = ft_strndup(str + start, i - start);
 	if (!*ptr)

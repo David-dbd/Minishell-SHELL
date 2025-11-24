@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 23:19:18 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/23 01:45:26 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/24 21:19:15 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static void	update_info(t_prompt *prompt, char **arr, int count, int *i)
 	ft_free_str_array(&arr);
 }
 
-static int	if_was_expansion(t_prompt *prompt, t_token *tokens, int i)
+static int	if_was_expansion(t_token *tokens, int i)
 {
-	if (prompt->before_tokens_type[i] == EXPANSION && tokens[i].type == WORD
+	if (tokens[i].type == WORD
 		&& !tokens[i].double_quoted && !tokens[i].single_quoted
 		&& (ft_strchr(tokens[i].value, ' ')
 			|| ft_strchr(tokens[i].value, '\t')))
@@ -57,7 +57,7 @@ void	split_expansion_result(t_shell *data, t_prompt *prompt, t_token *tokens)
 	i = 0;
 	while (i < prompt->n_tokens)
 	{
-		if (if_was_expansion(prompt, tokens, i))
+		if (if_was_expansion(tokens, i))
 		{
 			if (!set_arr(data, &arr, i, &count))
 			{

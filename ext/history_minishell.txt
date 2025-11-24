@@ -7,8 +7,27 @@ lsd
 sclls
 sdd
 c
-clear
-ls
 sd
 d
+pwt
+l
+esport
+export
+exporr
+export A="  1      2       3    4    "
+echo $A$A
+echo $A$A$A
+make
+export PATH=" "
+echo $PATH | cat -e
+echo $PATH | /usr/bin/cat -e
+echo 1
+bash
+pwd
+wc
 s
+sc
+ssl
+slc
+clear
+ls

@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 19:04:23 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/24 00:00:21 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/24 22:48:52 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,8 +206,6 @@ int	final_expansion_process(t_shell *data, t_node *node)
 		i = node->token->id;
 		if (node->args)
 			ft_free_str_array(&node->args);
-		// print_tokens_debug(&data->prompt);
-		// print_ast(data->ast_root);
 		expand_wildcards(data, &data->prompt, data->prompt.tokens, FINAL_PHASE);
 		node->args = get_args_for_binary(data, data->prompt.tokens, &i);
 	}

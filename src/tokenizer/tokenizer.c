@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/24 14:48:20 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/24 21:46:44 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,12 @@ int	tokenizer(t_shell *data, t_prompt *prompt, char *input)
 	transform_tokens_logic(data, prompt, prompt->tokens);
 	simplify_tokens(data, prompt, prompt->tokens);
 	transform_tokens_logic(data, prompt, prompt->tokens);
-	// if (!cmd_correction(data, prompt->tokens, prompt->n_tokens))
-	// 	return (FAILURE);
-	// else
-	// 	transform_tokens_logic(data, prompt, prompt->tokens);
-	// print_tokens_debug(&data->prompt);
+# ifdef MAIN
+	if (!cmd_correction(data, prompt->tokens, prompt->n_tokens))
+		return (FAILURE);
+	else
+		transform_tokens_logic(data, prompt, prompt->tokens);
+# endif
 	expand_wildcards(data, prompt, prompt->tokens, INITIAL_PHASE);
 	if (!check_if_valid_tokens(data, prompt, prompt->tokens))
 		return (SYNTAX_ERROR);
