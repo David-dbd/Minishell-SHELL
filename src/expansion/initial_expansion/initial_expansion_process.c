@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 16:41:34 by davdiaz-          #+#    #+#             */
-/*   Updated: 2025/11/23 21:06:10 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:48:51 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ static void	adjust_expansion(t_token *tokens, int n_tokens)
 
 int	initial_expansion_process(t_shell *data, t_prompt *prompt)
 {
+	create_before_tokens(data, prompt->tokens, &data->prompt);
 	dont_expand_this(data, prompt, prompt->tokens);
 	if (expansion(data, prompt->tokens, 0, INITIAL_PHASE) == ERROR)
 		return (FAILURE);

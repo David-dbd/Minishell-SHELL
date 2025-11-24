@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/11/23 19:48:19 by migarrid         ###   ########.fr        #
+#    Updated: 2025/11/24 14:42:47 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -287,7 +287,7 @@ $(LIBFT_A): FORCE $(LIBFT_MAKEFILE) $(LIBFT_H)
 
 # Rebuild isocline library
 $(ISOCLINE_A):
-	@$(PRINT) "Compiling $(BLUE)isocline library$(DEFAULT)...\n"
+	@$(PRINT) "Compiling $(BLUE)project library$(DEFAULT)...\n"
 	@$(MKDIR) $(ISOCLINE_DIR)/build/release
 	@cd $(ISOCLINE_DIR)/build/release && $(CMAKE) ../.. > /dev/null 2>&1 && $(CMAKE) --build . > /dev/null 2>&1
 

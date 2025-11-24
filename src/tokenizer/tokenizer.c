@@ -6,7 +6,7 @@
 /*   By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:17:10 by migarrid          #+#    #+#             */
-/*   Updated: 2025/11/24 00:00:25 by migarrid         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:48:20 by migarrid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	get_tokens(t_shell *data, t_prompt *prompt, char *input)
 	}
 	is_it_quoted(&data->prompt, data->prompt.tokens);
 	move_script_args_to_end(data, &data->prompt, data->prompt.tokens);
-	create_before_tokens(data, data->prompt.tokens, &data->prompt);
 }
 
 /*
