@@ -13,6 +13,7 @@ The core design philosophy is centered on **Architectural Clarity** and **Contex
 
 This shell is built on the classic **Read-Eval-Print Loop (REPL)** structure, processing user input through distinct, heavily validated phases to ensure that execution logic is completely decoupled from parsing and interpretation logic.
 
+<img width="524" height="244" alt="Captura de Pantalla 2025-11-25 a las 19 02 53" src="https://github.com/user-attachments/assets/cece2407-ef35-4cb0-a6d1-343ea142d34a" />
 
 
 ## 📇 Table of Contents
