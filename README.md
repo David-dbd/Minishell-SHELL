@@ -7,6 +7,7 @@ The Minishell project is a comprehensive and robust implementation of a custom c
 
 Our goal was not merely to execute commands, but to engineer a pipeline capable of managing complex shell grammar, environment state, and process isolation with high precision.
 
+Poject made by David Diaz ("David-dbd" (github) - "davdiaz-" (42 login)) and Mikel Garrido ("lordmikkel" (github) - "migarrid" (42 loggin))
 ## Project Philosophy
 
 The core design philosophy is centered on **Architectural Clarity** and **Contextual Integrity**.
