@@ -6,7 +6,7 @@
 #    By: migarrid <migarrid@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:55:34 by migarrid          #+#    #+#              #
-#    Updated: 2025/11/24 22:41:10 by migarrid         ###   ########.fr        #
+#    Updated: 2025/11/25 03:04:38 by migarrid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,12 @@ NAME				= minishell
 #                            Compiler and Flags                                #
 # **************************************************************************** #
 CC					= cc
-WFLAGS				= -Wall -Wextra -Werror
+WFLAGS				= -Wall -Wextra #-Werror
 DFLAGS				= -g
 DMAIN				= -D MAIN
-#OFLAGS				= -O1 -march=native -flto
-#SFLAGS				= -fsanitize=address,undefined
+#VFLAGS				= -O1 -march=native -flto
+#OFLAGS				= -Os -flto -ffunction-sections -fdata-sections -Wl,--gc-sections
+SFLAGS				= -fsanitize=address,undefined
 DEPFLAGS			= -MMD -MP
 
 # **************************************************************************** #
@@ -35,6 +36,8 @@ MAKE				= make
 MKDIR				= mkdir -p
 NORM				= norminette
 CMAKE				= cmake
+MV					= mv
+CD					= cd
 
 # **************************************************************************** #
 #                              Directories                                     #
@@ -266,7 +269,7 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c $(DEPS) $(LIBFT_A) | $(OBJ_DIR)
 	@$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
 	@$(PRINT) "\r%100s\r[ %d/%d (%d%%) ] Compiling $(BLUE)$<$(DEFAULT)...\n" "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
 	@$(MKDIR) $(dir $@)
-	@$(CC) $(WFLAGS) $(DMAIN) $(DFLAGS) $(SFLAGS) $(OFLAGS) -I$(INC_DIR) $(DEPFLAGS) -c -o $@ $<
+	@$(CC) $(WFLAGS) $(DMAIN) $(DFLAGS) $(SFLAGS) $(VFLAGS) $(OFLAGS) -I$(INC_DIR) $(DEPFLAGS) -c -o $@ $<
 
 # Include .deps files
 -include $(DEPS_FILES)
@@ -279,7 +282,7 @@ all: $(ISOCLINE_A) $(LIBFT_A) $(NAME)
 
 # Build executable
 $(NAME): $(OBJS) $(LIBFT_A) $(HISTORY_A) $(ISOCLINE_A)
-	@$(CC) $(WFLAGS) $(DMAIN) $(DFLAGS) $(SFLAGS) $(OFLAGS) $(OBJS) $(LIBFT_A) $(ISOCLINE_A) -I$(INC_DIR) $(LDLIBS) -o $(NAME)
+	@$(CC) $(WFLAGS) $(DMAIN) $(DFLAGS) $(SFLAGS) $(VFLAGS) $(OFLAGS) $(OBJS) $(LIBFT_A) $(ISOCLINE_A) -I$(INC_DIR) $(LDLIBS) -o $(NAME)
 	@$(PRINT) "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}${NAME} ${RESET}compiled ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 
 # Rebuild libft.a
@@ -290,7 +293,7 @@ $(LIBFT_A): FORCE $(LIBFT_MAKEFILE) $(LIBFT_H)
 $(ISOCLINE_A):
 	@$(PRINT) "Compiling $(BLUE)project library$(DEFAULT)...\n"
 	@$(MKDIR) $(ISOCLINE_DIR)/build/release
-	@cd $(ISOCLINE_DIR)/build/release && $(CMAKE) ../.. > /dev/null 2>&1 && $(CMAKE) --build . > /dev/null 2>&1
+	@$(CD) $(ISOCLINE_DIR)/build/release && $(CMAKE) ../.. > /dev/null 2>&1 && $(CMAKE) --build . > /dev/null 2>&1
 
 # Test minishell rapidly
 test: fclean
@@ -314,14 +317,12 @@ clean:
 	@$(MAKE) clean -s -C $(LIBFT_DIR)
 	@$(RM) $(ISOCLINE_DIR)/build
 	@$(RM) $(OBJ_DIR)
-	@$(RM) $(OBJ_DIR_TEST)
 	@$(PRINT) "${CLEAR}${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Objects were cleaned ${GREEN}successfully${RESET}.\n${RESET}"
 
 # Full clean
 fclean: clean
 	@$(MAKE) fclean -s -C $(LIBFT_DIR)
 	@$(RM) $(NAME)
-	@$(RM) $(NAME_TEST)
 	@$(PRINT) "${CLEAR}${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Project cleaned ${GREEN}successfully${RESET}.${GREY}\n${RESET}${GREY}────────────────────────────────────────────────────────────────────────────\n${RESET}"
 
 # Rebuild everything
