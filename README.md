@@ -24,23 +24,23 @@ This shell is built on the classic **Read-Eval-Print Loop (REPL)** structure, pr
 - [📚 Phase 1: Initialization & Tokenization](#-phase-1-initialization--tokenization)
   - [🧩 Tokenization: Lexical Analysis and Token Semantics](#2-tokenization-lexical-analysis-and-token-semantics)
 
-- [🛡️ Phase 3: Expansion Phase – Dynamic Substitution and Contextual Integrity](#3-Expansion-Phase:-Dynamic-Substitution-and-Contextual-Integrity)
+- [🛡️ Phase 3: Expansion Phase – Dynamic Substitution and Contextual Integrity](#3-expanded-phase-dynamic-substitution-and-contextual-integrity)
 
-- [🧹 Phase 4: Token Simplification](#4-🧹-Token-Simplification)
+- [🧹 Phase 4: Token Simplification](#4-token-simplification)
 
-- [✨ Phase 5: Wildcard Expansion](#5-✨-wildcard-expansion)
+- [✨ Phase 5: Wildcard Expansion](#5-wildcard-expansion)
 
-- [🌳 Phase 6: Abstract Syntax Tree (AST) Construction](#6-🌳-abstract-syntax-tree-ast-construction)
+- [🌳 Phase 6: Abstract Syntax Tree (AST) Construction](#6-abstract-syntax-tree-ast-construction)
 
-- [🚀 Phase 7: AST Execution Phase](#7-🚀-ast-execution-phase)
+- [🚀 Phase 7: AST Execution Phase](#7-ast-execution-phase)
 
-- [🎯 Phase 8: Assignment Engine – Scope, Persistence, and State Management](#8-🎯-assignment-engine-scope-persistence-and-state-management)
+- [🎯 Phase 8: Assignment Engine – Scope, Persistence, and State Management](#8-assignment-engine--scope-persistence-and-state-management)
 
-- [🛠️ Phase 9: Built-in Command Execution](#9-🛠️-built-in-command-execution)
+- [🛠️ Phase 9: Built-in Command Execution](#9-built-in-command-execution)
 
-- [🧬 Phase 10: Minishell Data Model – Core Structures and Types](#10-🧬-minishell-data-model-core-structures-and-types)
+- [🧬 Phase 10: Minishell Data Model – Core Structures and Types](#10-minishell-data-model--core-structures-and-types)
 
-- [✨ Phase 11: Extra Features – UX and Robustness](#11-✨-extra-features-ux-and-robustness)
+- [✨ Phase 11: Extra Features – UX and Robustness](#11-extra-features--ux-and-robustness)
 
 ---
 # 📚 Phase 1: Initialization & Tokenization
