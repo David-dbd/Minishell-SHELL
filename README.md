@@ -24,9 +24,9 @@ This shell is built on the classic **Read-Eval-Print Loop (REPL)** structure, pr
 - [📚 Phase 1: Initialization & Tokenization](#-phase-1-initialization--tokenization)
   - [🧩 Tokenization: Lexical Analysis and Token Semantics](#2-🧩-tokenization-lexical-analysis-and-token-semantics)
 
-- [🛡️ Phase 3: Expansion Phase – Dynamic Substitution and Contextual Integrity](#3-️-expansion-phase-dynamic-substitution-and-contextual-integrity)
+- [🛡️ Phase 3: Expansion Phase – Dynamic Substitution and Contextual Integrity](#3-🛡️-Expansion-Phase:-Dynamic-Substitution-and-Contextual-Integrity)
 
-- [🧹 Phase 4: Token Simplification](#4-🧹-token-simplification)
+- [🧹 Phase 4: Token Simplification](#4-🧹-Token-Simplification)
 
 - [✨ Phase 5: Wildcard Expansion](#5-✨-wildcard-expansion)
 
