@@ -22,7 +22,8 @@ This shell is built on the classic **Read-Eval-Print Loop (REPL)** structure, pr
 ## 📇 Table of Contents
 
 - [📚 Phase 1: Initialization & Tokenization](#-phase-1-initialization--tokenization)
-  - [🧩 Tokenization: Lexical Analysis and Token Semantics](#2-tokenization-lexical-analysis-and-token-semantics)
+
+- [🧩 Tokenization: Lexical Analysis and Token Semantics](#2-tokenization-lexical-analysis-and-token-semantics)
 
 - [🛡️ Phase 3: Expansion Phase – Dynamic Substitution and Contextual Integrity](#3-expanded-phase-dynamic-substitution-and-contextual-integrity)
 
@@ -98,7 +99,7 @@ Proper signal handling is paramount for a shell to behave reliably. This is mana
 
 -----
 
-## 2\. 🧩 Tokenization: Lexical Analysis and Token Semantics
+# 2\. 🧩 Tokenization: Lexical Analysis and Token Semantics
 
 The Tokenization phase transforms the raw input string into a structured, executable list of tokens.
 
