@@ -1281,7 +1281,11 @@ https://github.com/user-attachments/assets/c1c2fbdc-e16c-49e4-a81c-50a36a79bd65
 
 This feature is a sophisticated form of **proactive error handling** that prevents the frustrating "command not found" error by suggesting corrections for misspelled built-in commands. It is deliberately engineered for intelligence and minimal disruption.
 
-https://github.com/user-attachments/assets/711eb897-502e-464b-bce0-0c30b8c45f0d
+
+
+https://github.com/user-attachments/assets/62c4d654-6cc8-4031-bf6f-f58b04326b14
+
+
 
 ### 11.2.1. The Advanced Correction Heuristic
 
