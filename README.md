@@ -99,7 +99,7 @@ Proper signal handling is paramount for a shell to behave reliably. This is mana
 
 -----
 
-#2 🧩 Tokenization: Lexical Analysis and Token Semantics
+# 2\. 🧩 Tokenization: Lexical Analysis and Token Semantics
 
 The Tokenization phase transforms the raw input string into a structured, executable list of tokens.
 
