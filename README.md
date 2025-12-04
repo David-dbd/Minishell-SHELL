@@ -213,10 +213,6 @@ When a syntax error is detected (e.g., in `check_pipe`):
 3.  The validation loop immediately returns **`SYNTAX_ERROR`**.
 
 This robust process guarantees that, upon failure, all memory related to the faulty command line is freed, and the program flow returns directly to the **main loop's `continue`** statement, ready for the next user input without attempting to execute the invalid command.
-
------
-Understood. I will provide just the enhanced section detailing the **Error and Cleanup Protocol**, focusing on the role of `syntax_error` as defined in your `error.c` file.
-
 -----
 
 ### 2.5. 🚨 Semantics and Syntax Validation: Error and Cleanup Protocol
