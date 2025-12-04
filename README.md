@@ -11,8 +11,8 @@ Poject made by:<br></br>
 **David Diaz: "David-dbd" on github - "davdiaz-" (42 login)**<br></br>
 **Mikel Garrido: "lordmikkel" github - "migarrid" (42 loggin)**<br></br>
 
-### Finished project. Adding extra features and new upgrades overtime!*
-
+### Finished project. Adding extra features and new upgrades very soon!*
+<br></br>
 ## Project Philosophy
 
 The core design philosophy is centered on **Architectural Clarity** and **Contextual Integrity**.
