@@ -19,7 +19,7 @@ The core design philosophy is centered on **Architectural Clarity** and **Contex
 
 This shell is built on the classic **Read-Eval-Print Loop (REPL)** structure, processing user input through distinct, heavily validated phases to ensure that execution logic is completely decoupled from parsing and interpretation logic.
 
-Features:
+#### Features:
 * Command correction for builtins -> echa: did you mean 'echo'?
 * Line for unbalanced prompts -> echo hello &&
 * Script execution with get_next_line
