@@ -10,6 +10,9 @@ Our goal was not merely to execute commands, but to engineer a pipeline capable 
 Poject made by:<br></br>
 **David Diaz: "David-dbd" on github - "davdiaz-" (42 login)**<br></br>
 **Mikel Garrido: "lordmikkel" github - "migarrid" (42 loggin)**<br></br>
+
+##Finished project, although still on improvment and upgrades! Keep it up!
+
 ## Project Philosophy
 
 The core design philosophy is centered on **Architectural Clarity** and **Contextual Integrity**.
