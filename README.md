@@ -20,18 +20,19 @@ The core design philosophy is centered on **Architectural Clarity** and **Contex
 This shell is built on the classic **Read-Eval-Print Loop (REPL)** structure, processing user input through distinct, heavily validated phases to ensure that execution logic is completely decoupled from parsing and interpretation logic.
 
 #### Features:
-* Command correction for builtins -> echa: did you mean 'echo'?
-* Line for unbalanced prompts -> echo hello &&
-* Script execution with get_next_line
-* Local, Temporal and exported ASIGNATIONS and sync between them and the shell -> var=1 ls - var=1 - export var=1
-* Wildcards
-* Accepts commands on both uppercase and lowercase -> ECHO/echo/EchO/eChO all work
+* Command correction for builtins -> `echa: did you mean 'echo'?`
+* Line for unbalanced prompts -> `echo hello &&`
+* Script execution
+* Local, Temporal and exported ASIGNATIONS and sync between them and the shell -> `var=1 ls - var=1 - export var=1`
+* Wildcards -> `*hello - hello* - h*ell*o`
+* Accepts commands on both uppercase and lowercase -> `ECHO/echo/EchO/eChO` all work
 * Subshells
 * Operands '&' and ';'
 * UX for user experiecnce
 * Reddirs and HEREDOC
-* Expansions: env variables - tilde - tilde plus - tilde minus
+* Expansions: `env variables - tilde - tilde plus - tilde minus`
 * History
+* Easy to read code and structure
   
 <img width="524" height="244" alt="Captura de Pantalla 2025-11-25 a las 19 02 53" src="https://github.com/user-attachments/assets/cece2407-ef35-4cb0-a6d1-343ea142d34a" />
 
