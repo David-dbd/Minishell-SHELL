@@ -8,8 +8,8 @@ The Minishell project is a comprehensive and robust implementation of a custom c
 Our goal was not merely to execute commands, but to engineer a pipeline capable of managing complex shell grammar, environment state, and process isolation with high precision.
 
 Poject made by:<br></br>
-**David Diaz: @david-dbd / "davdiaz-" (42 login)**<br></br>
-**Mikel Garrido: @lordmikkel / "migarrid" (42 login)**<br></br>
+**David Diaz: <a href="https://github.com/David-dbd">@david-dbd</a>   / "davdiaz-" (42 login)**<br></br>
+**Mikel Garrido: <a href="https://github.com/LordMikkel">@lordmikkel</a>  / "migarrid" (42 login)**<br></br>
 
 ### Finished project. Adding extra features and new upgrades very soon!*
 <br></br>
