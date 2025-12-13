@@ -651,8 +651,8 @@ The parser functions are structured to reflect the standard Unix shell precedenc
 | Precedence Level | Function | Operators Handled | Role in the Tree |
 | :--- | :--- | :--- | :--- |
 | **Lowest (1)** | `parse_sequence` | **`;`** (Semicolon) | Groups commands for sequential, unconditional execution. |
-| **2** | `parse_and_or` | **`&&`**, **`||`** (AND, OR) | Groups pipelines based on logical success/failure of the left side. |
-| **3** | `parse_pipes` | **`|`** (Pipe) | Groups commands for chained execution, directing output to the next command's input. |
+| **2** | `parse_and_or` | **`&&`**, **`OR`** (AND, OR) | Groups pipelines based on logical success/failure of the left side. |
+| **3** | `parse_pipes` | **`Pipe`** (Pipe) | Groups commands for chained execution, directing output to the next command's input. |
 | **Highest (4)** | `parse_subshell` | **`(`**, **`)`** | Handles subshells, real assignments, and delegates to the final command parser. |
 | **Leaf Node** | `parse_cmd` | `COMMAND`, `BUILTIN`, `WILDCARD` | Creates the final executable nodes. |
 
