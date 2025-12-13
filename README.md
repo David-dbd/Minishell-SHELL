@@ -8,8 +8,8 @@ The Minishell project is a comprehensive and robust implementation of a custom c
 Our goal was not merely to execute commands, but to engineer a pipeline capable of managing complex shell grammar, environment state, and process isolation with high precision.
 
 Poject made by:<br></br>
-**David Diaz: "David-dbd" on github - "davdiaz-" (42 login)**<br></br>
-**Mikel Garrido: "lordmikkel" github - "migarrid" (42 loggin)**<br></br>
+**David Diaz: @david-dbd / "davdiaz-" (42 login)**<br></br>
+**Mikel Garrido: @lordmikkel / "migarrid" (42 login)**<br></br>
 
 ### Finished project. Adding extra features and new upgrades very soon!*
 <br></br>
@@ -1360,52 +1360,52 @@ The shell fully implements the structural control flow operators required for co
                 ┌───────────────────────────┐
                 │         MAIN LOOP         │
                 │───────────────────────────│
-                │  signals()  // PADRE      │
+                │  signals()  // PARENT     │
                 │  init(&data)              │
                 └─────────────┬─────────────┘
                               │
                               ▼
-                   ┌─────────────────────┐
-                   │  prompt(&input)     │
+                   ┌──────────────────────┐
+                   │  prompt(&input)      │
                    │(waits for user input)│
-                   └─────────┬───────────┘
-                 (SIGINT)    │   [EOF/exit]
+                   └──────────┬───────────┘
+                 (SIGINT)     │   [EOF/exit]
                   PARENT      │   clean & exit
-                  cleans     │
-                  prompt     ▼
-               ┌──────────────────────────────┐
-               │ 1) TOKENIZER                 │
-               │ - Divides the tokens         │
-               │ - Identifies pipes, redirs   │
-               │ - Manages quotes             │
-               └───────────────┬──────────────┘
+                  cleans      │
+                  prompt      ▼
+               ┌────────────────────────────────┐
+               │ 1) TOKENIZER                   │
+               │ - Divides the tokens           │
+               │ - Identifies pipes, redirs     │
+               │ - Manages quotes               │
+               └───────────────┬────────────────┘
                                ▼
-               ┌──────────────────────────────┐
-               │ 2) EXPANSION                 │
+               ┌────────────────────────────────┐
+               │ 2) EXPANSION                   │
                │ - Substitution $VAR, $?, tildes│
-               │ - Expands wildcards          │
-               │ - Respects quotes            │
-               └───────────────┬──────────────┘
+               │ - Expands wildcards            │
+               │ - Respects quotes              │
+               └───────────────┬────────────────┘
                                ▼
-               ┌─────────────────────────────┐
-               │ 3) AST BUILDER              │
-               │ - Creates the AST           │
-               │ - Gathers cmds/args         │
-               │ - Orders pipes/redirs       │
-               └──────────────┬──────────────┘
+               ┌───────────────────────────────┐
+               │ 3) AST BUILDER                │
+               │ - Creates the AST             │
+               │ - Gathers cmds/args           │
+               │ - Orders pipes/redirs         │
+               └──────────────┬────────────────┘
                               ▼
-               ┌─────────────────────────────┐
-               │ 4) EXECUTOR                 │
-               │ - Iterates over AST         │
-               │ - fork() for commands       │
-               │ - Redirections              │
-               │ - Pipes                     │
-               └──────────────┬──────────────┘
+               ┌───────────────────────────────┐
+               │ 4) EXECUTOR                   │
+               │ - Iterates over AST           │
+               │ - fork() for commands         │
+               │ - Redirections                │
+               │ - Pipes                       │
+               └──────────────┬────────────────┘
                               │
                  ┌────────────┴─────────────┐
-                 ▼                           ▼
+                 ▼                          ▼
       ┌─────────────────────┐     ┌─────────────────────┐
-      │ PADRE               │     │ HIJO                │
+      │ PARENT              │     │ CHILD               │
       │──────────────────── │     │──────────────────── │
       │ - Waits with        │     │ - Restores Signals  │
       │   waitpid()         │     │   SIG_DFL           │
@@ -1413,7 +1413,7 @@ The shell fully implements the structural control flow operators required for co
       │   (Ctrl+C)          │     │ - If signal → Dies  │
       └─────────────────────┘     └─────────────────────┘
                  │                           │
-                 │       (exit/señal)        │
+                 │       (exit/signal)       │
                  └───────────┬───────────────┘
                              ▼
                 ┌─────────────────────────────┐
